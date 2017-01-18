@@ -1,0 +1,50 @@
+<li class="job-feed-item css-fade" id="job-feed-item-{{ ::job._id }}" ng-show="showJob(job)">
+  <div class="company-logo-row">
+    <div class="company-logo-wrap">
+      <a ng-href="/company/{{ ::job.company_id }}" class="biglink">&nbsp;</a>
+      <img ng-src='{{ ::job.company_logo }}' class="company-logo" ng-show="job.company_logo" />
+      <img ng-src='{{getTextImagePlaceholder(generateCompensationText(job), 150, 150)}}' class="company-logo" ng-show="!job.company_logo"/>
+    </div>
+    <span class='job-title'>
+            <a ng-href="/job/{{ ::job.hash }}" ng-text-truncate="job.title" ng-tt-chars-threshold="35" ng-tt-no-toggling>{{ ::job.title | truncateText }} </a>
+        <a ng-href="/company/{{ ::job.company_id }}" class="company-name" ng-show="job.company_id != 'meed_client'">{{ ::job.company }}</a>
+    </span>
+  </div>
+  <p class="job-location">
+    <i class="fa fa-map-marker" ng-if="job.location"></i> {{ ::job.location }}
+    <span class="label" ng-if="job.type === 'Mini Internship (Hourly)' && job.hourly_hours">
+      <span class="meta-spacer"></span>
+      <i class="fa fa-hourglass-start"></i>
+      {{ job.hourly_hours }} hrs
+    </span>
+    <p class="job-compensation button job-compensation-medium-small" ng-if="job.type.startsWith('Mini Internship') && (job.fixed_compensation || job.hourly_compensation) && job.company_logo">
+      <span class="label" >  ${{ generateCompensationText(job) }}</span>
+    </p>
+  </p>
+  <p class="job-metadata">
+    <span class="job-type">{{ ::job.type | underscoresToSpaces }} </span>
+    <!--<abbr class="timeago job-timestamp" title="{{ ::job.create_dttm }}">{{ ::job.create_dttm }}</abbr>-->
+  </p>
+  <p class="button-wrap">
+    <a
+      class="button button-primary view-job"
+      ng-href="{{ ::job.job_url }}"
+      ng-if="!job.applied && currentUser"
+      data-job-hash="{{ ::job.hash }}"
+      >
+      Apply
+    </a>
+      <a class="button button-primary open-signup-modal"
+         ng-if="!currentUser"
+         data-job-hash="{{ ::job.hash }}"
+         >
+          Apply
+      </a>
+    <a
+      class="button follow-up-button open-job-follow-up-modal"
+      data-job-company="{{ ::job.company }}"
+      data-job-hash="{{ ::job.hash }}"
+      ng-if="job.applied"
+      > Applied</a>
+  </p>
+</li>

@@ -1,0 +1,10 @@
+<% if current_user.blank? %>
+  <div style="width: 70%; margin-left: 15%; text-align: center">
+    <button class="btn btn-primary" type="submit" onclick="showSignUpModal(0)">Show Comments (<%= comments.count() %>)</button>
+  </div>
+<% else %>
+  <%= render 'comments/render_input_comment', :id => feed_id, :type => type %>
+  <% comments.each do |comment| %>
+      <%= render 'comments/render_comment', :data => comment %>
+  <% end %>
+<% end %>

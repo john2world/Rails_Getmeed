@@ -1,0 +1,362 @@
+<div class="bg-slider-wrapper">
+  <div class="flexslider bg-slider">
+    <ul class="slides">
+      <li class="slide slide-3"></li>
+      <li class="slide slide-2"></li>
+      <li class="slide slide-5"></li>
+    </ul>
+  </div>
+</div>
+<!--//bg-slider-wrapper-->
+
+<section class="promo section section-on-bg" data-sr='enter bottom and scale up 20% over 1s and reset'>
+  <div class="container text-center">
+    <div class="any-center">
+      <img src="https://res.cloudinary.com/resume/image/upload/c_scale,w_120/v1427155934/crescent_green_rt6rit.png" style="padding: 20px;">
+    </div>
+<<<<<<< HEAD
+    <h2 class="title" style="line-height: 1.1;">A career marketplace <br> for students!</h2>
+
+=======
+    <p class="title" style="line-height: 1.1;">
+      A career marketplace <br>
+      for students!
+    </p>
+>>>>>>> master
+    <%= form_tag({:controller => 'users', :action => 'verify'}, :class => 'signup-form navbar-form', :html => {:multipart => true}) do %>
+        <%= hidden_field_tag :inviter_id, @inviter_handle %>
+        <div class="form-group">
+          <%= text_field_tag :email, nil, :class => 'form-control', :required => '', :style => 'height:50px;', :id => 'sign_up_tb', :placeholder => 'Enter college email (ex: sam@usc.edu)' %>
+        </div>
+        <%= button_tag(type: 'submit', class: 'btn btn-cta btn-cta-primary', :id => 'splash_input_button', :disable_with => 'Verifying.. ') do %>
+            Sign Up
+        <% end %>
+        <p>
+        </p>
+
+        <div class="col-md-2 col-md-offset-4">
+          <% if !alert.blank? %>
+              <p class="label label-important">
+                <%= alert %>
+              </p>
+          <% end %>
+        </div>
+        </div>
+        <div class="feature-lead text-center" style="margin-top:1%;">
+          <p>
+            Are you an employer?
+          </p>
+
+          <p>
+
+            <a class="btn btn-cta btn-cta-secondary employer-cta" href="https://enterprise.getmeed.com"><img src="https://res.cloudinary.com/resume/image/upload/c_scale,w_100/v1427159213/crescent_blue_enterprise_rzxorg.png"></a>
+          </p>
+
+        </div>
+    <% end -%>
+    </section>
+
+<!--//promo-->
+
+<div class="sections-wrapper">
+
+  <!-- ******Why Section****** -->
+  <section id="why" class="section why">
+    <div class="container">
+      <div data-sr='wait 0.2s, scale up 30% and reset'>
+        <h2 class="title text-center">3 simple steps to get started!</h2>
+
+        <p class="intro text-center">Creating a profile on Meed is just few clicks</p>
+      </div>
+      <div class="row item">
+        <div class="content col-md-4 col-sm-12 col-xs-12" data-sr='enter left please, and hustle 50px and reset'>
+          <h3 class="title"> 1. Create profile</h3>
+
+          <div class="desc">
+            <p>
+            <ul>
+              <li>
+                <p>
+                  <strong>Simplicity:</strong> A meed profile is simple to build by importing
+                  - <span class="fa fa-linkedin-square"></span>LinkedIn, <span class="fa fa-github"></span>Github,
+                  <span class="fa fa-stack-overflow"></span>Stackoverflow, <span class="fa fa-dribbble"></span>Dribbble
+                  and other sources!
+                </p>
+              </li>
+              <li>
+                <p>
+                  <strong>Consistency:</strong> A meed profile looks like your standard resume template vetted by
+                  several industry recruiters.
+                </p>
+              </li>
+              <li>
+                <p>
+                  <strong>Meed score:</strong> Meed score is built from your profile, which is used to match jobs,
+                  people and content from Meed marketplace!
+                </p>
+              </li>
+            </ul>
+            </p>
+          </div>
+          <div class="quote">
+            <div class="quote-profile">
+              <img class="image-medium" src="http://res.cloudinary.com/resume/image/upload/v1417545273/hpswey11uvqrch0z37uy.png" alt=""/>
+            </div>
+            <!--//profile-->
+            <div class="quote-content">
+              <blockquote>
+                <p><a href="/tcparker" target="_blank">Tanya Parker</a> I find it really easy to apply for jobs with
+                  simple clicks like never before!</p></blockquote>
+              <p class="source">Tanya Parker, USC</p>
+            </div>
+            <!--//quote-content-->
+          </div>
+          <!--//quote-->
+        </div>
+        <!--//content-->
+        <figure class="figure col-md-7 col-sm-12 col-xs-12 col-md-offset-1 col-sm-offset-0 col-xs-offset-0">
+          <img class="img-responsive" src="http://res.cloudinary.com/resume/image/upload/e_red/v1421956495/Screen_Shot_2015-01-22_at_11.54.29_AM_vkyxrr.png" alt=""/>
+          <figcaption class="figure-caption">(Sample meed profile)</figcaption>
+        </figure>
+      </div>
+      <!--//item-->
+
+      <div class="row item">
+        <div class="content col-md-4 col-sm-12 col-xs-12 col-md-push-8 col-sm-push-0 col-xs-push-0" data-sr='enter right please, and hustle 50px and reset'>
+<<<<<<< HEAD
+          <h3 class="title">  2. Show Interest</h3>
+=======
+          <h3 class="title"> 2. Show Interest</h3>
+>>>>>>> master
+
+          <div class="desc">
+            <p>
+            <ul>
+              <li>
+                <p>
+                  <strong>Jobs:</strong> Meed's advanced ranking technology helps in accessing jobs that are most
+                  relevant for your interests and profile.
+                </p>
+              </li>
+              <li>
+                <p>
+                  <strong>Insights:</strong> Track status of your applications and be in the know with information on
+                  profile visits, ranking in employer search etc.
+                </p>
+              </li>
+              <li>
+                <p>
+                  <strong>Communicate:</strong> You can communicate with other students who are like you, your alumni
+                  and different employers.
+                </p>
+              </li>
+            </ul>
+            </p>
+
+          </div>
+          <div class="quote">
+            <div class="quote-profile">
+              <img class="img-responsive image-medium" src="https://res.cloudinary.com/resume/image/upload/v1424505424/https_media.licdn.com_mpr_mpr_p_2_000_286_270_0b6120a_z88mnh.jpg" alt=""/>
+            </div>
+            <!--//profile-->
+            <div class="quote-content">
+              <blockquote>
+                <p> Maximized my chances of getting into a company that suited my profile. Love it!</p>
+              </blockquote>
+              <p class="source">Berkeley CS Grad</p>
+            </div>
+            <!--//quote-content-->
+          </div>
+
+          <!--//quote-->
+        </div>
+        <!--//content-->
+        <figure class="figure col-md-7 col-sm-12 col-xs-12 col-md-pull-4 col-sm-pull-0 col-xs-pull-0">
+          <img class="img-responsive" src="http://res.cloudinary.com/resume/image/upload/c_scale,w_1000/v1422505484/Screen_Shot_2015-01-28_at_8.24.21_PM_hpizjd.png" alt=""/>
+
+          <!--//control-->
+        </figure>
+      </div>
+      <!--//item-->
+
+
+      <div class="row item last-item">
+        <div class="content col-md-4 col-sm-12 col-xs-12 col-md-push-8 col-sm-push-0 col-xs-push-0" data-sr="enter right please, and hustle 50px and reset">
+          <h3 class="title"> 3. Content Graph</h3>
+
+          <div class="desc">
+            <p>Your pulse on the market: Updates from your alumni, people who are like you and content posted by
+              companies allows you to stay
+              recent with your career goals!</p>
+          </div>
+
+        </div>
+        <!--//content-->
+        <figure class="col-md-7 col-sm-12 col-xs-12 col-md-pull-4 col-sm-pull-0 col-xs-pull-0">
+          <img class="img-responsive" src="https://res.cloudinary.com/resume/image/upload/v1429908728/figure-4_gxoyrr.png" alt=""/>
+        </figure>
+      </div>
+      <!--//item-->
+
+
+    </div>
+    <!--//container-->
+  </section>
+  <!--//why-->
+
+
+  <!-- ******Press Section****** -->
+
+  <!-- ******CTA Section****** -->
+  <section id="cta-section" class="section cta-section text-center home-cta-section">
+    <div class="container">
+      <h2 class="title">Meed is currently open to <span class="counting">top 25</span> universities</h2>
+    </div>
+    <div class="university-container-main">
+      <div class="university">
+        <img class="image-rounded img-circle" src="http://res.cloudinary.com/resume/image/upload/v1403398763/https_fbcdn-sphotos-e-a_akamaihd_net_hphotos-ak-xaf1_t1_0-9_10247472_784138694943918_2566252489225535785_n_pn7zvj.jpg">
+
+        <p>University of Southern California</p>
+      </div>
+      <div class="university">
+        <img class="image-rounded img-circle" src="http://res.cloudinary.com/resume/image/upload/v1403398541/https_fbcdn-sphotos-b-a_akamaihd_net_hphotos-ak-xpa1_t1_0-9_10291852_10152192154145958_3670918893082090246_n_fy6vb5.png">
+
+        <p>University of California, Los Angeles</p>
+      </div>
+      <div class="university">
+        <img class="image-rounded img-circle" src="http://res.cloudinary.com/resume/image/upload/v1403398946/https_scontent-a_xx_fbcdn_net_hphotos-xpa1_t1_0-9_10154268_10152324234159661_7811345513940021516_n_jcpbot.jpg">
+
+        <p>University of California, Berkeley</p>
+      </div>
+      <div class="university">
+        <img class="image-rounded img-circle" src="http://res.cloudinary.com/resume/image/upload/v1403399006/https_fbcdn-sphotos-c-a_akamaihd_net_hphotos-ak-xap1_t1_0-9_1511295_10151884909689632_1673995846_n_vfuu7l.jpg">
+
+        <p>University of Florida</p>
+      </div>
+      <div class="university">
+        <img class="image-rounded img-circle" src="http://res.cloudinary.com/resume/image/upload/v1403399242/http_mastersinhealthinformatics_com_wp-content_uploads_2011_11_Northwestern-University-Logo_lo2yaw.jpg">
+
+        <p>Northwestern University</p>
+      </div>
+      <div class="university">
+        <img class="image-rounded img-circle" src="http://res.cloudinary.com/resume/image/upload/v1403399300/https_fbcdn-sphotos-f-a_akamaihd_net_hphotos-ak-xfa1_t1_0-9_1044164_10151662970763418_1682551420_n_btnjgf.png">
+
+        <p>Stanford University</p>
+      </div>
+      <div class="university">
+        <img class="image-rounded img-circle" src="https://res.cloudinary.com/resume/image/upload/v1403399344/https_fbcdn-sphotos-b-a_akamaihd_net_hphotos-ak-xaf1_t1_0-9_1148800_680835795293388_126913444_n_ieenqc.png">
+
+        <p>Massachusetts Institute of Technology</p>
+      </div>
+      <div class="university">
+        <img class="image-rounded img-circle" src="http://res.cloudinary.com/resume/image/upload/v1403399502/https_fbcdn-sphotos-e-a_akamaihd_net_hphotos-ak-xap1_t1_0-9_1497662_10152559597990550_2006972615_n_aabclv.jpg">
+
+        <p>Rice University</p>
+      </div>
+      <div class="university">
+        <img class="image-rounded img-circle" src="http://res.cloudinary.com/resume/image/upload/v1403399588/https_scontent-b_xx_fbcdn_net_hphotos-xfp1_t1_0-9_1977299_10151885273256534_1030627330_n_x6zng7.png">
+
+        <p>Brown University</p>
+      </div>
+      <div class="university">
+        <img class="image-rounded img-circle" src="http://res.cloudinary.com/resume/image/upload/v1403399750/https_scontent-b_xx_fbcdn_net_hphotos-xfa1_t1_0-9_423332_10150531052446475_2102094817_n_bv2rgq.jpg">
+
+        <p>Duke University</p>
+      </div>
+      <div class="university">
+        <img class="image-rounded img-circle" src="http://res.cloudinary.com/resume/image/upload/v1403399806/https_scontent-a_xx_fbcdn_net_hphotos-xaf1_t31_0-8_10380039_10152049890301607_8853146182777969742_o_jopvij.png">
+
+        <p>Harvard University</p>
+      </div>
+      <div class="university">
+        <img class="image-rounded img-circle" src="http://res.cloudinary.com/resume/image/upload/v1403399928/https_scontent-a_xx_fbcdn_net_hphotos-xfa1_t1_0-9_4852_107717938936_1288057_n_n90jh3.jpg">
+
+        <p>Columbia University</p>
+      </div>
+      <div class="university">
+        <img class="image-rounded img-circle" src="http://res.cloudinary.com/resume/image/upload/v1403399864/https_fbcdn-sphotos-g-a_akamaihd_net_hphotos-ak-xpa1_t1_0-9_1461114_10152120743001388_97498385_n_s1ihik.png">
+
+        <p>Carnegie Mellon University</p>
+      </div>
+      <div class="university">
+        <img class="image-rounded img-circle" src="http://res.cloudinary.com/resume/image/upload/v1403400049/https_fbcdn-sphotos-f-a_akamaihd_net_hphotos-ak-prn2_t1_0-9_552699_10151136829178689_449718517_n_ldlnva.jpg">
+
+        <p>New York University</p>
+      </div>
+      <div class="university">
+        <img class="image-rounded img-circle" src="http://res.cloudinary.com/resume/image/upload/v1403400096/https_scontent-a_xx_fbcdn_net_hphotos-xfp1_t1_0-9_227563_10150253568700320_5332225_n_lb5zkb.jpg">
+
+        <p>Yale University</p>
+      </div>
+      <div class="university">
+        <img class="image-rounded img-circle" src="http://res.cloudinary.com/resume/image/upload/v1403400161/https_fbcdn-sphotos-g-a_akamaihd_net_hphotos-ak-frc1_t1_0-9_285709_10150894511456274_1637082454_n_zgbwaa.jpg">
+
+        <p>University of Washington</p>
+      </div>
+      <div class="university">
+        <img class="image-rounded img-circle" src="http://res.cloudinary.com/resume/image/upload/v1403419404/http_upload_wikimedia_org_wikipedia_commons_thumb_9_92_UPenn_shield_with_banner_svg_250px-UPenn_shield_with_banner_svg_hfilnr.png">
+
+        <p>University of Pennsylvania</p>
+      </div>
+      <div class="university">
+        <img class="image-rounded img-circle" src="http://res.cloudinary.com/resume/image/upload/v1403419486/https_fbcdn-sphotos-b-a_akamaihd_net_hphotos-ak-frc3_t1_0-9_995570_10151865306493671_1168153659_n_xklypd.png">
+
+        <p>University of Massachusetts Amherst</p>
+      </div>
+      <div class="university">
+        <img class="image-rounded img-circle" src="http://res.cloudinary.com/resume/image/upload/v1403419799/https_fbcdn-sphotos-h-a_akamaihd_net_hphotos-ak-ash2_t1_0-9_551193_10150970949386930_1041310064_n_rivqnl.jpg">
+
+        <p>The University of Texas at Austin</p>
+      </div>
+      <div class="university">
+        <img class="image-rounded img-circle" src="http://res.cloudinary.com/resume/image/upload/v1408822710/http_i_imgur_com_g0kdB1T_jqrhzr.jpg">
+
+        <p>University of Waterloo</p>
+      </div>
+      <div class="university">
+        <img class="image-rounded img-circle" src="http://res.cloudinary.com/resume/image/upload/c_scale,w_180/v1408821782/https_coursera-university-assets_s3_amazonaws_com_70_de505d47be7d3a063b51b6f856a6e2_New-Block-M-Stacked-Blue-295C_600x600_s6daju.png">
+
+        <p>University of Michigan</p>
+      </div>
+      <div class="university">
+        <img class="image-rounded img-circle" src="http://res.cloudinary.com/resume/image/upload/v1408823721/http_businessofcollegesports_com_wp-content_uploads_2012_03_ucsd-tritons_g61uxy.jpg">
+
+        <p>University of California, San Diego</p>
+      </div>
+      <div class="university">
+        <img class="image-rounded img-circle" src="http://res.cloudinary.com/resume/image/upload/v1418070519/http_www_caltech_edu_sites_all_themes_caltech_mte_img_caltech_logo_ypkjoo.jpg">
+
+        <p>California Institute of Technology</p>
+      </div>
+      <div class="university">
+        <img class="image-rounded img-circle" src="http://res.cloudinary.com/resume/image/upload/v1418070742/https_lh3_googleusercontent_com_-2jofGt-kQZk_AAAAAAAAAAI_AAAAAAAAKG8_AEw24vbiblA_s120-c_photo_bnhf4c.png">
+
+        <p>Cornell University</p>
+      </div>
+      <div class="university">
+        <img class="image-rounded img-circle" src="http://res.cloudinary.com/resume/image/upload/v1418070800/https_lh5_googleusercontent_com_-q0gRK-mwssI_AAAAAAAAAAI_AAAAAAAACsY_ZDo-TbmjMT8_s120-c_photo_g3dhbh.jpg">
+
+        <p>Georgia Institute of Technology</p>
+      </div>
+      <div class="university">
+        <img class="image-rounded img-circle" src="http://res.cloudinary.com/resume/image/upload/v1418070841/http_t3_gstatic_com_images_q_tbn_ANd9GcSM9Eu2Fw1ahuF4hXShslBAk2ZbWxvesSKlbCVckNXGLb3z73VXKg_non4yv.jpg">
+
+        <p>University of Illinois, Urbana-Champaign</p>
+      </div>
+      <div class="university">
+        <img class="image-rounded img-circle" src="http://res.cloudinary.com/resume/image/upload/v1418070899/https_lh4_googleusercontent_com_-eJ6mEvslTq8_AAAAAAAAAAI_AAAAAAAAA7s_IWNb8J2dy80_s120-c_photo_ftlvjr.png">
+
+        <p>Princeton University</p>
+      </div>
+      <div class="university">
+        <img class="image-rounded img-circle" src="https://res.cloudinary.com/resume/image/upload/c_scale,w_200/v1424750127/http_socialcomputing.uci.edu_sites_default_files_logos_uci_j6upda.jpg">
+
+        <p>University of California, Irvine</p>
+      </div>
+    </div>
+
+  </section>
+  <!--//cta-section-->
+
+</div>
+<!--//section-wrapper-->

@@ -1,0 +1,141 @@
+<div class="profile-edit-section" id="profile-header-edit">
+  <form
+    accept-charset="UTF-8"
+    ng-submit="headerFns.submitSave(profile.user, profileHeaderForm.$valid)"
+    novalidate="novalidate"
+    name="profileHeaderForm"
+    >
+    <h4 class="u-full-width">Basic Information</h4>
+    <fieldset class="row">
+      <label class="column one-half">
+        <span>First Name*</span>
+        <input
+          class="u-full-width"
+          id="first-name-field"
+          name="firstName"
+          ng-pattern="namePattern"
+          ng-model="profile.user.first_name"
+          required="required"
+          type="text" />
+      </label>
+      <label class="column one-half">
+        <span>Last Name*</span>
+        <input
+          class="u-full-width"
+          id="last-name-field"
+          ng-pattern="namePattern"
+          name="lastName"
+          ng-model="profile.user.last_name"
+          required="required"
+          type="text" />
+      </label>
+    </fieldset>
+
+    <fieldset class="row">
+      <label class="column one-half">
+        <span>Email*</span>
+        <input
+          class="u-full-width"
+          id="email-field"
+          ng-model="profile.user.email"
+          required="required"
+          name="email"
+          ng-pattern="generalEmailPattern"
+          type="email"
+        />
+      </label>
+      <label class="column one-half">
+        <span>Phone Number</span>
+        <input
+          type="text"
+          ng-model="profile.user.phone_number"
+          required="required"
+          name="phoneNo"
+          ng-pattern="phoneNumberPattern"
+          class="u-full-width">
+      </label>
+    </fieldset>
+
+    <fieldset class="row">
+      <label class="columns six">
+        <span>Major</span>
+        <select
+          class="u-full-width"
+          ng-options="m as m.major for m in profile.majors track by m.code"
+          ng-model="profile.user.major_object"
+          required="required">
+          <option value="" disabled selected>Select Major*</option>
+        </select>
+      </label>
+      <label class="columns six">
+        <span>Minor</span>
+        <select
+          class="u-full-width"
+          ng-options="m as m.major for m in profile.majors track by m.code"
+          ng-model="profile.user.minor_object">
+          <option value="" selected>Select Minor</option>
+        </select>
+      </label>
+    </fieldset>
+
+    <fieldset class="row">
+      <label class="columns six">
+        <span>Degree</span>
+        <select
+          class="u-full-width"
+          ng-options="degree for degree in profile.degrees"
+          ng-model="profile.user.degree"
+          required="required">
+        </select>
+      </label>
+
+      <label class="columns three">
+        <span>Graduation Year</span>
+        <select
+                class="u-full-width"
+                ng-options="year for year in years"
+                type="text"
+                ng-model="profile.user.year"
+                class="u-full-width"
+                required="required">
+          <option disabled selected value="">Graduation Year*</option>
+        </select>
+      </label>
+      <label class="columns three">
+        <span>GPA</span>
+        <input
+          type="text"
+          name="gpa"
+          ng-model="profile.user.gpa"
+          class="u-full-width"
+          ng-pattern="gpaPattern">
+      </label>
+    </fieldset>
+
+    <div ng-messages="profile.user.submitted && profileHeaderForm.firstName.$error" role="alert" class="error">
+      <div ng-message="pattern">First Name must have only characters and spaces.</div>
+    </div>
+    <div ng-messages="profile.user.submitted && profileHeaderForm.lastName.$error" role="alert" class="error">
+      <div ng-message="pattern">Last Name must have only characters and spaces.</div>
+    </div>
+    <div ng-messages="profile.user.submitted && profileHeaderForm.email.$error" role="alert" class="error">
+      <div ng-message="pattern">Invalid Email.</div>
+    </div>
+    <div ng-messages="profile.user.submitted && profileHeaderForm.phoneNo.$error" role="alert" class="error">
+      <div ng-message="pattern">Invalid Phone No.</div>
+    </div>
+    <div ng-messages="profile.user.submitted && profileHeaderForm.gpa.$error" role="alert" class="error">
+      <div ng-message="pattern">Invalid GPA</div>
+    </div>
+    <div ng-messages="profile.user.submitted && profileHeaderForm.$error" role="alert" class="error">
+      <div ng-message="required">Please enter valid data for all required (*) fields.</div>
+    </div>
+
+    <input class="button-primary" type="submit" value="Save" />
+    <input
+      class="button close-modal"
+      ng-click="headerFns.closeEdit(profile.user, true)"
+      type="button"
+      value="Cancel" />
+  </form>
+</div>

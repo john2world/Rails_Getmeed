@@ -1,0 +1,15 @@
+<div class="follow-cta">
+  <span ng-if="user.handle != currentUser.handle" class="cta">
+    <a class="button button-primary open-signup-modal" ng-if="!currentUser">
+      <i class="fa fa-user-plus"></i> Follow <span class="count" ng-if="user.follower_count > 0"> {{ user.follower_count }} </span>
+    </a>
+
+    <a class="button button-primary" ng-if="currentUser && !isFollowing" ng-click="follow()">
+      <i class="fa fa-user-plus"></i> Follow <span class="count" ng-if="user.follower_count > 0"> {{ user.follower_count }} </span>
+    </a>
+
+    <a class="button button-primary-reverse unfollow " ng-if="currentUser && isFollowing" ng-click="unfollow()">
+      <i class="fa fa-user-times"></i> Following <span class="count" ng-if="user.follower_count > 0"> {{ user.follower_count }} </span>
+    </a>
+  </span>
+</div>

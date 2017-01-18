@@ -1,0 +1,369 @@
+module CommonHelper
+  $youtube_regex = /youtube.com.*(?:\/|v=)([^&$]+)/
+  $vimeo_regex = /vimeo.com.*(?:\/|v=)([^&$]+)/
+  $id_generation_limit = 17
+  SEARCH_ENGINE_BOTS = %w(googlebot bingbot msnbot adidxbot bingpreview googlebot-news googlebot-image googlebot-video mediapartners-google adsbot-google)
+  Noun_tags = ["NN", "NNS", "NNP", "NNPS"]
+
+  def is_valid_email(email)
+    email_regex = %r{
+      ^ # Start of string
+      [0-9a-z] # First character
+      [0-9a-z.+_]+ # Middle characters
+      [0-9a-z] # Last character
+      @ # Separating @ character
+      [0-9a-z] # Domain name begin
+      [0-9a-z.-]+ # Domain name middle
+      [0-9a-z] # Domain name end
+      $ # End of string
+    }xi
+
+    (email =~ email_regex)
+  end
+
+  def encode_delimited_strings_char(strings, char)
+    delimited_string = ''
+    count = 0
+    strings.each do |string|
+      count = count + 1
+      delimited_string << string
+      if count != strings.length
+        delimited_string << char
+      end
+    end
+    delimited_string
+  end
+
+  def decode_delimited_strings_char(delimited_string, char)
+    delimited_string.split(char)
+  end
+
+  def ordered_random_merge(a, b)
+    if a.blank? and b.blank?
+
+    end
+    if a.blank?
+      return b
+    end
+
+    if b.blank?
+      return a
+    end
+    splits = a.each_slice($FEED_PAGE_SIZE).to_a
+    merged_first_page = random_merge(splits[0], b)
+    splits[0] = merged_first_page
+    splits.flatten
+  end
+
+  def random_merge(a, b)
+    if a.blank?
+      return b
+    end
+
+    if b.blank?
+      return a
+    end
+    a, b = a.dup, b.dup
+    a.map { rand(b.size+1) }.sort.reverse.each do |index|
+      b.insert(index, a.pop)
+    end
+    b
+  end
+
+  def get_selects_from_params(params, select_type)
+    selects = Array.new
+    params.each do |key, value|
+      split_key = key.split('_')[0].to_s
+      split_value = key.split('_')[1].to_s
+      if (split_key.eql? select_type)
+        selects << split_value
+      end
+    end
+    selects
+  end
+
+  def is_valid_link(link)
+    (link =~ /^https?:/)
+  end
+
+  def decode_ids(ids)
+    decode_ids = Array.[]
+    ids.each do |id|
+      decode_ids << decode_id(id)
+    end
+    decode_ids
+  end
+
+  def encode_ids(ids)
+    encode_ids = Array.[]
+    ids.each do |id|
+      encode_ids << encode_id(id)
+    end
+    encode_ids
+  end
+
+  def decode_id(id)
+    id.base62_decode.to_s(16)
+  end
+
+  def encode_id(id)
+    id.to_s.to_i(16).base62_encode
+  end
+
+  def process_text(input)
+    input = Sanitize.fragment(input, :elements => %w(ul li i b br))
+    input = sanitize_multiple_lines(input)
+    anchorify_link(input)
+  end
+
+  def scrub_input_text(input)
+    input = text_put_line_breaks(input)
+    input = text_put_bold_tags(input)
+    input = text_insert_bullets(input)
+    input = anchorify_link(input)
+    input
+  end
+
+  def sanitize_multiple_lines(input)
+    words = input.split('<br>')
+
+    #the format is good, so return without sanitization
+    if words.length < 6
+      return input
+    end
+    result = ''
+    words.each do |word|
+      if word.length < 100
+        result << word
+      else
+        result << word
+        result << '<br>'
+      end
+    end
+    result
+  end
+
+  def text_put_line_breaks(input)
+    input.gsub(/(?m)\n/, '<br/>')
+  end
+
+  def text_put_bold_tags(input)
+    input = input.gsub(/(?m)bold>/, 'strong>')
+    input = input.gsub(/(?m)b>/, 'strong>')
+    input
+  end
+
+  def process_handle(input)
+    new_input = input.gsub(' ', '-')
+    new_input.gsub('.', '-')
+  end
+
+  def text_remove_line_breaks(input)
+    input.gsub('<br/>', '')
+  end
+
+  def get_selected_items_from_params (params, prefix_string)
+    items_list = Array.[]
+    params.each do |key, value|
+      split_key = key.split('_')[0]
+      if split_key.eql? prefix_string
+        item_value = String.new key
+        item_value.slice! prefix_string + '_'
+        unless item_value.eql? 'all_checkbox'
+          items_list << item_value
+        end
+      end
+    end
+    items_list
+  end
+
+  def build_comma_separated_string (collects)
+    return_string = ''
+    if (!collects.blank?)
+      count = 0
+      collects.each do |collect|
+        return_string << collect
+        count += 1
+        if collects.length != count
+          return_string << ', '
+        end
+      end
+    end
+    return_string
+  end
+
+  def compare(a, b)
+    return 0 if a.blank? or b.blank?
+    b <=> a
+  end
+
+  def compare_score(a, b)
+    return 0 if a.blank? or b.blank?
+    b.to_f <=> a.to_f
+  end
+
+  def get_feed_key(school_handle, major)
+    if school_handle.blank? or major.blank?
+      return ''
+    end
+    school_handle + '_' + major
+  end
+
+  def generate_id_from_text(input)
+    input = input.sub(/\s+\Z/, '')
+    input = input.downcase
+    input.gsub(' ', '-').gsub(/[^a-zA-Z0-9\\_\-\.]/, '')
+    input.gsub('.', '').gsub(/[^a-zA-Z0-9\\_\-\.]/, '-')
+  end
+
+  def remove_trailing_space_comma(str)
+    str.chomp(' ') if (str)
+    str.chomp(',') if (str)
+  end
+
+  def condense_text(input)
+    input_array = input.split('-')
+    output_string = input_array[0]
+    count = 0
+    skip_first = false
+    input_array.each do |word|
+      if !skip_first
+        skip_first = true
+      elsif count < $id_generation_limit
+        output_string << '-' << word
+        count += 1
+      end
+    end
+    output_string
+  end
+
+  def text_remove_spaces(input, char)
+    input.gsub(' ', char)
+  end
+
+  def text_insert_bullets(input)
+    input = input.gsub(/(?m)<bullet>/, '<ul class="ul-bullet">
+            <li><span>')
+    input = input.gsub(/(?m)<\/bullet>/, '</span></li></ul>')
+    input
+  end
+
+  def anchorify_link(input)
+    urls = %r{(?:https?|ftp|mailto)://\S+}i
+    html = input.gsub urls, '<a href="\0">\0</a>'
+    html
+  end
+
+  def get_promo_metadata(inviter_first_name)
+    metadata = Hash.new
+    if inviter_first_name.blank?
+      metadata[:title] = 'Join Meed to connect with companies!'
+    else
+      metadata[:title] = "Join #{inviter_first_name} on Meed!"
+    end
+    metadata[:description] = 'Meed — Career marketplace for students and employers'
+    metadata[:image_url] = 'https://res.cloudinary.com/resume/image/upload/v1428349489/Screen_Shot_2015-04-06_at_11.51.45_AM_f6jdqf.png'
+    metadata
+  end
+
+  def get_career_fair_metadata
+    metadata = Hash.new
+    metadata[:title] = 'Sign up for largest online career fair!'
+    metadata[:description] = 'Meed — Sign up before May 10th to participate in the fair!'
+    metadata[:image_url] = 'http://res.cloudinary.com/resume/image/upload/c_scale,w_1000/v1429739195/16306814233_203c3de717_o_j81hmx.jpg'
+    metadata
+  end
+
+  def process_links(input)
+    if !input.blank? and input.start_with? 'www.'
+      'http://'.<< input
+    end
+    input
+  end
+
+  def LogIntercomEvent(event_name, iu_user, metadata={})
+    if iu_user.blank? || iu_user.user_id.blank?
+      return
+    end
+    begin
+      IntercomClient.events.create(
+          :event_name => event_name,
+          :created_at => Time.now.to_i,
+          :user_id => iu_user.user_id,
+          :metadata => metadata
+      )
+    rescue Exception => e
+      logger.info('LogIntercomEvent - ' + e.message)
+    end
+  end
+
+  def get_tokens(text)
+    if text.blank?
+      return []
+    end
+    text = sanitize_html_text(text)
+    #words = text.tokenize().words;
+    #return words.map{|word| word.to_s}
+    return text.split()
+  end
+
+  def sanitize_html_text(text)
+    if text.nil?
+      return nil
+    end
+    text = text.downcase
+    text = ActionController::Base.helpers.strip_tags(text)
+    if text.blank?
+      return nil
+    end
+    text = text.gsub(/&nbsp;/i, '')
+    # Explore stemming as it is not very expensive
+    return text
+  end
+
+<<<<<<< HEAD
+  def filter_keywords_by_skills(keywords)
+    # check for keywords that are present in the kills (part of it - but whole word).
+    return keywords.select{|keyword| !keyword.blank? & !!Futura::Application.config.skill_hist.keys.detect{ |k| k.to_s =~ /#{Regexp.escape(keyword)}(\s|$)/ }}
+  end
+
+  # returns sanitized skills strings from a single string
+  def generate_skills(skills)
+    if skills.blank?
+=======
+  def get_keywords(text)
+    if text.blank?
+>>>>>>> master
+      return []
+    end
+    if skills.kind_of?(String)
+      return skills.split(',').collect{|s| s.strip().downcase()};
+    else
+      return skills
+    end
+  end
+
+  def get_skills_in_text(text)
+    if text.blank?
+      return []
+    end
+    text = sanitize_html_text(text)
+    return Futura::Application.config.skill_hist.keys.select{|k| !(/\W#{Regexp.escape(k)}\W/.match(text).blank?)}
+  end
+
+  def save_redirect_url(params)
+    unless params[:redirect_url].blank?
+      cookies[:redirect_url] = params[:redirect_url]
+    end
+  end
+
+  def follow_redirect_url()
+    unless cookies[:redirect_url].blank?
+      # remove the cookie and redirect
+      redirect_url = cookies[:redirect_url]
+      cookies.delete :redirect_url
+      redirect_to redirect_url
+    end
+  end
+
+end

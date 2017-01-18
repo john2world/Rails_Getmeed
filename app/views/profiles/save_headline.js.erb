@@ -1,0 +1,14 @@
+$("#edit_single_headline_true").hide();
+<% if @delete == true%>
+$("#add_new_headline").show();
+<% elsif @is_new %>
+viewNewItem('headline');
+$("#view_headline_div").html("<%= escape_javascript (render 'view_headline_form', :is_edit => true, :user => @user) %>");
+$("#view_headline_div").attr('id', 'view_headline_' + '<%= @user[:handle] %>');
+$('#view_headline_' + '<%= @user[:handle] %>').append("<div id='view_headline_div'></div>");
+$("#add_new_headline").hide();
+<% else %>
+renderViewItem('edit_single_headline');
+$("#show_single_headline_true").html("<%= escape_javascript (render 'render_headline_data',:is_edit => true,  :user => @user) %>");
+$("#add_new_headline").hide();
+<% end %>

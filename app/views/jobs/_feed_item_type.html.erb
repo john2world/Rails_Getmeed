@@ -1,0 +1,13 @@
+<% if data[:type].eql? 'full_time_entry_level' or data[:type].eql? 'Full Time (Entry Level)' %>
+    <span class="feed-story-type feed-story-type-green" >  
+        <span class="glyphicon glyphicon-briefcase"></span> Fulltime Job
+    </span>
+<% elsif data[:type].eql? 'full_time_entry_experienced' or data[:type].eql? 'Full Time (Experienced)' %>
+    <span class="feed-story-type feed-story-type-orange">   
+        <span class="glyphicon glyphicon-briefcase"></span> Fulltime Job
+    </span>
+<% else data[:type].downcase.eql? 'internship' %>
+    <span class="feed-story-type feed-story-type-blue">  
+        <span class="glyphicon glyphicon-briefcase"></span> Internship
+    </span>
+<% end %>

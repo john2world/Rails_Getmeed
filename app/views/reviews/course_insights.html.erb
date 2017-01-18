@@ -1,0 +1,85 @@
+<hr class="hr-profile-header">
+<% if @profile_incomplete %>
+    <div id="course_insights_top_blocker" style="height: <%= @course_code.blank?? 40 : 1 %>vh"></div>
+    <div id="course_insights_header" class="col-sm-8 col-xs-8 col-md-8 col-sm-offset-2 col-xs-offset-2 col-md-offset-2">
+      <p style="font-size: 16px; line-height: 22px" class="any-center"> To access course reviews, please complete your
+        profile first. </p>
+      <br/>
+      <a type="button" href="<%= url_for(controller: :profiles, action: :view, :edit => true, :id => current_user.handle, :redirect_url => request.original_url) %>" class="btn btn-primary" style="left:35%; position: relative">Complete
+        Profile</a>
+    </div>
+<% elsif @reviews_count.blank? || @reviews_count == 0 %>
+    <div id="course_insights_top_blocker" style="height: <%= @course_code.blank?? 40 : 1 %>vh"></div>
+    <div id="course_insights_header" class="col-sm-8 col-xs-8 col-md-8 col-sm-offset-2 col-xs-offset-2 col-md-offset-2">
+      <a type="button" href="<%= url_for(controller: :reviews, action: :course_review) %>" class="btn btn-primary" style="left:35%; position: relative"><span class="glyphicon glyphicon-star"> </span>
+        Start Reviewing <span class="glyphicon glyphicon-star"> </span></a>
+    </div>
+<% else %>
+    <div id="course_insights_header">
+      <div id="course_insights_top_blocker" class="any-center">
+      </div>
+      <div id="image_share" class="any-center">
+        <div class="any-center">
+          <a href="/reviews/course" class='btn btn-primary btn-primary'></span> Continue Reviewing »</a>
+          <br>
+          <br>
+          <p class="info-text">
+            ** Each review increases your chance of winning an Amazon gift card. **
+          </p>
+        </div>
+      </div>
+      <%= form_tag({:action => :course_insights_search, :controller => 'reviews'}, :id => 'course_insights_search', :class => 'form-submit', :style => 'padding: 35px 100px 35px;', :html => {:multipart => true}, :remote => true) do %>
+          <div class="form-group">
+            <%= hidden_field_tag :school_id, @school_id, :id => 'school_hidden_id' %>
+            <%= select_tag :course_search, options_for_select(@course_pairs, @course_code,), :style => 'width: 100%;', :class => 'consumer-selectize form-control selectized input-lg', :prompt => 'Search by course id or course title ...' %>
+          </div>
+      <% end %>
+    </div>
+    <div id="course_insights_body">
+      <%= render partial: 'render_course_reviews', locals: {reviews: @reviews} %>
+    </div>
+    <div style="height: 50px"></div>
+    <script>
+        $("#course_search").selectize({
+            onChange: function (el) {
+                $('#course_insights_search').submit();
+            }
+        });
+        setTimeout(function () {
+            $("#shareReviewsModal").modal("show");
+        }, 5000);
+        <% unless @metadata.blank? %>
+        var sharingConfig = {
+            url: "<%= CGI::escape(@metadata[:url]) %>",
+            title: "<%= @metadata[:title].blank? ? "" : CGI::escape(@metadata[:title]) %>",
+            image: "<%= @metadata[:image_url].blank? ? "" : CGI::escape(@metadata[:image_url]) %>",
+            networks: {
+                facebook: {
+                    enabled: true,
+                    load_sdk: true,
+                    url: "<%= CGI::escape(@metadata[:share_url_short]) %>"
+                },
+                google_plus: {
+                    enabled: true
+                },
+                twitter: {
+                    enabled: true,
+                    url: "<%= @metadata[:share_url_short].blank? ? "" : CGI::escape(@metadata[:share_url_short]) %>",
+                    description: "<%= @metadata[:title].blank? ? "" : CGI::escape(@metadata[:title]) %>"
+                },
+                email: {
+                    enabled: true,
+                    url: "<%= CGI::escape(@metadata[:share_url_short]) %>",
+                    title: "<%= @metadata[:title].blank? ? "" : URI::encode(@metadata[:title]) %>",
+                    description: '<%= URI.encode(@metadata[:email_share_body]) %>%20' + '<%= CGI::escape(@metadata[:share_url_short]) %>'
+                },
+                pinterest: {
+                    enabled: false
+                }
+            }
+        };
+
+        t = new Share(".share-button", sharingConfig);
+        <% end %>
+    </script>
+<% end %>

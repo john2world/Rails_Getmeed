@@ -1,0 +1,53 @@
+<div class="row">
+    <poster-info item="feedItem"></poster-info>
+    <!--<abbr class="timeago activity-feed-item-timestamp" title="{{ ::feedItem.create_time }}">{{ ::feedItem.create_time-->
+        <!--}}</abbr>-->
+    <div class="feed-user-actions">
+        <feed-user-action-buttons item="feedItem"></feed-user-action-buttons>
+    </div>
+    <div class="activity-feed-item-title" ng-if="feedItem.title">
+        <strong>
+        <div ng-bind-html="::feedItem.title "></div>
+        </strong>
+        <span class="tag-line" ng-if="feedItem.tag_line">
+        <div ng-bind-html="::feedItem.tag_line "></div>
+    </span>
+    </div>
+
+    <h4 class="activity-feed-item-caption"  ng-text-truncate="feedItem.description" ng-tt-chars-threshold="200" ng-if="feedItem.description">
+    <div ng-bind-html="::feedItem.description" ></div>
+    </h4>
+    <div class="activity-feed-item-content">
+        <div
+                class="activity-feed-item-description-wrap"
+                ng-class="{noimage: !feedItem.small_image_url }">
+            <div class="picture-wrap" ng-if="feedItem.small_image_url">
+                <a ng-href="{{ ::feedItem.external_url }}" ng-click="feedItem.trackClick()" target="_blank">
+                    <img ng-src="{{ ::feedItem.small_image_url }}"/>
+                </a>
+            </div>
+
+            <div class="story-tags" ng-if="feedItem.collections">
+                submitted to
+                <span  ng-repeat="collection in feedItem.collections">
+                    <a      ng-class="collection.private ? 'story-tags-private' : 'story-tags'"
+                            ng-href="{{ ::collection.url }}">
+
+                        <i ng-if="collection.private" class="fa fa-graduation-cap private"></i>
+                        <i
+                                ng-if="!collection.private" class="fa fa-globe"></i> {{ ::collection.title }}
+                    </a>
+                </span>
+            </div>
+            <div class="story-tags" ng-if="feedItem.event">
+                event page - <span class="story-tags-secondary"><a ng-href="{{ ::feedItem.event.url }}">{{
+                ::feedItem.event.title }}</a> </span>
+            </div>
+            <div class="feed-actions">
+                <feed-item-action-buttons item="feedItem"></feed-item-action-buttons>
+                <feed-item-social-share-modal item="feedItem"></feed-item-social-share-modal>
+            </div>
+        </div>
+    </div>
+    <comments item="feedItem" current-user="currentUser" show-write-comment="false"></comments>
+</div>

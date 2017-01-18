@@ -1,0 +1,33 @@
+<div style="text-align: right">
+  <% if profile.blank? || profile[:objective].blank? %>
+      <%= form_tag({:action => 'save_objective'}, :id => 'form_objective_new', :remote => true) do %>
+          <div class="form-group">
+            <%= text_area :objective, :text, :class => 'form-control dont-show-wysiwyg', :required => '', :placeholder => 'What are you looking for right now in terms of career (seen by employers)', :cols => 80, :rows => 3 %>
+          </div>
+          <div class="form-group" style="text-align: left">
+            <%= button_tag(type: 'submit', :id => 'save_objective', class: 'btn btn-sm btn-primary',
+                           :data => { disable_with: 'Saving...'}, :name => 'save') do %>
+              <span class="glyphicon glyphicon-floppy-disk "></span> Save
+            <% end %>
+          </div>
+      <% end -%>
+  <% else %>
+      <%= form_tag({:action => 'save_objective'}, :id => 'form_objective_new', :remote => true) do %>
+          <div class="form-group">
+            <%= text_area :objective, :text, :class => 'form-control dont-show-wysiwyg', :required => '', :value => (profile[:objective].html_safe), :placeholder => 'Tell recruiters by writing here about your interests, what you are working on, what you want to do when you graduate by ' + @user.year + ' (300 characters).', :cols => 80, :rows => 2 %>
+          </div>
+          <div class="form-group" style="text-align: left">
+            <%= button_tag(type: 'submit', :id => 'save_objective', class: 'btn btn-sm btn-primary',
+                           :data => { disable_with: 'Saving...'}, :name => 'save') do %>
+              <span class="glyphicon glyphicon-floppy-disk "></span> Save
+            <% end %>
+            <%= button_tag(type: 'submit', :id => 'delete_objective', class: 'btn btn-sm btn-danger',
+                           :data => { disable_with: 'Deleting...', confirm: 'Are you sure to delete overview?'},
+                           :name => 'delete') do %>
+              <span class="glyphicon glyphicon-trash "></span> Delete
+            <% end %>
+          </div>
+      <% end -%>
+  <% end -%>
+</div>
+

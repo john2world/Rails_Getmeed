@@ -1,0 +1,61 @@
+<div class="bg-slider-wrapper">
+  <div class="flexslider bg-slider">
+    <ul class="slides">
+      <li class="slide slide-<%= @school.blank? ? "school" : @school.id %>-1"></li>
+      <li class="slide slide-<%= @school.blank? ? "school" : @school.id %>-2"></li>
+    </ul>
+  </div>
+</div>
+<!--//bg-slider-wrapper-->
+
+<section class="promo section section-on-bg">
+  <div class="container text-center">
+
+    <div class="any-center" style="padding: 20px;">
+      <% if params[:campaign_type].eql? 'hbo_now' %>
+          <img src="http://res.cloudinary.com/resume/image/upload/c_scale,w_150/v1446163698/HBO_Meed_c7xlkh.png" style="padding: 20px;">
+      <% else %>
+          <img src="https://res.cloudinary.com/resume/image/upload/c_scale,w_150/v1441733835/Meed_white_b7vmlz.png" style="padding: 20px;">
+    <% end %>
+
+      <p class="logo">
+        Professional Network for University Students
+      </p>
+
+      <p class="logo">
+        Is Coming to <%= @school.blank? ? "Your School" : @school.name %>
+      </p>
+
+    </div>
+    <%= form_tag({:controller => 'home', :action => 'need_meed'}, :class => 'signup-form navbar-form', :html => {:multipart => true}) do %>
+        <div class="form-group">
+          <%= text_field_tag :email, nil, :class => 'form-control', :required => '', :style => 'height:50px;', :id => 'sign_up_tb', :placeholder => "Enter your college email (ex: sam@#{@school.blank? ? 'school' : @school.id}.edu)" %>
+        </div>
+        <%= button_tag(type: 'submit', class: 'btn btn-cta btn-cta-primary', :id => 'splash_input_button', :data => {:disable_with => 'Joining.. '}) do %>
+            ENTER PROMOTION
+        <% end %>
+        <p>
+        </p>
+
+        <div class="col-md-2 col-md-offset-4">
+          <% if !alert.blank? %>
+              <p class="label label-important">
+                <%= alert %>
+              </p>
+          <% end %>
+        </div>
+        </div>
+    <% end -%>
+    </section>
+<!--//promo-->
+
+<div class="sections-wrapper">
+
+  <!-- ******Why Section****** -->
+  <section id="why" class="section why">
+    <div class="container">
+    </div>
+    <!--//container-->
+  </section>
+</div>
+<!--//section-wrapper-->

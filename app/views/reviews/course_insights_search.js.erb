@@ -1,0 +1,36 @@
+$("#course_insights_top_blocker").animate({'height': '1vh'}, 500);
+$("#image_share").slideUp(500);
+$("#course_insights_body").html("<%= escape_javascript(render partial: 'reviews/render_course_reviews', locals: {reviews: @reviews}) %>");
+$( "input[id^='course_review_stars_']" ).rating();
+<% unless @metadata.blank? %>
+  var sharingConfig = {
+    url: "<%= CGI::escape(@metadata[:share_url]) %>",
+    title: "<%= @metadata[:title].blank? ? "" : CGI::escape(@metadata[:title]) %>",
+    image: "<%= @metadata[:image_url].blank? ? "" : CGI::escape(@metadata[:image_url]) %>",
+    networks: {
+      facebook: {
+        enabled: true,
+        load_sdk: true,
+        url: "<%= CGI::escape(@metadata[:share_url_short]) %>"
+      },
+      google_plus: {
+        enabled: true
+      },
+      twitter: {
+        enabled: true,
+        url: "<%= @metadata[:share_url_short].blank? ? "" : CGI::escape(@metadata[:share_url_short]) %>",
+        description: "<%= @metadata[:title].blank? ? "" : CGI::escape(@metadata[:title]) %>"
+      },
+      email: {
+        enabled: true,
+        url: "<%= CGI::escape(@metadata[:share_url_short]) %>",
+        title: "<%= @metadata[:title].blank? ? "" : URI::encode(@metadata[:title]) %>",
+        description: '<%= URI.encode(@metadata[:email_share_body]) %>%20' + '<%= CGI::escape(@metadata[:share_url_short]) %>'
+      },
+      pinterest: {
+        enabled: false
+      }
+    }
+  };
+  t = new Share(".share-button", sharingConfig);
+<% end %>

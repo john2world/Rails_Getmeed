@@ -1,0 +1,171 @@
+<% if unauth %>
+    <div id="small-screen-nav">
+      <nav>
+        <ul>
+          <li class="has-hover">
+            <a href="/">
+              <span class="fa fa-user-plus glyphicon-medium"></span>
+              <span class="navbar-item"> Sign Up</span>
+            </a>
+          </li>
+          <li class="has-hover">
+            <a href="/login?redirect_url=<%= request.original_url %>">
+              <span class="fa fa-sign-in glyphicon-medium"></span>
+              <span class="navbar-item"> Sign In</span>
+            </a>
+          </li>
+          <li class="has-hover">
+            <a href="/contact">
+              <span class="glyphicon glyphicon-user glyphicon-medium"></span>
+              <span class="navbar-item"> Contact Us</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <div id="sidr" class="sidr left sidr-theme">
+      <ul>
+        <nav>
+          <ul>
+            <li>
+              <a href="/">
+                <img src="https://res.cloudinary.com/resume/image/upload/c_scale,w_40/v1427156188/crescent_green_logo_oucqnc.png">
+              </a>
+            </li>
+            <input id="tokentag" type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"/>
+            <li>
+              <a href="/">
+                <span class="fa fa-user-plus glyphicon-medium"><span class="navbar-item"> Sign Up</span></span>
+              </a>
+            </li>
+            <li class="sidr-large-screen">
+              <a href="/contact">
+                <span class="glyphicon glyphicon-earphone glyphicon-medium"><span class="navbar-item"> Contact</span></span>
+              </a>
+            </li>
+            <li class="sidr-large-screen">
+              <a href="/login?redirect_url=<%= request.original_url %>">
+                <span class="fa fa-sign-in glyphicon-medium"><span class="navbar-item"> Sign In</span></span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </ul>
+    </div>
+<% else %>
+    <div id="small-screen-nav">
+      <nav>
+        <ul>
+          <li class="has-hover">
+            <a href="/home">
+              <span class="glyphicon glyphicon-home glyphicon-medium"></span>
+              <span class="navbar-item"> Home</span>
+            </a>
+          </li>
+
+          <li class="has-hover">
+            <a href="/<%= current_user.handle %>">
+              <span class="glyphicon glyphicon-user glyphicon-medium"></span>
+              <span class="navbar-item"> Profile</span>
+            </a>
+          </li>
+          <li class="has-hover">
+            <a href="/messages">
+              <% if current_badges[:message_count] > 0 %>
+                  <span class="badge-count"><%= current_badges[:message_count] %></span>
+                  <span class="fa fa-envelope glyphicon-medium"><span class="navbar-item"> Messages</span></span>
+              <% else %>
+                  <span class="fa fa-envelope-o glyphicon-medium"><span class="navbar-item"> Messages</span></span>
+              <% end %>
+            </a>
+          </li>
+          <li class="has-hover">
+            <a href="/insights">
+              <span class="glyphicon glyphicon-stats glyphicon-medium"></span>
+              <span class="navbar-item"> Insights</span>
+            </a>
+          </li>
+          <li id="sidr-small-screen" onclick="toggleDiv()">
+            <a>
+              <span class="glyphicon glyphicon-chevron-up glyphicon-medium"></span>
+              <span class="navbar-item">More</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <ul id="sidr-small-screen-menu">
+      <li>
+        <a href="/settings">
+          <span class="glyphicon glyphicon-cog glyphicon-medium"></span>
+          <span class="navbar-item">Settings</span>
+        </a>
+      </li>
+      <li>
+        <a href="/contact">
+          <span class="glyphicon glyphicon-earphone glyphicon-medium"></span>
+          <span class="navbar-item">Contact</span>
+        </a>
+      </li>
+      <li>
+        <a href="/logout">
+          <span class="fa fa-sign-out glyphicon-medium"></span>
+          <span class="navbar-item">Log Out</span>
+        </a>
+      </li>
+    </ul>
+    <div id="sidr" class="sidr left sidr-theme">
+      <ul>
+        <nav>
+          <ul>
+            <li>
+              <a href="/">
+                <img src="https://res.cloudinary.com/resume/image/upload/c_scale,w_40/v1427156188/crescent_green_logo_oucqnc.png">
+              </a>
+            </li>
+            <input id="tokentag" type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"/>
+            <li>
+              <a href="/home">
+                <span class="glyphicon glyphicon-home glyphicon-medium"><span class="navbar-item"> Home</span></span>
+              </a>
+            </li>
+            <li>
+              <a href="/<%= current_user.handle %>">
+                <span class="glyphicon glyphicon-user glyphicon-medium"><span class="navbar-item"> Profile</span></span>
+              </a>
+            </li>
+            <li>
+              <a href="/messages">
+                <% if current_badges[:message_count] > 0 %>
+                    <span class="badge-count"><%= current_badges[:message_count] %></span>
+                    <span class="fa fa-envelope glyphicon-medium"><span class="navbar-item"> Messages</span></span>
+                <% else %>
+                    <span class="fa fa-envelope-o glyphicon-medium"><span class="navbar-item"> Messages</span></span>
+                <% end %>
+              </a>
+            </li>
+            <li>
+              <a href="/insights">
+                <span class="glyphicon glyphicon-stats glyphicon-medium"><span class="navbar-item"> Insights</span></span>
+              </a>
+            </li>
+            <li class="sidr-large-screen">
+              <a href="/settings">
+                <span class="glyphicon glyphicon-cog glyphicon-medium"> <span class="navbar-item"> Settings</span></span>
+              </a>
+            </li>
+            <li class="sidr-large-screen">
+              <a href="/contact">
+                <span class="glyphicon glyphicon-earphone glyphicon-medium"><span class="navbar-item"> Contact</span></span>
+              </a>
+            </li>
+            <li class="sidr-large-screen">
+              <a href="/logout">
+                <span class="fa fa-sign-out glyphicon-medium"><span class="navbar-item"> Log Out</span></span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </ul>
+    </div>
+<% end %>

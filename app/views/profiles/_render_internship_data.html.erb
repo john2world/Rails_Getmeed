@@ -1,0 +1,77 @@
+<% unless internship.blank? %>
+    <div>
+      <span class="profile-item-title"><%= internship[:company] %></span>,
+      <span id="<%= encode_id(internship[:_id]) %>" class="profile-position-title"><%= internship[:title] %></span>
+      <% if is_edit %>
+        <a id="edit_link" class="edit_hover" onclick="renderEditItem('show_internship_<%= encode_id(internship[:_id]) %>_true')" style="cursor: pointer;">
+          <strong><span class="glyphicon glyphicon-edit"></span> Edit </strong>
+        </a>
+      <% end %>
+      <span class="profile-item-year">
+      [
+        <% if !internship[:start_month].blank? %>
+          <%= internship[:start_month] %>
+      <% end %>
+        <% if !internship[:start_year].blank? %>
+          <%= internship[:start_year] %>
+      <% end %>
+        -
+        <% if internship[:end_month].blank? || internship[:end_year].blank? %>
+          Present
+      <% end %>
+        <% if !internship[:end_month].blank? %>
+         <%= internship[:end_month] %>
+      <% end %>
+        <% if !internship[:end_year].blank? %>
+         <%= internship[:end_year] %>
+      <% end %>]
+        </span>
+    </div>
+    <div>
+      <% if !internship[:description].blank? %>
+          <%= internship[:description].html_safe %>
+      <% end %>
+    </div>
+    <div>
+      <% if !internship[:skills].blank? and internship[:skills].to_s.length > 4 %>
+          <span class="profile-skills">
+            Skills — <%= internship[:skills].kind_of?(Array)?
+                                 internship[:skills].join(', ').html_safe : internship[:skills].html_safe %>
+          </span>
+      <% end %>
+    </div>
+    <div>
+      <% if !internship[:link].blank? %>
+          <% if is_valid_link(internship[:link]) %>
+              <a href="<%= internship[:link] %>" target="_blank"><%= internship[:link].truncate(50, :omission => '.. click here').html_safe %> </a>
+          <% else %>
+              <span style="text-decoration: underline">  <%= internship[:link].html_safe %></span>
+          <% end %>
+      <% end %>
+    </div>
+  <% unless internship.work_reference.blank? %>
+    <div id="accordion-<%= index %>">
+      <div>
+        <div>
+          <a class="" data-toggle="collapse" data-parent="#accordion-<%= index %>" href="#" onclick="$('#collapse-<%= index %>').collapse('toggle');return false;">
+            <%= internship.work_reference.count() %> <%= 'review'.pluralize(internship.work_reference.count()) %>
+          </a>
+        </div>
+        <div id="collapse-<%= index %>" class="accordion-body collapse" style="border: 1px solid #e5e5e5">
+          <div class="accordion-inner">
+            <% internship.work_reference.each do |reference| %>
+              <blockquote style="font-size:13px">
+                <p style="font-size:13px"><%=h reference.review_text %></p>
+                <footer  style="font-size:13px">
+                  <a href="<%= reference.enterprise_user.linkedin_url %>" target="_blank"><%= reference.enterprise_user.name %></a>,
+                  <%= reference.enterprise_user.title %>
+                </footer>
+              </blockquote>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+<% end %>

@@ -1,0 +1,76 @@
+<%= render 'notifier/email_header' %>
+<center class="wrapper" style="display: table;table-layout: fixed;width: 100%;min-width: 620px;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;background-color: #fbfbfb">
+  <%= render 'notifier/email_logo' %>
+  <table class="centered" style="border-collapse: collapse;border-spacing: 0;Margin-left: auto;Margin-right: auto">
+    <tbody>
+    <tr>
+      <td class="border" style="padding: 0;vertical-align: top;font-size: 1px;line-height: 1px;background-color: #e9e9e9;width: 1px">​</td>
+      <td style="padding: 0;vertical-align: top">
+        <table class="one-col" style="border-collapse: collapse;border-spacing: 0;Margin-left: auto;Margin-right: auto;width: 600px;background-color: #ffffff;font-size: 14px">
+          <tbody>
+          <tr>
+            <td class="column" style="padding: 0;vertical-align: top;text-align: left">
+              <div>
+                <div class="column-top" style="font-size: 32px;line-height: 32px">&nbsp;</div>
+              </div>
+              <table class="contents" style="border-collapse: collapse;border-spacing: 0;width: 100%">
+                <tbody>
+                <tr>
+                  <td class="padded" style="padding: 0;vertical-align: top;padding-left: 32px;padding-right: 32px">
+
+                    <p style="Margin-top: 0;color: #565656;font-family: 'Lucida Grande';font-size: 16px;line-height: 25px;Margin-bottom: 25px; text-align: left;">
+                      Hi <%= @invite.reference_first_name %>,
+                    </p>
+
+                    <p style="Margin-top: 0;color: #565656;font-family: 'Lucida Grande';font-size: 16px;line-height: 25px;Margin-bottom: 25px; text-align: left;">
+                      Just a reminder that <%= @user.first_name %>'s request for you to review "<%= @course.title %> (<%= @course.semester %>, <%= @course.year %>)" is still pending.
+                    </p>
+
+                    <p style="Margin-top: 0;color: #565656;font-family: 'Lucida Grande';font-size: 16px;line-height: 25px;Margin-bottom: 25px; text-align: left;">
+                      <%= @user.first_name %>'s original message:
+                    </p>
+                    <p style="Margin-top: 0;color: #565656;font-family: 'Lucida Grande';font-size: 16px;line-height: 25px;Margin-bottom: 25px; text-align: center; font-style: italic">
+                      <% if !@invite.message.blank? %>
+                        "<%= @invite.message %>"
+                      <% end %>
+                    </p>
+
+                    <div style="width: 100%;padding: 5px;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;">
+                      <a class="btn btn-xs btn-success" href="https://getmeed.com/?action=signup<%= @invite.reference_type == 'professor' ? '&type=influencer' : '' %>" style="-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;background: 0 0;color: #fff;text-decoration: none;display: inline-block;padding: 6px 12px;margin-bottom: 0;font-size: 14px;font-weight: 400;line-height: 1.42857143;text-align: center;white-space: nowrap;vertical-align: middle;cursor: pointer;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;background-image: none;border: 1px solid transparent;border-radius: 4px;background-color: #5cb85c;border-color: #4cae4c; width: 33%; margin-left: 33%">
+                        <span class="glyphicon glyphicon-edit" style="-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;position: relative;top: 1px;display: inline-block;font-family: 'Glyphicons Halflings';font-style: normal;font-weight: 400;line-height: 1;-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: grayscale;"></span>
+                        Write Reference
+                      </a>
+                    </div>
+
+                    <% if @reviewer.blank? %>
+                      <p style="Margin-top: 0;color: #565656;font-family: 'Lucida Grande';font-size: 16px;line-height: 25px;Margin-bottom: 25px; text-align: left;">
+                        PS: You will need to create an account with Meed to authenticate yourself.
+                      </p>
+                    <% end %>
+
+                    <br/>
+                    <br/>
+
+                    <p style="Margin-top: 0;color: #565656;font-family: 'Lucida Grande';font-size: 16px;line-height: 25px;Margin-bottom: 25px; text-align: left;">
+                      - Meed Team
+                    </p>
+
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+      <td class="border" style="padding: 0;vertical-align: top;font-size: 1px;line-height: 1px;background-color: #e9e9e9;width: 1px">​</td>
+    </tr>
+    </tbody>
+  </table>
+  <div class="spacer" style="font-size: 1px;line-height: 32px;width: 100%">&nbsp;</div>
+</center>
+<%= render 'notifier/email_footer' %>
+</body>
+</html>

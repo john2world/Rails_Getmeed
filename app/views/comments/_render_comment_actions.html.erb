@@ -1,0 +1,25 @@
+  <%= form_tag({:controller => 'upvotes', :action => :upvote, :id => data.id}, :class => 'form-inline', :id => "controls_comment_#{data.id}", :html => {:multipart => true}, :remote => true) do %>
+      <%= hidden_field_tag :comment_id, data.id %>
+
+      <% if data[:upvote_count].blank? or data[:upvote_count].eql? 0 %>
+          <button class="comment-upvote-text btn btn-link" style="color:cadetblue">^up
+          </button>
+      <% else %>
+          <% if data[:has_viewer_upvoted] %>
+              <button class="comment-upvote-text btn btn-link" disabled="disabled">
+                <strong><%= data[:upvote_count] %></strong>
+                upvoted
+              </button>
+          <% else %>
+              <button class="comment-upvote-text btn btn-link">
+                <strong><%= data[:upvote_count] %></strong>
+                ^upvote
+              </button>
+          <% end %>
+
+      <% end %>
+      <% if data[:is_viewer_author] %>
+          <button data-id="<%= data.id %>" style="color:#da4f49;" class="btn btn-link comment-upvote-text" onclick="comment_delete_confirm('<%= data.id %>')">delete</button>
+      <% end %>
+
+  <% end %>

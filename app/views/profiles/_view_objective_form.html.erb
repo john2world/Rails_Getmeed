@@ -1,0 +1,8 @@
+<div id="show_single_objective_<%= is_edit %>" class='profile-view-table'>
+  <%= render 'render_objective_data', :is_edit => is_edit, :profile => profile%>
+</div>
+<% if is_edit %>
+    <div id="edit_single_objective_<%= is_edit %>" class='profile-view-table' style='display: none;'>
+      <%= render 'edit_objective_form', :profile => profile %>
+    </div>
+<% end %>

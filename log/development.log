@@ -1,0 +1,60 @@
+** [Raven] Raven 0.15.5 configured not to send errors.
+Finished initializing redis
+Finished Initializing Algolia
+Finished Initializing Elasticsearch
+Finished Initializing skills by major
+Finished initializing user degrees
+Error loading job keywords: Error connecting to Redis on localhost:6379 (Errno::ECONNREFUSED)
+Error loading profile score: Error connecting to Redis on localhost:6379 (Errno::ECONNREFUSED)
+Error loading profile tags: Error connecting to Redis on localhost:6379 (Errno::ECONNREFUSED)
+Error loading skills frequency: Error connecting to Redis on localhost:6379 (Errno::ECONNREFUSED)
+Finished initializing omni contacts
+Finished Initializing PDF Kit
+Finished Initializing Sovren
+Finished initializing omniauth
+** [Raven] Raven 0.15.5 configured not to send errors.
+Finished initializing redis
+Finished Initializing Algolia
+Finished Initializing Elasticsearch
+Finished Initializing skills by major
+Finished initializing user degrees
+Error loading job keywords: Error connecting to Redis on localhost:6379 (Errno::ECONNREFUSED)
+Error loading profile score: Error connecting to Redis on localhost:6379 (Errno::ECONNREFUSED)
+Error loading profile tags: Error connecting to Redis on localhost:6379 (Errno::ECONNREFUSED)
+Error loading skills frequency: Error connecting to Redis on localhost:6379 (Errno::ECONNREFUSED)
+Finished initializing omni contacts
+Finished Initializing PDF Kit
+Finished Initializing Sovren
+Finished initializing omniauth
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (290.9031ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=futura collection=schools selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (207.0091ms)
+** [Raven] Raven 0.15.5 configured not to send errors.
+Finished initializing redis
+Finished Initializing Algolia
+Finished Initializing Elasticsearch
+Finished Initializing skills by major
+Finished initializing user degrees
+Error loading job keywords: Error connecting to Redis on localhost:6379 (Errno::ECONNREFUSED)
+Error loading profile score: Error connecting to Redis on localhost:6379 (Errno::ECONNREFUSED)
+Error loading profile tags: Error connecting to Redis on localhost:6379 (Errno::ECONNREFUSED)
+Error loading skills frequency: Error connecting to Redis on localhost:6379 (Errno::ECONNREFUSED)
+Finished initializing omni contacts
+Finished Initializing PDF Kit
+Finished Initializing Sovren
+Finished initializing omniauth
+** [Raven] Raven 0.15.5 configured not to send errors.
+Finished initializing redis
+Finished Initializing Algolia
+Finished Initializing Elasticsearch
+Finished Initializing skills by major
+Finished initializing user degrees
+Error loading job keywords: Error connecting to Redis on localhost:6379 (Errno::ECONNREFUSED)
+Error loading profile score: Error connecting to Redis on localhost:6379 (Errno::ECONNREFUSED)
+Error loading profile tags: Error connecting to Redis on localhost:6379 (Errno::ECONNREFUSED)
+Error loading skills frequency: Error connecting to Redis on localhost:6379 (Errno::ECONNREFUSED)
+Finished initializing omni contacts
+Finished Initializing PDF Kit
+Finished Initializing Sovren
+Finished initializing omniauth
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} (1.0962ms)
+  MOPED: 127.0.0.1:27017 QUERY        database=futura collection=schools selector={} flags=[:slave_ok] limit=0 skip=0 batch_size=nil fields=nil (0.5877ms)

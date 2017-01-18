@@ -1,0 +1,168 @@
+.user-collections
+  .search-collections-input
+    width: 100%
+    padding-top: 2rem
+
+  .description
+    text-align: left !important
+    font-size: $font_size_regular !important
+    color: $light_text
+    ul.info
+      list-style-type: square
+      padding: 2rem
+      li
+        list-style-type: square
+        margin: 1rem
+  p.or
+    text-align: center
+    font-size: $font_size_x_large
+    margin-bottom: 1rem
+  h4
+    margin-bottom: 1rem
+
+  .collections-list
+    float: left
+    width: 100%
+    .my-portfolio-entry
+      position: relative
+      float: none
+      width: 25%
+    li
+      text-align: center
+      width: 18%
+      float: left
+      margin: 0
+      height: 15rem
+    a:hover
+      text-decoration: none
+      p.collection-title
+        margin-top: 1rem
+        top: 0
+        a
+          color: $lightest_text
+      p.button-wrap
+        bottom: 1rem
+        top: auto
+        z-index: 5
+        a
+          z-index: 5
+
+      .image-wrap
+        margin-left: 5%
+        overflow: hidden
+        position: relative
+        max-width: 165px
+        width: 90%
+        height: 15rem
+        display: inline-block
+
+        img
+          max-width: 200px
+          width: 100%
+          height: auto
+          min-height: 100%
+
+
+  .description
+    h5
+      font-size: 1.5rem
+      font-weight: bold
+      margin: 0
+    ul
+      margin-left: 1.5rem
+      li
+        list-style-type: disc
+        margin: 0
+    em
+      text-decoration: underline
+      font-style: normal
+
+    .welcome-heading
+      text-align: center
+  .details
+    font-size: $font_size_regular
+    color: $light_text
+    em
+      text-decoration: underline
+
+    a
+      color: $secondary
+  .selectize-input
+    margin-bottom: 1.5rem
+  .selectize-dropdown, .selectize-input, .selectize-input input
+    font-size: $font_size_medium_large
+
+
+.welcome-heading
+  text-align: center
+
+.selectize-dropdown-content
+  .details
+    color: $light_text
+    font-size: $font_size_small
+
+
+.add-new-wrap
+  margin: auto
+  width: 25%
+  background: $secondary
+  height: 15rem
+  border-radius: 10px
+  position: relative
+  &:hover
+    background: darken($secondary, 10%)
+  a
+    color: $lightest_text
+    font-weight: bold
+    text-align: center
+
+    &:hover
+      text-decoration: none
+    span
+      &.plus
+        font-size: 15rem
+        display: block
+        line-height: 15rem
+
+      &.add
+        position: absolute
+        bottom: 0
+        width: 100%
+        left: 0
+  &.standalone
+    max-width: 20rem
+    display: inline-block
+    margin-left: 0
+    margin-bottom: 1.5rem
+
+.major-types
+  color: $light_text
+
+#tutorial-submit-text
+  display: none
+
+#tutorial-ask-question
+  display: none
+
+@media (max-width: 650px)
+  .user-collections
+    .collections-list
+      li
+        width: 33%
+        height: 12rem
+
+
+@media (max-width: 500px)
+  .user-collections
+    .collections-list
+      li
+        width: 50%
+        height: 15rem
+
+
+.selectize-dropdown
+  z-index: 120
+
+.users-list
+  md-tabs-wrapper
+    display: none

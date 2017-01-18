@@ -1,0 +1,16 @@
+<li class="user-bulk-list-entry css-fade">
+    <div class="avatar-wrap" ng-mouseenter="onMouseEnter()" ng-mouseleave="onMouseLeave()">
+        <div class="user-image-badge-{{ ::user.badge }}"></div>
+        <a ng-href="/{{ ::user.handle }}" ng-mouseenter="onMouseEnter()" ng-mouseleave="onMouseLeave()">
+            <img ng-src="{{ ::user.small_image_url}}"/>
+        </a>
+        <user-list-entry
+                ng-show="showHovercard"
+                user="user"
+                current-user="currentUser"
+                follow-text="followText"
+                reg-flow="regFlow"
+                ></user-list-entry>
+    </div>
+
+</li>

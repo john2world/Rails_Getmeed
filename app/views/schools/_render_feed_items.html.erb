@@ -1,0 +1,41 @@
+<div id="feed_render">
+  <% feed_items.each do |feed| %>
+      <% unless feed.blank? %>
+          <div class="blog-list blog-category-list">
+            <%= render 'feed/feed_item_type', :data => feed %>
+            <article class="post col-md-12 col-sm-12 col-xs-12 col-md-offset-0 col-sm-offset-0 col-xs-offset-0">
+              <div class="post-inner">
+                <div class="content feed-container">
+                  <div class="date-label">
+                    <a href="/<%= feed.handle %>">
+
+                      <% if feed[:image_url].blank? %>
+                          <img class="img-responsive image-small" src="http://res.cloudinary.com/resume/image/upload/v1409877319/user_male4-128_q1iypj_lgzk5i.jpg">
+                      <% else %>
+                          <img class="img-responsive image-small" src="<%= feed[:image_url] %>"/>
+                      <% end %>
+                    </a>
+                  </div>
+                  <div class="article-container">
+                    <div class="post-title"><a href="/<%= feed[:handle] %>"><%= feed.name %></a></div>
+                    <div class="meta">
+                      <ul class="meta-list list-inline">
+                        <li class="post-author">
+                          <a href="/<%= feed.handle %>"> <%= feed.major %> </a><span class="info-text-small-medium"></span> 
+                        </li>
+                        <li class="post-comments-link">
+                          <i class="fa fa-user"></i> Class of <%= feed.year %> 
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="post-entry">
+                  </div>
+                </div>
+              </div>
+            </article>
+
+          </div>
+      <% end %>
+  <% end %>
+</div>

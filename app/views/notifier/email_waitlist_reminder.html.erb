@@ -1,0 +1,85 @@
+<%= render 'notifier/email_header' %>
+<center class="wrapper" style="display: table;table-layout: fixed;width: 100%;min-width: 620px;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;background-color: #fbfbfb">
+  <%= render 'notifier/email_logo' %>
+  <table class="centered" style="border-collapse: collapse;border-spacing: 0;Margin-left: auto;Margin-right: auto">
+    <tbody>
+    <tr>
+      <td class="border" style="padding: 0;vertical-align: top;font-size: 1px;line-height: 1px;background-color: #e9e9e9;width: 1px">​</td>
+      <td style="padding: 0;vertical-align: top">
+        <table class="one-col" style="border-collapse: collapse;border-spacing: 0;Margin-left: auto;Margin-right: auto;width: 600px;background-color: #ffffff;font-size: 14px">
+          <tbody>
+          <tr>
+            <td class="column" style="padding: 0;vertical-align: top;text-align: left">
+              <div>
+                <div class="column-top" style="font-size: 32px;line-height: 32px">&nbsp;</div>
+              </div>
+              <table class="contents" style="border-collapse: collapse;border-spacing: 0;width: 100%">
+                <tbody>
+                <tr>
+                  <td class="padded" style="padding: 0;vertical-align: top;padding-left: 32px;padding-right: 32px">
+                    <p style="Margin-top: 0;color: #565656;font-family: 'Lucida Grande';font-size: 16px;line-height: 25px;Margin-bottom: 25px; text-align: left;">
+                      Hey <%= @user.first_name %>,
+                    </p>
+
+                    <p style="Margin-top: 0;color: #565656;font-family: 'Lucida Grande';font-size: 16px;line-height: 25px;Margin-bottom: 25px; text-align: left;">
+                      Don't wait! Over <%= @count %> students have got access to meed this week by bringing their friends. Act now while the hiring season lasts.
+                    </p>
+
+                    <p style="Margin-top: 0;color: #565656;font-family: 'Lucida Grande';font-size: 16px;line-height: 25px;Margin-bottom: 25px; text-align: left;">
+                      Invite <b><%= @left_count %> more friends</b> to join Meed from your university to gain instant access.
+                    </p>
+
+                    <p style="Margin-top: 0;color: #565656;font-family: 'Lucida Grande';font-size: 16px;line-height: 25px;Margin-bottom: 25px; text-align: left;">
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                      <tbody>
+                      <tr>
+                        <td width="1"></td>
+                        <td width="15">&nbsp;</td>
+                        <td align="center"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                          <tbody><tr>
+                            <td height="13" style="font-size:1px;line-height:1px;">&nbsp;</td>
+                          </tr>
+                          <tr>
+                            <td height="54" align="center" valign="middle" style="font-family:'Lucida Grande'; font-size:16px;line-height:25px">
+                              Use this unique URL and don’t forget to add #INeedMeed on all social posts!
+                              <br/><br/>
+                              &nbsp; <span style="font-size:19px;"><strong><a href="<%= @referral_url %>" target="" class=""><%= @referral_url %></a></strong></span></td>
+                          </tr>
+                          <tr>
+                            <td height="13" style="font-size:1px;line-height:1px;">&nbsp;</td>
+                          </tr>
+                          </tbody></table></td>
+                        <td width="15">&nbsp;</td>
+                        <td width="1"></td>
+                      </tr>
+                      </tbody>
+                    </table>
+                    </p>
+
+                    <p style="Margin-top: 0;color: #565656;font-family: 'Lucida Grande';font-size: 16px;line-height: 25px;Margin-bottom: 25px; text-align: left;">
+                      You can check your spot in the waitlist any time by clicking <%= link_to 'here', "https://getmeed.com/?email=#{@user._id}&action=waitlist_status", :style => 'font-family: "Open Sans", "lucida grande", arial, verdana, "lucida sans unicode", tahoma, sans-serif;font-size: 14px;color:#00a651;' %>
+                    </p>
+
+                    <p style="Margin-top: 0;color: #565656;font-family: 'Lucida Grande';font-size: 16px;line-height: 25px;Margin-bottom: 25px; text-align: left;">
+                      - Meed Team
+                    </p>
+
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+      <td class="border" style="padding: 0;vertical-align: top;font-size: 1px;line-height: 1px;background-color: #e9e9e9;width: 1px">​</td>
+    </tr>
+    </tbody>
+  </table>
+  <div class="spacer" style="font-size: 1px;line-height: 32px;width: 100%">&nbsp;</div>
+</center>
+<%= render 'notifier/email_footer' %>
+</body>
+</html>

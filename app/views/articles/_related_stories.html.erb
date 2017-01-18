@@ -1,0 +1,28 @@
+<% unless @related_content.blank? %>
+    <hr class="hr-profile-header">
+    <div class="related_content" style="margin-top: 5px">
+      <% @related_content.take(3).each do |content| %>
+          <div class="article-container col-md-4 col-sm-4 col-xs-4" style="margin-top: 10px; opacity: 0.8">
+            <div class="post-entry embed-styling border-blockquote" style="margin-top: 1vh">
+              <div class="card article">
+                <div class="bd" style="border-left-color: rgb(0, 0, 0);">
+                  <div class="pair-bd">
+                    <div class="art-bd">
+                      <a target="_blank" href="<%= content.url %>?ssm=true" class="" style="padding-bottom: 46.8553459119497%; background-color: rgb(255, 255, 255);">
+                        <img class="art-bd-img" src="<%= content.large_image_url %>" style="max-height: 15vh; display: inherit">
+                      </a>
+                    </div>
+                    <div class="txt-bd" style="padding:0px">
+                      <h4 class="title" style="margin:0px;">
+                        <a target="_blank" href="<%= content.url %>?ssm=true" style="font-size: 16px;"><%= content.title.truncate(50) %></a>
+                      </h4>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      <% end %>
+      <div style="clear:both"></div>
+    </div>
+<% end %>

@@ -1,0 +1,43 @@
+// Form validations
+// .ng-pristine, .ng-dirty, .ng-valid, .ng-invalid
+
+input, select, textarea
+  .ng-dirty
+    &.ng-invalid
+      border: 1px solid $error
+    &.ng-valid
+      border: 1px solid $primary
+
+#meed-app
+  // My class on a form that has been submitted before
+  .ng-submitted
+    input, select, textarea, img
+      &.ng-invalid
+        border: 1px solid $error
+      &.ng-valid
+        border: 1px solid $primary
+
+    // For chosen elements next to selects that are invalid
+    select.ng-invalid, input.ng-invalid
+      + .chosen-container, .chosen-container-multi
+        .chosen-single, .chosen-choices
+          border: 1px solid $error
+      + .selectize-control .selectize-input
+        border: 1px solid $error
+
+    .selectize-input.ng-invalid
+      border: 1px solid $error
+
+    select.ng-valid, input.ng-valid
+      + .chosen-container, .chosen-container-multi
+        .chosen-single, .chosen-choices
+          border: 1px solid $primary
+      + .selectize-control .selectize-input
+        border: 1px solid $primary
+
+    // For wysihtml
+    textarea.ng-invalid ~ .wysihtml5-sandbox
+      border: 1px solid $error !important
+
+
+

@@ -1,0 +1,26 @@
+<% if @skills_blank.blank? %>
+  <% if @delete == true%>
+  $("#edit_internship_<%= encode_id(@id) %>_true").hide();
+  $("#show_internship_<%= encode_id(@id) %>_true").hide();
+  $("#edit_internship_<%= encode_id(@id) %>_true").next("hr").hide();
+  <% elsif @is_new %>
+  viewNewItem('internship');
+  $("#view_internship_div").html("<%= escape_javascript (render 'view_internship_form' , :internship => @user_internship, :index => @index) %>");
+  $("#view_internship_div").attr('id', 'view_internship_' + '<%= encode_id(@user_internship[:_id]) %>');
+  $('#view_internship_' + '<%= encode_id(@user_internship[:_id]) %>').append("<div id='view_internship_div'></div>");<% else %>
+  renderViewItem('edit_internship_<%= encode_id(@user_internship[:_id]) %>');
+  $("#show_internship_<%= encode_id(@user_internship[:_id]) %>_true").html("<%= escape_javascript (render 'render_internship_data' , :internship => @user_internship, :is_edit => @is_editable) %>");
+  <% end %>
+<% else %>
+  <% if @id.blank? %>
+  var alert = $("#intern_skills_alert");
+  <% else %>
+  var alert = $("#intern_skills_alert_<%= encode_id(@id) %>");
+  <% end %>
+    alert.show();
+    <% if @description_blank.blank? %>
+    alert.html('Please enter at least one skill!');
+  <% else %>
+    alert.html('Please enter description!');
+  <% end %>
+<% end %>

@@ -1,0 +1,7 @@
+<% unless user.blank? %>
+    <div id="objective">
+    </div>
+    <div>
+        <%= user[:headline].html_safe  %>
+    </div>
+<% end %>

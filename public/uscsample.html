@@ -1,0 +1,685 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>Usc Sample data stats</title>
+
+        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script type="text/javascript">
+            function create_pie_highchart(series_data, chart_container_id, chart_title) {
+                $('#' + chart_container_id).highcharts({
+                    chart: {
+                        plotBackgroundColor: null,
+                        plotBorderWidth: null,
+                        plotShadow: false
+                    },
+                    title: {
+                        text: chart_title
+                    },
+                    tooltip: {
+                        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                    },
+                    plotOptions: {
+                        pie: {
+                            allowPointSelect: true,
+                            cursor: 'pointer',
+                            dataLabels: {
+                                enabled: true,
+                                format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                                style: {
+                                    color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                                }
+                            }
+                        }
+                    },
+                    series: series_data
+                });
+            };
+            function create_pie_highchart_drilldown(data_element_id, chart_container_id, series_name, chart_title, x_label, y_label) {
+                Highcharts.data({
+                    csv: document.getElementById(data_element_id).innerHTML,
+                    itemDelimiter: '\t',
+                    parsed: function (columns) {
+                        var brands = {},
+                                brandsData = [],
+                                versions = {},
+                                drilldownSeries = [];
+
+                        columns[2] = $.map(columns[2], function (value) {
+                            float_value = parseFloat(value);
+                            if (isNaN(float_value)) {
+                                return value;
+                            } else {
+                                return float_value;
+                            }
+                        });
+
+                        $.each(columns[0], function (i, name) {
+                            var brand,
+                                    version;
+
+                            if (i > 0) {
+
+                                // Remove special edition notes
+                                cols = name.split('-');
+                                name = cols[0];
+
+                                // Split into brand and version
+                                brand = columns[0][i];
+                                version = columns[1][i];
+
+                                // Create the main data
+                                if (!brands[brand]) {
+                                    brands[brand] = columns[2][i];
+                                } else {
+                                    brands[brand] += columns[2][i];
+                                }
+
+                                // Create the version data
+                                if (version !== null) {
+                                    if (!versions[brand]) {
+                                        versions[brand] = [];
+                                    }
+                                    versions[brand].push([version, columns[2][i]]);
+                                }
+                            }
+
+                        });
+
+                        $.each(brands, function (name, y) {
+                            brandsData.push({
+                                name: name,
+                                y: y,
+                                drilldown: versions[name] ? name : null
+                            });
+                        });
+                        $.each(versions, function (key, value) {
+                            drilldownSeries.push({
+                                name: key,
+                                id: key,
+                                data: value
+                            });
+                        });
+
+                        // Create the chart
+                        $('#'+chart_container_id).highcharts({
+                            chart: {
+                                type: 'pie'
+                            },
+                            title: {
+                                text: chart_title
+                            },
+                            subtitle: {
+                                text: 'Click the columns to view Companies'
+                            },
+                            xAxis: {
+                                type: 'category'
+                            },
+                            yAxis: {
+                                title: {
+                                    text: y_label
+                                }
+                            },
+                            legend: {
+                                enabled: false
+                            },
+                            plotOptions: {
+                                series: {
+                                    borderWidth: 0,
+                                    dataLabels: {
+                                        enabled: true,
+                                        format: '{point.y:.1f}%'
+                                    }
+                                }
+                            },
+
+                            tooltip: {
+                                headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+                                pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}</b>% of total<br/>'
+                            },
+
+                            series: [{
+                                name: series_name,
+                                colorByPoint: true,
+                                data: brandsData
+                            }],
+                            drilldown: {
+                                series: drilldownSeries
+                            }
+                        })
+
+                    }
+                });
+            };
+            function create_time_series_highchart(series_data, chart_container_id, chart_title, chart_sub_title, x_label, y_label){
+                $('#'+chart_container_id).highcharts({
+                    chart: {
+                        type: 'spline'
+                    },
+                    title: {
+                        text: chart_title
+                    },
+                    subtitle: {
+                        text: chart_sub_title
+                    },
+                    xAxis: {
+                        type: 'datetime',
+                        dateTimeLabelFormats: { // don't display the dummy year
+                            month: '%e. %b',
+                            year: '%b'
+                        },
+                        title: {
+                            text: x_label
+                        }
+                    },
+                    yAxis: {
+                        title: {
+                            text: y_label
+                        },
+                        min: 0
+                    },
+                    tooltip: {
+                        headerFormat: '<b>{series.name}</b><br>',
+                        pointFormat: '{point.x:%e. %b}: {point.y:.0f}'
+                    },
+
+                    series: series_data
+                });
+            };
+            $(function () {
+                create_pie_highchart_drilldown('internships_by_major','internships', "Majors", 'Internships By major', 'major', 'Total percent of students');
+                create_pie_highchart_drilldown('jobs_by_major','applied_jobs', "Majors", 'Applied Jobs By major', 'major', 'Total percent of students');
+                create_pie_highchart_drilldown('work_by_major','prev_work', "Majors", 'Previous work By major', 'major', 'Total percent of students');
+                create_pie_highchart_drilldown('course_by_major','courses_by_major', "Majors", 'course By major', 'major', 'Total percent of students');
+                create_time_series_highchart(count_by_dates,'growth', "User Growth", '', 'Date', 'User count');
+                create_pie_highchart(count_by_major, 'majors', "Majors");
+                create_pie_highchart_drilldown('count_by_degree_year','degree_by_year', "Degree", 'Degree By Year', 'Degree', 'Total percent of students');
+            });
+        </script>
+        <script type="text/javascript">
+            count_by_dates=[{
+                name: "User Growth",
+                data: [[Date.UTC(2013,10,23), 6],[Date.UTC(2013,10,24), 9],[Date.UTC(2013,10,25), 10],[Date.UTC(2013,11,02), 11],[Date.UTC(2013,11,03), 12],[Date.UTC(2013,11,04), 15],[Date.UTC(2013,11,05), 20],[Date.UTC(2013,11,06), 21],[Date.UTC(2013,11,12), 29],[Date.UTC(2013,11,13), 38],[Date.UTC(2013,11,14), 43],[Date.UTC(2013,11,15), 48],[Date.UTC(2013,11,16), 53],[Date.UTC(2013,11,18), 61],[Date.UTC(2013,11,19), 78],[Date.UTC(2013,11,20), 81],[Date.UTC(2013,11,21), 82],[Date.UTC(2013,11,22), 85],[Date.UTC(2013,11,23), 87],[Date.UTC(2013,11,24), 88],[Date.UTC(2013,11,25), 91],[Date.UTC(2013,11,27), 93],[Date.UTC(2013,12,01), 94],[Date.UTC(2013,12,02), 95],[Date.UTC(2013,12,04), 100],[Date.UTC(2013,12,13), 103],[Date.UTC(2013,12,15), 104],[Date.UTC(2013,12,16), 107],[Date.UTC(2013,12,21), 108],[Date.UTC(2013,12,30), 110],[Date.UTC(2013,12,31), 111],[Date.UTC(2014,01,02), 112],[Date.UTC(2014,01,03), 113],[Date.UTC(2014,01,08), 114],[Date.UTC(2014,01,09), 115],[Date.UTC(2014,01,10), 116],[Date.UTC(2014,01,11), 118],[Date.UTC(2014,01,12), 119],[Date.UTC(2014,01,15), 121],[Date.UTC(2014,01,17), 122],[Date.UTC(2014,01,19), 123],[Date.UTC(2014,01,20), 124],[Date.UTC(2014,01,21), 127],[Date.UTC(2014,01,22), 128],[Date.UTC(2014,01,23), 129],[Date.UTC(2014,01,25), 130],[Date.UTC(2014,01,26), 131],[Date.UTC(2014,01,27), 133],[Date.UTC(2014,01,28), 136],[Date.UTC(2014,01,29), 137],[Date.UTC(2014,01,31), 139],[Date.UTC(2014,02,01), 142],[Date.UTC(2014,02,02), 144],[Date.UTC(2014,02,03), 147],[Date.UTC(2014,02,04), 148],[Date.UTC(2014,02,06), 152],[Date.UTC(2014,02,10), 153],[Date.UTC(2014,02,11), 157],[Date.UTC(2014,02,12), 158],[Date.UTC(2014,02,13), 161],[Date.UTC(2014,02,15), 162],[Date.UTC(2014,02,19), 163],[Date.UTC(2014,02,20), 164],[Date.UTC(2014,02,24), 165],[Date.UTC(2014,02,25), 166],[Date.UTC(2014,02,26), 170],[Date.UTC(2014,02,28), 171],[Date.UTC(2014,03,04), 174],[Date.UTC(2014,03,05), 176],[Date.UTC(2014,03,06), 180],[Date.UTC(2014,03,08), 181],[Date.UTC(2014,03,09), 183],[Date.UTC(2014,03,10), 185],[Date.UTC(2014,03,11), 190],[Date.UTC(2014,03,13), 191],[Date.UTC(2014,03,14), 194],[Date.UTC(2014,03,15), 195],[Date.UTC(2014,03,16), 197],[Date.UTC(2014,03,17), 198],[Date.UTC(2014,03,20), 200],[Date.UTC(2014,03,24), 201],[Date.UTC(2014,03,28), 202],[Date.UTC(2014,04,04), 203],[Date.UTC(2014,04,05), 204],[Date.UTC(2014,04,06), 205],[Date.UTC(2014,04,08), 206],[Date.UTC(2014,04,09), 208],[Date.UTC(2014,04,10), 209],[Date.UTC(2014,04,26), 210],[Date.UTC(2014,05,07), 211],[Date.UTC(2014,05,08), 212],[Date.UTC(2014,05,12), 213],[Date.UTC(2014,05,17), 214],[Date.UTC(2014,05,20), 215],[Date.UTC(2014,05,21), 216],[Date.UTC(2014,05,22), 223],[Date.UTC(2014,05,23), 225],[Date.UTC(2014,05,27), 228],[Date.UTC(2014,05,28), 230],[Date.UTC(2014,05,29), 231],[Date.UTC(2014,05,30), 232],[Date.UTC(2014,06,01), 233],[Date.UTC(2014,06,05), 234],[Date.UTC(2014,06,14), 235],[Date.UTC(2014,06,22), 237],[Date.UTC(2014,06,23), 255],[Date.UTC(2014,06,24), 265],[Date.UTC(2014,06,25), 273],[Date.UTC(2014,06,26), 274],[Date.UTC(2014,07,01), 276],[Date.UTC(2014,07,02), 283],[Date.UTC(2014,07,04), 286],[Date.UTC(2014,07,07), 287],[Date.UTC(2014,07,08), 289],[Date.UTC(2014,07,09), 291],[Date.UTC(2014,07,10), 294],[Date.UTC(2014,07,11), 295],[Date.UTC(2014,07,15), 296],[Date.UTC(2014,07,16), 297],[Date.UTC(2014,07,17), 298],[Date.UTC(2014,07,18), 299],[Date.UTC(2014,07,19), 300],[Date.UTC(2014,07,21), 302],[Date.UTC(2014,07,22), 304],[Date.UTC(2014,07,24), 305],[Date.UTC(2014,07,26), 306],[Date.UTC(2014,07,27), 307],[Date.UTC(2014,07,29), 309],[Date.UTC(2014,07,31), 311],[Date.UTC(2014,08,01), 312],[Date.UTC(2014,08,05), 313],[Date.UTC(2014,08,07), 315],[Date.UTC(2014,08,09), 316],[Date.UTC(2014,08,10), 318],[Date.UTC(2014,08,13), 320],[Date.UTC(2014,08,14), 321],[Date.UTC(2014,08,17), 322],[Date.UTC(2014,08,20), 323],[Date.UTC(2014,08,22), 324],[Date.UTC(2014,08,23), 328],[Date.UTC(2014,08,24), 330],[Date.UTC(2014,08,25), 335],[Date.UTC(2014,08,26), 337]]
+            }]
+        </script>
+        <script type="text/javascript">
+            var count_by_major=[{
+                type: 'pie',
+                name: "Majors",
+                data: [["Accounting", 0.26],["Computer Science", 35.14],["Electrical Engineering", 6.31],["Arts and Humanities", 0.26],["Aerospace and Mechanical Engineering", 0.96],["Civil Engineering", 0.61],["Computer Engineering", 0.35],["Computer science", 0.09],["Business Information Systems ", 0.7],["Chemical Engineering and Materials Science", 0.53],["Marketing", 0.26],["Computer Science and Business Administration", 0.09],["American Studies", 0.18],["Media Studies (formerly Mass Communications)", 0.18],["Human Resources Management", 0.09],["Finance", 0.26],["Economics", 0.53],["Astronomy", 0.09],["Film", 0.18],["Industrial and Systems Engineering", 0.7],["Psychology", 0.35],["VLSI Design", 0.09],["Music", 0.09],["Geography", 0.18],["Global Management", 0.18],["Public Health", 0.09],["Development Studies", 0.09],["English", 0.09],["Biomedical Engineering", 0.18],["East Asian Languages and Cultures", 0.09],["Political Science", 0.18],["Graphic Design", 0.09],["Earth and Planetary Science", 0.09],["Design and Applied Arts", 0.09],["Philosophy", 0.09],["Mathematics", 0.09],["Political Economy", 0.09]]
+            }]
+        </script>
+    </head>
+<body>
+<script src="code.highcharts.com/highcharts.js"></script>
+<script src="code.highcharts.com/modules/data.js"></script>
+<script src="code.highcharts.com/modules/drilldown.js"></script>
+
+<div style="padding-left: 550px">
+    <img src="https://sait.usc.edu/lgbt/files/tc4t.jpg" width="200px" height="200px"/>
+    <h1>Go Trojans!!</h1>
+</div>
+
+<div id="growth" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+<table>
+    <tr>
+        <td>
+            <div id="degree_by_year" style="min-width: 510px; height: 400px; margin: 0 auto"></div>
+        </td>
+        <td>
+            <div id="majors" style="min-width: 710px; height: 400px; margin: 0 auto"></div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div id="courses_by_major" style="min-width: 510px; height: 400px; margin: 0 auto"></div>
+        </td>
+        <td>
+            <div id="applied_jobs" style="min-width: 710px; height: 400px; margin: 0 auto"></div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div id="prev_work" style="min-width: 510px; height: 400px; margin: 0 auto"></div>
+        </td>
+        <td>
+            <div id="internships" style="min-width: 710px; height: 400px; margin: 0 auto"></div>
+        </td>
+    </tr>
+</table>
+
+ <pre id="jobs_by_major" style="display:none">Major	Company	Count
+Computer Science	Yahoo	6.67%
+Computer Science	Netapp	4.88%
+Computer Science	Microsoft	5.85%
+Computer Science	NetApp	0.32%
+Computer Science	Gumroad	1.86%
+Computer Science	LiveRamp	3.36%
+Computer Science	Twitter	4.25%
+Computer Science	Teradata	1.84%
+Computer Science	Citrix	2.21%
+Computer Science	SanDisk	2.41%
+Computer Science	Pinterest	4.36%
+Computer Science	AppDynamics	3.13%
+Computer Science	vmware	5.01%
+Computer Science	Teradata Aster R&D Labs‏	0.99%
+Computer Science	Cloudera	0.94%
+Computer Science	Betable	0.37%
+Computer Science	StyleSeat	0.81%
+Computer Science	Box	2.42%
+Computer Science	Nimble Storage	0.73%
+Computer Science	Comcast NBCUniversal‏	1.5%
+Computer Science	MongoDB	2.07%
+Computer Science	Walmart Labs	1.07%
+Computer Science	Cisco 	1.28%
+Computer Science	Cisco	2.66%
+Computer Science	Evernote	2.79%
+Computer Science	Tint	2.2%
+Computer Science	Dun & Bradstreet Credibility Corp.	0.87%
+Computer Science	Salesforce	1.78%
+Computer Science	Viralheat	1.57%
+Computer Science	IXL	0.76%
+Computer Science	Snapchat	2.08%
+Computer Science	Snagfilms	0.36%
+Computer Science	CodeHS	0.5%
+Computer Science	Spire	1.74%
+Computer Science	Qualcomm Atheros Inc	1.21%
+Computer Science	Samsung	1.87%
+Electrical Engineering	vmware	0.57%
+Computer Science	Apple	0.27%
+Computer Science	Facebook	0.66%
+Computer Science	Samsung 	1.66%
+Computer Science	ZenPayroll	1.7%
+Computer Science	Sosh	1.18%
+Computer Science	Airseed	1.49%
+Computer Science	Stuph Inc.	1.58%
+Computer Science	Yelp	0.79%
+Computer Science	LocBox	0.31%
+Computer Science	eSpark Learning	0.61%
+Electrical Engineering	Microsoft	0.48%
+Electrical Engineering	SanDisk	0.39%
+Computer Science	LinkedIn	0.74%
+Computer Science	Oracle	0.52%
+Electrical Engineering	Netapp	0.31%
+Electrical Engineering	Dun & Bradstreet Credibility Corp.	0.03%
+Electrical Engineering	AppDynamics	0.23%
+Electrical Engineering	Yahoo	0.37%
+Electrical Engineering	Qualcomm Atheros Inc	0.29%
+Electrical Engineering	ZenPayroll	0.1%
+Electrical Engineering	Stuph Inc.	0.1%
+Computer Science	Nutanix	0.29%
+Computer Science	Machine Zone	0.55%
+Computer Science	eBay	0.42%
+Computer Engineering	Microsoft	0.13%
+Computer Engineering	Netapp	0.11%
+Computer Engineering	vmware	0.19%
+Computer Engineering	Yahoo	0.24%
+Computer Engineering	Box	0.11%
+Computer Engineering	Salesforce	0.05%
+Computer Engineering	Pinterest	0.11%
+Computer Engineering	Twitter	0.06%
+Computer Engineering	LiveRamp	0.08%
+Computer Engineering	LinkedIn	0.03%
+Computer Engineering	Nimble Storage	0.03%
+Computer Engineering	Samsung 	0.11%
+Computer Engineering	Stuph Inc.	0.08%
+Computer Science	Jawbone	0.15%
+Computer Science	Kabam	0.15%
+Computer Science	Opower	0.36%
+Computer Science	Raydiance	0.08%
+Computer Science	Nutanix 	0.24%
+Electrical Engineering	Oracle	0.15%
+Computer Engineering	Tint	0.11%
+Computer Engineering	Gumroad	0.06%
+Computer Engineering	Spire	0.19%
+Computer Engineering	Qualcomm Atheros Inc	0.1%
+Computer Engineering	Comcast NBCUniversal‏	0.08%
+Computer Engineering	Samsung	0.16%
+Computer Engineering	MongoDB	0.15%
+Computer Engineering	Walmart Labs	0.06%
+Computer Science	Nebula	0.05%
+Operations Research and Management	LivingSocial	0.03%
+Management Science and Engineering	Test Corp	0.05%
+Electrical Engineering	Spire	0.27%
+Business Information Systems 	LivingSocial	0.03%
+Computer Engineering	ZenPayroll	0.06%
+Computer Engineering	Sosh	0.06%
+Computer Engineering	Airseed	0.1%
+Computer Science	resu.me	0.11%
+Computer Engineering	Cisco	0.03%
+Computer Engineering	Citrix	0.05%
+Computer Engineering	SanDisk	0.05%
+Computer Engineering	AppDynamics	0.11%
+Computer Engineering	LocBox	0.03%
+Computer Engineering	StyleSeat	0.03%
+Electrical Engineering	Nimble Storage	0.05%
+Electrical Engineering	Comcast NBCUniversal‏	0.08%
+Electrical Engineering	Samsung	0.08%
+Electrical Engineering	Samsung 	0.05%
+Electrical Engineering	Sosh	0.03%
+Electrical Engineering	Airseed	0.06%
+Electrical Engineering	Teradata Aster R&D Labs‏	0.06%
+Computer Science	Rebtel	0.1%
+Computer Science	Rapid 7	0.06%
+Computer Science	TeleSign	0.05%
+Political Science	AppDynamics	0.03%
+Computer Engineering	Betable	0.05%
+Electrical Engineering	Test Corp	0.1%
+Psychology	Test Corp	0.1%
+Industrial and Systems Engineering	AppDynamics	0.03%
+Global Management	resu.me	0.03%
+Industrial and Systems Engineering	SanDisk	0.03%
+Marketing	AppDynamics	0.03%
+Marketing	MongoDB	0.03%
+Global Management	AppDynamics	0.03%
+Computer Engineering	Machine Zone	0.03%
+Computer Science	Test Corp	0.06%
+</pre>
+<pre id="internships_by_major" style="display:none">Major	Company	Count
+Computer Science	Scalable Network Technologies	2.33%
+Computer Science	NetApp	1.55%
+Computer Science	State Farm 	1.55%
+Computer Science	Tencent Holdings Limited	1.55%
+Computer Science	Teradata Aster	1.55%
+Computer Science	VMware	2.33%
+Computer Science	Hewlett Packard	1.55%
+Computer Science	Symantec Corporation	2.33%
+Computer Science	IIT Delhi	1.55%
+Electrical Engineering	Ericsson	1.55%
+Computer Science	Cisco	1.55%
+Computer Science	JellyVibes	2.33%
+Computer Science	NVIDIA	3.1%
+Computer Science	Amazon	5.43%
+Computer Science	Information Sciences Institute	1.55%
+Computer Science	Amazon.com	2.33%
+Computer Science	Google	1.55%
+Business Information Systems 	Northwestern Mutual	1.55%
+Business Information Systems 	Chrisman & Company	1.55%
+Computer Science	Microsoft	3.1%
+Computer Science	Ericsson	3.88%
+Computer Science	Qualcomm	2.33%
+Computer Science	Infosys Limited	1.55%
+Computer Science	Yahoo	1.55%
+Computer Science	IBM	3.88%
+Computer Science	Intel Corporation	3.1%
+Computer Science	Honeywell	1.55%
+Electrical Engineering	tmili Ltd.(China)	1.55%
+Electrical Engineering	Huachuang Dayou Ltd.	1.55%
+Computer Science	Apple	1.55%
+Computer Science	University of Southern California	1.55%
+Computer Science	Cisco Systems	3.1%
+Computer Science	Symantec Corp	1.55%
+Computer Science	Citrix	1.55%
+Computer Science	Cat Technologies, Hyderabad, India	1.55%
+Computer Science	Tata Consultancy Services	2.33%
+Computer Engineering	Siemens	1.55%
+Computer Science	Spiceworks	1.55%
+Computer Science	Juniper Networks	1.55%
+Computer Science	Mathworks	1.55%
+Computer Science	Robertson Neuropsycholgy Lab	2.33%
+Computer Science	SAP	1.55%
+Computer Science	CISCO	1.55%
+Computer Science	Civic Resource Group	2.33%
+Computer Science	Myspace	3.88%
+Computer Science	USC Department of Computer Science	1.55%
+Computer Science	USC Credit Union	1.55%
+Computer Science	Medtronic	1.55%
+Industrial and Systems Engineering	 New York City Industries for the Blind (Alphapointe)	1.55%
+</pre>
+<pre id="work_by_major" style="display:none">Major	Company	Count
+Computer Science	Western Digital	1.42%
+Computer Science	Norfolk Naval Shipyard	1.42%
+Computer Science	Oscar Smith High School	1.42%
+Computer Science	Peristva Tech Marketing Solutions	0.95%
+Computer Science	Nvidia	0.95%
+Computer Science	Tata Consultancy Services	5.69%
+Computer Science	Accenture	2.84%
+Computer Science	Tint	1.9%
+Computer Science	the University of Hong Kong	0.95%
+Computer Science	USC	1.42%
+Computer Science	Infosys Limited	5.21%
+Computer Science	Samsung Research India, Bangalore	1.42%
+Computer Science	New York University	4.27%
+Computer Science	Infosys	1.42%
+Computer Science	Tech Mahindra	0.95%
+Computer Science	Hewlett Packard	0.95%
+Computer Science	University Of Southern California	0.95%
+Computer Science	Aricent Group	1.42%
+Computer Science	Information Sciences Institute	1.42%
+Management Science and Engineering	University of Southern California	0.95%
+Computer Science	IBM	0.95%
+Computer Science	IBM India Pvt Ltd	0.95%
+Computer Science	Persistent Systems Ltd	0.95%
+Computer Science	Oracle	0.95%
+Computer Science	Independent	1.42%
+Computer Science	USC Graduate School	1.42%
+Computer Science	Amdocs	0.95%
+Computer Science	University of Southern California	8.06%
+Electrical Engineering	USC Media Communications Lab	0.95%
+Electrical Engineering	Device&Planet Ltd. 	0.95%
+Electrical Engineering	Bestuniversityhousing	0.95%
+Electrical Engineering	 Device&Planet Ltd.	0.95%
+Electrical Engineering	Dormforce Studio	0.95%
+Electrical Engineering	Ericsson Club	0.95%
+Electrical Engineering	University of Electronic Science and Technology of China	0.95%
+Electrical Engineering	Tata Consultancy Services	0.95%
+Computer Science	Cisco	0.95%
+Computer Science	NetApp	0.95%
+Computer Science	National Instruments	1.42%
+Computer Science	Wipro Technologies	0.95%
+Computer Science	Chongqing University	0.95%
+Electrical Engineering	Infosys Limited	1.42%
+Computer Science	Cisco Systems	1.42%
+Computer Science	Cognizant Technology Solutions	2.37%
+Computer Science	University of Southen California	1.42%
+Computer Science	Goldman Sachs	0.95%
+Computer Science	SAP Labs	0.95%
+Computer Science	UC Berkeley	0.95%
+Computer Science	Softlink International Pvt. Ltd	0.95%
+Computer Science	Annenberg Innovation Lab	0.95%
+Electrical Engineering	Samsung Research India	0.95%
+Computer Science	The University of Hong Kong	1.9%
+Marketing	Wells Fargo Securities	0.95%
+Computer Science	Hackathons	0.95%
+Computer Science	NYU	0.95%
+Computer Science	Personal Project	0.95%
+Global Management	Founder & CEO	0.95%
+Computer Science	Hong Kong University of Science and Technology	1.42%
+Computer Science	resu.me	3.79%
+Computer Science	BranchOut/Talk.co	2.84%
+Computer Science	Infosys Limited, Chennai, India	0.95%
+Aerospace and Mechanical Engineering	Cummins Research and Technology India	0.95%
+Electrical Engineering	IIT Patna	1.42%
+Finance	D. E. Shaw & Co.	0.95%
+Computer Science	Academic Project	2.37%
+</pre>
+<pre id="course_by_major" style="display:none">Major	Course	Count
+Computer Science	Online Algorithms	0.35%
+Psychology	Web Technologies	0.18%
+Psychology	Analysis of Algorithms	0.18%
+Electrical Engineering	Wireless Networks	0.44%
+Electrical Engineering	Wireless Network	0.18%
+Electrical Engineering	Web Technologies	0.70%
+Electrical Engineering	Software Defined Networks	0.18%
+Electrical Engineering	Research on BioRC Biometric Real-Time Cortex (Prosthetic arm) : Dr. Alice C. Parker	0.18%
+Electrical Engineering	Operating Systems	2.19%
+Electrical Engineering	Multimedia System Design	0.18%
+Electrical Engineering	Mathematical Pattern Recognition	0.18%
+Electrical Engineering	Introduction to Power Systems	0.18%
+Electrical Engineering	Introduction to Computer Networks	0.35%
+Electrical Engineering	Internetworking and Distributed Systems Laboratory	1.06%
+Electrical Engineering	EE 577B: VLSI System Design II	0.26%
+Electrical Engineering	EE 577A: VLSI System Design I	0.18%
+Electrical Engineering	Distributed and Cloud Computing	0.18%
+Electrical Engineering	Directed Research	0.26%
+Electrical Engineering	Digital Signal Processing	0.26%
+Electrical Engineering	Digital Image Processing	0.26%
+Electrical Engineering	Database Systems	0.18%
+Electrical Engineering	Computer Vision	0.26%
+Electrical Engineering	Computer Systems Organization	0.26%
+Electrical Engineering	Computer Networks	1.06%
+Electrical Engineering	Computer Communications	0.61%
+Electrical Engineering	Cloud Computing and Distributed Systems	0.26%
+Electrical Engineering	Analysis of Algorithms	0.61%
+Electrical Engineering	Analysis and Design of Network	0.18%
+Electrical Engineering	 Internetwork and Distributed Systems Laboratory	0.26%
+Computer Science	Wireless Networks	0.26%
+Computer Science	Web Technologies 	11.22%
+Computer Science	Web Search Engines	0.26%
+Computer Science	Web Information Management	0.18%
+Computer Science	Web Engineering	0.18%
+Computer Science	Web Design	0.26%
+Computer Science	Web Applications	0.71%
+Computer Science	Undergrad Final Year Project	0.18%
+Computer Science	UI Design	0.18%
+Computer Science	Testing and Analysis of Web Applications	0.18%
+Computer Science	Specification and Design of User Interface Software	0.53%
+Computer Science	Software Engineering	1.93%
+Computer Science	Socket Programming Project	0.18%
+Computer Science	Security Systems	0.70%
+Computer Science	Scheme Interpreter	0.18%
+Computer Science	Programming Languages	0.53%
+Computer Science	Program Design	0.18%
+Computer Science	Probabilistic Methods in Computer Systems Modeling	0.18%
+Computer Science	Pattern Recognition and Machine Learning	0.18%
+Computer Science	Parallel Programming	0.96%
+Computer Science	Operating Systems	11.31%
+Computer Science	Object Oriented Programming	0.36%
+Computer Science	New SQL Database Management Systems	0.26%
+Computer Science	Networks	0.18%
+Computer Science	Network Security	0.35%
+Computer Science	Natural Language Processing	0.96%
+Computer Science	Natural Language Dialogue Systems	0.26%
+Computer Science	Multimedia Systems Design	0.88%
+Computer Science	Multimedia Systems	1.32%
+Computer Science	Modern Cryptography	0.26%
+Computer Science	Mobile Game Development	0.18%
+Computer Science	Mobile Application Programming	0.18%
+Computer Science	Machine Learning	0.79%
+Computer Science	Java	0.18%
+Computer Science	Introduction to Software Engineering	0.18%
+Computer Science	Introduction to Programming Systems Design	0.18%
+Computer Science	Introduction to Operating Systems	0.18%
+Computer Science	Introduction to Databases	0.18%
+Computer Science	Introduction to Computer Networks	1.23%
+Computer Science	Introduction to Artificial Intelligence	0.61%
+Computer Science	Internetworking and Distributed Systems Lab	1.85%
+Computer Science	Information Security and Privacy	0.36%
+Computer Science	Information Retrieval and Web Search Engines	2.89%
+Computer Science	Immersive Game Development	0.35%
+Computer Science	Image Processing	0.18%
+Computer Science	Human Computer Interaction	0.26%
+Computer Science	Graph Theory	0.18%
+Computer Science	Game Engine Development	0.35%
+Computer Science	Game Development 	0.18%
+Computer Science	Foundations of Artificial Intelligence 	2.21%
+Computer Science	Distributed Systems Lab	0.18%
+Computer Science	Distributed Systems	0.18%
+Computer Science	Distributed and Networking Laboratory	0.18%
+Computer Science	Directed Research	0.79%
+Computer Science	Digital Image Processing	0.18%
+Computer Science	Design and Analysis of Algorithms	0.61%
+Computer Science	DBMS	0.18%
+Computer Science	Databases	0.53%
+Computer Science	Database Systems Interoperability	0.35%
+Computer Science	Database Systems	5.96%
+Computer Science	Database Management Systems	1.23%
+Computer Science	Database Interoperability	0.35%
+Computer Science	Database	0.35%
+Computer Science	Data Structures	1.06%
+Computer Science	Data Mining and Statistical Inference	0.18%
+Computer Science	Custom Network Protocols	0.18%
+Computer Science	Custom IP Router	0.18%
+Computer Science	CS294 Special Topics	0.18%
+Computer Science	Computer Vision	0.44%
+Computer Science	Computer Security	0.35%
+Computer Science	Computer Organization	0.18%
+Computer Science	Computer Networks	4.47%
+Computer Science	Computer Graphics	1.05%
+Computer Science	Computer Engineering	0.18%
+Computer Science	Computer Communications	2.02%
+Computer Science	Computer Architecture	0.53%
+Computer Science	Computer and communication networks	0.18%
+Computer Science	Computational Thinking	0.18%
+Computer Science	Compilers	0.18%
+Computer Science	Compiler Construction	0.18%
+Computer Science	Cloud Computing	1.23%
+Computer Science	Big Data Analytics	0.35%
+Computer Science	Artificial Intelligence	4.57%
+Computer Science	Applied Natural Language Processing	0.96%
+Computer Science	Applied Cryptography	0.18%
+Computer Science	Android Weather Search App	0.18%
+Computer Science	Analysis of Algorithms 	5.62%
+Computer Science	Algorithms	1.05%
+Computer Science	Algorithmic Thinking	0.18%
+Computer Science	Algorithm Design	0.26%
+Computer Science	Algorithm	0.26%
+Computer Science	Advanced Mobile Devices and Game Consoles	0.53%
+Computer Science	Advanced Game Projects	0.26%
+Computer Science	Advanced Database Systems	0.18%
+Computer Science	Advanced Data Structures	0.18%
+Computer Science	Advanced Data Stores	0.44%
+Computer Science	Advanced Computer Networks	0.44%
+Computer Science	Advanced Big Data Analytics	0.18%
+Computer Science	3D Graphics and Rendering	0.53%
+Computer Science	 Internetwork and Distributed Systems Laboratory	0.26%
+Computer Engineering	Operating Systems	0.26%
+</pre>
+<pre id="count_by_degree_year" style="display:none">Degree	Year	Count
+Bachelor of Science	2014	3.34%
+B.S, M.A Environmental Studies	May-15	0.18%
+Bachelor of Architecture	May-18	0.18%
+Bachelor of Arts	May-17	0.36%
+Bachelor of Arts	May-16	0.53%
+Bachelor of Arts	May-15	1.05%
+Bachelor of Arts	May-14	0.70%
+Bachelor of Arts	May-13	0.18%
+Bachelor of Business	May-17	0.18%
+Bachelor of Communication	May-14	0.18%
+Bachelor of Engineering	May-15	0.18%
+Bachelor of Engineering	May-13	0.18%
+Bachelor of Science	May-18	0.18%
+Bachelor of Science	May-17	1.93%
+Bachelor of Science	May-16	2.46%
+Bachelor of Science	May-15	0.18%
+Bachelor of Science	Dec-13	0.36%
+Bachelor of Science	May-13	0.35%
+Bachelor of Science	May-12	0.18%
+Bachelors	May-17	0.18%
+Business Administration	May-16	0.18%
+Business Administration	May-15	0.18%
+Business Administration	May-14	0.18%
+Economics	May-16	0.18%
+Economics	May-14	0.35%
+International Relations Global Business	May-15	0.18%
+Master of Arts	May-15	0.18%
+Master of Construction Management	Dec-14	0.18%
+Master of Engineering	May-15	0.18%
+Master of Engineering	Dec-14	0.18%
+Master of Engineering	May-14	0.18%
+Master of Engineering Management	May-15	0.18%
+Master of Fine Arts	May-14	0.18%
+Master of International Strategic Corporate Communication Management 	May-14	0.18%
+Master of Planning	May-14	0.18%
+Master of Public Policy	May-14	0.18%
+Master of Science	May-18	0.18%
+Master of Science	May-17	0.35%
+Master of Science	May-16	3.16%
+Master of Science	Dec-15	0.18%
+Master of Science	May-15	23.75%
+Master of Science	Dec-14	1.77%
+Master of Science	May-14	34.85%
+Master of Science	Dec-13	2.29%
+Master of Science	May-13	8.62%
+Master of Science	May-12	2.11%
+Master of Science	Dec-11	0.18%
+Master of Science	May-11	2.11%
+Master of Science	May-10	0.53%
+MBA	May-12	0.18%
+PhD	May-19	0.18%
+PhD	May-18	0.53%
+PhD	May-14	0.18%
+</pre>
+</body>
+</html>
+

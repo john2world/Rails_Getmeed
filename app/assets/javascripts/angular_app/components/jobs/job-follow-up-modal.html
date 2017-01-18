@@ -1,0 +1,38 @@
+<div class="modal" id="job-follow-up-modal">
+  <h4>Follow up with {{ company }}'s hiring manager.</h4>
+  <form
+    id="job-follow-up-form"
+    name="jobFollowUpForm"
+    ng-submit="submitFollowUp(jobFollowUpForm.$valid)"
+    novalidate="novalidate">
+    <p>To: {{ company }}</p>
+    <input
+      class="u-full-width"
+      id="job-follow-up-subject"
+      name="job-follow-up-subject"
+      ng-model="formData.subject"
+      placeholder="Message Subject (*Required)"
+      required="required"
+      type="text"
+      />
+
+    <textarea
+      class="u-full-width"
+      id="job-follow-up-description"
+      name="job-follow-up-description"
+      ng-model="formData.description"
+      placeholder="Message Body (*Required)"
+      required="required"
+      ></textarea>
+
+    <p
+      ng-show="submitted && jobFollowUpForm.$invalid"
+      class="error">
+      Please enter all required fields.
+    </p>
+
+
+    <input class="button-primary" type="submit" value="Submit" click-once />
+    <input type="reset" class="button close-modal" value="Cancel" />
+  </form>
+</div>

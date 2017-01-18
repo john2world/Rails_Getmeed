@@ -1,0 +1,36 @@
+<div id="profile-inner" class="main-inner-wrap">
+    <div class="tab-nav">
+        <a id="show-profile-tab" class="active" ng-click="showTab('profile-tab')">Basic Profile</a>
+        <a id="show-collections-tab" ng-click="showTab('collections-tab')">Recent Activity <span
+                ng-if="feedItems.length > 0"> ({{ ::feedItems.length }}) </span></a>
+        <!--<a id="show-ama-tab" ng-click="showTab('ama-tab')">Ask Me Anything <span ng-if="eventFeedItems.length > 0"> ({{ ::eventFeedItems.length }}) </span></a>-->
+    </div>
+    <div class="tab" id="profile-tab">
+        <div class="basic-profile-body">
+            <profile-bio></profile-bio>
+            <profile-current-company></profile-current-company>
+            <profile-previous-companies></profile-previous-companies>
+        </div>
+    </div>
+    <div class="tab" id="collections-tab" ng-if="hasCollections">
+        <div class="recent-activity-tab">
+            <portfolio-activity-feed
+                    ng-show="!loading"
+                    feed-items="feedItems">
+            </portfolio-activity-feed>
+            <profile-collections profile="profile" currentUser="currentUser"></profile-collections>
+        </div>
+    </div>
+    <!--<div class="tab" id="ama-tab">-->
+        <!--<div class="ama-tab-body">-->
+
+            <!--<status-box ng-if="currentUser && currentUser.handle != profile.user.handle" tags="tags" all-collections="allCollections" default-tag-id="question" user="currentUser" event="event" show-attachments='false' feed-items="eventFeedItems"-->
+                        <!--placeholder-text="Ask {{ ::profile.user.first_name}} a Question..."-->
+                        <!--show-poster-info='false'-->
+                        <!--class="status-form"></status-box>-->
+            <!--<ul tagged-infinite-scroll="getMore()" tagged-infinite-scroll-disabled="scroll_disabled">-->
+                <!--<activity-feed-item ng-repeat="f in eventFeedItems" feed-item="f" show-user-actions="true"></activity-feed-item>-->
+                <!--<loader ng-if="scroll_fetching"> </loader>-->
+            <!--</ul>        </div>-->
+    <!--</div>-->
+</div>

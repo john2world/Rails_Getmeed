@@ -1,0 +1,51 @@
+<p class="accordion lightbox-text">Create Question
+</p>
+<hr class="hr-header">
+<% if question.blank? %>
+    <%= form_tag({:action => :publish_question}, :class => 'form-submit-large', :html => {:multipart => true}) do %>
+        <% if !alert.blank? %>
+            <p id="warning" class="label label-important any-center">
+              <%= alert %>
+            </p>
+        <% end %>
+        <div class="form-view" style="text-align: center;">
+          <%= text_field_tag :title, nil, :class => 'spanTbMiniDescription', :placeholder => 'Enter your question title (300 chars)', :maxlength => 200 %>
+          <%= text_field_tag :company, nil, :class => 'spanTbMiniDescription', :placeholder => 'Enter company (optional)', :maxlength => 200 %>
+          <%= text_area_tag :description, nil, :class => 'spanTbMiniDescription', :placeholder => 'Enter your description (1500 chars)', :maxlength => 1500 %>
+          <%= select_tag :syllabus_id, options_for_select(@syllabus.collect { |u| [u.name, u.id] }),  :class => 'form-control', :prompt => 'Select Question Type (*)' %>
+          <hr class="job-create-hr">
+          <p class="job-create-heading">
+            Select Majors:
+          </p>
+          <hr class="job-create-hr">
+          <div class="form-view" style="text-align: center;">
+            <% @majors.each_with_index do |major, index| %>
+                <div class="job-school-title">
+                  <%= check_box_tag 'major_' + major[:_id], major[:_id] %>
+                  <%= major[:major].upcase %>
+                </div>
+            <% end %>
+          </div>
+        </div>
+        <%= submit_tag 'Publish', :class => 'button button-green-large', :disable_with => 'Please wait..' %>
+        </div>
+    <% end -%>
+<% else %>
+    <%= form_tag({:action => :publish_question}, :class => 'form-submit-large', :html => {:multipart => true}) do %>
+        <% if !alert.blank? %>
+            <p id="warning" class="label label-important any-center">
+              <%= alert %>
+            </p>
+        <% end %>
+        <%= hidden_field_tag :hidden_id, question.id %>
+        <div class="form-view" style="text-align: center;">
+          <%= text_field_tag :title, nil, :value => question[:title], :class => 'form-control' %>
+          <%= text_field_tag :tag_line, nil, :value => question[:tag_line], :class => 'form-control' %>
+          <%= text_area_tag :description, (question[:description].html_safe), :class => 'profile-coursework-textarea' %>
+          <%= text_field_tag :external_url, nil, :value => question[:external_url], :class => 'form-control' %>
+          <%= text_field_tag :embed_url, nil, :value => question[:embed_url], :class => 'form-control' %>
+        </div>
+        <%= submit_tag 'Publish', :class => 'button button-green-large', :disable_with => 'Please wait..' %>
+        </div>
+    <% end -%>
+<% end -%>

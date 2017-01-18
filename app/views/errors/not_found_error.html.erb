@@ -1,0 +1,8 @@
+<p class="accordion lightbox-text">
+  404 This page is stolen!
+</p>
+<hr class="hr-header">
+<% unless @url.blank? %>
+    <div align="center" class="info-text-large">Gru's finding it: <%= @url %></div>
+<% end %>
+<img src="<%= asset_path 'kyle_404.jpg' %>">

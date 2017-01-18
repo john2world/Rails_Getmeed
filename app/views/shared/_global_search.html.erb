@@ -1,0 +1,23 @@
+<% if request.url.include? 'home' %>
+    <div style="margin-bottom: 9%;margin-top: 1%;">
+      <div id="search_bar" class="form-group col-xs-5" data-intro="Search for Jobs & ppl" data-position="bottom">
+        <form action="#" method="get">
+          <span style="float:left;"> </span>
+          <span href="#" id="search_icon" onclick="hideSearchBar();"></a>
+            <span class="fa fa-search search-button"></span> <span class="search_input">Search</span></span>
+          <input id="q" autocomplete="off" class="form-control input-medium autocomplete" placeholder="Search — Profiles or Jobs" type="text" spellcheck="false" style="display: none;"/>
+        </form>
+      </div>
+      <div class="form-group col-xs-6">
+        <form action="/submit/post">
+          <span style="float:left;"> </span>
+          <button id="write_story" class="btn btn-md btn-primary" data-intro="Share your experiences" data-position="right">
+            <span class="glyphicon glyphicon-star"></span>
+            Submit
+          </button>
+        </form>
+      </div>
+    </div>
+    <div id="hits">
+    </div>
+<% end %>

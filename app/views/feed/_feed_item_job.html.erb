@@ -1,0 +1,61 @@
+<div class="blog-list blog-category-list">
+      <%= render 'feed/feed_item_type', :data => data %>
+  <article class="post col-md-12 col-sm-12 col-xs-12 col-md-offset-0 col-sm-offset-0 col-xs-offset-0">
+    <div class="post-inner">
+      <div class="content feed-container">
+        <div class="date-label">
+          <a href="/job/<%= encode_id(data[:job][:_id]) %>">
+
+            <% if data[:job][:company_logo].blank? %>
+              <img class="img-responsive image-small" src="https://res.cloudinary.com/resume/image/upload/c_scale,w_100/v1424141642/http_library.oregonmetro.gov_rlisdiscovery_browse_graphic_placeholder_lgdixu.png">
+            <% else %>
+              <img class="img-responsive image-small" src="<%= data[:job][:company_logo] %>"/>
+            <% end %>
+          </a>
+        </div>
+        <div class="article-container">
+          <% unless data[:title].blank? %>
+            <div class="post-title"><a href="/job/<%= encode_id(data[:job][:_id]) %>"><%= data[:title] %></a></div>
+          <% end %>
+
+          <div class="meta">
+            <ul class="meta-list list-inline">
+              <li class="post-author">
+                <a href="/<%= data[:job][:company_id] %>"> <%= data[:job][:company_name] %></a><span class="info-text-small-medium"></span> 
+              </li>
+              <li class="post-comments-link">
+                <i class="glyphicon glyphicon-map-marker"></i> <%= data[:job][:location] %>
+              </li>
+              <li class="post-author">
+                Recommended by:
+                <a href="/<%= data[:user].handle %>" style="color:#00a651;"> <%= data[:user].name %> </a><span class="info-text-small-medium"></span> 
+              </li>
+              <li class="post-comments-link">
+                <i class="fa fa-user"></i> Class of <%= data[:user].year %> 
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="post-entry">
+          <% unless data[:description].blank? %> 
+            <%= Sanitize.clean(data[:description].truncate(500, :omission => '..').html_safe) %>
+          <% end %>
+        </div>
+
+          <a href="/job/<%= encode_id(data[:job][:_id]) %>" class="btn btn-xs btn-success"><span class="fa fa-dot-circle-o"></span>View</a>
+
+        <% unless current_user.blank? %>
+          <div> 
+            <span class="info-text-tiny"> Shared with: </span>
+
+              <span class="info-text-tiny"><span class="glyphicon glyphicon-<%= (data[:privacy].eql? 'everyone') ? 'globe' : 'user' %>"></span> <%= data[:privacy_text].html_safe %> <strong>— <%= current_school_name %></strong></span>
+
+          </div>
+        <% end %>
+      </div>
+      <div id="comment_<%= data.id %>">
+      </div>
+    </div>
+  </article>
+
+</div>

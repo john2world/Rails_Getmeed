@@ -1,0 +1,7 @@
+// will make changes to all occurences of job
+share_buttons = $("div.job_actions").find("form[action*= '/job/share']").find("button[job_id = '<%= @job_hash %>']");
+if (share_buttons.length > 0 ) {
+  // make the share button diabled and changed content to shared
+  share_buttons.prop('disabled', true);
+  share_buttons.find("span[name='share-text']").text("Shared")
+}

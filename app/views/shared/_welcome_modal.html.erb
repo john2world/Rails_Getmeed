@@ -1,0 +1,52 @@
+<div class="modal fade" id="welcomeModal" tabindex="-1" role="dialog" aria-labelledby="ownerBoxLabel" aria-hidden="liue">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="liue">&times;</button>
+        <p class="accordion lightbox-text">NEXT STEPS..</p>
+      </div>
+      <center>
+        <div class="modal-body">
+          <% if is_profile_incomplete %>
+              <p>
+                Your profile is incomplete! Always keep your profile up to date.
+              </p>
+
+              <!--<div class="any-center">-->
+                <!--<a href="/auth/linkedin" class="btn btn-primary btn-primary">-->
+                  <!--<span class="fa fa-linkedin-square" style="font-size: 20px"></span>-->
+                  <!--LinkedIn-->
+                  <!--Import</a>-->
+              <!--</div>-->
+          <% else %>
+              <p> For a better experience - Import your school contacts!</p>
+              <hr class="hr-header">
+              <% unless get_school_logo_url(current_school_handle).blank? %>
+                  <img src="<%= get_school_logo_url(current_school_handle) %>" class="univ-logo">
+              <% end %>
+
+              <br/>
+              <br/>
+              <a href="/contacts/gmail">
+                <%= button_tag "#{current_school_handle.upcase} GMAIL", :id => '', :class => 'button btn-google-plus', :disable_with => 'Fetching contacts..' %>
+              </a>
+
+              <div>
+                <br/>
+                <br/>
+	<span class="info-text">
+	*Remember to select <strong><%= current_school_handle.upcase %> GMAIL ACCOUNT</strong>  </span>
+              </div>
+          <% end %>
+        </div>
+      </center>
+      <div class="modal-footer">
+        <div class="any-center">
+          <button type="button" class="btn btn-xs btn-primary" data-dismiss="modal" aria-hidden="true">
+            <span class="glyphicon glyphicon-ok-circle"></span> Thanks!
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

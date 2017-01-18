@@ -1,0 +1,11 @@
+<span ng-if="currentUser">
+    <a ng-href="{{ ::feedItem.url }}"  target="_self" title="{{ ::feedItem.description | htmlToPlaintext  }}">
+        {{ ::feedItem.title | htmlToPlaintext }}
+    </a>
+</span>
+
+<span ng-if="!currentUser">
+    <a class="open-signup-modal" target="_self" title="{{ ::feedItem.description | htmlToPlaintext  }}">
+        {{::feedItem.title | htmlToPlaintext}}
+    </a>
+</span>

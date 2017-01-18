@@ -1,0 +1,15 @@
+<div id="feed_<%= data.id %>">
+  <% if data.blank? %>
+      <label class="label label-important any-center"> Something went wrong! </label>
+  <% elsif !data[:poster_type].blank? and data[:poster_type].eql? 'company' %>
+      <%= render 'feed/feed_item_company', :data => data, :company => company %>
+  <% elsif !data[:poster_type].blank? and data[:poster_type].eql? 'product' %>
+      <%= render 'feed/feed_item_product', :data => data %>
+  <% elsif !data[:poster_type].blank? and !data[:type].blank? and data[:poster_type].eql? 'user' and data[:type].eql? 'job' %>
+      <%= render 'feed/feed_item_job', :data => data %>
+  <% elsif !data[:poster_type].blank? and data[:type].eql? 'user_course_review' %>
+      <%= render 'feed/feed_item_course_review', :data => data %>
+  <% else %>
+      <%= render 'feed/feed_item_user', :data => data, :position => position %>
+  <% end %>
+</div>

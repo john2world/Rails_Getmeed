@@ -1,0 +1,11 @@
+<div class="row">
+  <div class="content-wrap twelve columns">
+    <poster-info item="feedItem"></poster-info>
+    <abbr class="timeago activity-feed-item-timestamp" title="{{ ::feedItem.create_time }}">{{ ::feedItem.create_time }}</abbr>
+    <h5 class="activity-feed-item-title" ng-bind-html="::feedItem.title | htmlToPlaintext"></h5>
+    <div class="activity-feed-item-description-wrap">
+      <star-rating rating="{{ ::feedItem.rating }}"></star-rating>
+      <div ng-bind-html="::feedItem.description | htmlToPlaintext" class="activity-feed-item-description ellipsis multiline"></div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,3 @@
+<% unless @data.blank? %>
+  $("<%= @position.blank? ? "#feed-actions-#{@data[:_id]}" : "#feed-actions-#{@position}-#{@data[:_id]}"%>").html("<%= escape_javascript (render 'feed/feed_actions', :data =>@data, :position => @position) %>");
+<% end %>

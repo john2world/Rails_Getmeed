@@ -1,0 +1,477 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Highcharts Example</title>
+
+		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+		<script type="text/javascript">
+$(function () {
+
+    Highcharts.data({
+        csv: document.getElementById('tsv1').innerHTML,
+        itemDelimiter: '\t',
+        parsed: function (columns) {
+
+            var brands = {},
+                brandsData = [],
+                versions = {},
+                drilldownSeries = [];
+
+            // Parse percentage strings
+            columns[1] = $.map(columns[1], function (value) {
+                if (value.indexOf('%') === value.length - 1) {
+                    value = parseFloat(value);
+                }
+                return value;
+            });
+
+            $.each(columns[0], function (i, name) {
+                var brand,
+                    version;
+
+                if (i > 0) {
+
+                    // Remove special edition notes
+                    name = name.split(' -')[0];
+
+                    // Split into brand and version
+                    version = name.match(/([0-9]+[\.0-9x]*)/);
+                    if (version) {
+                        version = version[0];
+                    }
+                    brand = name.replace(version, '');
+
+                    // Create the main data
+                    if (!brands[brand]) {
+                        brands[brand] = columns[1][i];
+                    } else {
+                        brands[brand] += columns[1][i];
+                    }
+
+                    // Create the version data
+                    if (version !== null) {
+                        if (!versions[brand]) {
+                            versions[brand] = [];
+                        }
+                        versions[brand].push(['bucket:' + version, columns[1][i]]);
+                    }
+                }
+
+            });
+
+            $.each(brands, function (name, y) {
+                brandsData.push({
+                    name: name,
+                    y: y,
+                    drilldown: versions[name] ? name : null
+                });
+            });
+            $.each(versions, function (key, value) {
+                drilldownSeries.push({
+                    name: key,
+                    id: key,
+                    data: value
+                });
+            });
+
+            // Create the chart
+            $('#container1').highcharts({
+                chart: {
+                    type: 'column'
+                },
+                title: {
+                    text: 'Course histogram by major'
+                },
+                subtitle: {
+                    text: 'Click the columns to view vhistogram'
+                },
+                xAxis: {
+                    type: 'category'
+                },
+                yAxis: {
+                    title: {
+                        text: 'Total percent of students'
+                    }
+                },
+                legend: {
+                    enabled: false
+                },
+                plotOptions: {
+                    series: {
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true,
+                            format: '{point.y:.1f}%'
+                        }
+                    }
+                },
+
+                tooltip: {
+                    headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+                    pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b> of total<br/>'
+                },
+
+                series: [{
+                    name: 'Majors',
+                    colorByPoint: true,
+                    data: brandsData
+                }],
+                drilldown: {
+                    series: drilldownSeries
+                }
+            })
+
+        }
+    });
+    Highcharts.data({
+        csv: document.getElementById('tsv2').innerHTML,
+        itemDelimiter: '\t',
+        parsed: function (columns) {
+
+            var brands = {},
+                brandsData = [],
+                versions = {},
+                drilldownSeries = [];
+
+            // Parse percentage strings
+            columns[1] = $.map(columns[1], function (value) {
+                if (value.indexOf('%') === value.length - 1) {
+                    value = parseFloat(value);
+                }
+                return value;
+            });
+
+            $.each(columns[0], function (i, name) {
+                var brand,
+                    version;
+
+                if (i > 0) {
+
+                    // Remove special edition notes
+                    name = name.split(' -')[0];
+
+                    // Split into brand and version
+                    version = name.match(/([0-9]+[\.0-9x]*)/);
+                    if (version) {
+                        version = version[0];
+                    }
+                    brand = name.replace(version, '');
+
+                    // Create the main data
+                    if (!brands[brand]) {
+                        brands[brand] = columns[1][i];
+                    } else {
+                        brands[brand] += columns[1][i];
+                    }
+
+                    // Create the version data
+                    if (version !== null) {
+                        if (!versions[brand]) {
+                            versions[brand] = [];
+                        }
+                        versions[brand].push(['bucket:' + version, columns[1][i]]);
+                    }
+                }
+
+            });
+
+            $.each(brands, function (name, y) {
+                brandsData.push({
+                    name: name,
+                    y: y,
+                    drilldown: versions[name] ? name : null
+                });
+            });
+            $.each(versions, function (key, value) {
+                drilldownSeries.push({
+                    name: key,
+                    id: key,
+                    data: value
+                });
+            });
+
+            // Create the chart
+            $('#container2').highcharts({
+                chart: {
+                    type: 'column'
+                },
+                title: {
+                    text: 'Internships histogram by Degree'
+                },
+                subtitle: {
+                    text: 'Click the columns to view histogram'
+                },
+                xAxis: {
+                    type: 'category'
+                },
+                yAxis: {
+                    title: {
+                        text: 'Total percent of students'
+                    }
+                },
+                legend: {
+                    enabled: false
+                },
+                plotOptions: {
+                    series: {
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true,
+                            format: '{point.y:.1f}%'
+                        }
+                    }
+                },
+
+                tooltip: {
+                    headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+                    pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b> of total<br/>'
+                },
+
+                series: [{
+                    name: 'Degree',
+                    colorByPoint: true,
+                    data: brandsData
+                }],
+                drilldown: {
+                    series: drilldownSeries
+                }
+            })
+
+        }
+    });
+    Highcharts.data({
+        csv: document.getElementById('tsv3').innerHTML,
+        itemDelimiter: '\t',
+        parsed: function (columns) {
+
+            var brands = {},
+                brandsData = [],
+                versions = {},
+                drilldownSeries = [];
+
+            // Parse percentage strings
+            columns[1] = $.map(columns[1], function (value) {
+                if (value.indexOf('%') === value.length - 1) {
+                    value = parseFloat(value);
+                }
+                return value;
+            });
+
+            $.each(columns[0], function (i, name) {
+                var brand,
+                    version;
+
+                if (i > 0) {
+
+                    // Remove special edition notes
+                    cols = name.split('-');
+					name = cols[0];
+
+                    // Split into brand and version
+                    version = cols[1];
+                    brand = name.replace(version, '');
+
+                    // Create the main data
+                    if (!brands[brand]) {
+                        brands[brand] = columns[1][i];
+                    } else {
+                        brands[brand] += columns[1][i];
+                    }
+
+                    // Create the version data
+                    if (version !== null) {
+                        if (!versions[brand]) {
+                            versions[brand] = [];
+                        }
+                        versions[brand].push([version, columns[1][i]]);
+                    }
+                }
+
+            });
+
+            $.each(brands, function (name, y) {
+                brandsData.push({
+                    name: name,
+                    y: y,
+                    drilldown: versions[name] ? name : null
+                });
+            });
+            $.each(versions, function (key, value) {
+                drilldownSeries.push({
+                    name: key,
+                    id: key,
+                    data: value
+                });
+            });
+
+            // Create the chart
+            $('#container3').highcharts({
+                chart: {
+                    type: 'pie'
+                },
+                title: {
+                    text: 'Companies by Major'
+                },
+                subtitle: {
+                    text: 'Click the columns to view Companies'
+                },
+                xAxis: {
+                    type: 'category'
+                },
+                yAxis: {
+                    title: {
+                        text: 'Total percent of Applications'
+                    }
+                },
+                legend: {
+                    enabled: false
+                },
+                plotOptions: {
+                    series: {
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true,
+                            format: '{point.y:.1f}%'
+                        }
+                    }
+                },
+
+                tooltip: {
+                    headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+                    pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b> of total<br/>'
+                },
+
+                series: [{
+                    name: 'Major',
+                    colorByPoint: true,
+                    data: brandsData
+                }],
+                drilldown: {
+                    series: drilldownSeries
+                }
+            })
+
+        }
+    });
+});		</script>
+	</head>
+	<body>
+<script src="//code.highcharts.com/highcharts.js"></script>
+<script src="//code.highcharts.com/modules/data.js"></script>
+<script src="//code.highcharts.com/modules/drilldown.js"></script>
+
+<div id="container1" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+<br/><br/><br/>
+<div id="container2" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+<br/><br/><br/>
+<div id="container3" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+<!-- Data from www.netmarketshare.com. Select Browsers => Desktop share by version. Download as tsv. -->
+
+<pre id="tsv1" style="display:none">Browser Version	Total Market Share
+Electrical Engineering 0	4.08%
+Computer Science 0	38.78%
+Computer Science 4	4.08%
+Anthropology 0	2.04%
+Computer Engineering 3	4.08%
+Business Information Systems  0	2.04%
+Computer Engineering 0	8.16%
+Computer Science 6	2.04%
+Computer Science 3	8.16%
+Computer Engineering 6	2.04%
+Computer Science 13	2.04%
+Electrical Engineering 6	2.04%
+Computer Science 1	4.08%
+Computer Science 5	2.04%
+Art, Practice of  0	2.04%
+Computer Science 10	2.04%
+Computer Science 8	4.08%
+Political Economy 0	2.04%
+Chemistry 0	2.04%
+Statistics 0	2.04%</pre>
+<pre id="tsv2" style="display:none">Browser Version	Total Market Share
+Bachelor of Science 0	20.41%
+Bachelor 0	2.04%
+B.A 0	4.08%
+Bachelor of Arts 0	18.37%
+Bachelors of Sciences 1	2.04%
+Bachelors 0	2.04%
+Computer Engineering 0	2.04%
+Bachelors of Science 0	6.12%
+BA 2	2.04%
+Bachelor of Engineering 0	2.04%
+Bachelors of Science 1	2.04%
+Electrical Engineering and Computer Science 1	2.04%
+Bachelors of Arts 0	2.04%
+Bachelor of Arts 1	6.12%
+B.S. 0	4.08%
+BA 0	2.04%
+BS 1	2.04%
+Bachelor of Arts in Architecture 0	2.04%
+Computer Science B.A. 0	2.04%
+BS.c 0.0	2.04%
+Ph.D. in Chemistry 0	2.04%
+Bachelors 1	2.04%
+Pursuing BS 6	2.04%
+Bachelor of Science 2	2.04%
+PhD 0	2.04%
+bachelor 0	2.04%</pre>
+<pre id="tsv3" style="display:none">Browser Version	Total Market Share
+Computer Science-vmware	1.61%
+Computer Science-Box	3.23%
+Computer Science-Pinterest	4.84%
+Computer Science-Twitter	4.84%
+Computer Science-LiveRamp	3.23%
+Computer Science-Nimble Storage	4.03%
+Computer Science-Comcast NBCUniversal‏	1.61%
+Computer Science-MongoDB	3.23%
+Computer Science-Cloudera	1.61%
+Computer Science-Walmart Labs	3.23%
+Computer Engineering-Microsoft	1.61%
+Computer Engineering-Netapp	2.42%
+Computer Engineering-vmware	2.42%
+Computer Engineering-Yahoo	3.23%
+Computer Engineering-Box	0.81%
+Computer Engineering-Salesforce	1.61%
+Computer Engineering-Pinterest	1.61%
+Computer Engineering-Twitter	1.61%
+Computer Engineering-LiveRamp	1.61%
+Computer Engineering-CodeHS	0.81%
+Computer Engineering-LinkedIn	1.61%
+Computer Engineering-Nimble Storage	1.61%
+Computer Engineering-Samsung 	1.61%
+Computer Engineering-Stuph Inc.	1.61%
+Computer Science-Microsoft	3.23%
+Computer Science-ZenPayroll	3.23%
+Computer Science-Stuph Inc.	1.61%
+Computer Science-Yahoo	5.65%
+Computer Engineering-Spire	1.61%
+Computer Engineering-Comcast NBCUniversal‏	1.61%
+Computer Engineering-ZenPayroll	0.81%
+Computer Engineering-Sosh	0.81%
+Computer Engineering-Airseed	0.81%
+Computer Engineering-Tint	0.81%
+Computer Engineering-MongoDB	0.81%
+Computer Engineering-Cloudera	0.81%
+Computer Engineering-Walmart Labs	1.61%
+Computer Science-Netapp	4.84%
+Computer Science-Salesforce	1.61%
+Computer Science-Samsung 	1.61%
+Computer Science-Sosh	1.61%
+Computer Science-Gumroad	1.61%
+Computer Science-Evernote	1.61%
+Computer Science-LinkedIn	0.81%
+Computer Science-resu.me	0.81%
+Computer Science-Snapchat	0.81%
+Computer Science-Spire	0.81%
+Computer Science-Samsung	0.81%
+Computer Science-Airseed	0.81%
+Computer Science-Betable	0.81%
+Computer Science-eSpark Learning	0.81%
+Computer Science-Teradata	0.81%
+Computer Science-StyleSeat	0.81%</pre>
+
+	</body>
+</html>
+

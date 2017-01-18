@@ -1,0 +1,5 @@
+<% @reviews.each do |review| %>
+  <div>
+    <%= render 'feed/feed_item_course_review', :data => review[:feed] %>
+  </div>
+<% end %>

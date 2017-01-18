@@ -1,0 +1,93 @@
+.collection
+  .main-inner-wrap
+    background: none
+
+
+
+.collection-header
+  width: 100%
+  background: $lightest_background
+  border-radius: 5px
+  box-sizing: border-box
+  padding: 1.5rem
+  margin-bottom: 1.5rem
+  min-height: 20rem
+  .image-wrap
+    width: 20rem
+    max-height: 25rem
+    overflow: hidden
+    border-radius: 5px
+    float: left
+    margin-right: 1.5rem
+  .collection-title
+    font-size: $font_size_medium_large
+    line-height: $font_size_medium_large
+    float: left
+    width: 50%
+  .collection-description
+    margin-top: 12em
+    color: #888
+  .collections-details
+    float: left
+    width: 35%
+    p
+      margin: 0
+    .contributor-name
+      font-size: $font_size_small
+      color: $light_text
+      a
+        color: $light_text
+
+  .jssocials
+    float: right
+    width: 15.5rem
+    text-align: right
+
+  p.button-wrap
+    jssocials
+      display: block
+    float: right
+    margin: 0
+
+
+.collection-list-entry
+  a:hover
+    text-decoration: none
+  .add-new-wrap
+    width: 90%
+  .button-red-inverse .fa
+    color: $error !important
+  .button-primary-inverse .fa
+    color: $primary !important
+  .submission-count
+    &:before
+      content: "("
+    &:after
+      content: ")"
+  i
+    color: $lightest_text
+
+@media(max-width: 650px)
+  .collection-header
+    .image-wrap
+      width: 30%
+
+@media(max-width: 515px)
+  .collection-header
+    p.button-wrap
+      width: 50%
+      text-align: right
+    .jssocials
+      float: right
+      width: 50%
+      text-align: right
+    .image-wrap
+      width: 100%
+      text-align: center
+    .collection-title
+      width: 100%
+      text-align: center
+    .collections-details
+      width: 50%
+
+

@@ -1,0 +1,6 @@
+<span class="activity-feed-item-caption" ng-if="item.caption">
+    <div ng-bind-html="::item.caption" ng-text-truncate="item.caption" ng-tt-chars-threshold="350"></div>
+</span>
+<span class="activity-feed-item-title" ng-if="!item.caption">
+    <div ng-bind-html="::item.title "></div>
+</span>

@@ -1,0 +1,21 @@
+<p class="accordion lightbox-text">
+  <% if @un_auth %>
+      Authentication Realm!
+  <% else %>
+      Success!
+  <% end %>
+</p>
+<hr class="hr-header">
+<div class="form-view">
+  <div class="lightbox-dialogue-info any-center">
+    <p class="accordion">
+      <% if @un_auth %>
+          You are not authorized to run this job.
+      <% else %>
+          Migration completed successfully — <%= @count %> feeds seeded!
+      <% end %>
+    </p>
+  </div>
+</div>
+
+

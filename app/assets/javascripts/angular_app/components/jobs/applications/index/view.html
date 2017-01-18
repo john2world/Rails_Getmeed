@@ -1,0 +1,30 @@
+<div class="main-wrap">
+  <div class="row">
+    <section id="activity-feed-wrap" class="main">
+      <site-nav class="side" user-collections="userCollections"></site-nav>
+      <tag-nav class="side" trending-tags="trendingTags"></tag-nav>
+
+      <div class="profile">
+        <div id="profile-inner">
+          <div class="tab-nav">
+            <a ng-click="showTab('shortlisted')" ng-class="{active: tab == 'shortlisted'}">
+              Short Listed {{counter.shortlisted_count}}
+            </a>
+            <a ng-click="showTab('applications')" ng-class="{active: tab == 'applications'}">
+              Applications {{counter.applications_count}}
+            </a>
+            <a ng-click="showTab('recommendations')" ng-class="{active: tab == 'recommendations'}">
+              New Matches {{counter.recommendations_count}}
+            </a>
+          </div>
+
+          <div tagged-infinite-scroll="getMore()" tagged-infinite-scroll-disabled="scroll_disabled" tagged-infinite-scroll-distance="500">
+            <applicant ng-repeat="applicant in applicants" applicant="applicant" tab="tab"></applicant>
+          </div>
+
+          <loader ng-show="scroll_fetching"></loader>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

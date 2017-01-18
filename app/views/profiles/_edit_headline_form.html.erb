@@ -1,0 +1,36 @@
+<div style="text-align: right">
+  <% if user.blank? or user[:headline].blank? %>
+      <%= form_tag({:action => 'save_headline'}, :id => 'form_headline_new', :remote => true) do %>
+          <div class="form-group">
+            <%= text_area :headline, :text, :class => 'form-control dont-show-wysiwyg', :required => '', :pattern => '/^[a-zA-Z]{3,7}$/', :placeholder => "Your headline in few words (ex: ruby geek, intern @apple, masters @#{get_school_handle_from_email(user.id)})", :cols => 60, :rows => 1 %>
+          </div>
+          <div class="form-group" style="text-align: left">
+            <%= button_tag(type: 'submit', :id => 'save_headline', class: 'btn btn-sm btn-primary',
+                           :data => { disable_with: 'Saving...'}, :name => 'save') do %>
+                <span class="glyphicon glyphicon-floppy-disk "></span> Save
+            <% end %>
+          </div>
+      <% end -%>
+  <% else %>
+      <%= form_tag({:action => 'save_headline'}, :id => 'form_headline_new', :remote => true) do %>
+          <div class="form-group">
+            <%= text_area :headline, :text, :class => 'form-control dont-show-wysiwyg', :required => '', :pattern => '/^[a-zA-Z]{3,7}$/', :value => (user[:headline].html_safe), :placeholder => 'A short description of your professional self (Not more than 5-6 words!)', :cols => 80, :rows => 1 %>
+          </div>
+          <div class="info-text-tiny">
+            ex: “Class of 2015 Berkeley” or "Data Analyst Intern, NYU 2016" or "Data Analyst Intern, NYU 2016"
+          </div>
+          <div class="form-group" style="text-align: left">
+            <%= button_tag(type: 'submit', :id => 'save_headline', class: 'btn btn-sm btn-primary',
+                           :data => { disable_with: 'Saving...'}, :name => 'save') do %>
+                <span class="glyphicon glyphicon-floppy-disk "></span> Save
+            <% end %>
+            <%= button_tag(type: 'submit', :id => 'delete_headline', class: 'btn btn-sm btn-danger',
+                           :data => { disable_with: 'Deleting...', confirm: 'Are you sure to delete overview?'},
+                           :name => 'delete') do %>
+                <span class="glyphicon glyphicon-trash "></span> Delete
+            <% end %>
+          </div>
+      <% end -%>
+  <% end -%>
+</div>
+

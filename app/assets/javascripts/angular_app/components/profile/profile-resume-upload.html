@@ -1,0 +1,12 @@
+<form action="/resume/upload/" id="resume-upload-form">
+    <loader ng-if="loading"></loader>
+    <input
+            id="resume-upload-input"
+            data-fp-apikey="{{ filepickerApiKey }}"
+            data-fp-button-class="button button-red-inverse filepicker-button"
+            data-fp-button-text="Import From Resume"
+            ng-change="onResumeUpload()"
+            ng-model="resume_url"
+            type="filepicker"
+            value="{{ resume_url }}"/>
+</form>

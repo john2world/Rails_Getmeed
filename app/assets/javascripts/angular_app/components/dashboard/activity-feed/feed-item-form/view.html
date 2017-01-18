@@ -1,0 +1,26 @@
+<div class="feed-item-form" style="position:relative">
+    <form name="publishForm" class="status-submit-form" ng-submit="submitPublish(publishForm.$valid)"
+          novalidate="novalidate" id="status-box">
+    <textarea
+            id="status-textarea"
+            name="description"
+            class="u-full-width"
+            hide-html-tags
+            ng-model="item.caption"
+            placeholder="{{::item.caption}}"
+            required="required"></textarea>
+
+        <tags-select selected-tags="item.tag_objects" tags="allTags"></tags-select>
+        <tag-collections selected-collections="item.collections" collections="allCollections"></tag-collections>
+
+        <button ng-click="closeForm()" type="submit" class="button button-secondary-inverse" ng-show="!button_loading">
+            <span>Cancel</span>
+        </button>
+        <button type="submit" class="button button-secondary submission-cta" ng-show="!button_loading">
+            <span>Save</span>
+        </button>
+        <button type="submit" class="button button-primary submission-cta" disabled="disabled" ng-show="button_loading">
+            <span>Please Wait...</span><i class="fa fa-refresh fa-spin"></i>
+        </button>
+    </form>
+</div>

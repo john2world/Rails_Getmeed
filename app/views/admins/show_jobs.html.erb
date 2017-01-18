@@ -1,0 +1,134 @@
+<p class="accordion lightbox-text">Jobs Status
+</p>
+<hr class="hr-header">
+<div id="content">
+  <ul id="tabs" class="nav nav-tabs nav-justified" data-tabs="tabs">
+    <li class="active"><a href="#all" data-toggle="tab">All</a></li>
+    <li><a href="#live" data-toggle="tab">live</a></li>
+    <li><a href="#paused" data-toggle="tab">paused</a></li>
+  </ul>
+  <div id="my-tab-content" class="tab-content">
+    <div class="tab-pane active" id="all">
+      <table class="table">
+        <tr>
+          <td class="job-applicant-heading">
+            Job title
+          </td>
+          <td class="job-applicant-heading">
+            Company
+          </td>
+          <td class="job-applicant-heading">
+            Status
+          </td>
+        </tr>
+        <% unless @jobs.blank? %>
+            <% @jobs.each do |job| %>
+                <% if !job.blank? %>
+                    <tr>
+                      <td class="job-applicant-td">
+                        <a href="/job/<%= job[:_id] %>/status?email=<%= job[:email] %>" class="job-applicant-name" target="_blank"> <%= job[:title].upcase %></a>
+                      </td>
+                      <td class="job-applicant-td">
+                        <%= job[:company] %>
+                      </td>
+                      <td class="job-applicant-td">
+                        <% if job[:live] %>
+                            <a href="/admin/jobs/<%= job[:_id] %>/pause">pause</a>
+                        <% else %>
+                            <a href="/admin/jobs/<%= job[:_id] %>/live">live</a>
+                        <% end %>
+                      </td>
+                    </tr>
+                <% end %>
+            <% end %>
+        <% end %>
+      </table>
+    </div>
+    <div class="tab-pane" id="live">
+      <table class="table">
+        <%= form_tag({:action => :send_emails}, :class => 'table', :html => {:multipart => true}) do %>
+            <tr>
+              <td class="job-applicant-heading">
+                Select
+              </td>
+              <td class="job-applicant-heading">
+                Job title
+              </td>
+              <td class="job-applicant-heading">
+                Company
+              </td>
+              <td class="job-applicant-heading">
+                Status
+              </td>
+            </tr>
+            <% unless @live_jobs.blank? %>
+                <% @live_jobs.each do |job| %>
+                    <% if !job.blank? %>
+                        <tr>
+                          <td class="job-applicant-td">
+                            <%= check_box_tag 'job_' + job[:_id], job[:_id] %>
+                          </td>
+                          <td class="job-applicant-td">
+                            <a href="/job/<%= job[:_id] %>/status?email=<%= job[:email] %>" class="job-applicant-name" target="_blank"> <%= job[:title].upcase %></a>
+                          </td>
+                          <td class="job-applicant-td">
+                            <%= job[:company] %>
+                          </td>
+                          <td class="job-applicant-td">
+                            <a href="/admin/jobs/<%= job[:_id] %>/pause">pause</a>
+                          </td>
+                        </tr>
+                    <% end %>
+                <% end %>
+            <% end %>
+            <tr>
+              <td style="align: center">
+              </td>
+              <td style="align: center">
+                <%= submit_tag 'Send emails', :class => 'button button-green-large',  :data => { :disable_with => 'Please wait..'}  %>
+              </td>
+              <td style="align: center">
+              </td>
+              <td style="align: center">
+              </td>
+            </tr>
+        <% end %>
+      </table>
+    </div>
+    <div class="tab-pane" id="paused">
+      <table class="table">
+        <tr>
+          <td class="job-applicant-heading">
+            Title
+          </td>
+          <td class="job-applicant-heading">
+            Company
+          </td>
+          <td class="job-applicant-heading">
+            Status
+          </td>
+        </tr>
+        <% unless @pause_jobs.blank? %>
+            <% @pause_jobs.each do |job| %>
+                <% if !job.blank? %>
+                    <tr>
+                      <td class="job-applicant-td">
+                        <a href="/job/<%= job[:_id] %>/status?email=<%= job[:email] %>" class="job-applicant-name" target="_blank"> <%= job[:title].upcase %></a>
+                      </td>
+                      <td class="job-applicant-td">
+                        <%= job[:company] %>
+                      </td>
+                      <td class="job-applicant-td">
+                        <a href="/admin/jobs/<%= job[:_id] %>/live">live</a>
+                      </td>
+                    </tr>
+                <% end %>
+            <% end %>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
+<% unless @jobs.blank? %>
+    <%= paginate @jobs %>
+<% end %>

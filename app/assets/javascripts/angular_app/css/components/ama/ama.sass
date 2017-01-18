@@ -1,0 +1,61 @@
+@import "./../core/buttons.sass"
+.ama
+  @media(max-width: 1300px)
+    .main
+      width: 600px
+      margin-left: 20%
+.ama-header
+  .header-bg
+    width: 100%
+    float: left
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://res.cloudinary.com/resume/image/upload/c_scale,w_900/v1444615261/6890140478_f5bc6f02c7_o_1_fiyvoo.jpg")
+  .header-intro
+    color: white
+    text-align: center
+    padding: 25rem 12rem 0rem 12rem
+    .primary-text
+      font-size: $font_size_x_large
+      font-weight: 300
+    .secondary-text
+      font-size: $font_size_medium_large
+      font-weight: 300
+      color: $light_text
+    .tertiary-text
+      font-size: $font_size_medium_large
+      font-weight: 100
+      margin-top: 20px
+    .ama-time
+      border: 1px solid white
+      border-radius: 4px
+      padding: 1rem
+  .ama-time
+    font-size: $font_size_medium_large
+
+.ama-content
+  .tertiary-text
+    color: $light_text
+    font-size: $font_size_medium_large
+    line-height: $font_size_large
+
+.ama-right
+  display: inline-block
+  margin-left: 1rem
+  .jssocials
+    float: none
+  .jssocials-share-link
+    font-size: 20px
+
+.logged-out-bg
+  height: 0rem
+
+.signin-cta
+  text-align: center
+  .button-primary
+    @extend .button.button-primary
+    width: 450px !important
+    height: 50px !important
+    line-height: 50px !important
+    font-size: 16px !important
+
+.divider
+  margin: 2.5rem

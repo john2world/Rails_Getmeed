@@ -1,0 +1,3 @@
+<% unless @data.blank? %>
+$("<%= "#{@data[:subject_id]}" %>").attr("value", "<%= @data[:kudos_count] %>");
+<% end %>

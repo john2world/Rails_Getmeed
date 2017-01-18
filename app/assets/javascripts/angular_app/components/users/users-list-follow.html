@@ -1,0 +1,30 @@
+<div class="users-list">
+    <md-tabs md-selected="selectedIndex" md-dynamic-height ng-cloak>
+        <md-tab label="User" ng-repeat="user in users">
+            <md-card>
+                <img ng-src="{{::user.large_image_url}}"/>
+
+                <md-card-title>
+                    <md-card-title-text>
+                        <a href="/{{::user.handle}}"> <span class="md-headline" ng-text-truncate="user.name" ng-tt-chars-threshold="20" ng-tt-no-toggling >{{::user.name}}</span></a>
+                    </md-card-title-text>
+                </md-card-title>
+
+                <md-card-content>
+                    <p  ng-text-truncate="user.headline" ng-tt-words-threshold="12" ng-tt-no-toggling>
+                        {{::user.headline}}
+                    </p>
+                    <p ng-if="user.major">
+                        Majors in {{ ::user.major }}
+                    </p>
+                </md-card-content>
+
+                <md-card-actions layout="column" layout-align="end center">
+                    <md-button ng-click="follow(user)" class="button button-primary"><i class="fa fa-user-plus"></i> Follow</md-button>
+                    <md-button ng-click="next()">Skip</md-button>
+                </md-card-actions>
+            </md-card>
+        </md-tab>
+        <md-tab></md-tab>
+    </md-tabs>
+</div>

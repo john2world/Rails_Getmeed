@@ -1,0 +1,47 @@
+<% if is_edit %>
+    <div class="row" id="internships">
+      <div><span class="profile-item-type"> INTERNSHIPS</span>
+        <span class="info-text-center" style="font-weight: bold"> (add internships - if any)</span>
+      </div>
+<% else %>
+    <% if !internships.blank? %>
+        <div class="row">
+          <div class="profile-item-type"> INTERNSHIPS</div>
+          <% internships.each_with_index do |internship, index| %>
+              <%= render 'view_internship_form', :internship => internship, :index => index %>
+              <% if index != internships.length-1 %>
+                  <hr class="hr-profile-item">
+              <% end %>
+          <% end %>
+          <hr class="hr-profile-separator">
+        </div>
+    <% end %>
+<% end %>
+<% if is_edit %>
+    <% if !internships.blank? %>
+        <% internships.each_with_index do |internship, index| %>
+            <%= render 'view_internship_form', :internship => internship, :index => index %>
+            <% if index != internships.length-1 %>
+                <hr class="hr-profile-item">
+            <% end %>
+        <% end %>
+        <hr class="hr-profile-separator">
+    <% end %>
+    <div id="view_internship_div">
+    </div>
+    <div id="edit_internship_div" style="display: none">
+      <table id="edit_internship_new" class='profile-view-table'>
+        <%= render 'new_internship_form'%>
+      </table>
+    </div>
+    <a id="add_new_internship" href="#new_internship_id">
+      <div class="any-center">
+        <strong>Add Internship</strong>
+      </div>
+    </a>
+    <hr class="hr-profile-separator">
+    </div>
+
+<% end %>
+
+

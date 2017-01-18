@@ -1,0 +1,43 @@
+.job-categories-list
+  .job-category-list-entry
+    float: left
+    width: 18%
+    min-width: 15rem
+    margin-bottom: 0rem
+    a
+      background: $lightest_background
+      border-radius: 5px
+      border: 1px solid $light_border
+      color: $dark_text
+      float: left
+      height: 4rem
+      line-height: 4rem
+      width: 95%
+      display: inline-block
+      float: none
+      text-align: left
+      .category-title
+        margin: 0
+        padding-left: 0.5rem
+        text-align: center
+        overflow-x: hidden
+        font-size: $font_size_medium_small
+        .job-count
+          border-left: 1px solid $light_border
+          float: right
+          width: 3.5rem
+          text-align: center
+          color: #ccc
+          font-weight: bold
+
+      &:hover, &.active
+        background: $lighter_background
+        color: $very_light_text
+        font-weight: bold
+        border: 1px solid $input_border
+        text-decoration: none
+        .category-title
+          .job-count
+            border-left: 1px solid $lightest_text
+            color: $very_light_text
+

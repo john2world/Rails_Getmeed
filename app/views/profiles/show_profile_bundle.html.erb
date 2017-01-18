@@ -1,0 +1,62 @@
+<% if !@success %>
+    <% if !@error.blank? %>
+        <p class="accordion lightbox-text">
+          <% if @error.eql? 'no_handles' %>
+              No users
+          <% end %>
+        </p>
+        <hr class="hr-header">
+    <% end %>
+<% else %>
+    <% @user_map.each do |user_handle, user| %>
+        <div class="row-view">
+          <% if !user.blank? %>
+              <div class="row profheader">
+                <%= render 'render_profile_header', :is_edit => false, :is_viewer_profile => false, :user => user[0], :school => @user_school_map[user_handle] %>
+              </div>
+          <% end %>
+
+          <% if !@user_profile_map[user_handle][0].blank? %>
+              <%= render 'render_objective', :profile => @user_profile_map[user_handle][0], :is_edit => false, :is_viewer_profile => false, :user => user, :school => @user_school_map[user_handle] %>
+          <% end %>
+
+          <% if !@user_edu_map[user_handle].blank? %>
+              <%= render 'render_educations', :educations => @user_edu_map[user_handle], :is_edit => false %>
+          <% end %>
+
+          <% if !@user_course_map[user_handle].blank? %>
+              <%= render 'render_courses', :courses => @user_course_map[user_handle], :is_edit => false %>
+          <% end %>
+          <% if !@user_publication_map[user_handle].blank? %>
+              <%= render 'render_publications', :publications => @user_publication_map[user_handle], :is_edit => false %>
+          <% end %>
+
+          <% if !@user_internship_map[user_handle].blank? %>
+              <%= render 'render_internships', :internships => @user_internship_map[user_handle], :is_edit => false %>
+          <% end %>
+
+          <% if !@user_work_map[user_handle].blank? %>
+              <%= render 'render_experiences', :experiences => @user_work_map[user_handle], :is_edit => false %>
+          <% end %>
+
+          <% if !@user_answer_map[user_handle].blank? %>
+          <% end %>
+        </div>
+        <hr class="hr-question-separator">
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+    <% end %>
+
+<% end %>
+
+

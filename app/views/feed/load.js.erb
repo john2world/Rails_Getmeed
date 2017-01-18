@@ -1,0 +1,2 @@
+$("#<%= @position %>_feed").html("<%= escape_javascript (render 'feed/load_feed' , :feed_items=> @feed_items, :position => @position ) %>");
+$( "input[id^='course_review_stars_']" ).rating();

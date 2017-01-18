@@ -1,0 +1,20 @@
+<div class="row job-single">
+  <div class="job-loader" ng-show="!job">
+    <loader></loader>
+  </div>
+  <div ng-if="job" class="job-outer-wrap">
+    <div class="main-backdrop"></div>
+    <company-media company="company"></company-media>
+    <div class="main">
+      <job-single job="job" metadata="metadata" current-user="currentUser"></job-single>
+    </div>
+  </div>
+  <!--<div class="fixed-job-feed-wrap" ng-if="currentUser">-->
+    <!--<job-feed></job-feed>-->
+  <!--</div>-->
+  <job-follow-up-modal current-job="currentJob" ng-if="currentUser"></job-follow-up-modal>
+  <job-apply-modal job="job" current-user="currentUser"
+                   tags="tags"
+                   all-collections="allCollections"
+                   ng-if="currentUser"></job-apply-modal>
+</div>

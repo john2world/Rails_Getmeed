@@ -1,0 +1,21 @@
+<% if !@show_top_bar.blank? and @show_top_bar %>
+    <div id="whole_page" style="width:100%">
+      <!-- ******HEADER****** -->
+      <% if @dont_show_header %>
+      <% else %>
+          <%= render 'shared/top_header', :active => 'Home' %>
+      <% end %>
+      <%= yield %>
+    </div>
+<% else %>
+    <div id="whole_page">
+      <div class="blog blog-category blog-archive container">
+        <div class="wrapper">
+          <div class="row">
+            <%= render :partial => 'shared/page-title' %>
+            <%= yield %>
+          </div>
+        </div>
+      </div>
+    </div>
+<% end %>

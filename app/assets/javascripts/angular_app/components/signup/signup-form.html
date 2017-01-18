@@ -1,0 +1,451 @@
+<div class="signup-form" id="signup-form">
+  <div class="logo-tagline-wrap">
+    <a href="/">
+      <img class="logo-full"src="https://res.cloudinary.com/resume/image/upload/c_scale,w_100/v1444337709/meed-logo-flat_kmj4rh.png">
+    </a>
+    <p class="tagline">The Professional Network For Students</p>
+  </div>
+  <div class="step signup-login">
+    <div class="signup-options">
+      <p class="buttons-wrap">
+          <a ng-click="authenticate('facebook')" class="social-signup facebook-signup">
+          <i class="fa fa-facebook-square"></i>
+          <span>Sign Up with Facebook</span>
+        </a>
+        <a href="/auth/twitter/" target="_self" class="social-signup twitter-signup">
+          <i class="fa fa-twitter-square"></i>
+          <span>Sign Up with Twitter</span>
+        </a>
+        <a href="/auth/linkedin/" target="_self"class="social-signup linkedin-signup">
+            <i class="fa fa-linkedin-square"></i>
+          <span>Sign Up with Linkedin</span>
+        </a>
+
+      </p>
+      <p class="email-signup-wrap">
+        <a class="show-email-signup">
+          Sign up with your email
+        </a>
+      </p>
+      <p class="small">
+        By signing up you indicate that you have read and agree to our
+        <a href="/legal/tos"> Terms of Service. </a>
+      </p>
+    </div>
+    <div class="login">
+      <h6>Login</h6>
+      <form
+        accept-charset="UTF-8"
+        novalidate="novalidate"
+        name="loginForm"
+        ng-submit="login(loginData, loginForm.$valid)"
+        method="POST">
+        <input
+          name="username"
+          placeholder="Username or Email"
+          required="required"
+          ng-model="loginData.username"
+          type="text" />
+        <input
+          name="password"
+          placeholder="********"
+          required="required"
+          ng-model="loginData.password"
+          type="password" />
+        <p
+          ng-show="serverError"
+          class="error">
+          {{serverErrorMessage}}
+        </p>
+        <p class="button-wrap">
+          <!-- <input type="submit" class="button button-primary" type="submit" value="Sign In" /> -->
+          <button type="submit" class="button button-primary" ng-show="!loading">
+            <span>Sign In</span>
+          </button>
+          <button type="submit" class="button button-primary" disabled="disabled" ng-show="loading">
+            <span>Please Wait...</span><i class="fa fa-refresh fa-spin"></i>
+          </button>
+        </p>
+      </form>
+      <p class="forgot-password-wrap"><a href="/users/forgot" target="_self">Forgot Password?</a></p>
+      <p class="additional-links-wrap"> <a href="/contact" target="_self">Contact Us</a> </p>
+    </div>
+  </div>
+  <div class="step email-signup">
+    <h6>Sign up using your college email</h6>
+    <form
+      class="signup-form"
+      name="emailSignupForm"
+      ng-submit="emailSignup(formData, emailSignupForm.$valid)"
+      novalidate="novalidate"
+      >
+      <fieldset class="row">
+        <input
+          class="u-full-width"
+          name="email"
+          ng-model="formData.university_email"
+          ng-pattern="universityEmailPattern"
+          placeholder="Enter college email"
+          required="required"
+          type="email"
+          >
+      </fieldset>
+      <p
+              ng-show="emailSignupForm.$submitted && emailSignupForm.$invalid"
+              class="error">
+        Please enter a valid .edu email address.
+      </p>
+      <p class="button-wrap">
+        <input type="submit" class="button button-primary" value="Sign Up" />
+      </p>
+    </form>
+  </div>
+
+  <div class="step email-signup-confirmation">
+    <h6 ng-if="!school">Is this the email of the latest university you attended/attending ?</h6>
+    <h6 ng-if="school">Is "{{school.name}}" the the latest university you attended/attending ?</h6>
+    <p style="text-align: center"> If not, please use your latest school email address.</p>
+    <form
+            class="signup-form"
+            name="emailSignupForm"
+            ng-submit="emailSignup(formData, emailSignupForm.$valid)"
+            novalidate="novalidate"
+            >
+      <fieldset class="row">
+        <input
+                class="u-full-width"
+                name="email"
+                ng-model="formData.university_email"
+                ng-pattern="universityEmailPattern"
+                placeholder="Enter college email"
+                required="required"
+                type="email"
+                >
+      </fieldset>
+      <p
+              ng-show="emailSignupForm.$submitted && emailSignupForm.$invalid"
+              class="error">
+        Please enter a valid .edu email address.
+      </p>
+      <p class="button-wrap">
+        <input type="submit" class="button button-primary" value="Sign Up" />
+      </p>
+    </form>
+  </div>
+
+  <div class="step create-account">
+    <div class="loaded" ng-show="!loading">
+    <p class="loader-wrap"><loader ng-show="loading"></loader></p>
+      <form
+        class="create-account-form"
+        name="createAccountForm"
+        ng-submit="createAccount(formData, createAccountForm.$valid)"
+        novalidate="novalidate">
+        <p class="avatar-wrap row" ng-if="!(formData.image_url.indexOf('user_male') > -1)">
+          <img class="u-full-width" ng-src="{{ formData.image_url || default_avatar }}" />
+        </p>
+        <signup-profile-picture form-data='formData'></signup-profile-picture>
+        <fieldset class="row">
+          <input
+            placeholder="First Name*"
+            class="column one-half"
+            id="first-name-field"
+            ng-model="formData.first_name"
+            required="required"
+            ng-pattern="namePattern"
+            name="firstName"
+            type="text" />
+          <input
+            placeholder="Last Name*"
+            class="column one-half"
+            id="last-name-field"
+            ng-model="formData.last_name"
+            required="required"
+            ng-pattern="namePattern"
+            name="lastName"
+            type="text" />
+        </fieldset>
+        <fieldset class="row">
+          <input
+            placeholder="Primary Email*"
+            class="column twelve"
+            id="primary-email-field"
+            ng-model="formData.primary_email"
+            ng-pattern="generalEmailPattern"
+            required="required"
+            name="email"
+            type="email"
+          />
+        </fieldset>
+        <fieldset class="row university-email-wrap">
+          <input
+            placeholder="University Email (ending in .edu)*"
+            class="column twelve"
+            id="university-email-field"
+            ng-model="formData.university_email"
+            ng-pattern="universityEmailPattern"
+            required="required"
+            type="email"
+          />
+        </fieldset>
+        <fieldset class="row">
+          <input
+            class="column twelve"
+            id="phone-number-field"
+            ng-model="formData.phone_field"
+            ng-pattern="phoneNumberPattern"
+            placeholder="Phone Number*"
+            required="required"
+            type="text"
+          />
+        </fieldset>
+        <fieldset class="row" ng-if="!school.name">
+          <input
+                  class="column twelve"
+                  id="school-field"
+                  ng-model="formData.school_field"
+                  placeholder="Full School Name*"
+                  required="required"
+                  type="text"
+                  />
+        </fieldset>
+        <fieldset class="row">
+          <select
+            class="u-full-width"
+            ng-options="year for year in years"
+            type="text"
+            ng-model="formData.year"
+            class="u-full-width"
+            required="required">
+            <option disabled selected value="">Graduation Year*</option>
+          </select>
+
+        </fieldset>
+        <fieldset class="row">
+          <select
+            class="u-full-width degree-select"
+            ng-if="degrees"
+            ng-model="formData.degree"
+            ng-options="degree for degree in degrees"
+            required="required">
+            <option disabled selected value="">Choose Degree *</option>
+          </select>
+        </fieldset>
+        <fieldset class="row">
+          <select
+            class="u-full-width major-select"
+            ng-if="majors"
+            ng-model="formData.major"
+            ng-options="m._id as m.major for m in majors track by m._id"
+            required="required">
+            <option disabled selected value="">Choose Major*</option>
+          </select>
+        </fieldset>
+        <fieldset class="row">
+          <select
+            class="u-full-width minor-select"
+            ng-if="majors"
+            ng-model="formData.minor"
+            ng-options="m._id as m.major for m in majors track by m._id"
+            placeholder="Second Major or Minor">
+            <option value="" selected>Choose Minor (Optional)</option>
+          </select>
+        </fieldset>
+        <fieldset class="row">
+          <input
+            class="u-full-width"
+            name="password"
+            ng-model="formData.password"
+            placeholder="Password"
+            required="required"
+            type="password"
+            ng-minlength="6"
+            />
+        </fieldset>
+        <div ng-messages="formData.submitted && createAccountForm.password.$error" role="alert" class="error">
+          <div ng-message="required">Password Missing</div>
+          <div ng-message="minlength">
+            Password must at least be 6 characters long.
+          </div>
+        </div>
+        <div ng-messages="formData.submitted && createAccountForm.handle.$error" role="alert" class="error">
+          <div ng-message="required">Handle Missing</div>
+          <div ng-message="pattern">Handle must have only small characters and numbers only.</div>
+        </div>
+        <div ng-messages="formData.submitted && createAccountForm.firstName.$error" role="alert" class="error">
+          <div ng-message="pattern">First Name must have only characters and spaces.</div>
+        </div>
+        <div ng-messages="formData.submitted && createAccountForm.lastName.$error" role="alert" class="error">
+          <div ng-message="pattern">Last Name must have only characters and spaces.</div>
+        </div>
+        <div ng-messages="formData.submitted && createAccountForm.email.$error" role="alert" class="error">
+          <div ng-message="pattern">Invalid Email.</div>
+        </div>
+        <div ng-messages="formData.submitted && createAccountForm.$error" role="alert" class="error">
+          <div ng-message="required">Please enter valid data for all required (*) fields including profile picture.</div>
+        </div>
+        <p
+          ng-show="formData.submitted && serverError"
+          class="error">
+          {{ serverError }}
+        </p>
+
+        <p class="button-wrap">
+          <input type="submit" class="button button-primary" value="Next">
+        </p>
+      </form>
+    </div>
+
+  </div>
+  <div class="step waitlist">
+    <h5>You have been added to the waitlist!</h5>
+    <p class="description">
+      We're sorry, Meed isn't available to {{ school_handle }} students yet! We'll send you
+      a personal invitation once enough students from your university have
+      joined our wait list.
+    </p>
+    <p class="details">
+      Invite friends to decrease your wait time!
+    </p>
+    <jssocials item="{
+      url: 'https://www.getmeed.com/',
+      title: 'Join Your University Career Network Today!'
+    }"></jssocials>
+    <p class="details">
+      In the meantime, don't miss out on news and updates from Meed.
+    </p>
+    <div class="button-wrap">
+      <div class="fb-like-wrap">
+        <a
+          class="fb-like"
+          data-href="https://www.getmeed.com"
+          data-layout="button"
+          data-action="like"
+          data-show-faces="true"
+          data-share="false"></a>
+      </div>
+      <div class="twitter-follow-wrap">
+        <a
+          href="https://twitter.com/getonmeed"
+          class="twitter-follow-button"
+          data-show-count="false">Follow @getonmeed</a>
+      </div>
+    </div>
+  </div>
+  <div class="step waitlist-status">
+    <h3>You're currently #{{ waitlistNo }} on our waitlist</h3>
+    <p class="details">We are currently receiving an overwhelming response from your university. To give everyone the best experience, we are slowly rolling out activations.
+
+    <h5 ng-if="campaign_type == 'hbo_now'" class="waitlist-heading">GET OFF THE WAITLIST AND WIN HBO NOW!</h5>
+      <h5 ng-if="!campaign_type" class="waitlist-heading">HOW TO GET OFF THE WAITLIST?</h5>
+
+
+      <p class="details" ng-if="campaign_type == null">
+      Gain immediate access by signing up <b>3 friends</b> to Meed using your referral link below. Even better sign up <b>5 friends</b> to win a $25 Chipotle gift card. Hurry this only applies to the first 100 users!
+    </p>
+    <p class="details" ng-if="campaign_type == 'chipotle'">
+      Gain immediate access by signing up <b>3 friends</b> to Meed using your referral link below. Even better sign up <b>5 friends</b> to win a $25 Chipotle gift card. Hurry this only applies to the first 100 users!
+    </p>
+      <p class="details" ng-if="campaign_type == 'hbo_now'">
+          Sign up <b>3 friends</b> by November 7th for immediate access and a 1 month subscription to HBO NOW, <b>5 friends</b> for 3 months, and <b>10 friends</b> for 6 months.
+      </p>
+    <p class="details" ng-if="campaign_type == 'jobs'">
+      Gain immediate access to over 450 companies actively hiring for 1500 open positions by signing up <b>3 friends</b> to Meed using your referral link below.
+    </p>
+    <p class="details" ng-if="campaign_type == 'recref'">
+      Gain immediate access and connect to a recruiter of your choice by signing up <b>3 friends</b> to Meed using your referral link below.
+    </p>
+    <p class="details referral-text">
+      Use #INeedMeed to share with friends. Referral Url: <br/>
+      <div class="zero-clipboard"><span class="btn-clipboard ref-url-copy" clipboard text="referral_url" on-copied="success()" on-error="fail(err)" >Copy</span></div>
+      <div class="highlight">
+        <pre>
+          <code class="language-html" data-lang="html" ng-model="referral_url">
+            {{referral_url}}
+          </code>
+        </pre>
+      </div>
+
+    </p>
+    <jssocials item="{url: referral_url, title: '@getonmeed is now open to my university. #INeedMeed and so do you, come join me'}" ng-if="referral_url" style="font-size: 20px;"></jssocials>
+    <div class="fb-send wrapper-button columns two offset-by-five">
+      <div class="img-button">
+        <button type="submit" class="send-button">
+          <img src="https://fbstatic-a.akamaihd.net/rsrc.php/v2/ye/r/bz5aiOJLD9D.png" alt="" width="24" height="24" class="send-img" />
+        </button>
+      </div>
+      <span class="send-text">Send</span>
+    </div>
+    <div class="row" style="margin-bottom: 20px"></div>
+    <p class="details">
+      We will send an email to {{email}} when your account is activated.
+    </p>
+  </div>
+  <div class="step verify-email">
+    <h5>Verify your school email address</h5>
+    <p class="description">
+      Meed is exclusive to students and recent alum. Please enter the
+      verification code we sent to
+      <strong>{{ formData.university_email }} </strong>
+      to proceed.
+    </p>
+    <p class="description">
+      If you haven't received the verification code, please check your spam folder.
+    </p>
+    <form
+      class="verify-email-form"
+      name="verifyEmailForm"
+      novalidate="novalidate"
+      ng-submit="verifyEmail(formData, verifyEmailForm.$valid)"
+      >
+      <fieldset class="row">
+        <input
+          placeholder="Enter Code"
+          type="text"
+          ng-model="formData.token"
+          class="u-full-width"
+          required="required" />
+      </fieldset>
+      <p
+        ng-show="formData.submitted && serverError"
+        class="error">
+        {{ serverError }}
+      </p>
+      <p class="button-wrap">
+        <input type="submit" class="button button-primary" value="Continue">
+      </p>
+    </form>
+  </div>
+  <div class="step waitlist-verify">
+    <h5>Verify your school email address</h5>
+    <p class="description">
+      Meed is exclusive to students and recent alum. Please enter the
+      verification code we sent to
+      <strong>{{ formData.university_email }} </strong>
+      to proceed.
+    </p>
+    <form
+            class="verify-email-form"
+            name="waitlistVerifyEmailForm"
+            novalidate="novalidate"
+            ng-submit="waitlistVerify(formData, waitlistVerifyEmailForm.$valid)"
+            >
+      <fieldset class="row">
+        <input
+                placeholder="Enter Code"
+                type="text"
+                ng-model="formData.token"
+                class="u-full-width"
+                required="required" />
+      </fieldset>
+      <p
+              ng-show="formData.submitted && serverError"
+              class="error">
+        {{ serverError }}
+      </p>
+      <p class="button-wrap">
+        <input type="submit" class="button button-primary" value="Continue">
+      </p>
+    </form>
+  </div>
+</div>

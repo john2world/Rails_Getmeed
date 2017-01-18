@@ -1,0 +1,83 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<span style="margin-left: 47%;">
+	<img alt="" src="https://res.cloudinary.com/resume/image/upload/c_scale,w_50/v1427155934/crescent_green_rt6rit.png" />
+</span>
+<hr style="color:#999999">
+<p>
+	<span style="font-family: 'Open Sans', 'lucida grande', arial, verdana, 'lucida sans unicode', tahoma, sans-serif;">Hi <%= @name %>,</span></p>
+
+<p><span style="font-family: 'Open Sans', 'lucida grande', arial, verdana, 'lucida sans unicode', tahoma, sans-serif;">You profile is incomplete! resume profile is seen by many recruiters and you haven't completed some of the following.
+  Completing your profile is really important for relevant <span style="text-decoration: underline">job marketplace</span> and <span style="text-decoration: underline">professional stream</span>&mdash;</span>
+</p>
+
+<ul style=" text-align: center;">
+	<li style="text-align: left;">
+		<span style="font-family: 'Open Sans', 'lucida grande', arial, verdana, 'lucida sans unicode', tahoma, sans-serif;">Your current <strong>objective</strong> is empty or </span>
+	</li>
+</ul>
+
+<ul style=" text-align: center;">
+	<li style="text-align: left;">
+		<span style="font-family: 'Open Sans', 'lucida grande', arial, verdana, 'lucida sans unicode', tahoma, sans-serif;">At least <span style="text-decoration: underline">one</span> of the course works or projects are not listed or</span>
+	</li>
+</ul>
+
+<ul style=" text-align: center;">
+	<li style="text-align: left;">
+		<span style="font-family: 'Open Sans', 'lucida grande', arial, verdana, 'lucida sans unicode', tahoma, sans-serif;">
+			Previous <strong>schools</strong> or internships not filled.
+		</span>
+	</li>
+</ul>
+
+
+<p><span style="font-family: 'Open Sans', 'lucida grande', arial, verdana, 'lucida sans unicode', tahoma, sans-serif;">Please complete your resume for the best results. This is how your profile is seen by recruiters  https://getmeed.com/<%= @handle %></span>
+</p>
+
+<hr style="color:#999999">
+<% unless @companies.blank? %>
+    <p>
+  <span style="font-size: 20px; color: #999999;font-family: 'Open Sans', 'lucida grande', arial, verdana, 'lucida sans unicode', tahoma, sans-serif;">
+    New companies to follow
+  </span>
+    </p>
+    <hr style="color:#999999">
+
+    <table>
+      <% @companies.each do |company| %>
+          <tr>
+            <td>
+              <% unless company[:company_logo].blank? %>
+                  <img style="border: 0px solid;
+                          border-radius: 38px;
+                          width: 45px; height: 22px; float: left;" src="<%= company.company_logo %>"/>
+              <% end %>
+            </td>
+            <td>
+              <p><span style="margin-top: 2%;font-family: 'Open Sans', 'lucida grande', arial, verdana, 'lucida sans unicode', tahoma, sans-serif;">
+				<a style="text-decoration: none; font-family: 'Open Sans', 'lucida grande', arial, verdana, 'lucida sans unicode', tahoma, sans-serif;font-size: 18px;color:#00a651;" href="<%= company.auth_profile_url %>"><%= company[:name] %></a>
+	            </span>
+              </p>
+            </td>
+            <td style="text-align: right">
+              <a style="text-decoration: underline; font-family: 'Open Sans', 'lucida grande', arial, verdana, 'lucida sans unicode', tahoma, sans-serif;font-size: 14px;color:#00a651;" href="<%= company.auth_profile_url %>">Follow Company </a>            </td>
+          </tr>
+      <% end %>
+    </table>
+<% end %>
+<hr style="color:#999999">
+
+
+
+<p><span style="font-family: 'Open Sans', 'lucida grande', arial, verdana, 'lucida sans unicode', tahoma, sans-serif;">&mdash;
+	Meed Team</span></p>
+
+<p style="margin-top: 10%;"><span style="font-size:12px; color: #888888;font-family: 'Open Sans', 'lucida grande', arial, verdana, 'lucida sans unicode', tahoma, sans-serif;">Good, bad or ugly share it with us at contact@getmeed.com</span>
+</p>
+
+</body>
+</html>

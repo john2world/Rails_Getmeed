@@ -1,0 +1,115 @@
+$gray: #999
+$light-gray: #ccc
+
+=tag-button
+  font-size: 12px
+  padding: 1px 5px
+  color: #333
+  border: 1px solid $light-gray
+  margin: 2px
+  display: inline-block
+  border-radius: 3px
+  &:hover
+    cursor: pointer
+    background-color: $light-gray
+
+=clearfix
+  &:after
+    content: ""
+    visibility: hidden
+    display: block
+    height: 0
+    clear: both
+
+.aligned-center
+  text-align: center
+
+.job-create-heading
+  font-size: 20px
+  margin-top: 30px
+  margin-bottom: 30px
+  .numberCircle
+    font-size: 28px
+  .info-text
+    font-size: 15px
+    color: $gray
+
+.form-view
+  width: 80%
+  margin-left: auto
+  margin-right: auto
+
+  .form-group
+    .form-control
+      height: 40px
+      width: 100%
+    textarea, input
+      font-size: 15px
+    label
+      font-size: 16px
+      font-weight: normal
+    .info-text
+      font-size: 14px
+      color: $gray
+
+  .info-text-xlarge
+    font-size: 16px
+    color: $gray
+    text-align: left
+
+  .info-text-medium
+    font-size: 13px
+    color: $gray
+    text-align: left
+
+  fieldset
+    margin-top: 7px
+    .story-tags
+      +tag-button
+
+  .tag-button
+    +tag-button
+
+#wysihtml5-toolbar-job_description.wysihtml5-toolbar,
+#wysihtml5-toolbar-question_description.wysihtml5-toolbar
+  width: 100%
+  margin-bottom: 10px
+  .block
+    a
+      background-color: #FFF
+      font-size: 16px
+      font-weight: normal
+      border-radius: 0px
+      margin-right: 0
+  .wysihtml5-sandbox
+    width: 100%
+    height: 200px
+
+.import-job
+  border: 1px solid $light-gray
+  border-radius: 4px
+  -webkit-box-shadow: 0 4px 1px rgba(0, 0, 0, 0.05)
+  -moz-box-shadow: 0 4px 1px rgba(0, 0, 0, 0.05)
+  box-shadow: 0 4px 1px rgba(0, 0, 0, 0.05)
+  padding: 26px
+  +clearfix
+  .col-left
+    width: 8%
+    padding-right: 15px
+    float: left
+  .col-right
+    width: 92%
+    float: left
+    .post-title
+      font-size: 17px
+      color: $gray
+
+form
+  .ng-invalid.ng-dirty
+    background-color: lightpink
+span.summary.ng-invalid
+  color: red
+  font-weight: bold
+.selectize-input.items.required.not-full.has-options.ng-dirty.ng-invalid,
+.selectize-input.items.required.not-full.ng-invalid.ng-pristine.has-options
+  border-color: red !important

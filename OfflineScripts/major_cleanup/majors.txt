@@ -1,0 +1,206 @@
+Business	business
+Professional Sales Certificate & International Business Certificate In Spanish	adm_professional_sales certificate & international business certificate in spanish
+Strategy	adm_strategy
+Architecture	arc_architecture
+Archaeology	art_archaeology
+Asian Religions	art_asian_religions
+Celtic Studies	art_celtic_studies
+Classics	art_classics
+Communications	art_communications
+Comparative Literature	art_comp_literature
+Computer Music & Multimedia	art_computer_music & multimedia
+Creative Writing	art_creative_writing
+Criminology	art_criminology
+East Asian Languages and Cultures	art_east_asian_cultures
+English	art_english
+Entrepreneurship And Technology	art_entrepreneurship_and technology
+Environmental Studies	art_environmental_studies
+Film	art_film
+French	art_french
+Geospatial Information Systems/Technology	art_geospatial_information systems/technology
+Global Business & Digital Design	art_global_business & digital design
+Global Studies	art_global_studies
+Art, History of 	art_history
+Arts and Humanities	art_humanities
+International Development Studies	art_international_development studies
+Italian Studies	art_italian_studies
+Journalism	art_journalism
+Knowledge Integration	art_knowledge_integration
+Korean	art_korean
+Local Economic Development	art_local_economic development
+Mathematics And Computer Science	art_mathematics_and computer science
+Music	art_music
+N/A	art_n/a
+Near Eastern Studies	art_near_eastern_studies
+Philosophy	art_philosophy
+Religion	art_religion
+Rhetoric	art_rhetoric
+Scandinavian	art_scandinavian
+Slavic Languages and Literatures	art_slavic_lang_lit
+Social Policy And Public Service	art_social_policy and public service
+South and Southeast Asian Studies	south_n_southeast_asian_studies
+Spanish And Portuguese	art_spanish_n_portuguese
+Theater, Dance, and Performance Studies	art_theater_dance_n_perf_studies
+Therapeutic Recreation	art_therapeutic_recreation
+Visual and Performing Arts	arts_visual_performing
+Game Design	bachelor - junior_game design
+Computational And Applied Math	bachelor of arts_computational and applied math
+Information Science	bachelor of arts_information science
+Computational Media	bachelor of science_computational media
+Materials Science And Nano Engineering	bachelor of science_materials science and nano engineering
+Mathematical Economic Analysis	bachelor of science_mathematical economic analysis
+Accounting	business_accounting
+Management Science and Engineering	business_eng_management
+Finance	business_finance
+Global Management	business_global_management
+Human Resources Management	business_human_resources
+Business Information Systems 	business_info_systems
+Marketing	business_marketing
+Supply Chain Management	business_supply_chain
+Animation	des_animation
+Design and Applied Arts	design_applied_arts
+Business Economics	eco_business_economics
+Management	eco_management
+Aerospace and Mechanical Engineering	eng_aero_mech
+Aerospace, Aeronautical and Astronautical/Space Engineering	eng_aerospace_aeronautical_astronautical_space
+Astronautical Engineering	eng_astro
+Bagpiping	eng_bagpiping
+Biochemical Engineering	eng_biochem
+Biomedical Engineering	eng_biomed
+Chemical Engineering	eng_chem
+Chemical Engineering and Materials Science	eng_chem_mat
+Civil Engineering	eng_civil
+Civil And Environmental Engineering	eng_civil_environmental
+Computer Engineering	eng_comp
+Computational &amp; Systems Biology	eng_comp_sys_biology
+Computer Software Engineering	eng_computer_software
+Electrical Engineering	eng_electrical
+Electrical and Electronics Engineering	eng_electrical_electronics
+Electrical, Electronics and Communications Engineering	eng_electrical_electronics_communication
+Electrical Engineering And Computer Science	eng_electrical_engineering_and_computer_science
+Environmental Engineering	eng_environmental_engineering
+Health Sciences And Technology	eng_health_sci_tech
+Industrial and Systems Engineering	eng_indust
+Mechanical Engineering	eng_mechanical
+Mechatronics Engineering	eng_mechatronics_engineering
+Nanotechnology Engineering	eng_nanotechnology_engineering
+Nuclear Engineering	eng_nuclear_engineering
+Operations Research and Information Engineering	eng_opers_rsch_info
+Robotics	eng_robotics
+Software Engineering	eng_software_engineering
+Water Resources	eng_water_resources
+Liberal Studies	fre_liberal_studies
+Linguistics And Computer Science	fre_linguistics_and computer science
+German	german
+Graphic Design	graphic_design
+American Studies	int_amer_stud
+Asian Studies	int_asn_stud
+Cognitive Studies	int_cog_stud
+Development Studies	int_dev_stud
+Interdisciplinary Studies	int_disc_stud
+Latin American Studies	int_latin_stud
+Legal Studies	int_legal_stud
+Media Studies	int_media_studies
+Middle Eastern Studies	int_mid_studies
+Peace and Conflict Studies	int_peace_n_conflct_stud
+Political Economy	int_political_economy
+Religious Studies	int_relig_stud
+Business Information Management	jun_business_information management
+Organizations And Information Technology	jun_organizations_and information technology
+Urban Studies	jun_urban_studies
+Information Systems Management	mas_information_systems management
+Post Secondary Administration And Student Affairs	master of education_post secondary administration and student affairs
+Energy Engineering	master of engineering_energy engineering
+Industrial Engineering & Operational Research	master of engineering_industrial engineering & operational research
+Applied Physics	master of science_applied physics
+Engineering Management	master of science_engineering management
+Food Science And Technology	master of science_food science and technology
+Jazz Studies	mus_jazz_studies
+Earth Systems Science	ph.d_earth systems science
+Anthropogeny	phi_anthropogeny
+Japanese	phi_japanese
+Practice of Art	practiceofart
+Psychology And Social Behavior	psy_psychology_and social behavior
+Actuarial Science	sci_actuarial_science
+Advertising	sci_advertising
+Applied Economics And Management	sci_applied_economics and management
+Astronomy	sci_astronomy
+Audio Engineering	sci_audio_engineering
+Biochemistry	sci_biochemistry
+Bioengineering	sci_bioengineering
+Biology	sci_biology
+Biotechnology	sci_biotechnology
+Business Administration	sci_business_administration
+Business Studies	sci_business_studies
+Chemistry	sci_chemistry
+Childhood/Special Education And Psychology	sci_childhood/special_education and psychology
+Cognitive Science	sci_cognitive_science
+Combinatorics And Optimization	sci_combinatorics_and optimization
+Computer Science	sci_comp
+Data Informatics	sci_data_informatics
+Data Science	sci_data_science
+Decision Science	sci_decision_science
+Digital Humanities	sci_digital_humanities
+Earth and Planetary Science	sci_earth_planetary
+Ecology	sci_ecology
+Education	sci_education
+Electrical And Computer Engineering	sci_electrical_and computer engineering
+Engineering Studies	sci_engineering_studies
+Entertainment Technology	sci_entertainment_technology
+Entrepreneurship	sci_entrepreneurship
+Financial Engineering	sci_financial_engineering
+Geomatics	sci_geomatics
+Gerontology And Health Research	sci_gerontology_and health research
+Human Computer Interaction	sci_human-computer_interaction
+Informatics	sci_informatics
+Integrative Biology	sci_integrative_biology
+International Relations	sci_international_relations
+Kinesiology	sci_kinesiology
+Learning And Organizational Change	sci_learning_and organizational change
+Mathematics	sci_math
+Molecular and Cell Biology	sci_molecular_n_cell_biology
+Multimedia And Creative Technologies	sci_multimedia_and creative technologies
+Music	sci_music
+Neuroscience	sci_neuroscience
+Operations Research and Management	sci_opers_rsch_mgmt
+Pharmaceutical Science	sci_pharmaceutical_science
+Physical Sciences	sci_physical
+Physical Computing	sci_physical_computing
+Physics	sci_physics
+Physics/Computer Science	sci_physics/computer_science
+Poetry	sci_poetry
+Public Health	sci_public_health
+Public Policy, Planning, And Development	sci_public_policy, planning, and development
+Public Relations	sci_public_relations
+Quantitative And Computational Finance	sci_quantitative_and computational finance
+Real Estate Development	sci_real_estate development
+Science And Business	sci_science_and business
+Statistics	sci_stats
+Science And Societies	sci_science_and societies
+Statistics And Machine Learning	sci_statistics_and machine learning
+Systems Design Engineering	sci_systems_design engineering
+Technology Management Program	sci_technology_management program
+Visual Analytics	sci_visual_analytics
+Music Technology	sen_music_technology
+African American Studies	soc_afr_amer_stud
+Anthropology	soc_anthropology
+Asian American and Asian Diaspora Studies	soc_asn_amer_asn_dias_stud
+Chicano Studies	soc_chicano_stud
+Economics	soc_economics
+Environmental Economics	soc_env_economics
+Ethnic Studies	soc_ethnic_stud
+Gender & Women's Studies	soc_gen_n_women_stud
+Geography	soc_geography
+History	soc_history
+Linguistics	soc_linguistics
+Native American	soc_nat_american
+Political Science	soc_political
+Psychology	soc_psychology
+Sociology	soc_sociology
+Social Welfare	soc_welfare
+Arts And Business	sop_arts_and business
+Economics And Statistics	sta_economics_and statistics
+European Studies	stu_european_studies
+Geography And Environmental Management	stu_geography_and environmental management
+Master Of Social Work	wor_master_of social work
+None	wor_none

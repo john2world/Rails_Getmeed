@@ -1,0 +1,59 @@
+<div class=" blog-list blog-category-list">
+  <%= render 'feed/feed_item_type', :data => data %>
+  <article class="post col-md-12 col-sm-12 col-xs-12 col-md-offset-0 col-sm-offset-0 col-xs-offset-0">
+    <div class="post-inner">
+      <div class="content feed-container">
+        <div class="date-label">
+          <a href="/<%= company.id %>">
+
+            <% if company.company_logo.blank? %>
+                <img class="img-responsive image-small" src="https://res.cloudinary.com/resume/image/upload/c_scale,w_100/v1424141642/http_library.oregonmetro.gov_rlisdiscovery_browse_graphic_placeholder_lgdixu.png">
+            <% else %>
+                <img class="img-responsive image-small" src="<%= company.company_logo %>"/>
+            <% end %>
+          </a>
+        </div>
+        <div class="article-container">
+          <div class="post-title"><a href="<%= data[:url] %>">
+            <% if data[:type].eql? 'article' or data[:type].eql? 'story' %>
+                <%= data[:title] %>
+            <% else %>
+                <%= company.name %>
+            <% end %>
+
+          </a></div>
+          <div class="meta">
+            <ul class="meta-list list-inline">
+              <li class="post-author">
+                <% if data[:type].eql? 'article' or data[:type].eql? 'story' %>
+                    <%= company.name %>
+                <% else %>
+                    <%= data[:title] %>
+                <% end %>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <% if data[:type].eql? 'video' or data[:type].eql? 'cover_video' %>  
+            <%= render 'feed/render_feed_video', :data => data %>   
+        <% elsif data[:type].eql? 'profile_picture' %> 
+            <img src="<%= data[:user][:image_url] %>">
+        <% elsif data[:type].eql? 'question' or data[:type].eql? 'photo' or data[:type].eql? 'article' or data[:type].eql? 'requirement' or data[:type].eql? 'story' %>
+            <%= render 'feed/render_feed_photo', :data => data %>
+        <% end %>
+        <% unless data[:description].blank? %> 
+            <div class="post-entry">
+              <p>
+                <%= Sanitize.clean(data[:description].strip.truncate(300, :omission => '..')) %>
+              </p>
+            </div>
+        <% end %>
+
+        <div id="feed-actions-<%= data[:_id] %>"> 
+          <%= render 'feed/feed_actions', :data => data, :position => '' %> 
+        </div>
+        <%= render 'feed/feed_privacy', :data => data %>
+      </div>
+    </div>
+  </article>
+</div>

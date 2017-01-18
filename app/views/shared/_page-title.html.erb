@@ -1,0 +1,8 @@
+<% unless @page_heading.blank? %>
+    <p class="accordion lightbox-text">
+      <%= @page_heading %>
+      <% unless @page_sub_heading.blank? %>
+        <div class="info-text-dashboard"> <%= @page_sub_heading %> </div>
+    <% end %>
+    </p>
+<% end %>

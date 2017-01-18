@@ -1,0 +1,66 @@
+<html>
+  <head>
+    <title></title>
+  </head>
+  <body>
+    <span style="margin-left: 47%;">
+      <img alt="" src="https://res.cloudinary.com/resume/image/upload/c_scale,w_50/v1427155934/crescent_green_rt6rit.png" />
+    </span>
+    <hr style="color:#999999">
+    <p>
+      <span style="font-family: 'Open Sans', 'lucida grande', arial, verdana, 'lucida sans unicode', tahoma, sans-serif;">
+        Hi <%= @user.first_name.blank? ? '' : @user.first_name.split(' ')[0] %>,
+      </span>
+    </p>
+
+    <p>
+      <span style="font-family: 'Open Sans', 'lucida grande', arial, verdana, 'lucida sans unicode', tahoma, sans-serif;">
+        My name is Joe, and I’m the Career Advisor at <%= @school.upcase %>. As the school year, and thus graduation (eek!) approach,
+        I’m sure you have plenty of questions about your future. What courses should I take that will give me a leg up when I start looking for jobs?
+        When should I even start looking for jobs? Is my hairstyle appropriate for an interview? Sound familiar?
+        <br/><br/>
+        I’m writing to invite you to try Meed, a career marketplace for students. More than <%= number_with_delimiter(@school_user_count, :delimiter => ',') %> from <%= @school.upcase %>
+        are already using Meed to connect with recruiters from top companies and hot startups like
+        <a href="https://getmeed.com/company/spotify#about">Spotify</a>,
+        <a href="https://getmeed.com/company/quora#about">Quora</a>,
+        <a href="https://getmeed.com/company/6sense#about">6Sense</a>, and tons more.
+        Even better, it’s completely free to use! Check out our <a href="https://www.facebook.com/getonmeed/videos/1618396221736847/?l=6160884999600943928">video</a> to learn more, and sign up below.
+      </span>
+    </p>
+
+    <div style="margin-top:5px"></div>
+
+    <div class="btn" style="Margin-bottom: 21px;padding-bottom: 2px;text-align: center">
+      <!--[if !mso]-->
+      <a style="background-image: url(https://i3.createsend1.com/static/eb/master/05-slate/images/btn.png);background-repeat: repeat-x;background-position: left top;border-radius: 3px;display: inline-block;font-size: 13px;font-weight: 700;line-height: 19px;padding: 6px 18px 5px 18px;text-align: center;text-decoration: none;transition: all 0.2s;color: #fff;font-family: 'Open Sans', 'lucida grande', arial, verdana, 'lucida sans unicode', tahoma, sans-serif;background-color: #5cb85c;border-color: #4cae4c; text-shadow: 0 1px 0 0 1px 0 #172027" href="https://getmeed.com?e_var=eiuv3" target="_blank">
+        Join Meed
+      </a>
+      <!--[endif]-->
+      <!--[if mso]>
+      <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" href="/" style="width:84px" arcsize="10%" fill="t" stroke="f">
+        <v:fill type="tile" src="https://i3.createsend1.com/static/eb/master/05-slate/images/btn.png" color="#5cb85c">
+        </v:fill>
+        <v:shadow on="t" color="#0B0E12" offset="0,2px"></v:shadow>
+        <v:textbox style="mso-fit-shape-to-text:t" inset="0px,5px,0px,4px">
+          <center style="font-size:11px;line-height:19px;color:#FFFFFF;font-family:"Open Sans", "lucida grande", arial, verdana, "lucida sans unicode", tahoma, sans-serif;;font-weight:700;mso-line-height-rule:exactly;mso-text-raise:3px">
+          Apply
+          </center>
+        </v:textbox>
+      </v:roundrect>
+      <![endif]-->
+    </div>
+
+    <p>
+      <span style="font-family: 'Open Sans', 'lucida grande', arial, verdana, 'lucida sans unicode', tahoma, sans-serif;">&mdash;Meed Team</span>
+    </p>
+
+    <p style="margin-top: 5px;">
+      <span style="font-size:12px; color: #888888;font-family: 'Open Sans', 'lucida grande', arial, verdana, 'lucida sans unicode', tahoma, sans-serif;">Good, bad or ugly share it with us at contact@getmeed.com</span>
+    </p>
+
+    <p style="margin-top: 10px;">
+      <span style="font-size:11px; color: #888888;font-family: 'Open Sans', 'lucida grande', arial, verdana, 'lucida sans unicode', tahoma, sans-serif;line-height: 18px;">Don't wish to hear from us? Please <a href="<%= @unsubscribe_link %>" style="color:#00a651; text-decoration: none">unsubscribe</a>, we would never bother you!</span>
+    </p>
+
+  </body>
+</html>

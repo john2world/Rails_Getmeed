@@ -1,0 +1,12 @@
+<p class="accordion lightbox-text">
+  HTML Preview
+</p>
+<hr class="hr-header">
+<%= @result.html_safe %>
+
+
+<p class="accordion lightbox-text">
+  <%= @subject %>
+</p>
+<hr class="hr-header">
+<%= text_area :text, :text, :class => 'form-control dont-show-wysiwyg', :id => 'profile-coursework-new_id', :value => @result, :rows => 50, :cols => 100 %>

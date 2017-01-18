@@ -1,0 +1,8 @@
+<div class="star-rating">
+  <span ng-repeat="a in range(5) track by $index">
+    <i class="fa fa-star" ng-show="rating - $index >= 1"></i>
+    <i class="fa fa-star-half-o" ng-show="rating - $index == 0.5"></i>
+    <i class="fa fa-star-o" ng-show="rating - $index <= 0"></i>
+  </span>
+  <span class="caption">{{ rating }} stars</span>
+</div>

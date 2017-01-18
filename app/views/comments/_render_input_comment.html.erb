@@ -1,0 +1,36 @@
+<div id="comment_thread_<%= id %>">
+  <div class="blog-list blog-category-list">
+    <article class="post comment-post col-md-12 col-sm-12 col-xs-12 col-md-offset-0 col-sm-offset-0 col-xs-offset-0">
+      <div class="post-inner">
+        <div class="content comment-content comment-feed-container">
+          <div class="date-label comment-date-label">
+            <a href="/<%= current_user.handle %>">
+              <% if !current_user.blank? and current_user.is_meediorite? %>
+                <div class="user-image-comment-badge">M</div>
+              <% end %>
+              <% if current_user[:image_url].blank? %>
+                <img class="img-responsive image-tiny" src="http://res.cloudinary.com/resume/image/upload/c_scale,w_75/v1405632414/user_male4-128_q1iypj.png" style="float:left;margin:0 5px 0 0;"/>
+              <% else %>
+                <img class="img-responsive image-tiny" src="<%= current_user[:image_url] %>" style="float:left;margin:0px 0px 0 5px"/>
+              <% end %>
+            </a>
+          </div>
+          <%= form_tag({:controller => 'comments', :action => 'create', :id => id}, :remote => true, :class => 'form', :style => 'background:white', :html => {:multipart => true}) do %>
+            <div class="article-container">
+              <div class="comment-description">
+                <%= text_area :comment_description, nil, :type => 'submit', :id => "comment_box_#{id}", :placeholder => "#{(type.eql? 'question') ? 'Thanks for answering.. (Your contribution improves your resu.me score)' : 'Add a comment.. ' }", :class => 'form-control dont-show-wysiwyg', :required => '', :rows => 2, :cols => 50; %>
+                <%= hidden_field_tag :feed_id, id, :id => 'feed_id' %>
+              </div>
+              <span id="feed-comment-actions-<%= id %>" style="padding-left: 5px;">
+                <%= button_tag(type: 'submit', :id => "comment_button_#{id}", class: 'btn btn-sm btn-primary') do %>
+                  <%= "#{(type.eql? 'question') ? 'Answer' : 'Comment'}" %>
+                <% end %>
+              </span>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </article>
+  </div>
+</div>
+<hr class="hr-profile-separator">

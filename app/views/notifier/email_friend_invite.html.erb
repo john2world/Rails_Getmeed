@@ -1,0 +1,104 @@
+<%= render 'notifier/email_header' %>
+<center class="wrapper" style="display: table;table-layout: fixed;width: 100%;min-width: 620px;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;background-color: #fbfbfb">
+  <div style="background-color: white">
+    <div style="color:#636d74;margin:0">
+      <div style="color:#636d74;font-family:Helvetica,Arial,sans-serif;font-size:14px;line-height:16px">
+
+        <div style="width:100%">
+          <table style="color:#636d74;margin:0 auto;vertical-align:middle;width:600px">
+            <tbody>
+              <tr>
+                <td style="font-size:13px;padding:15px 10px;text-align:center" align="center">
+                  <span style="border-radius:50%;display:inline-block;overflow:hidden">
+                      <img alt="<%= @invite_user.first_name %>" height="100" src="<%= @invite_user.small_image_url %>" width="100" style="border:none;display:inline-block;vertical-align:top">
+                  </span>
+                </td>
+              </tr>
+            <tr>
+              <td style="color:#040505;font-size:32px;font-weight:bold;line-height:1.5;padding:20px 0;text-align:center" align="center">
+                <a href="<%= get_user_profile_url(@invite_user.handle) %>" style="border:none;color:#636d74" target="_blank"><%= @invite_user.first_name %></a>
+                has <span style="font-weight:bold">invited you</span> to use Meed.
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <table style="margin:0 auto;width:600px">
+            <tbody><tr>
+              <td style="text-align:center" align="center">
+                <p style="color:#040505;line-height:2.0;text-align:center" align="center">Meed helps <span style="font-weight:bold">you</span> build a better career by making it easy to create a professional identity, apply to jobs & internships and network with the industry leaders.</p>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div style="padding:30px 0">
+          <table style="margin:0 auto;width:600px">
+            <tbody><tr>
+              <td style="text-align:center" align="center">
+                <p style="color:#636d74;line-height:2.0;text-align:center" align="center">
+                  <a class="btn btn-xs btn-success" href="https://getmeed.com/?email=<%= @lead[:email] %>&referrer=<%= @invite_user.handle%>" style="-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;background: 0 0;color: #fff;text-decoration: none;display: inline-block;padding: 6px 12px;margin-bottom: 0;font-size: 20px;font-weight: 400;line-height: 1.42857143;text-align: center;white-space: nowrap;vertical-align: middle;cursor: pointer;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;background-image: none;border: 1px solid transparent;border-radius: 20px;background-color: #5cb85c;border-color: #4cae4c; width: 50%;">
+                    <span class="glyphicon glyphicon-edit" style="-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;position: relative;top: 1px;display: inline-block;font-family: 'Glyphicons Halflings';font-style: normal;font-weight: 400;line-height: 1;-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: grayscale;"></span>
+                    Join your friends on Meed
+                  </a>
+                </p>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <% if @friends.count() >= 5 %>
+          <div>
+            <table style="margin:0 auto;width:600px">
+              <tbody>
+                <tr>
+                  <td style="text-align:center" align="center">
+                    <h3 style="font-size:12px;text-transform:uppercase">Your class on Meed</h3>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="text-align:center" align="center">
+                    <% @friends.each do |friend| %>
+                      <div style="border-radius:50%;display:inline-block;margin:0 5px 20px;overflow:hidden;vertical-align:top">
+                        <img alt="<%= friend.first_name %>" height="40" src="<%= friend.small_image_url %>" title="<%= friend.first_name %>" width="40" style="border:none;display:inline-block;vertical-align:top">
+                      </div>
+                    <% end %>
+                    <div style="background:#636d74;border-radius:50%;color:#fff;display:inline-block;font-size:12px;min-height:40px;line-height:40px;margin:0 5px 20px;overflow:hidden;text-align:center;vertical-align:top;width:40px" align="center">
+                      +<%= @friend_count %>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        <% end %>
+
+        <div style="border-top-color:#d9d9d9;border-top-style:solid;border-top-width:1px;width: 600px">
+        </div>
+        <div style="padding-top:30px">
+          <table style="margin:0 auto;">
+            <tbody><tr>
+              <td style="text-align:center" align="center">
+                <h3 style="font-size:24px;font-weight:normal">What <span class="lG">you</span> can do with Meed:</h3>
+              </td>
+            </tr>
+            <tr>
+              <td style="text-align:center" align="center">
+                <div style="margin-bottom:20px">- Create a professional identity beyond your resume</div>
+                <div style="margin-bottom:20px">- Draw attention to your work and skills through a portfolio</div>
+                <div style="margin-bottom:20px">- Apply for jobs & internships that are tailored to your profile and skills</div>
+                <div style="margin-bottom:20px">- Go beyond opportunities and engage with recruiters and industry professionals</div>
+                <div style="margin-bottom:0">- Create personal branding by sharing your expertise with the community</div>
+              </td>
+            </tr>
+            </tbody></table>
+        </div>
+      </div>
+    </div></div>
+</center>
+<%= render 'notifier/email_footer' %>
+</body>
+</html>

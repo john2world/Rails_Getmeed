@@ -1,0 +1,56 @@
+<div class="feed-item-action-buttons">
+
+    <a class="button button-primary medium-small open-signup-modal"
+       ng-if="!currentUser">
+        <span class="label"><i class="fa fa-caret-up"></i> </span>
+    <span class="count" ng-if="item.kudos_count > 0">
+      {{ item.kudos_count }}
+    </span>
+    </a>
+    <a
+            class="button button-primary medium-small give-kudos"
+            ng-click="item.giveKudos()"
+            ng-if="currentUser && !item.viewer_gave_kudos">
+        <span class="label"><i class="fa fa-caret-up"></i>  <span ng-if="item.kudos_count == 0">UPVOTE</span></span>
+    <span class="count" ng-if="item.kudos_count > 0">
+      {{ item.kudos_count }}
+    </span>
+    </a>
+    <a
+            ng-if="item.viewer_gave_kudos"
+            class="button button-disabled medium-small">
+        <span class="label"><i class="fa fa-caret-up"></i>  </span>
+    <span class="count" ng-if="item.kudos_count > 0">
+      {{ item.kudos_count }}
+    </span>
+    </a>
+
+    <a ng-if="item.can_downvote" ng-click="!item.downvoted && item.downvote()" class="feed-item-action">
+
+        {{item.downvoted ? 'Downvoted' : 'Downvote'}}
+        ·
+    </a>
+
+    <a class="feed-item-action" ng-href="{{ ::item.path }}" ng-if="::item.view_count > 0">
+        <span class="label">Views</span>
+        <span class="count">{{ ::item.view_count }}</span>
+        ·
+    </a>
+
+    <a class="feed-item-action" ng-href="{{ ::item.path }}">
+        <span class="label">Permalink</span>
+        ·
+    </a>
+    <span ng-if="item.is_viewer_author">
+
+  <a class="feed-item-action edit" ng-click="edit()">
+      <span class="label">Edit</span>
+      ·
+  </a>
+
+  <a class="feed-item-action delete" ng-click="del()">
+      <span class="label">Delete</span>
+  </a>
+</span>
+    <jssocials item="item"></jssocials>
+</div>

@@ -1,0 +1,3 @@
+<% if @error.blank? %>
+$("#company_feed").html("<%= escape_javascript (render 'companies/render_feed_items', :company => @company, :feed_items => @feed_items) %>");
+<% end %>

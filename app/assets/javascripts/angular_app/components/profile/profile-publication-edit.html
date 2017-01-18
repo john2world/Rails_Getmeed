@@ -1,0 +1,59 @@
+<div class="profile-edit-section" ng-show="item.showEdit()">
+  <form
+    accept-charset="UTF-8"
+    name="publicationForm"
+    ng-submit="publicationFns.submitSave(item, publicationForm.$valid)"
+    novalidate="novalidate"
+    >
+    <fieldset class="row">
+      <label class="columns nine">
+        <span>Title</span>
+        <input
+          type="text"
+          ng-model="item.title"
+          class="u-full-width"
+          required="required" />
+      </label>
+      <label class="columns three">
+        <span>Year</span>
+        <select
+          class="u-full-width"
+          ng-model="item.year"
+          required="required"
+          ng-options="year for year in years"
+          >
+        </select>
+      </label>
+    </fieldset>
+
+    <fieldset class="row">
+      <label class="u-full-width">
+        <span>Description</span>
+        <wysihtml5-toolbar
+            wysihtml5-toolbar-id="wysihtml5-toolbar-{{item._id}}"
+            wysihtml5-textarea-id="item-description-{{item._id}}"></wysihtml5-toolbar>
+        <textarea
+          class="u-full-width"
+          id="item-description-{{item._id}}"
+          ng-model="item.description"
+          required="required"
+          ></textarea>
+      </label>
+    </fieldset>
+
+    <fieldset class="row">
+      <label class="u-full-width">
+        <span>Link (optional)</span>
+        <input type="url" ng-model="item.link" class="u-full-width">
+      </label>
+    </fieldset>
+    <p
+      ng-show="item.submitted && publicationForm.$invalid"
+      class="error">
+        Please enter valid data for all required (*) fields.
+    </p>
+    <input class="button-primary" type="submit" value="Save" />
+    <input type="button" class="button" value="Cancel"  ng-click="publicationFns.closeEdit(item, true)"/>
+
+  </form>
+</div>

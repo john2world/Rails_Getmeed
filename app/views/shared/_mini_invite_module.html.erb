@@ -1,0 +1,17 @@
+<div id="invite_friends_for_uvoting">
+  <div>
+    Invite friends who could
+    <strong><span style="text-decoration: underline">SUPPORT</span></strong> or <strong><span style="text-decoration: underline">LEARN</span></strong> from your answers. This increases your Meed score and influence in <%= current_user.major %> community.
+  </div>
+  <br/>
+
+  <div><%= text_field_tag :invite_id_1, nil, :class => 'spanTbThree', :placeholder => 'friend email' %>
+    @<%= school_prefix_handle %>
+  </div>
+  <div><%= text_field_tag :invite_id_2, nil, :class => 'spanTbThree', :placeholder => 'friend email' %>
+    @<%= school_prefix_handle %>
+  </div>
+  <div><%= text_field_tag :invite_id_3, nil, :class => 'spanTbThree', :placeholder => 'friend email' %>
+    @<%= school_prefix_handle %>
+  </div>
+</div>

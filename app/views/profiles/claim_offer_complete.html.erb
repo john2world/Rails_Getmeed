@@ -1,0 +1,34 @@
+<p class="accordion lightbox-text">
+  Enter your shipping details below!
+</p>
+<hr class="hr-header">
+<div class="any-center">
+<img alt="" src="http://res.cloudinary.com/resume/image/upload/c_scale,w_300/v1416987682/Screen_Shot_2014-11-25_at_11_40_58_PM_tnwg9e.png"/>
+</div>
+<%= form_tag({:controller => 'profiles', :action => :add_user_details}, :class => 'form-submit', :style => 'padding: 5% 28% 7%;', :html => {:multipart => true}) do %>
+    <div class="user-create any-center" style="text-align: center;">
+      <% if current_user.primary_email.blank? or current_user.primary_email.end_with? 'edu' %>
+          <%= text_field_tag :primary_email, nil, :class => 'spanTb', :value => params[:primary_email], :placeholder => 'Primary Email (*)' %>
+      <% end %>
+
+      <% if current_user.phone_number.blank? %>
+          <%= text_field_tag :phone_field, nil, :class => 'spanTb', :value => params[:phone_field], :placeholder => 'Phone Number (*for jobs)' %>
+      <% end %>
+
+      <%= text_field_tag :street_address, nil, :class => 'spanTb', :value => params[:street_address], :placeholder => 'Street Address 1 (*)' %>
+      <%= text_field_tag :street_address_2, nil, :class => 'spanTb', :value => params[:street_address], :placeholder => 'Street Address 2' %>
+      <%= text_field_tag :city, nil, :class => 'spanTb', :value => params[:city], :placeholder => 'Current City (*)' %>
+      <%= text_field_tag :state, nil, :class => 'spanTb', :value => params[:state], :placeholder => 'State (*)' %>
+      <%= text_field_tag :zip_code, nil, :class => 'spanTb', :value => params[:zip_code], :placeholder => 'Zip Code (*)' %>
+      <%= text_field_tag :t_size, nil, :class => 'spanTb', :value => params[:t_size], :placeholder => 'S,M, L, XL or XXL (*)' %>
+
+      <% if !alert.blank? %>
+          <p class="label label-important">
+            <%= alert %>
+          </p>
+      <% end %>
+      <div class="any-center">
+        <%= submit_tag 'Ship it »', :class => 'button button-green', :disable_with => 'Please wait..' %>
+      </div>
+    </div>
+<% end -%>

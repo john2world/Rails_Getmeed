@@ -1,0 +1,8 @@
+<div id="show_single_headline_<%= is_edit %>" class='user-view-table'>
+  <%= render 'render_headline_data', :is_edit => is_edit, :user => user%>
+</div>
+<% if is_edit %>
+    <div id="edit_single_headline_<%= is_edit %>" class='user-view-table' style='display: none;'>
+      <%= render 'edit_headline_form', :user => user %>
+    </div>
+<% end %>

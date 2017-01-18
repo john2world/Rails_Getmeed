@@ -1,0 +1,68 @@
+<p class="accordion lightbox-text">
+  <% if current_user.is_meediorite? %>
+      Please Add A School Channel
+  <% else %>
+      You are not eligible to view this page
+  <% end %>
+</p>
+<hr class="hr-header">
+<% unless flash[:alert].blank? %>
+    <div class="any-center">
+      <span class="label label-success"> <%= flash[:alert] %> </span>
+    </div>
+<% end %>
+
+
+<%= form_tag({:action => :add_group_submit}, :class => 'form-submit', :style => 'padding: 35px 100px 35px;', :html => {:multipart => true}) do %>
+    <div class="form-view" style="text-align: center;">
+      <div class="form-group">
+        <%= text_field_tag :name, nil, :class => 'form-control', :required => true, :placeholder => 'Name of the group (ex: Class of 2015)' %>
+      </div>
+      <div class="form-group">
+        <%= text_field_tag :link, nil, :class => 'form-control', :required => true, :placeholder => 'Link to the group' %>
+      </div>
+      <div class="form-group">
+        <%= select_tag :type, '<option>Facebook General Group</option><option>Facebook University Group</option><option>Twitter</option><option>LinkedIn</option>'.html_safe, :class => 'form-control', :id => 'select_job_type', :prompt => 'Select Source Type (*)', :required => '' %>
+      </div>
+      <div id="school_options" style="display: none;">
+        <%= select_tag :school, options_for_select(@schools.collect { |s| [s[:name], s[:_id]] }),
+                       multiple: false, :style => 'width: 100%; height: 30px', :class => 'enterprise-selectize',
+                       :prompt => 'Choose one school (*)' %>
+      </div>
+
+    </div>
+    <%= submit_tag 'Submit', :class => 'btn btn-primary', :data => {:disable_with => 'Please wait..'} %>
+<% end -%>
+<script>
+
+    $("#select_job_type").change(function () {
+        $("select option:selected").each(function () {
+
+            if ($(this).text() === 'Facebook University Group') {
+                $("#school_options").show();
+            }
+        });
+    });
+
+    var all_schools_string = [<%= @schools.map{|s| "'#{s[:_id]}'"}.join(',').html_safe %>];
+    var major_type_hash = {};
+    var schools_select = $("#school").selectize({
+        // max 25 universities
+        maxItems: 1,
+        plugins: ['remove_button'],
+        sortField: {
+            field: 'text'
+        },
+    });
+    schools_select = schools_select[0].selectize;
+
+
+    function toggle_school_select_all(object) {
+        if ($(object).is(':checked')) {
+            schools_select.setValue(all_schools_string);
+        } else {
+            schools_select.clear();
+        }
+    }
+
+</script>

@@ -1,0 +1,244 @@
+<div style="box-shadow: rgba(61, 61, 69, 0.14902) 0px 2px 1px 0px;
+        box-sizing: border-box;
+        color: rgb(34, 34, 34);
+        height: 234px;
+        width: 800px;
+        perspective-origin: 400px 117px;
+        transform-origin: 400px 117px;
+        background: rgb(255, 255, 255) none repeat scroll 0% 0% / auto padding-box border-box;
+        border: 0px none rgb(34, 34, 34);
+        border-radius: 5px 5px 5px 5px;
+        font: normal normal normal normal 15px / 24px 'Proxima Nova', 'Open Sans', 'Gill Sans MT', 'Gill Sans', Corbel, Arial, sans-serif;
+        list-style: none inside none;
+        margin: 0px 0px 10px;
+        outline: rgb(34, 34, 34) none 0px;
+        padding: 15px;">
+  <div style=" color: rgb(34, 34, 34);
+          height: 204px;
+          text-align: left;
+          width: 770px;
+          perspective-origin: 385px 102px;
+          transform-origin: 385px 102px;
+          border: 0px none rgb(34, 34, 34);
+          font: normal normal normal normal 15px / 24px 'Proxima Nova', 'Open Sans', 'Gill Sans MT', 'Gill Sans', Corbel, Arial, sans-serif;
+          list-style: none inside none;
+          outline: rgb(34, 34, 34) none 0px;">
+    <div style=" color: rgb(34, 34, 34);
+            height: 204px;
+            text-align: left;
+            width: 770px;
+            perspective-origin: 385px 102px;
+            transform-origin: 385px 102px;
+            border: 0px none rgb(34, 34, 34);
+            font: normal normal normal normal 15px / 24px 'Proxima Nova', 'Open Sans', 'Gill Sans MT', 'Gill Sans', Corbel, Arial, sans-serif;
+            list-style: none inside none;
+            outline: rgb(34, 34, 34) none 0px;">
+      <div style=" color: rgb(34, 34, 34);
+              text-align: left;
+              border: 0px none rgb(34, 34, 34);
+              font: normal normal normal normal 15px / 24px 'Proxima Nova', 'Open Sans', 'Gill Sans MT', 'Gill Sans', Corbel, Arial, sans-serif;
+              list-style: none inside none;
+              outline: rgb(34, 34, 34) none 0px;">
+        <!-- ngIf: item.caption -->
+
+        <h4 style=" color: rgb(61, 61, 69);
+                float: left;
+                height: 24px;
+                letter-spacing: -0.8px;
+                text-align: left;
+                width: 770px;
+                perspective-origin: 385px 12px;
+                transform-origin: 385px 12px;
+                border: 0px none rgb(61, 61, 69);
+                font: normal normal 300 normal 18px / 24px 'Proxima Nova', 'Open Sans', 'Gill Sans MT', 'Gill Sans', Corbel, Arial, sans-serif;
+                list-style: none inside none;
+                margin: 0px 0px 10px;
+                outline: rgb(61, 61, 69) none 0px;">
+          <a href="<%= @url %>" style="color: rgb(61, 61, 69);
+                  cursor: pointer;
+                  letter-spacing: -0.8px;
+                  text-align: left;
+                  text-decoration: none;
+                  border: 0px none rgb(61, 61, 69);
+                  font: normal normal 300 normal 18px / 24px 'Proxima Nova', 'Open Sans', 'Gill Sans MT', 'Gill Sans', Corbel, Arial, sans-serif;
+                  list-style: none inside none;
+                  outline: rgb(61, 61, 69) none 0px;"><%= @feed_item.caption %></a>
+        </h4>
+        <!-- end ngIf: item.caption -->
+
+        <!-- ngIf: !item.caption -->
+      </div>
+      <%= render 'notifier/feed_item_user', :user => @user %>
+      <abbr title="<%= @feed_item.create_time %>" style=" color: rgb(34, 34, 34);
+              display: block;
+              float: right;
+              height: 19px;
+              text-align: left;
+              width: 95.9531px;
+              perspective-origin: 47.9688px 10px;
+              transform-origin: 47.9688px 10px;
+              border-top: 0px none rgb(34, 34, 34);
+              border-right: 0px none rgb(34, 34, 34);
+              border-bottom: 1px dotted rgb(34, 34, 34);
+              border-left: 0px none rgb(34, 34, 34);
+              font: normal normal normal normal 12px / 19.2px 'Proxima Nova', 'Open Sans', 'Gill Sans MT', 'Gill Sans', Corbel, Arial, sans-serif;
+              list-style: none inside none;
+              margin: 5px 10px 0px 0px;
+              outline: rgb(34, 34, 34) none 0px;">about <%= time_ago_in_words(@feed_item.create_time) %> ago</abbr>
+
+      <div style=" color: rgb(34, 34, 34);
+              float: right;
+              height: 19px;
+              text-align: left;
+              width: 60.2812px;
+              perspective-origin: 30.1406px 9.5px;
+              transform-origin: 30.1406px 9.5px;
+              border: 0px none rgb(34, 34, 34);
+              font: normal normal normal normal 12px / 19.2px 'Proxima Nova', 'Open Sans', 'Gill Sans MT', 'Gill Sans', Corbel, Arial, sans-serif;
+              list-style: none inside none;
+              margin: 5px 10px 0px 0px;">
+
+      </div>
+      <div style="color: rgb(34, 34, 34);
+              float: left;
+              position: relative;
+              text-align: left;
+              width: 708.391px;
+              perspective-origin: 354.188px 65px;
+              transform-origin: 354.188px 65px;
+              border: 0px none rgb(34, 34, 34);
+              font: normal normal normal normal 15px / 24px 'Proxima Nova', 'Open Sans', 'Gill Sans MT', 'Gill Sans', Corbel, Arial, sans-serif;
+              list-style: none inside none;
+              margin: 0px 0px 0px 50px;
+              outline: rgb(34, 34, 34) none 0px;">
+        <!-- ngIf: feedItem.small_image_url -->
+
+        <div style=" color: rgb(34, 34, 34);
+                float: left;
+                height: 53px;
+                text-align: center;
+                width: 150px;
+                perspective-origin: 75px 26.5px;
+                transform-origin: 75px 26.5px;
+                border: 0px none rgb(34, 34, 34);
+                font: normal normal normal normal 15px / 24px 'Proxima Nova', 'Open Sans', 'Gill Sans MT', 'Gill Sans', Corbel, Arial, sans-serif;
+                list-style: none inside none;
+                margin: 0px 10px 0px 0px;
+                outline: rgb(34, 34, 34) none 0px;">
+          <a href="<%= @url %>" style="  color: rgb(0, 166, 81);
+                  cursor: pointer;
+                  text-align: center;
+                  text-decoration: none;
+                  border: 0px none rgb(0, 166, 81);
+                  font: normal normal normal normal 15px / 24px 'Proxima Nova', 'Open Sans', 'Gill Sans MT', 'Gill Sans', Corbel, Arial, sans-serif;
+                  list-style: none inside none;
+                  outline: rgb(0, 166, 81) none 0px;"><img src="<%= @feed_item.medium_image_url %>" style="  color: rgb(0, 166, 81);
+                  cursor: pointer;
+                  height: 45px;
+                  max-height: 150px;
+                  max-width: 150px;
+                  text-align: center;
+                  width: 150px;
+                  perspective-origin: 75px 22.5px;
+                  transform-origin: 75px 22.5px;
+                  border: 0px none rgb(0, 166, 81);
+                  font: normal normal normal normal 15px / 24px 'Proxima Nova', 'Open Sans', 'Gill Sans MT', 'Gill Sans', Corbel, Arial, sans-serif;
+                  list-style: none inside none;
+                  outline: rgb(0, 166, 81) none 0px;" alt=''/></a>
+        </div>
+        <!-- end ngIf: feedItem.small_image_url -->
+
+        <div style="color: rgb(34, 34, 34);
+                height: 18px;
+                overflow-wrap: break-word;
+                text-align: left;
+                width: 708.391px;
+                word-wrap: break-word;
+                perspective-origin: 354.188px 9px;
+                transform-origin: 354.188px 9px;
+                border: 0px none rgb(34, 34, 34);
+                font: normal normal normal normal 15px / 18px 'Proxima Nova', 'Open Sans', 'Gill Sans MT', 'Gill Sans', Corbel, Arial, sans-serif;
+                list-style: none inside none;
+                outline: rgb(34, 34, 34) none 0px;">
+          <a href="<%= @url %>" style="  color: rgb(82, 183, 203);
+                  cursor: pointer;
+                  overflow-wrap: break-word;
+                  text-align: left;
+                  text-decoration: none;
+                  word-wrap: break-word;
+                  border: 0px none rgb(82, 183, 203);
+                  font: normal normal normal normal 15px / 18px 'Proxima Nova', 'Open Sans', 'Gill Sans MT', 'Gill Sans', Corbel, Arial, sans-serif;
+                  list-style: none inside none;
+                  outline: rgb(82, 183, 203) none 0px;"><%= @feed_item.title %></a>
+        </div>
+        <div style=" color: rgb(136, 136, 136);
+                height: 20px;
+                overflow-wrap: break-word;
+                text-align: left;
+                width: 708.391px;
+                word-wrap: break-word;
+                perspective-origin: 354.188px 10px;
+                transform-origin: 354.188px 10px;
+                border: 0px none rgb(136, 136, 136);
+                font: normal normal 300 normal 12px / 19.2px 'Proxima Nova', 'Open Sans', 'Gill Sans MT', 'Gill Sans', Corbel, Arial, sans-serif;
+                list-style: none inside none;
+                outline: rgb(136, 136, 136) none 0px;">
+                              <span style=" color: rgb(136, 136, 136);
+                                      overflow-wrap: break-word;
+                                      text-align: left;
+                                      word-wrap: break-word;
+                                      border: 0px none rgb(136, 136, 136);
+                                      font: normal normal 300 normal 12px / 19.2px 'Proxima Nova', 'Open Sans', 'Gill Sans MT', 'Gill Sans', Corbel, Arial, sans-serif;
+                                      list-style: none inside none;
+                                      outline: rgb(136, 136, 136) none 0px;">added to <a href="http://localhost:3000/<%= @feed_item.poster_id %>/collection/<%= @feed_item.poster_id %>_meed-design-community/56002d9978cb77de47000002" style=" color: rgb(0, 166, 81);
+                                      cursor: pointer;
+                                      overflow-wrap: break-word;
+                                      text-align: left;
+                                      text-decoration: none;
+                                      word-wrap: break-word;
+                                      border: 0px none rgb(0, 166, 81);
+                                      font: normal normal bold normal 13px / 20.8px 'Proxima Nova', 'Open Sans', 'Gill Sans MT', 'Gill Sans', Corbel, Arial, sans-serif;
+                                      list-style: none inside none;
+                                      outline: rgb(0, 166, 81) none 0px;"><%= @feed_item[:collection_name] %></a></span>
+        </div>
+        <div style="  bottom: 0px;
+                color: rgb(34, 34, 34);
+                height: 49px;
+                left: 160px;
+                position: absolute;
+                right: 0px;
+                text-align: left;
+                width: 548.391px;
+                align-self: stretch;
+                perspective-origin: 274.188px 24.5px;
+                transform-origin: 274.188px 24.5px;
+                border: 0px none rgb(34, 34, 34);
+                font: normal normal normal normal 15px / 24px 'Proxima Nova', 'Open Sans', 'Gill Sans MT', 'Gill Sans', Corbel, Arial, sans-serif;
+                list-style: none inside none;
+                outline: rgb(34, 34, 34) none 0px;">
+          <div style="color: rgb(34, 34, 34);
+                  float: left;
+                  height: 36px;
+                  text-align: left;
+                  perspective-origin: 70.5469px 23px;
+                  transform-origin: 70.5469px 23px;
+                  border: 0px none rgb(34, 34, 34);
+                  font: normal normal normal normal 15px / 24px 'Proxima Nova', 'Open Sans', 'Gill Sans MT', 'Gill Sans', Corbel, Arial, sans-serif;
+                  list-style: none inside none;
+                  outline: rgb(34, 34, 34) none 0px;
+                  padding: 10px 0px 0px;">
+            <span>Upvotes: <%= @feed_item.kudos_count %></span>
+            <!-- end ngIf: item.kudos_count > 0 -->
+
+            <!-- end ngIf: !item.viewer_gave_kudos -->
+
+            <span>Comments: <%= @feed_item.comment_count %></span>
+            <!-- end ngIf: item.comment_count > 0 -->
+
+            <span>Views: <%= @feed_item.view_count %></span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+
+<%= form_tag({:action => 'verify'}, :class => 'well span5', :html => {:multipart => true}) do %>
+    <p class="accordion lightbox-text">Verify Email
+    </p>
+    <div class="form-view">
+      <div style="text-align: center;">
+        <label style="color: #333333;font-size: 15px;"><%= text_field_tag :email, nil, :placeholder => 'Email: sam@usc.edu' %></label>
+        <% if !alert.blank? %>
+            <p class="label label-important">
+              <%= alert%>
+            </p>
+            <br/>
+        <% else %>
+            <p class="accordion" style="text-align:center;font-size: 10px; color: #999999">
+              *Enter your school email to sign up.
+            </p>
+      <% end %>
+
+        <%= submit_tag 'Continue »', :class => 'button button-green',:disable_with => 'Sending email..' %>
+        <br/>
+        <br/>
+        <label style="text-align:center;font-size: 10px;">Already registered? <%= link_to 'sign in', '/login' %></label>
+      </div>
+    </div>
+<% end -%>
+
+
+
+

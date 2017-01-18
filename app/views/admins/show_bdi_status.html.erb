@@ -1,0 +1,45 @@
+<p class="accordion lightbox-text">BDI's Status for last <%= params[:days].to_i %> days
+</p>
+<hr class="hr-header">
+<div id="content">
+  <div id="my-tab-content" class="tab-content">
+    <table class="table">
+      <tr>
+        <td class="job-applicant-heading">
+          BDI handle
+        </td>
+        <td class="job-applicant-heading">
+          Job Count
+        </td>
+        <td class="job-applicant-heading">
+          View Count
+        </td>
+        <td class="job-applicant-heading">
+          Apply Count
+        </td>
+      </tr>
+      <% unless @results.blank? %>
+        <% @results.each do |result| %>
+          <% if !result.blank? %>
+            <tr>
+              <td class="job-applicant-td">
+                <a href="<%= url_for :controller => 'admins', :action => 'show_bdi_job_status', :handle => result[:handle] %>" class="job-applicant-name" target="_blank">
+                  <%= result[:handle] %>
+                </a>
+              </td>
+              <td class="job-applicant-td">
+                <%= result[:jobs_count] %>
+              </td>
+              <td class="job-applicant-td">
+                <%= result[:view_count] %>
+              </td>
+              <td class="job-applicant-td">
+                <%= result[:apply_count] %>
+              </td>
+            </tr>
+          <% end %>
+        <% end %>
+      <% end %>
+    </table>
+  </div>
+</div>

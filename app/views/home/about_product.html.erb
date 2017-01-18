@@ -1,0 +1,57 @@
+<% if current_user.blank? %>
+    <p class="article-banner-ad">
+      <span>Are you a current student or college grad?</span>
+      <a href="/" style="font-weight: bold"> Sign Up</a>
+      for Meed
+    </p>
+<% end %>
+ <hr class="hr-header">
+<p class="accordion lightbox-text">How to hire from Universities? <br/> <span class="info-text-large">(For Employers)</span>
+</p>
+<hr class="hr-header">
+<div class="form-view" align="center">
+  <ul style="list-style-type:none">
+    <li class="list-jobs">
+      <hr class="job-create-hr">
+      <p class="job-create-heading">
+        <span> 1.</span> Post jobs to top universities filtered by majors — <a href="/jobs/start">here</a>.
+      </p>
+      <hr class="job-create-hr">
+    </li>
+    <li>
+    </li>
+    <li class="list-jobs">
+      <span><img class="img-border" src="<%= asset_path 'product_explanation_schools.png' %>"></span>
+    </li>
+    <li class="list-jobs">
+      <hr class="job-create-hr">
+      <p class="job-create-heading">
+         2. Track/download resumes from all schools with a simple link —
+      </p>
+      <hr class="job-create-hr">
+    </li>
+    <li class="list-jobs">
+      <span><img class="img-border" src="<%= asset_path 'product_explanation_job_status.png' %>"></span>
+    </li>
+    <li class="list-jobs">
+      <hr class="job-create-hr">
+      <p class="job-create-heading">
+          3. Get email notification for each and every application —
+      </p>
+      <hr class="job-create-hr">
+    </li>
+    <li class="list-jobs">
+      <span><img class="img-border" src="<%= asset_path 'product_explanation_email.png' %>"></span>
+    </li>
+    <li class="list-jobs">
+      <hr class="job-create-hr">
+      <p class="job-create-heading">
+         4. Promote your company culture and build brand —
+      </p>
+      <hr class="job-create-hr">
+    </li>
+    <li class="list-jobs">
+      <span><img class="img-border" src="<%= asset_path 'product_explanation_culture.png' %>"></span>
+    </li>
+  </ul>
+</div>

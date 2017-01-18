@@ -1,0 +1,44 @@
+<% if current_user.blank? %>
+    <p class="accordion lightbox-text">
+      Thanks for your patience!
+    </p>
+    <hr class="hr-header">
+    <%= form_tag({:controller => 'connections', :action => 'save'}, :class => 'form-submit-small', :html => {:multipart => true}) do %>
+        We shall notify you once we are open, see you soon!
+    <% end %>
+<% else %>
+    <hr class="job-create-hr" style="margin-top: 7%">
+    <p class="job-create-heading offset1">
+      Include following people:
+    </p>
+    <hr class="job-create-hr">
+    <%= form_tag({:controller => 'connections', :action => 'save'}, :class => 'form-submit-small', :html => {:multipart => true}) do %>
+        <% if @school_contacts.blank? %>
+            <div class="row" style="text-align: center;margin-bottom: 10%;">
+              <span style="font-size: 20px"> No <%= @school_prefix %> emails found!</span>
+            </div>
+            <a href="/<%= current_user.handle %>?reg=true" class="anchor-tag-button button-green" style="margin-top: 3%;text-decoration: none">Show my dashboard</a>
+
+        <% else %>
+            <div class="row" style="text-align: center;margin-bottom: 10%;">
+              <%= hidden_field_tag :show_easter, params[:showEaster], :id => 'course_hidden' %>
+              <div class="job-school-title">
+                <strong><%= check_box_tag 'contact_all_checkbox', 'all', true %> Select All</strong></div>
+              <% @school_contacts.each_with_index do |contact, index| %>
+                  <div class="contact-title">
+                    <%= check_box_tag "contact_#{contact[:email]}", contact[:_id], true %>
+                    <%= contact[:first_name] %>
+                    <% unless contact[:last_name].blank? %>
+                        <%= contact[:last_name] %>
+                    <% end %>   — <%= contact[:email] %>
+                  </div>
+              <% end %>
+            </div>
+            <div>
+              <%= submit_tag 'Include', :class => 'button button-blue', :disable_with => 'Inviting..' %>
+              <a href="/home" style="margin-left: 3%; text-decoration: none">Cancel</a>
+            </div>
+
+        <% end %>
+    <% end %>
+<% end %>

@@ -1,0 +1,59 @@
+<div class="main-wrap">
+  <div class="main">
+    <div id="contact-inner" class="main-inner-wrap">
+      <div class="row">
+        <h1>Contact Us!</h1>
+        <form
+                class="contact-form"
+                name="contactForm"
+                ng-submit="submitContact(contactForm.$invalid)"
+                novalidate="novalidate"
+                ng-show="showContactForm()"
+                >
+          <fieldset class="row">
+            <input class="columns six"
+                   name="email"
+                   ng-model="item.email"
+                   ng-pattern="generalEmailPattern"
+                   placeholder="Enter your email"
+                   required="required"
+                   type="email">
+            <input class="columns six"
+                   name= "subject"
+                   ng-model="item.subject"
+                   ng-minlength="10"
+                   placeholder="Subject"
+                   required="required"
+                   type="text">
+            <p ng-show="contactForm.email.$invalid && !contactForm.email.$pristine"
+               class="error">
+              Please enter a valid email address.
+            </p>
+            <p ng-show="contactForm.subject.$invalid && !contactForm.subject.$pristine && contactForm.subject.$error.minlength"
+               class="error">
+              Subject too short.
+            </p>
+          </fieldset>
+          <fieldset class="row">
+            <textarea class="u-full-width"
+                      name="message"
+                      ng-model="item.body.text"
+                      ng-minlength="25"
+                      placeholder="Message"
+                      required="required"
+                      type="text"></textarea>
+            <p ng-show="contactForm.message.$invalid && !contactForm.message.$pristine && contactForm.message.$error.minlength"
+               class="error">
+              Message too short.
+            </p>
+          </fieldset>
+          <input class="button-primary" type="submit" value="Send" />
+        </form>
+        <p ng-show="!showContactForm()">
+          Thanks for your message. We'll get back to you shortly.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+

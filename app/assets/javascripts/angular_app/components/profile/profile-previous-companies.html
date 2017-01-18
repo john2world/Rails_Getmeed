@@ -1,0 +1,24 @@
+<div class="profile-previous-companies profile-section" >
+    <div class="profile-previous-companies-show" ng-if="!showEdit('previous-companies')">
+        <h3>
+            PREVIOUS COMPANIES
+            <a class="open-profile-edit-previous-companies edit-link"
+               ng-click="editPreviousCompany()"
+               ng-show="profile.is_viewer_profile">
+                <i class="fa fa-pencil-square-o"></i> Edit
+            </a>
+        </h3>
+
+        <p class="profile-previous-companies">  <span ng-repeat="name in profile.user.company_names">{{ ::name }}{{$last ? '' : ', '}} </span></p>
+    </div>
+    <div class="profile-edit-section" id="profile-edit-previous-companies" ng-if="showEdit('previous-companies')">
+        <form accept-charset="UTF-8" ng-submit="submitUpdatePreviousCompany()">
+            <h3 class="u-full-width"> PREVIOUS COMPANIES</h3>
+            <fieldset class="row">
+                <tag-company only-one="false" model="formData.company_ids"></tag-company>
+            </fieldset>
+            <input class="button-primary" type="submit" value="Save" />
+            <input type="button" class="button close-modal" value="Cancel"  ng-click="closePreviousCompany(true)"/>
+        </form>
+    </div>
+</div>

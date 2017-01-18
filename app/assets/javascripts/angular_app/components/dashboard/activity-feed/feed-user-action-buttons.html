@@ -1,0 +1,19 @@
+<div class="feed-item-action-buttons" ng-if="currentUser && currentUser.handle != item.poster_id && !item.is_viewer_following" >
+    <a class="button button-primary-inverse medium-small"
+       ng-click="item.follow()"
+       tooltips title="Follow {{ ::item.user.first_name }}" tooltip-side="bottom">
+        <span class="label"><i class="fa fa-user-plus"></i> Follow</span>
+
+        <span class="count" ng-if="item.user.follower_count > 50">
+          {{ item.user.follower_count }}
+        </span>
+    </a>
+    <a class="button button-red-inverse medium-small open-signup-modal"
+       ng-if="!currentUser" tooltips title="Follow {{ ::item.user.first_name }}" tooltip-side="bottom">
+        <span class="label"><i class="fa fa-user-plus"></i> Follow</span>
+
+        <span class="count" ng-if="item.user.follower_count > 50">
+          {{ item.user.follower_count }}
+        </span>
+    </a>
+</div>

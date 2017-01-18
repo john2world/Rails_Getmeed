@@ -1,0 +1,2 @@
+$("#<%= @position %>_jobs").html("<%= escape_javascript (render 'jobs/load_jobs' , :jobs=> @jobs ) %>");
+$(".consumer-selectize").selectize();

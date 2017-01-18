@@ -1,0 +1,15 @@
+<div class="poster-logo">
+  <a ng-href="/company/{{ ::company._id }}">
+    <img ng-src="{{ ::company.company_logo}}" />
+  </a>
+</div>
+<div class="poster-name-and-headline">
+  <p class="name-and-helper">
+    <span class="poster-name">
+      <a ng-href="/company/{{ ::company._id }}">
+        {{ ::company.name }}
+      </a>
+    </span>
+    <span class="helper-text">{{ ::helper_text }}</span>
+  </p>
+</div>

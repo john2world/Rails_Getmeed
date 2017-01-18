@@ -1,0 +1,60 @@
+<%= form_tag({:action => :account_easy, :token => params[:token]}, :class => 'login-form', :remote => true, :html => {:multipart => true}) do %>
+    <div class="form-group col-md-4 col-sm-4 col-xs-4 ">
+      <%= text_field_tag :primary_email, nil, :class => 'form-control', :type => 'email', :required => '', :value => params[:primary_email], :placeholder => 'Primary Email (*)' %>
+    </div>
+    <div class="form-group col-md-4 col-sm-4 col-xs-4 ">
+      <%= text_field_tag :first_name, nil, :class => 'form-control', :required => '', :value => params[:first_name], :placeholder => 'First Name (*)' %>
+    </div>
+    <div class="form-group col-md-4 col-sm-4 col-xs-4 ">
+      <%= text_field_tag :last_name, nil, :class => 'form-control', :required => '', :value => params[:last_name], :placeholder => 'Last Name (*)' %>
+    </div>
+    <div class="form-group col-md-4 col-sm-4 col-xs-4 ">
+      <%= text_field_tag :year, nil, :class => 'form-control', :required => '', :pattern => '^\d{4}$', :value => params[:year], :placeholder => 'Grad Year ex: 2015' %>
+    </div>
+    <div class="form-group col-md-4 col-sm-4 col-xs-4 ">
+      <%= text_field_tag :phone_field, nil, :class => 'form-control', :required => '', :pattern => '^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$',:value => params[:phone_field], :placeholder => '111-222-3333 (*)' %>
+    </div>
+    <div class="form-group">
+      <%= text_field_tag :headline, nil, :class => 'form-control', :required => '', :value => params[:headline], :placeholder => 'A short description of your professional self (Not more than 5-6 words!)' %>
+      <span class="info-text-small">
+            ex: “Class of 2015 Berkeley” or "Data Analyst Intern, NYU 2016"  or "Data Analyst Intern, NYU 2016"
+    </span>
+    </div>
+
+    <div class="form-group">
+      <%= select_tag :degree, options_for_select(@degrees.blank? ? {} : @degrees.map { |d| [d, d] }, @selected_degree), :style => 'width: 100%; height: 40px', :class => 'consumer-selectize-signup', :prompt => 'Degree (*) Ex: Master of Science' %>
+    </div>
+    <div class="form-group">
+      <%= select_tag :major, options_for_select(@majors.blank? ? {} : @majors.map { |u| [u.major, u.id] }, @selected_major), :style => 'width: 100%; height: 40px', :class => 'consumer-selectize-signup', :prompt => 'Select Major (*)' %>
+    </div>
+    <div class="form-group">
+      <%= select_tag :minor, options_for_select(@majors.blank? ? {} : @majors.map { |u| [u.major, u.id] }, @selected_minor), :style => 'width: 100%; height: 40px', :class => 'consumer-selectize-signup', :prompt => 'Select Minor' %>
+    </div>
+    <div class="form-group">
+      <%= password_field_tag :password, nil, :class => 'form-control', :required => '', :placeholder => 'Choose Password ****' %>
+    </div>
+    <div class="form-group">
+      <label style="color: #333333;font-size: 15px;">
+        <span>getmeed.com/</span>
+        <%= text_field_tag :handle, nil, :value => @handle, :required => '', :style => 'font-weight:bold;height:20px;width:100px' %>
+        <button onclick="checkHandle(); return false;"><span class="glyphicon glyphicon-check"></span></button>
+        <span id="handle_check_response" style="font-size: 12px"></span>
+      </label>
+    </div>
+
+    <div class="form-group any-center">
+      <label style="font-size: 14px;">
+        <%= check_box_tag :alumni, "", (params.blank? || params[:alumni].blank? || params[:alumni]["checked"].blank?) %>
+        Are you
+        <strong><%= @school_handle %> alumni</strong>?
+      </label>
+    </div>
+
+
+    <div class="any-center">
+      <%= button_tag(type: 'submit', class: 'btn btn-primary btn-primary', :data => {:disable_with => 'Please wait..'}) do %>
+          Continue
+      <% end %>
+    </div>
+
+<% end -%>

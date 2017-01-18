@@ -1,0 +1,86 @@
+<% if is_profile_incomplete %>
+    <%= render 'shared/incomplete_profile' %>
+<% end %>
+<% if current_user.blank? %>
+    <div id="top_signup_banner">
+      To follow for this company and other companies,
+      <a href="/" target="_blank">Sign Up</a> for Meed!
+    </div>
+<% end %>
+<div class="galleria">
+  <% unless @company[:photos].blank? %>
+      <% @company[:photos].each do |photo| %>
+          <img src='<%= photo.large_image_url %>' data-title="<%= photo.description %>"/>
+      <% end %>
+  <% end %>
+  <% @company.get_video_urls.each do |video_url| %>
+      <a href="<%= video_url %>"><span class="video"></span></a>
+  <% end %>
+</div>
+<div class="any-center">
+  <%= hidden_field_tag :id, @company[:_id], :id => 'blog_hidden' %>
+  <% if @company[:company_logo].blank? %>
+      <img class="img-circle image-medium" src="https://res.cloudinary.com/resume/image/upload/c_scale,w_100/v1424141642/http_library.oregonmetro.gov_rlisdiscovery_browse_graphic_placeholder_lgdixu.png">
+  <% else %>
+      <% if @company[:culture_photo_ids].blank? %>
+          <img class="image-medium company-picture-holder" src="<%= @company[:company_logo] %>">
+      <% else %>
+          <img class="image-medium company-picture-holder" src="<%= @company[:company_logo] %>">
+      <% end %>
+      <div>
+        <hr class="hr-profile-item">
+      </div>
+  <% end %>
+</div>
+<div class="row">
+  <% if @company.blank? %>
+      <div class="profile-insight" style="text-align: center">
+        <span> Doh! This job must have been deleted.</span>
+      </div>
+  <% else %>
+      <%= render 'companies/render_company_content' %>
+  <% end %>
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        if (location.hash != '') {
+            $('a[href="#' + location.hash + '"]').tab('show');
+        }
+    });
+    loadGalleria();
+    loadCompanyFeed('<%= @company.id %>', 'all');
+    <% unless @major_data_string.blank? %>
+    major_data = <%= raw(@major_data_string) %>;
+    load_insights_data_major(major_data);
+    <% end %>
+    <% unless @hiring_major_year_data_string.blank? %>
+    major_year_data = <%= raw(@hiring_major_year_data_string) %>;
+    load_insights_data_major_year(major_year_data);
+    <% end %>
+    <% unless @skills_data_string.blank? %>
+    skills_data = <%= raw(@skills_data_string) %>;
+    load_insights_data_skills(skills_data);
+    <% end %>
+    <% unless @interview_experience_data_string.blank? %>
+    exp_data = <%= raw(@interview_experience_data_string) %>;
+    load_insights_data_interview_experience(exp_data);
+    <% end %>
+    <% unless @hiring_sources_data_string.blank? %>
+    sources_data = <%= raw(@hiring_sources_data_string) %>;
+    load_insights_data_Hiring_sources(sources_data);
+    <% end %>
+    // define the JSON data
+    var image_data = [];
+    <% @company[:photos].each do |photo| %>
+    image_data.push({
+        image: '<%= photo.large_image_url %>',
+        thumb: '<%= photo.large_image_url %>',
+        description: '<%= photo.description %>'
+    });
+    <% end %>
+    //    var photo_urls = [];
+    //    photo_urls.push('https://res.cloudinary.com/resume/image/upload/c_scale,w_1000/v1425428847/14393607719_f34f6ce448_o_auogth.jpg');
+    //    $.backstretch(photo_urls, {duration: 7000, fade: 750});
+</script>

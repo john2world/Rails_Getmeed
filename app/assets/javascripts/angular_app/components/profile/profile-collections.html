@@ -1,0 +1,40 @@
+<div class="profile-collections">
+
+  <div class="created-collections" ng-if="::profile.collections">
+    <div class="details">Groups created by <strong>{{::profile.user.first_name }}</strong></div>
+      <ul class="collections-list">
+          <li ng-if="currentUser" class="collection-list-entry">
+              <div class="add-new-wrap">
+                  <a ng-href="/collections/new/{{ category._id }}" class="add-new-collection">
+                      <span class="plus">+</span>
+                      <span class="add">Create Group</span>
+                  </a>
+              </div>
+          </li>
+
+          <collection-list-entry
+                  ng-repeat="c in profile.collections"
+                  collection="c"
+                  user-collections="userCollections"
+                  current-user="currentUser"
+                  >
+          </collection-list-entry>
+      </ul>
+
+  </div>
+
+  <div class="followed-collections" ng-if="::profile.followed_collections">
+      <div class="details">Groups joined by <strong>{{::profile.user.first_name }}</strong></div>
+      <ul class="collections-list">
+
+          <collection-list-entry
+
+                  ng-repeat="c in profile.followed_collections"
+                  collection="c"
+                  user-collections="userCollections"
+                  current-user="currentUser"
+                  >
+          </collection-list-entry>
+      </ul>
+  </div>
+</div>

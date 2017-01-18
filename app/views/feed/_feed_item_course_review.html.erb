@@ -1,0 +1,64 @@
+<% unless data.blank? %>
+    <div class="blog-list blog-category-list">
+      <%= render 'feed/feed_item_type', :data => data %>
+      <article class="post col-md-12 col-sm-12 col-xs-12 col-md-offset-0 col-sm-offset-0 col-xs-offset-0">
+        <div class="post-inner">
+          <div class="content feed-container">
+            <% if data[:user].blank? %>
+                <div class="date-label">
+                  <img class="img-responsive image-small" src="https://res.cloudinary.com/resume/image/upload/c_scale,w_100/v1439261124/Tj8Bja7s2x85kzFSR6mkbRtRp7pTAL6ltBBVVeO1Fnarzs4I2T1AdsUzFo9-FJ-iAW3y_w300_evru5o.png">
+                </div>
+            <% else %>
+                <div class="date-label">
+                  <a href="/<%= data[:user].handle %>">
+                    <% if data[:user].is_meediorite? %>
+                        <div class="user-image-badge">M</div>
+                    <% end %>
+                    <% if data[:user][:image_url].blank? %>
+                        <img class="img-responsive image-small" src="http://res.cloudinary.com/resume/image/upload/v1409877319/user_male4-128_q1iypj_lgzk5i.jpg">
+                    <% else %>
+                        <img class="img-responsive image-small" src="<%= data[:user][:image_url] %>"/>
+                    <% end %>
+                  </a>
+                </div>
+            <% end %>
+            <div class="article-container">
+              <% unless data.title.blank? %>
+                  <div class="post-title"><a href="<%= data.url %>"><%= data.title %></a></div>
+              <% end %>
+
+              <div class="meta">
+                <ul class="meta-list list-inline">
+                  <li class="post-author">
+                    <%= data.tag_line %>&nbsp;&nbsp;
+                  </li>
+                  <li class="post-comments-link">
+                    <i class="glyphicon glyphicon-map-marker"><%= data[:school].id.upcase %></i>&nbsp;&nbsp;
+                  </li>
+                  <li class="post-comments-link">
+                    <i class="fa fa-user"></i>
+                    <% if data[:user].blank? %>
+                        Anonymous
+                    <% else %>
+                        <a href="/<%= data[:user].handle %>" target="_blank"> <%= data[:user].first_name %> </a>
+                    <% end %>
+                    &nbsp;&nbsp;
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="post-entry">
+              <% unless data[:description].blank? %> 
+                  <%= Sanitize.clean(data[:description].truncate(500, :omission => '..').html_safe) %>
+              <% end %>
+            </div>
+            <input id="course_review_stars_<%= data[:_id] %>" class="rating" data-readonly="true" data-size="xs" value="<%= data[:caption].split(' ')[1].split('.')[0].to_i %>">
+            <br>
+            <div id="feed-actions-<%= data[:_id] %>"> 
+              <%= render 'feed/feed_actions', :data => data, :position => '' %> 
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+<% end %>

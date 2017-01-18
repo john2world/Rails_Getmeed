@@ -1,0 +1,110 @@
+<div class="bg-slider-wrapper work-references">
+</div>
+<!--//bg-slider-wrapper-->
+
+<section class="promo section section-on-bg" data-sr='enter bottom and scale up 20% over 1s and reset'>
+  <div class="container text-center">
+    <div class="any-center">
+      <img src="https://res.cloudinary.com/resume/image/upload/c_scale,w_120/v1427155934/crescent_green_rt6rit.png" style="padding: 20px;">
+    </div>
+    <div class="jumbotron" style="background-color: white; color: black">
+      <% if @result %>
+        <h2>Reference for <%= @user.name %></h2>
+        <%= form_tag({:controller => 'reviews', :action => 'work_reference_submit'}, :html => {:multipart => true}, :remote => true, :id => 'work_reference_form') do %>
+          <%= hidden_field_tag :invite_id, encode_id(@invite.id), :id => 'invite_id' %>
+          <%= hidden_field_tag :profile_text, "", :id => 'profile_text' %>
+          <div class="panel panel-primary">
+            <!-- Default panel contents -->
+            <div class="panel-heading">
+              <span style="text-align: left; float: left"><%= @work.title %> @ <%= @work.company %> </span>
+              <span style="text-align: right; float: right;">[<%= @work.start_month %> - <%= @work.start_year %>,
+                <% if @work.end_year.blank? %>
+                  Present
+                <% else %>
+                  <%= @work.end_month %> - <%= @work.end_year %>
+                <% end %>
+                ]
+              </span>
+              <div style="clear:both"></div>
+            </div>
+            <div class="panel-body show-before-login">
+              <p style="font-size: 15px">Please authenticate with LinkedIn to write a reference.</p>
+            </div>
+            <div class="panel-body show-after-login" style="display: none">
+              <%= text_area :review, :text, :class => 'form-control dont-show-wysiwyg', :required => '', :placeholder => 'Write a few words about the work', :rows => 5 %>
+              <p id="message"></p>
+            </div>
+          </div>
+          <div class="show-before-login">
+            <a href="javascript:onLinkedInLoad()"><img src="http://res.cloudinary.com/resume/image/upload/v1439368614/Sign-In-Small---Default_nlmdjp.png"></a>
+          </div>
+          <div class="show-after-login" style="display: none;">
+            <%= button_tag(type: 'submit', class: 'btn btn-primary btn-primary', :data => {:disable_with => 'Sending'}) do %>
+              Submit
+            <% end %>
+          </div>
+        <% end %>
+      <% else %>
+        <div class="panel panel-danger">
+          <!-- Default panel contents -->
+          <div class="panel-heading">
+            <p><%= @message %></p>
+          </div>
+          <% if @invite_fulfilled %>
+            <div class="panel-body">
+              <p>You have already finished writing a reference for the invite!</p>
+            </div>
+          <% else %>
+            <div class="panel-body">
+              <p>Sorry we encountered an error. Rest assured that our team of trained minions will be looking into it!</p>
+            </div>
+          <% end %>
+        </div>
+        <p><a class="btn btn-primary btn-lg" href="/contact" role="button">Contact Us</a></p>
+      <% end %>
+    </div>
+  </div>
+</section>
+
+<script type="text/javascript" src="//platform.linkedin.com/in.js">
+  api_key: <%= ENV['linkedin_client_js_appid'] %>
+  authorize: true
+</script>
+
+<script type="text/javascript">
+
+  // Setup an event listener to make an API call once auth is complete
+  function onLinkedInLoad() {
+    IN.UI.Authorize().place();
+    IN.Event.on(IN, "auth", function () { onLogin(); });
+  }
+
+  function onLogin() {
+    IN.API.Profile("me").fields("firstName", "lastName", "emailAddress", 'id', 'headline', 'summary', 'public-profile-url', 'positions').result(saveResult).error(onError);
+  }
+  function saveResult(profiles) {
+    member = profiles.values[0];
+    val_string = JSON.stringify(member);
+    $(".show-before-login").hide();
+    $(".show-after-login").show();
+    $("#profile_text").val(val_string);
+  }
+
+  // Handle the successful return from the API call
+  function onSuccess(data) {
+    console.log(data);
+  }
+
+  // Handle an error response from the API call
+  function onError(error) {
+    console.log(error);
+  }
+
+  // Use the API call wrapper to request the member's basic profile data
+  function getProfileData() {
+    IN.API.Raw("/people/~").result(onSuccess).error(onError);
+  }
+
+</script>
+
+<!--//promo-->

@@ -1,0 +1,66 @@
+<%= form_tag({:action => 'save_experience'}, :id => 'form_' + encode_id(experience[:_id]), :remote => true) do %>
+    <%= hidden_field_tag :hidden_id, encode_id(experience[:_id]), :id => 'experience_hidden' %>
+    <div class="form-inline">
+      <div class="form-group">
+        <% if experience[:company].blank? %>
+            <%= text_field_tag :experience_company, nil, :placeholder => 'ex: Microsoft', :class => 'form-control', :required => '' %>
+        <% else %>
+            <%= text_field_tag :experience_company, nil, :value => experience[:company], :placeholder => 'ex: Microsoft', :class => 'form-control', :required => '' %>
+        <% end %>
+      </div>
+      <div class="form-group">
+        <% if experience[:title].blank? %>
+          <%= text_field_tag :experience_title, nil, :placeholder => 'ex: Software Engineer', :class => 'form-control', :required => '' %>
+        <% else %>
+          <%= text_field_tag :experience_title, nil, :value => experience[:title], :placeholder => 'ex: Software Engineer', :class => 'form-control', :required => '' %>
+        <% end %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="form-inline">
+        <%= select_month(get_date(experience[:start_year], experience[:start_month]), {:field_name => 'start_month', :value => experience[:start_month]}, {:class => 'form-control input-mei'}) %>
+        &nbsp;
+        <%= select_year(get_date(experience[:start_year], experience[:start_month]), {:field_name => 'start_year', :start_year => 1900, :end_year => 2020}, {:class => 'form-control input-small'}) %>
+        —
+        <%= select_month(get_date(experience[:end_year], experience[:end_month]), {:field_name => 'end_month'}, {:class => 'form-control input-small'}) %>
+        &nbsp;
+        <%= select_year(get_date(experience[:end_year], experience[:end_month]), {:field_name => 'end_year', :start_year => 1900, :end_year => 2020}, {:class => 'form-control input-small'}) %>
+      </div>
+    </div>
+    <div class="form-group">
+      <% if experience[:description].blank? %>
+          <%= text_area :experience_description, :text, :class => 'form-control',:id => "profile-experience-#{encode_id(experience[:_id])}", :placeholder => 'Try to describe what you have done in this experience, teams you worked with, skills learned etc in this experience (485 characters). (*required)',
+                        :rows => 3, :cols => 80%>
+      <% else %>
+          <%= text_area :experience_description, :text, :class => 'form-control',:id => "profile-experience-#{encode_id(experience[:_id])}", :value => (experience[:description].html_safe), :placeholder => 'Try to describe what you have done in this experience, teams you worked with, skills learned etc in this experience (485 characters). (*required)',
+                        :rows => 3, :cols => 80 %>
+      <% end %>
+    </div>
+    <div class="form-group">
+      <% if experience[:skills].blank? %>
+          <%= text_field_tag :work_skills, nil, :placeholder => 'Skills ex: Java, C++, Team building, project ownership (comma separated). (*required)', :class => 'form-control skills' %>
+      <% else %>
+          <%= text_field_tag :work_skills, nil, :value => experience[:skills].kind_of?(Array)? experience[:skills].join(',').html_safe : experience[:skills].html_safe  , :placeholder => 'Skills ex: Java, C++, Team building, project ownership (comma separated). (*required)', :class => 'form-control skills' %>
+      <% end %>
+    </div>
+    <p class="label label-important" id="work_skills_alert_<%= experience.id %>" style="display: none;">
+    </p>
+    <div class="form-group">
+      <% if experience[:link].blank? %>
+          <%= text_field_tag :link, nil, :placeholder => 'Any supporting link to experience', :class => 'form-control' %>
+      <% else %>
+          <%= text_field_tag :link, nil, :value => experience[:link], :placeholder => 'Any supporting link to experience', :class => 'form-control' %>
+      <% end %>
+    </div>
+    <div>
+      <%= button_tag(type: 'submit', :id => 'save_experience_'+encode_id(experience[:_id]), class: 'btn btn-sm btn-primary',
+                     :data => { disable_with: 'Saving...'}) do %>
+          <span class="glyphicon glyphicon-floppy-disk "></span> Save
+      <% end %>
+      <%= button_tag(type: 'submit', :id => 'delete_experience_'+encode_id(experience[:_id]), class: 'btn btn-sm btn-danger',
+                     :confirm => 'Are you sure to delete this work?', :name => 'delete', :data => { disable_with: 'Deleting...'}) do %>
+          <span class="glyphicon glyphicon-trash "></span> Delete
+      <% end %>
+    </div>
+<% end %>
+

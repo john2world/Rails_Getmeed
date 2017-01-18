@@ -1,0 +1,21 @@
+<p class="accordion lightbox-text">
+  <% if @un_auth %>
+      Authentication Realm!
+  <% else %>
+      Successfully Sent!
+  <% end %>
+</p>
+<hr class="hr-header">
+<div class="form-view">
+  <div class="lightbox-dialogue-info any-center">
+    <p class="accordion">
+      <% if @un_auth %>
+          You are not authorized to do this job.
+      <% else %>
+          Your email about PDF download is successfully broadcasted to everyone.
+      <% end %>
+    </p>
+  </div>
+</div>
+
+

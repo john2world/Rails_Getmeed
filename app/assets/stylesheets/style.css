@@ -1,0 +1,28 @@
+body{
+    background-color: rgba(203, 211, 219, 0.74);
+}
+
+.wrap {
+    width: 960px;
+    margin: 20px auto;
+}
+
+.clear-fix{
+    clear: both;
+}
+
+h1{
+    font-family: 'Open Sans', sans-serif;
+}
+
+.mblock{
+    margin: 35px 0;
+    display: block;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.42);
+}
+@media only screen and (max-width: 980px){
+    .wrap {
+        width: 100%;
+    }
+}

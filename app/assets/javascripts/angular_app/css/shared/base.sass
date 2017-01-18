@@ -1,0 +1,149 @@
+html
+  background: $body_background
+  width: 100%
+  overflow-x: hidden
+
+body
+  font-family: $body_font
+  background: $body_background
+
+h1,h2,h3,h4,h5,h6
+  font-family: $title_font
+
+h1
+  font-size: $font_size_xx_large
+  letter-spacing: 0
+
+hr
+  width: 100%
+  clear: both
+
+li
+  list-style-type: none
+
+a
+  text-decoration: none
+  color: $primary
+  cursor: pointer
+  &:hover
+    text-decoration: underline
+    color: $primary
+
+  .button:hover
+    text-decoration: none
+
+  &.biglink
+    display: block
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    &:hover
+      text-decoration: none
+
+// Layout classes
+.fb-like, .fb_iframe_widget
+  z-index: 9999
+
+.main
+  max-width: 800px
+  margin: auto
+  position: relative // necessary to get the side nav to position correctly
+
+.main-inner-wrap
+  background: $lightest_background
+  padding: 1.5rem
+  float: left
+  width: 100%
+  box-sizing: border-box
+
+.feed-inner-wrap
+  float: left
+  width: 80%
+  box-sizing: border-box
+
+
+.ngTruncateToggleText
+  color: $link_color
+  font-size: 90%
+
+.main-backdrop
+  height: 100%
+  width: 100%
+  max-width: 800px
+  margin-left: 50%
+  left: -400px
+  z-index: 0
+  background: #fff
+  position: absolute
+  top: 0
+
+.loader-wrap
+  text-align: center
+
+.loader
+  text-align: center
+
+@media (max-width: 800px)
+  .main-backdrop
+    margin-left: 0
+    left: 0
+
+
+// Utility classes
+
+.ellipsis
+  white-space: nowrap
+  overflow: hidden
+  display: block
+  text-overflow: ellipsis
+  &.multiline
+    white-space: normal
+
+.hidden
+  display: none
+
+.small
+  font-size: $font_size_small
+  color: $very_light_text
+
+.error
+  color: $error
+
+
+.cf
+  &:before
+    content: " "
+    display: table
+  &:after
+    content: " "
+    display: table
+    clear: both
+  *zoom: 1
+
+
+/* Angular specific
+ *––––––––––––––––––––––––––––––––––––––––––––––––––*/
+
+// http://ng.malsup.com/#!/css-animations-for-ng-hide_ng-show
+.ng-hide-add, .ng-hide-remove
+  // ensure visibility during the transition
+  display: block !important // yes, important
+
+.css-fade
+  transition: 0.25s linear all
+  opacity: 1
+  &.ng-hide
+    opacity: 0
+
+
+/* Sections
+ *––––––––––––––––––––––––––––––––––––––––––––––––––*/
+
+.section
+  padding: 8rem 0 7rem
+  text-align: center
+
+.section-heading, .section-description
+  margin-bottom: 1.2rem

@@ -1,0 +1,86 @@
+<header id="header-nav">
+        <div class="primary" >
+            <a href="/">
+                <img ng-src="{{ ::CONSTS.meed_logo }}" id="logo" />
+            </a>
+        </div>
+        <div ng-if="!loggedIn">
+            <div class="secondary">
+                    <span class="cta"><a
+                            class="button button-primary open-signup-modal">
+                        Sign In</a></span>
+                <span class="sign-up cta"><a class="button button-secondary" href="/recruiting">Employers</a></span>
+            </div>
+        </div>
+        <div ng-if="loggedIn">
+            <dashboard-search></dashboard-search>
+            <div class="secondary">
+                <a class="open-badge-modal badge-{{::currentUser.badge }}" tooltips title="Your Badge" tooltip-side="bottom">
+                </a>
+                <a id="notifications-link" ng-class="notificationsCount > 0 ? 'has-notifications' : 'no-notifications'"
+                   ng-click="resetNotifications()">
+                    <span class="count" ng-if="notificationsCount <= 0"><i class="fa fa-bell"></i></span>
+                    <span class="count" ng-if="notificationsCount > 0">{{ ::notificationsCount }}</span>
+                    <span class="caret-wrap">
+                      <i class="fa fa-caret-left"></i>
+                      <i class="fa fa-caret-down"></i>
+                    </span>
+                </a>
+
+                <div ng-if="notifications" id="user-notifications-wrap">
+                    <ul>
+                        <!--<li ng-if="currentUser.badge != 'influencer'">-->
+                            <!--Meed Points:-->
+                            <!--<strong>{{ currentUser.meed_points }}</strong>-->
+                            <!--<a class="button medium-small open-leaderboard-modal">Get more points</a>-->
+                        <!--</li>-->
+                        <li ng-repeat="notification in notifications">
+                            <img ng-if="::notification.image_url" ng-src="{{ ::notification.image_url }}"/>
+                            <a ng-href="{{ ::notification.notification_url }}" class="notification-link biglink " target="_self">
+                                <strong ng-if="notification.names.length == 1"> {{ ::notification.names[0] }}</strong>
+                                <div ng-if="notification.names.length == 2">
+                                    <strong> {{ ::notification.names[0]}}</strong> and <strong> {{ ::notification.names[1]}}</strong>
+                                </div>
+                                 <div ng-if="notification.names.length > 2">
+                                    <strong> {{ ::notification.names[0]}}</strong>, <strong> {{ ::notification.names[1]}}</strong>
+                                     and {{ ::notification.names.length - 2 }} others
+                                </div>
+                                {{ notification.caption }}
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="nav-footer"></div>
+                </div>
+                <a id="settings-link" title="{{ currentUser.handle }}">
+                    <img class="current-user-avatar" ng-src="{{ currentUser.small_image_url }}" width=40 height=40/>
+                    <span class="caret-wrap">
+                      <i class="fa fa-caret-left"></i>
+                      <i class="fa fa-caret-down"></i>
+                    </span>
+                </a>
+
+                <div id="user-nav-wrap">
+                    <ul>
+                        <li><a ng-href="/{{ currentUser.handle }}" class="biglink" target="_self">Profile</a></li>
+                        <li><a href="/settings" class="biglink">Account Settings</a></li>
+                        <!-- <li><a href="/messages" target="_self">Messages</a></li> -->
+                        <li><a href="/logout" target="_self" class="biglink">Log out</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    <signup-modal></signup-modal>
+    <leaderboard-modal
+            leaderboard-users="leaderboardUsers"
+            current-user="currentUser"
+            prizes="prizes"
+            tags="tags"
+            all-collections="allCollections"
+            feed-items="feedItems"
+
+            ></leaderboard-modal>
+    <div class="influencer-signup-modal modal" id="influencer-signup-modal">
+        <influencer-signup-form></influencer-signup-form>
+    </div>
+</header>
+

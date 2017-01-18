@@ -1,0 +1,40 @@
+<table id="edit_answer_new" class='row' xmlns="http://www.w3.org/1999/html">
+  <% unless answers.blank? %>
+      <% answers.each do |answer| %>
+          <div id="view_answer_<%= answer.id %>">
+            <div class="row">
+              <span class="question-title-small">
+                <% if !@answer_question_map[answer.id].blank? %>
+                    <a href="/questions/<%= @answer_question_map[answer.id].id %>" target="_blank"> <%= @answer_question_map[answer.id].title %></a>
+                <% end %>
+              </span>
+              <span style="float: right;">
+                <%= form_tag({:controller => 'answers', :action => 'delete_user_answer'}, :remote => true) do %>
+                    <%= hidden_field_tag :answer_id, answer.id %>
+                    <% if !current_user.blank? and current_user.handle.eql? answer.user_handle %>
+                    <%= submit_tag 'Hide', :class => 'button button-red-large', :style => 'float: inherit;', :disable_with => 'Please wait..' %>
+                   <% end %>
+                <% end %>
+              </span>
+              <!--<br/>-->
+              <!--<span style="float: left">-->
+                 <!--<% if !answer.upvote_count.blank? and answer.upvote_count > 0 %>-->
+                       <!--<span class="upvotecount" id="upvotecount_<%= answer.id %>"> <%= answer.upvote_count %></span>-->
+                    <!--<% end %>-->
+              <!--</span>-->
+              <br/>
+              <span style="font-size: 12px;color: #999999">Posted on <span style="text-decoration: underline"><%= answer.date.strftime("%B %d") %></span> </span>
+              <br/>
+              <br/>
+              <p> <%= answer.description.html_safe %></p>
+              <% if !answer.gist_id.blank? %>
+                  <br/>
+
+                  <p><code data-gist-id="<%= answer.gist_id %>" data-gist-hide-footer="true"></code></p>
+              <% end %>
+            </div>
+          </div>
+          <hr class="hr-question-separator">
+      <% end %>
+  <% end %>
+</table>

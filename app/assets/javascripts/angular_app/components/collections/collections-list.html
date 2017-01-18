@@ -1,0 +1,26 @@
+<ul class="collections-list">
+    <li ng-if="currentUser && showNew" class="collection-list-entry">
+        <div class="add-new-wrap">
+            <a ng-href="/collections/new/{{ category._id }}" class="add-new-collection">
+                <span class="plus">+</span>
+                <span class="add">Create Group</span>
+            </a>
+        </div>
+    </li>
+    <li ng-if="!currentUser && showNew" class="collection-list-entry">
+        <div class="add-new-wrap">
+            <a class="open-signup-modal">
+                <span class="plus">+</span>
+                <span class="add">Create Group</span>
+            </a>
+        </div>
+    </li>
+  <collection-list-entry
+    ng-repeat="c in collections"
+    collection="c"
+    category="category"
+    user-collections="userCollections"
+    current-user="currentUser"
+    >
+  </collection-list-entry>
+</ul>

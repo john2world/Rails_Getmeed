@@ -1,0 +1,125 @@
+<hr class="hr-header">
+<div class="row">
+  <div class="blog-list blog-category-list">
+    <span class="feed-story-type">  
+      <span class="glyphicon glyphicon-cog"></span> Profile
+    </span>
+    <article class="post col-md-12 col-sm-12 col-xs-12 col-md-offset-0 col-sm-offset-0 col-xs-offset-0">
+      <div class="post-inner">
+        <div class="content">
+          <div class="post-entry">
+            <table width="80%">
+              <tr>
+                <td>
+                  <p>
+
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td width="40%">
+                  Public Profile
+                  <span class="glyphicon glyphicon-question-sign info-text" aria-hidden="true" style="margin-left: 2px;" title="Will enable profile search in search engines"></span>
+                </td>
+                <td width="60%">
+                  <input type="checkbox" action="update-settings" class="checkbox-switch" id="profile_public" data-on-text='On' data-off-text='Off' <%= @profile_public ? "checked" : "" %> >
+                </td>
+              </tr>
+              <tr style="height: 5px;"></tr>
+              <tr style="height: 5px;"></tr>
+
+            </table>
+          </div>
+          </div>
+      </div>
+    </article>
+  </div>
+  <div class="blog-list blog-category-list">
+    <span class="feed-story-type">  
+                  <span class="glyphicon glyphicon-cog"></span> Email Settings
+              </span>
+    <article class="post col-md-12 col-sm-12 col-xs-12 col-md-offset-0 col-sm-offset-0 col-xs-offset-0">
+      <div class="post-inner">
+        <div class="content">
+          <div class="post-entry">
+            <table width="80%">
+              <tr>
+                <td width="40%">
+                  Email Notifications
+                  <span class="glyphicon glyphicon-question-sign info-text" aria-hidden="true" style="margin-left: 2px;" title="Frequency of email notifications"></span>
+                </td>
+                <td width="60%">
+                  <% if @email_frequency.to_s.eql? 'EVERY' %>
+                      <input type="radio" action="update-settings" name="email_notifications" id="email_frequency-Every" checked class="checkbox-switch" data-on-text='Every' data-off-text='Off'>
+                  <% else %>
+                      <input type="radio" action="update-settings" name="email_notifications" id="email_frequency-Every" class="checkbox-switch" data-on-text='Every' data-off-text='Off'>
+                  <% end %>
+                  <% if @email_frequency.to_s.eql? 'DAILY' %>
+                      <input type="radio" action="update-settings" name="email_notifications" id="email_frequency-Daily" checked class="checkbox-switch" data-on-text='Daily' data-off-text='Off'>
+                  <% else %>
+                      <input type="radio" action="update-settings" name="email_notifications" id="email_frequency-Daily" class="checkbox-switch" data-on-text='Daily' data-off-text='Off'>
+                  <% end %>
+                  <% if @email_frequency.to_s.eql? 'WEEKLY' %>
+                      <input type="radio" action="update-settings" name="email_notifications" id="email_frequency-Weekly" checked class="checkbox-switch" data-on-text='Weekly' data-off-text='Off'>
+                  <% else %>
+                      <input type="radio" action="update-settings" name="email_notifications" id="email_frequency-Weekly" class="checkbox-switch" data-on-text='Weekly' data-off-text='Off'>
+                  <% end %>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="post-inner">
+        <div class="content">
+          <div class="post-entry">
+            <table width="80%">
+              <tr>
+                <td width="40%">
+                  Email Subscriptions
+                  <span class="glyphicon glyphicon-question-sign info-text" aria-hidden="true" style="margin-left: 2px;" title="Emails Subscriptions for Updates"></span>
+                </td>
+                <td width="60%">
+                  <% @email_subscriptions.each do |key, value| %>
+                    <span class="col-md-6" style="padding:0px; padding-top:5px; padding-below:5px">
+                      <input type="checkbox" action="update-settings" name="email_subscriptions-<%= key %>" id="email_subscription-<%= key %>"
+                             <%= value ? 'checked' : '' %> class="checkbox-switch" data-on-text="<%= key.to_s.titleize %>" data-off-text='Off'>
+                    </span>
+                  <% end %>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+  <div class="blog-list blog-category-list">
+    <span class="feed-story-type">  
+      <span class="glyphicon glyphicon-cog"></span> Danzer Zone
+    </span>
+    <article class="post col-md-12 col-sm-12 col-xs-12 col-md-offset-0 col-sm-offset-0 col-xs-offset-0">
+      <div class="post-inner">
+        <div class="content">
+          <div class="post-entry">
+            <table width="80%">
+              <tr>
+                <td width="40%">
+                  Deactivate Account
+                  <span class="glyphicon glyphicon-question-sign info-text" aria-hidden="true" style="margin-left: 2px;" title="Will deactivate your profile and you will no longer be able to access it"></span>
+                </td>
+                <td width="60%">
+                  <input type="checkbox" class="checkbox-switch" id="profile_delete" data-on-text='confirm' data-off-color="danger" data-off-text='Deactivate' onchange="deactivate_account_toggle(this)">
+                  <button class="btn btn-xs btn-danger" style="height: 30px; display: none" id="profile_deactivate_confirmation" onclick="confirm_deactivate('<%=current_user[:handle]%>', this)">
+                    Deactivate
+                  </button>
+                </td>
+              </tr>
+              <tr style="height: 5px;"></tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+</div>

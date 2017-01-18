@@ -1,0 +1,26 @@
+<div class="jobs-browse main-wrap">
+    <job-categories
+            categories="categories"
+            currentUser="currentUser"
+            ></job-categories>
+    <div class="main-wrap">
+        <div class="row">
+            <section class="main">
+                <site-nav class="side" user-collections="userCollections"></site-nav>
+                <div class="main-inner-wrap">
+                    <p class="feed-title">Jobs in <strong>{{ categoryTitle }}</strong></p>
+                    <loader ng-show="loading"></loader>
+                    <jobs-list ng-show="!loading"
+                               jobs="jobs"
+                               currentUser="currentUser"
+                               category="category"></jobs-list>
+                </div>
+            </section>
+        </div>
+        <div class="row">
+            <site-nav class="bottom" user-collections="userCollections"></site-nav>
+        </div>
+    </div>
+</div>
+
+

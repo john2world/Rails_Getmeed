@@ -1,0 +1,66 @@
+<%= form_tag({:action => 'save_internship'}, :id => 'form_' + encode_id(internship[:_id]), :remote => true) do %>
+    <%= hidden_field_tag :hidden_id, encode_id(internship[:_id]), :id => 'internship_hidden' %>
+    <div class="form-inline">
+      <div class="form-group">
+        <% if internship[:company].blank? %>
+          <%= text_field_tag :internship_company, nil, :placeholder => 'ex: Microsoft', :class => 'form-control', :required => '' %>
+        <% else %>
+          <%= text_field_tag :internship_company, nil, :value => internship[:company], :placeholder => 'ex: Microsoft', :class => 'form-control', :required => '' %>
+        <% end %>
+      </div>
+      <div class="form-group">
+        <% if internship[:title].blank? %>
+          <%= text_field_tag :internship_title, nil, :placeholder => 'ex: Software Engineer', :class => 'form-control', :required => '' %>
+
+        <% else %>
+          <%= text_field_tag :internship_title, nil, :value => internship[:title], :placeholder => 'ex: Software Engineer', :class => 'form-control', :required => '' %>
+        <% end %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="form-inline">
+        <%= select_month(get_date(internship[:start_year], internship[:start_month]), {:field_name => 'start_month', :value => internship[:start_month]}, {:class => 'form-control input-mei'}) %>
+        &nbsp;
+        <%= select_year(get_date(internship[:start_year], internship[:start_month]), {:field_name => 'start_year', :start_year => 1900, :end_year => 2020}, {:class => 'form-control input-small'}) %>
+        —
+        <%= select_month(get_date(internship[:end_year], internship[:end_month]), {:field_name => 'end_month'}, {:class => 'form-control input-small'}) %>
+        &nbsp;
+        <%= select_year(get_date(internship[:end_year], internship[:end_month]), {:field_name => 'end_year', :start_year => 1900, :end_year => 2020}, {:class => 'form-control input-small'}) %>
+      </div>
+    </div>
+    <div class="form-group">
+      <% if internship[:description].blank? %>
+          <%= text_area :internship_description, :text, :class => 'form-control', :id => "profile-internship-#{encode_id(internship[:_id])}", :placeholder => 'Try to describe what you have done in this internship, teams you worked with, skills learned etc in this internship (485 characters). (*required)', :rows => 3, :cols => 80 %>
+      <% else %>
+          <%= text_area :internship_description, :text, :class => 'form-control', :id => "profile-internship-#{encode_id(internship[:_id])}", :value => (internship[:description].html_safe), :placeholder => 'Try to describe what you have done in this internship, teams you worked with, skills learned etc in this internship (485 characters). (*required)', :rows => 3, :cols => 80%>
+      <% end %>
+    </div>
+    <div class="form-group">
+      <% if internship[:skills].blank? %>
+          <%= text_field_tag :intern_skills, nil, :placeholder => 'Skills ex: Java, C++, Team building, project ownership (comma separated). (*required)', :class => 'form-control skills'%>
+      <% else %>
+          <%= text_field_tag :intern_skills, nil, :value => internship[:skills].kind_of?(Array)? internship[:skills].join(',').html_safe : internship[:skills].html_safe, :placeholder => 'Skills ex: Java, C++, Team building, project ownership (comma separated). (*required)', :class => 'form-control skills'%>
+      <% end %>
+    </div>
+    <p class="label label-important" id="intern_skills_alert_<%= encode_id(internship.id) %>" style="display: none;">
+    </p>
+    <div class="form-group">
+      <% if internship[:link].blank? %>
+          <%= text_field_tag :link, nil, :placeholder => 'Any supporting link to internship', :class => 'form-control' %>
+      <% else %>
+          <%= text_field_tag :link, nil, :value => internship[:link], :placeholder => 'Any supporting link to internship', :class => 'form-control' %>
+      <% end %>
+    </div>
+    <div>
+      <%= button_tag(type: 'submit', :id => 'save_internship_'+encode_id(internship[:_id]), class: 'btn btn-sm btn-primary',
+                     :data => { disable_with: 'Saving...'}) do %>
+          <span class="glyphicon glyphicon-floppy-disk "></span> Save
+      <% end %>
+      <%= button_tag(type: 'submit', :id => 'delete_internship_'+encode_id(internship[:_id]), class: 'btn btn-sm btn-danger',
+                     :confirm => 'Are you sure to delete this course?', :name => 'delete',
+                     :data => { disable_with: 'Deleting...'}) do %>
+          <span class="glyphicon glyphicon-trash "></span> Delete
+      <% end %>
+    </div>
+<% end %>
+

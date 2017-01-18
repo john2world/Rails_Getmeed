@@ -1,0 +1,2 @@
+var comment_form = $("#<%= @position.blank? ? '' : "#{@position}_" %>comment_<%= @feed_id %>");
+comment_form.html("<%= escape_javascript (render 'feed/feed_comment' , :type => @type, :feed_id => @feed_id, :comments => @comments, :position => @position) %>");

@@ -1,0 +1,42 @@
+<header id="header" class="header ">
+
+  <h1 class="logo">
+    <a href="/">
+      <img src="https://res.cloudinary.com/resume/image/upload/c_scale,w_50/v1428533651/crescent_green_al0zmk.png">
+    </a>
+  </h1><!--//logo-->
+  <nav class="main-nav navbar-right" role="navigation">
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <!--//nav-toggle-->
+    </div>
+    <!--//navbar-header-->
+    <div id="site-nav">
+      <div id="navbar-collapse" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li class="<%= (request.path.eql? '/')? 'active' : '' %> nav-item" title="Sign Up For Meed"><a href="/">Home</a></li>
+          <li class="nav-item" title="Library"><a href="https://blog.getmeed.com" target="_blank">LIBRARY</a></li>
+          <li class="nav-item" title="Meed Enterprise Sign Up"><a href="/enterprise-signup">Employers</a></li>
+          <li class="<%= (request.path.eql? '/contact')? 'active' : '' %> nav-item" title="Contact Us"><a href="/contact">Contact</a></li>
+          <li class="<%= (request.path.eql? '/login')? 'active' : '' %> nav-item" title="Log in"><a href="/login">Log in</a></li>
+          <li class="nav-item nav-item-cta last">
+            <% if request.path.eql? '/' %>
+            <a class="btn btn-cta btn-cta-secondary" href="#" onclick="$('#sign_up_tb').focus()">Sign Up Now!</a>
+                <% else %>
+                <a class="btn btn-cta btn-cta-secondary" href="/">Sign Up Now!</a>
+          <% end %>
+          </li>
+        </ul>
+        <!--//nav-->
+      </div>
+    </div>
+    <!--//navabr-collapse-->
+  </nav>
+  <!--//main-nav-->
+  <!--//container-->
+</header>

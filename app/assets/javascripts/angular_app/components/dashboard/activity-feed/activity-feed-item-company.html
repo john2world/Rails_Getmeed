@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="picture-wrap four columns">
+    <img ng-src="{{ ::feedItem.small_image_url }}" class="u-full-width" />
+    <p>
+      <a ng-if="!feedItem.viewer_gave_kudos" ng-click="feedItem.giveKudos()" class="button button-primary">Kudos {{ feedItem.kudos_count}}</a>
+      <a ng-if="feedItem.viewer_gave_kudos" class="button kudos">Given {{ ::feedItem.kudos_count}} Kudos</a>
+
+      <!-- <a href="javascript:void(0)" ng-click="" class="button button-primary save">Save</a> -->
+    </p>
+  </div>
+  <div class="content-wrap eight columns">
+    <p class="poster-info">
+      <img class="poster-logo" ng-src="{{ ::feedItem.company.company_logo }}"/>
+      <span class="poster-name">{{ ::feedItem.company.name }}</span>
+    </p>
+    <p class="follow-wrap">
+      <a
+        ng-click="feedItem.follow()"
+        ng-if="!feedItem.is_user_following_company"
+        class="button button-secondary follow">Follow</a>
+      <a
+        ng-click="feedItem.unfollow()"
+        ng-if="feedItem.is_user_following_company"
+        class="button unfollow">Following</a>
+    </p>
+    <abbr class="timeago activity-feed-item-timestamp" title="{{ ::feedItem.create_time }}">{{ ::feedItem.create_time }}</abbr>
+    <h4 class="activity-feed-item-title" ng-bind-html="::feedItem.title | htmlToPlaintext"></h4>
+    <div class="activity-feed-item-description-wrap">
+      <div ng-bind-html="::feedItem.description" class="activity-feed-item-description ellipsis multiline"></div>
+    </div>
+  </div>
+</div>

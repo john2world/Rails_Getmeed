@@ -1,0 +1,98 @@
+<div class="accordion-profheader">
+  <hr class="hr-profile-separator">
+  <div id="profile_contact_info">
+    <%= render 'render_profile_photo', :is_edit => is_edit, :user => user %>
+    <hr class="hr-profile-separator">
+    <table id="show_single_header_<%= is_edit %>" class="profile-width">
+      <%= render 'render_header_data', :is_edit => is_edit, :is_viewer_profile => is_viewer_profile, :user => user, :school => school %>
+    </table>
+    <% if is_edit %>
+        <%= form_tag({:action => 'save_header'}, :id => 'form_objective_new', :remote => true, :style => 'margin:auto;height:auto') do %>
+            <table id="edit_single_header_<%= is_edit %>" class="profile-width" style="display: none">
+              <tr>
+                <% unless user.blank? %>
+                    <td class="profile-name">
+                      <% if is_edit or !params[:showRajni].blank? %>
+                        <%= text_field_tag :first_name, nil, :value => user.first_name.to_s, :style => 'height: 25px;width: 250px;' %>
+                        <%= text_field_tag :last_name, nil, :value => user.last_name.to_s, :style => 'height: 25px;width: 100px;' %>
+                      <% else %>
+                        <%= user.first_name.upcase %> <%= user.last_name.upcase %>
+                      <% end %>
+                    </td>
+                    <td id="header_email" style="text-align: right;">
+                      <% if is_edit or !params[:showRajni].blank? %>
+                          <% if !user.email.blank? %>
+                            <%= text_field_tag :email, nil, :value => user.email.to_s, :style => 'height: 25px;width: 150px;' %>
+                          <% else %>
+                              <%= text_field_tag :email, nil, :placeholder => user.id.to_s, :style => 'height: 25px;width: 150px;' %>
+                          <% end %>
+                      <% elsif is_viewer_profile %>
+                          <a href="/<%= user[:handle] %>/pdf?token=<%= user[:handle] %>">Download PDF</a>
+                      <% else %>
+                          <% if params[:insightToken].blank? %>
+                              <a href="<%= "/#{user.handle}/contact" %>" class="btn btn-sm btn-success cursor buzz-out" style="text-decoration: none"><span class="glyphicon glyphicon-send"></span>Send
+                                Message</a>
+                          <% else %>
+                              <a href="<%= "/#{user.handle}/contact?insightToken=#{params[:insightToken]}" %>" class="btn btn-sm btn-success cursor buzz-out" style="text-decoration: none"><span class="glyphicon glyphicon-send"></span>Send
+                                Message</a>
+                          <% end %>
+                      <% end %>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span>
+                          <%= select_tag :major, options_for_select(@majors.blank?? {} : @majors.map { |u| [u.major, u.id] }, user.major_id), :style => 'width: 250px; height: 40px', :class => 'consumer-selectize-signup', :prompt => 'Select Major (*)' %>
+                          <%= select_tag :minor, options_for_select(@majors.blank?? {} : @majors.map { |u| [u.major, u.id] }, user.minor_id), :style => 'width: 250px; height: 40px', :class => 'consumer-selectize-signup', :prompt => 'Select Minor' %>
+                        </span>
+                      </td>
+                      <% if !user.phone_number.blank? %>
+                          <td class="profile-header-gpa">
+                            <%= text_field_tag :phone_number, nil, :value => user.phone_number.to_s, :style => 'height: 25px;width: 100px;' %>
+                          </td>
+                      <% else %>
+                          <td class="profile-header-gpa">
+                            <%= text_field_tag :phone_number, nil, :placeholder => 'XXX-XXX-XXXX', :style => 'height: 25px;width: 100px;' %>
+                          </td>
+                      <% end %>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span>
+                          <%= select_tag :degree, options_for_select( @degrees.blank?? {} : @degrees.map { |d| [d, d] },user.degree), :style => 'width: 250px; height: 40px', :class => 'consumer-selectize-signup', :prompt => 'Degree (*)' %>
+                        </span>
+                      </td>
+                      <% if !user.gpa.blank? %>
+                          <td class="profile-header-gpa">
+                            <%= text_field_tag :gpa, nil, :value => user.gpa.to_s, :style => 'height: 25px;width: 50px;' %>
+                          </td>
+                      <% else %>
+                          <td class="profile-header-gpa">
+                            <%= text_field_tag :gpa, nil, :placeholder => '3.6 gpa', :style => 'height: 25px;width: 50px;' %>
+                          </td>
+                      <% end %>
+                    </tr>
+                    <tr>
+                      <% unless school.blank? %>
+                          <td class="profile-item-title">
+                            <%= school.name %> —
+                            <% if !user.year.blank? %>
+                                <%= text_field_tag :user_year, nil, :value => user.year.to_s, :style => 'height: 25px;width: 75px;' %>
+                            <% else %>
+                                <%= text_field_tag :user_year, nil, :placeholder => '2014', :style => 'height: 25px;width: 75px;' %>
+                            <% end %>
+                          </td>
+                          <td class="profile-header-gpa">
+                            <%= button_tag(type: 'submit', class: 'btn btn-xs btn-primary', :disable_with => 'Saving..') do %>
+                                <span class="glyphicon glyphicon-floppy-disk"></span> Save
+                            <% end %>
+                          </td>
+                      <% end %>
+                <% end %>
+                </tr>
+        <% end %>
+        </table>
+    <% end %>
+    <hr class="hr-profile-separator">
+  </div>
+</div>

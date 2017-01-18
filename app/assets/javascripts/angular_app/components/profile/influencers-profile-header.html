@@ -1,0 +1,45 @@
+<div class="influencer-header">
+    <div class="header-bg">
+        <div class="header-intro">
+            <img class="current-user-avatar" width="100" height="100" ng-src="{{ profile.user.large_image_url }}" data-pin-nopin="true">
+            <div class="jssocials-shares">
+                <div class="jssocials-share jssocials-share-facebook">
+                    <a class="jssocials-share-link" ng-if="profile.user.fb_handle" ng-href="https://facebook.com/{{ ::profile.user.fb_handle}}" target="_blank">
+                        <i class="fa fa-facebook jssocials-share-logo"></i>
+                    </a>
+                </div>
+                <div class="jssocials-share jssocials-share-twitter">
+                    <a class="jssocials-share-link" ng-if="profile.user.twitter_handle" ng-href="https://twitter.com/{{ ::profile.user.twitter_handle}}" target="_blank">
+                        <i class="fa fa-twitter jssocials-share-logo"></i>
+                    </a>
+                </div>
+            </div>
+            <profile-image-edit profile="profile" ng-if="profile.is_viewer_profile"></profile-image-edit>
+            <div class="primary-text">{{ profile.user.getName()}}</div>
+            <div class="secondary-text">{{ profile.user.headline}}</div>
+            <div class="follow-cta">
+                <span ng-if="showFollow" class="cta">
+                  <a class="button button-red" ng-if="!isFollowing" ng-click="follow()"><i
+                          class="fa fa-user-plus"></i> Follow <span class="count"
+                                                                    ng-if="profile.user.follower_count > 0">
+          {{ profile.user.follower_count }}
+        </span></a>
+                  <a class="button button-red-inverse unfollow " ng-if="isFollowing" ng-click="unfollow()"><i
+                          class="fa fa-user-times"></i> Following <span class="count"
+                                                                       ng-if="profile.user.follower_count > 0">
+          {{ profile.user.follower_count }}
+        </span></a>
+                </span>
+            </div>
+            <div class="divider"></div>
+            <div class="event-time columns four offset-by-four" ng-if="is_event_happening">
+                <i class="fa fa-calendar"></i> AMA SESSION on {{event.start_dttm | formatDateTimeStringFriendly}}
+            </div>
+            <div class="row"></div>
+            <div class="divider"></div>
+            <div ng-if="!currentUser" class="event_cta">
+                <a class="button button-primary open-signup-modal">Sign In To Ask Questions</a>
+            </div>
+        </div>
+    </div>
+</div>

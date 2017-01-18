@@ -1,0 +1,5 @@
+<% if cookies[:redirect_url].blank? %>
+window.location.replace('/home');
+<% else %>
+window.location.replace('<%= cookies[:redirect_url] %>');
+<% end %>

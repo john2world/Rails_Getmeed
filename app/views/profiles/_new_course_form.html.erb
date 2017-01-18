@@ -1,0 +1,35 @@
+<%= form_tag({:action => 'save_course'}, :id => 'form_course_new', :remote => true) do %>
+    <div class="form-inline">
+      <div class="form-group">
+        <%= text_field_tag :course_title, nil, :placeholder => 'Ex: Operating Systems', :class => 'form-control input-medium', :required => '' %>
+      </div>
+      <div class="form-group" style="float: right;">
+        <%= hidden_field_tag :hidden_id, '', :id => 'form_new_hidden_id' %>
+        <%= select_tag :semester, options_for_select(%w(Fall Spring Summer Winter)), :class => 'form-control input-small'%>
+        &nbsp;
+        <%= select_year(Date.today, {:field_name => 'year', :year => 1900}, {:class => 'form-control input-mini'}) %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= text_area :course_description, :text, :class => 'form-control', :id => 'profile-coursework-new_id', :placeholder => 'Try to describe what you have done in this course, projects worked on and skills learned in this course (485 characters). (*required)', :rows => 3, :cols => 80 %>
+    </div>
+    <div class="form-group">
+
+      <%= text_field_tag :course_skills, nil, :class => 'form-control skills', :placeholder => 'Skills ex: Java, C++,  (comma separated). (*required)' %>
+    </div>
+    <p class="label label-important" id="course_skills_alert" style="display: none;">
+    </p>
+    <div class="form-group">
+      <%= text_field_tag :link, nil, :placeholder => 'link to your coursework', :class => 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= button_tag(type: 'submit', :id => 'delete_course_new', class: 'btn btn-danger btn-sm',
+                     :style => 'display:none', :confirm => 'Are you sure to delete this course?', :name => 'delete',
+                     data: {disable_with: 'Deleting.. '}) do %>
+          <span class="glyphicon glyphicon-trash "></span> Delete
+      <% end %>
+      <%= button_tag(type: 'submit', :id => 'save_course_new', class: 'btn btn-primary btn-sm', data: {disable_with: 'Saving.. '}) do %>
+          <span class="glyphicon glyphicon-floppy-disk "></span> Save
+      <% end %>
+    </div>
+<% end -%>

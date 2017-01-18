@@ -1,0 +1,41 @@
+<p class="accordion lightbox-text">Create Event
+</p>
+<hr class="hr-header">
+<% if @event.blank? %>
+    <%= form_tag({:action => :create}, :class => 'form-submit-large', :html => {:multipart => true}) do %>
+        <% if !alert.blank? %>
+            <p id="warning" class="label label-important any-center">
+              <%= alert %>
+            </p>
+        <% end %>
+        <%= text_field_tag :title, nil, :class => 'form-control', :placeholder => 'Event title (ex: USC vs UCLA Hackathon)' %>
+        <%= text_field_tag :cover_image_url, nil, :class => 'form-control', :placeholder => 'Cover image url' %>
+        <%= text_field_tag :location, nil, :class => 'form-control', :placeholder => 'Location' %>
+        <%= text_area_tag :description, nil, :class => 'profile-coursework-textarea', :placeholder => 'Description of your event (*required)', :maxlength => 2000 %>
+        <div>Start Time
+          — <%= datetime_select :start_time,Date.today, :class => 'form-control', :placeholder => 'External reference url' %></div>
+        <div>Ending Time
+          — <%= datetime_select :start_time, Date.today, :class => 'form-control', :placeholder => 'External reference url' %> </div>
+        <%= text_field_tag :external_url, nil, :class => 'form-control', :placeholder => 'Embed url for youtube or slideshare' %>
+        <%= submit_tag 'Publish', :class => 'button button-green-large', :disable_with => 'Please wait..' %>
+    <% end -%>
+<% else %>
+    <%= form_tag({:action => :create}, :class => 'form-submit-large', :html => {:multipart => true}) do %>
+        <% if !alert.blank? %>
+            <p id="warning" class="label label-important any-center">
+              <%= alert %>
+            </p>
+        <% end %>
+        <div class="form-view" style="text-align: center;">
+          <%= text_field_tag :title, nil, :value => @event[:title], :class => 'form-control' %>
+          <%= text_field_tag :cover_image_url, nil, :value => @event[:cover_image_url], :class => 'form-control' %>
+          <%= text_field_tag :location, nil, :value => @event[:location], :class => 'form-control' %>
+          <%= text_area_tag :description, (@event[:description].html_safe), :class => 'profile-coursework-textarea' %>
+          <%= text_field_tag :from_time, nil, :value => @event[:from_time], :class => 'form-control' %>
+          <%= text_field_tag :to_time, nil, :value => @event[:to_time], :class => 'form-control' %>
+          <%= text_field_tag :external_url, nil, :value => @event[:external_url], :class => 'form-control' %>
+        </div>
+        <%= submit_tag 'Publish', :class => 'button button-green-large', :disable_with => 'Please wait..' %>
+        </div>
+    <% end -%>
+<% end -%>

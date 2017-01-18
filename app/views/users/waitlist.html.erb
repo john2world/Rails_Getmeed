@@ -1,0 +1,42 @@
+<div class="headline-bg">
+</div>
+<!-- ******Contact Section****** -->
+<section class="login-section access-section section">
+  <div class="container">
+    <div class="row">
+      <div class="form-box col-md-8 col-sm-12 col-xs-12 col-md-offset-2 col-sm-offset-0 xs-offset-0">
+        <div class="form-box-inner">
+          <h2 class="title text-center">Not open to <%= @school_handle.upcase %> yet! :-(</h2>
+
+          <div class="row any-center">
+            <div class="form-container col-md-8 col-md-offset-2">
+              <p> 
+                <span class="size18">
+                Add more people to wait-list by sharing.</span>
+              </p>
+
+              <div id="waitlist_modal">
+              </div>
+            </div>
+            <!--//form-container-->
+            <!--//social-btns-->
+          </div>
+          <!--//row-->
+        </div>
+        <!--//form-box-inner-->
+      </div>
+      <!--//form-box-->
+    </div>
+    <!--//row-->
+  </div>
+  <!--//container-->
+</section>
+<script>
+    $("#waitlist_modal").jsSocials({
+        url: '<%= "https://getmeed.com/" %>',
+        text: 'Join your university career network',
+        showCount: "inside",
+        showLabel: false,
+        shares: ["facebook", "twitter",  "linkedin", "email"]
+    });
+</script>

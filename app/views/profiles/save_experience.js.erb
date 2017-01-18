@@ -1,0 +1,26 @@
+<% unless @skills_blank %>
+  <% if @delete == true%>
+    $("#edit_experience_<%= encode_id(@id) %>_true").hide();
+    $("#show_experience_<%= encode_id(@id) %>_true").hide();
+    $("#edit_experience_<%= encode_id(@id) %>_true").next("hr").hide();
+  <% elsif @is_new %>
+    viewNewItem('experience');
+    $("#view_experience_div").html("<%= escape_javascript (render 'view_experience_form' , :experience => @user_experience, :index => @index) %>");
+    $("#view_experience_div").attr('id', 'view_experience_' + '<%= encode_id(@user_experience[:_id]) %>');
+    $('#view_experience_' + '<%= encode_id(@user_experience[:_id]) %>').append("<div id='view_experience_div'></div>");<% else %>
+    renderViewItem('edit_experience_<%= encode_id(@user_experience[:_id]) %>');
+    $("#show_experience_<%= encode_id(@user_experience[:_id]) %>_true").html("<%= escape_javascript (render 'render_experience_data' , :experience => @user_experience, :is_edit => @is_editable) %>");
+  <% end %>
+<% else %>
+  <% if @id.blank? %>
+  var alert = $("#work_skills_alert");
+  <% else %>
+  var alert = $("#work_skills_alert_<%= encode_id(@id) %>");
+  <% end %>
+    alert.show();
+    <% if @description_blank.blank? %>
+    alert.html('Please enter at least one skill!');
+    <% else %>
+    alert.html('Please enter description!');
+  <% end %>
+<% end %>

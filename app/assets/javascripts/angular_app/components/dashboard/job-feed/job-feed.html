@@ -1,0 +1,50 @@
+<section id="jobs-feed" class='section jobs' ng-controller='JobFeedController as JobFeedCtrl'>
+  <loader ng-show="!jobs"></loader>
+  <div class="jobs-feed-inner" ng-if="jobs">
+    <div class="row jobs-nav-wrap">
+      <nav id="jobs-nav">
+        <ul>
+          <li ng-class="{ active: tab.isSet('all') }">
+            <a class="tab-select" ng-click="tab.setTab('all')">All</a>
+          </li>
+          <li
+            ng-if="miniInternshipCount > 0"
+            ng-class="{ active: tab.isSet('miniinternship') }">
+            <a class="tab-select" ng-click="tab.setTab('miniinternship')">Mini Internships</a>
+          </li>
+          <li
+            ng-if="internshipCount > 0"
+            ng-class="{ active: tab.isSet('intern') }">
+            <a class="tab-select" ng-click="tab.setTab('intern')">Internships</a>
+          </li>
+          <li
+            ng-if="fulltimeCount > 0"
+            ng-class="{ active: tab.isSet('fulltime') }">
+            <a class="tab-select" ng-click="tab.setTab('fulltime')">Full-time</a>
+          </li>
+          <li ng-if="currentUser" ng-class="{ active: tab.isSet('myjobs') }">
+            <a class="tab-select" ng-click="tab.setTab('myjobs')">My Jobs</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <div id="jobs-scrollbar-hider">
+      <span class="scroll jobs-scroll-left"><i class="fa fa-arrow-left"></i></span>
+      <div id="jobs-outer-wrap" job-feed-when-scroll-ends="loadMore()">
+        <div id='jobs-inner-wrap'>
+          <ul>
+            <job-feed-item ng-repeat='job in jobs'></job-feed-item>
+            <li id="no-more-job-feed-items" ng-show="!loadMoreEnabled" class="job-feed-item">
+              <h3>That's all!</h3>
+            </li>
+          </ul>
+          <span id="end-of-job-feed" ng-if="loadMoreEnabled"></span>
+        </div>
+      </div>
+      <span class="scroll jobs-scroll-right"><i class="fa fa-arrow-right"></i></span>
+    </div>
+  </div>
+
+</section>
+

@@ -1,0 +1,28 @@
+<% if !message.blank? %>
+	<%= form_tag({:action => :reply_message},class: "edit-message-form", :html => {:multipart => true}) do %>
+	    <%= hidden_field_tag :message_id, message[:hash], :id => 'form_message_id_hidden_id' %>
+		<div class="message-sender">
+          <%= message[:sender_name] %>
+          <br/>
+          <%= message[:sender_desc] %>
+	    </div>
+		<div class="message-subject">
+	        <%= text_field_tag :subject, nil, :class => 'spanTbEmailSubject', :value => message[:subject], :placeholder => 'Message Subject (*Required)' %>
+	    </div>
+	    <div>
+	      <hr class="hr-profile-item">
+	    </div>
+		<div class="message-body">
+	        <%= text_area :body, :text, :class => 'spanTbEmailBox', :value => get_reply_message_string(message[:body]), :placeholder => 'Message Body (*Required)' %>
+	    </div>
+	      <% if !alert.blank? %>
+	          <p class="label label-important">
+	            <%= alert %>
+	          </p>
+	      <% end %>
+		  <div class="lightbox-button-center">
+	        <%= submit_tag 'Send', :class => 'button button-green-large', :disable_with => 'Please wait..' %>
+		    <button class="button button-red-large" type="button" id="cancel_message"> Cancel </button>
+		  </div>
+	<% end -%>
+<% end -%>

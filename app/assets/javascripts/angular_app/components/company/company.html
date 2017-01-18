@@ -1,0 +1,52 @@
+<company-media company="company" ng-if="company"></company-media>
+<div class="main-wrap company-profile" >
+  <div class="main-backdrop"></div>
+  <div class="main">
+      <site-nav class="side" user-collections="userCollections"></site-nav>
+    <div class="main-inner-wrap">
+      <div class="row">
+        <section class="company-basics">
+          <span class="company-logo">
+            <a ng-href="/company/{{ ::company._id }}">
+              <img src="{{ ::company.company_logo }}" />
+            </a>
+          </span>
+          <span class="company-metadata">
+            <i class="fa fa-map-marker"></i> {{ ::company.location }}
+          </span>
+          <span class="follow-wrap" ng-if="currentUser">
+            <a
+              ng-click="follow()"
+              ng-if="!company.is_viewer_following"
+              class="button button-secondary follow">
+              Follow
+            </a>
+            <a
+              ng-click="unfollow()"
+              ng-if="company.is_viewer_following"
+              class="button unfollow">
+              Following
+            </a>
+          </span>
+        </section>
+        <section class="company-overview-wrap" ng-if="company.description">
+          <h4>{{ ::company.name }} - Company Overview</h4>
+          <div ng-bind-html="company.description"></div>
+
+        </section>
+      </div>
+    </div>
+  </div>
+  <section id="activity-feed-wrap" class="main">
+    <div class="activity-feed-inner" ng-show="feedItems.length > 0">
+      <activity-feed></activity-feed>
+    </div>
+  </section>
+</div>
+<div class="fixed-job-feed-wrap">
+  <job-feed></job-feed>
+</div>
+<signup-modal open="false"></signup-modal>
+<!-- <site-nav class="bottom"></site-nav> -->
+
+

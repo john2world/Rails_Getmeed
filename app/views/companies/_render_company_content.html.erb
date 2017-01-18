@@ -1,0 +1,184 @@
+<div class="job-details-company">
+  <%= @company[:name] %>
+  <% if current_user.blank? %>
+      <a href="/?reg=true" class="btn btn-sm btn-info cursor buzz-out" style="text-decoration:none;float: right" data-intro="Follow company" data-position="top">
+        <span class="glyphicon glyphicon-retweet "></span>
+        Follow Company
+      </a>
+
+  <% else %>
+      <% if @company[:is_viewer_following] %>
+          <%= form_tag({:controller => 'companies', :action => :unfollow}, :id => 'form_unfollow_company', :style => 'margin:0px 0px 0px', :html => {:multipart => true}, :remote => true) do %>
+
+              <%= button_tag(type: 'submit', :id => "unfollow_company_#{@company.id}", class: 'btn btn-sm btn-default cursor buzz-out', :style => 'float: right', :disable_with => 'Following', "data-intro" => "UnFollow company", "data-position" => "top") do %>
+                  <span class="glyphicon glyphicon-retweet "></span> Unfollow
+              <% end %>
+          <% end %>
+      <% else %>
+          <%= form_tag({:controller => 'companies', :action => :follow}, :style => 'margin: 0 0px 0px;', :id => 'form_follow_company', :html => {:multipart => true}, :remote => true) do %>
+              <%= button_tag(type: 'submit', :id => "follow_company_#{@company.id}", class: 'btn btn-sm btn-info cursor buzz-out', :style => 'float: right', :disable_with => 'Following', "data-intro" => "Click to follow the company", "data-position" => "top") do %>
+                  <span class="glyphicon glyphicon-retweet "></span> Follow Company
+              <% end %>
+          <% end %>
+      <% end %>
+  <% end %>
+</div>
+<div class="info-text-large">
+  <% if @company[:location].blank? %>
+      United States
+  <% else %>
+      <%= @company[:location] %>
+  <% end %>
+</div>
+<div>
+  <hr class="hr-profile-item">
+</div>
+<div id="content">
+  <ul id="company_jobs_tabs" class="nav nav-tabs nav-justified" data-tabs="tabs">
+    <li class="active">
+      <a href="#about" data-toggle="tab" onclick="loadCompanyFeed('<%= @company.id %>', 'tab');">ABOUT</a>
+    </li>
+    <li><a href="#jobs" data-toggle="tab">JOBS</a></li>
+    <li><a href="#insights" data-toggle="tab">INSIGHTS</a>
+    </li>
+  </ul>
+  <div id="my-tab-content" class="tab-content">
+    <div class="tab-pane fade in active" id="about">
+      <% if @company[:show_about] %>
+          <% unless @company[:description].blank? %>
+              <div class="job-details-body">
+                <div class="company-position-title" align="center">COMPANY OVERVIEW</div>
+                <div>
+                  <hr class="hr-profile-item">
+                </div>
+                <p class="description-padding feed-description">
+                  <%= @company[:description].html_safe %></p>
+              </div>
+              <hr class="hr-profile-item">
+          <% end %>
+      <% end %>
+      <div id="company_feed">
+      </div>
+    </div>
+    <div class="tab-pane fade in" id="jobs">
+      <div id="job-tab-content" class="tab-content">
+
+        <% if @jobs.blank? %>
+            <span class="info-text-medium">No matching jobs posted for your meed profile!</span>
+        <% else %>
+            <% @jobs.each do |job| %>
+                <%= render 'jobs/view_dash_jobs', :job => job %>
+            <% end %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="tab-pane fade in" id="insights">
+      <% if current_user.blank? %>
+          <%= render 'shared/unauth_warning', :type => 'hiring insights', :from => @company.name %>
+      <% else %>
+          <% unless @company_salaries_byJob.blank? %>
+              <div id="companyinsights-salary">
+                <div style="text-align: center">
+                  <h3 style="text-align: center">Salaries</h3>
+                </div>
+                <table class="table table-striped">
+                  <tr>
+                    <th>Job</th>
+                    <th>mean</th>
+                    <th>min</th>
+                    <th>max</th>
+                  </tr>
+                  <% @company_salaries_byJob.take(5).each do |salary| %>
+                      <tr>
+                        <td><%= salary[:job] %></td>
+                        <td><%= salary[:mean] %></td>
+                        <td><%= salary[:min] %></td>
+                        <td><%= salary[:max] %></td>
+                      </tr>
+                  <% end %>
+                  <% @company_salaries_byJob.drop(5).each do |salary| %>
+                      <tr style="display: none">
+                        <td><%= salary[:job] %></td>
+                        <td><%= salary[:mean] %></td>
+                        <td><%= salary[:min] %></td>
+                        <td><%= salary[:max] %></td>
+                      </tr>
+                  <% end %>
+                </table>
+                <div class="well" style="text-align: center">
+                  <a onclick="toggleTable(this, 'companyinsights-salary')">
+                    <span>more</span>
+                    <i class="icon-chevron-down" style="margin-top: 5px; margin-left: 5px;"></i>
+                  </a>
+                </div>
+              </div>
+          <% end %>
+          <br/>
+          <% unless @company_ratings.blank? %>
+              <div id="companyinsights-rating">
+                <div style="text-align: center">
+                  <h3 style="text-align: center">Ratings</h3>
+                </div>
+                <table class="table table-striped">
+                  <tr>
+                    <th>Rating</th>
+                    <th>Value</th>
+                  </tr>
+                  <% @company_ratings.each do |rating| %>
+                      <tr>
+                        <td><%= rating['name'] %></td>
+                        <td><%= rating['value'] %></td>
+                      </tr>
+                  <% end %>
+                </table>
+              </div>
+              <hr class="hr-header">
+          <% end %>
+          <% unless @hiring_major_year_data_string.blank? %>
+              <div id="insights-company-hiring-trend" style="min-width: 65%; height: 400px; margin: 0 auto"></div>
+              <hr class="hr-header">
+          <% end %>
+          <% unless @skills_data_string.blank? %>
+              <div id="insights-company-skills" style="min-width: 65%; height: 400px; margin: 0 auto"></div>
+              <hr class="hr-header">
+          <% end %>
+          <% unless @major_data_string.blank? %>
+              <div id="insights-company-major" style="min-width: 65%; height: 400px; margin: 0 auto"></div>
+              <hr class="hr-header">
+          <% end %>
+          <% unless @interview_experience_data_string.blank? || @interview_difficulty.blank? %>
+              <div>
+                <table align="center">
+                  <tr>
+                    <td>
+                      <div class="tile">
+                        <br/>
+
+                        <div class="tile-header">
+                                <span class="tile-header-text">
+                                  Interview Difficulty
+                                </span>
+                        </div>
+                        <div class="tile-main">
+                          <div class="tile-main-text">
+                            <span><%= @interview_difficulty %></span>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <div id="insights-company-interview-experience" style="min-width: 45%; height: 400px; margin: 0 auto"></div>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+              <hr class="hr-header">
+          <% end %>
+          <% unless @hiring_sources_data_string.blank? %>
+              <div id="insights-company-hiring-sources" style="min-width: 65%; height: 400px; margin: 0 auto"></div>
+          <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

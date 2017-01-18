@@ -1,0 +1,16 @@
+<div class="answer-row">
+  <div id="edit_answer_div">
+    <div id="edit_answer_new">
+      <%= hidden_field_tag :question_id, question.id, :id => 'form_new_hidden_id' %>
+      <% if question.is_coding %>
+          <%= text_area :description, :text, :class => 'form-control dont-show-wysiwyg', :placeholder => 'Describe your answer in few words to understand or support the code below.', :rows => 5 %>
+          <hr class="hr-question-separator">
+          <%= select_tag :lang_type, options_for_select(question[:code_types].collect { |u| [u.display_id, u.file_ext] }), :class => 'form-control', :prompt => 'Select Language Type (*)' %>
+          <hr class="hr-question-separator">
+          <%= text_area :code_description, :text, :class => 'form-control dont-show-wysiwyg', :placeholder => '<Paste your code here> (code is powered by github)', :rows => 10%>
+      <% else %>
+          <%= text_area :description, :text, :class => 'form-control', :placeholder => 'Describe your answer in few words (seen by hiring manager).', :rows => 5%>
+      <% end %>
+    </div>
+  </div>
+</div>

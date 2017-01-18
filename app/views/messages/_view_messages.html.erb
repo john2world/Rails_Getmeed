@@ -1,0 +1,65 @@
+<div class="blog-list blog-category-list">
+  <%= hidden_field_tag :id, message[:_id], :id => 'job_hidden' %>
+  <% if message.status.eql? 'new' %>
+       <span class="feed-story-type feed-story-type-orange">  
+        <span class="fa fa-envelope"></span> Unread message
+           </span>
+  <% else %>
+      <span class="feed-story-type">  
+        <span class="fa fa-envelope-o"></span> Opened
+      </span>
+  <% end %>
+  <article class="post col-md-12 col-sm-12 col-xs-12 col-md-offset-0 col-sm-offset-0 col-xs-offset-0">
+    <div class="post-inner">
+      <div class="content smartphone-messages">
+        <div class="date-label">
+          <a href="/<%= message[:sender][:company_id] %>" target="_blank">
+
+            <% if message[:company_logo].blank? %>
+                <img class="img-responsive image-small" src="http://res.cloudinary.com/resume/image/upload/c_scale,w_75/v1405632414/user_male4-128_q1iypj.png"/>
+            <% else %>
+                <img class="img-responsive image-small" src="<%= message[:company_logo] %>"/>
+            <% end %>
+          </a>
+        </div>
+        <div class="message-container">
+          <% unless message[:subject].blank? %>
+              <div class="post-title"><a href="/message/<%= message[:hash] %>"><%= message[:subject] %></a></div>
+          <% end %>
+
+          <div class="meta">
+            <ul class="meta-list list-inline">
+              <li class="post-author">
+                <a href="/<%= message[:sender][:company_id] %>">
+                  <% if message[:sender][:first_name].blank? %>
+                      <%= message[:sender].id %>
+                  <% else %>
+                      <%= message[:sender].first_name %> <%= message[:sender].last_name %>
+                      , <%= message[:sender][:title] %>
+                  <% end %>
+                  <% unless message[:company_name].blank? %>
+                      @ <%= message[:company_name] %>
+                  <% end %>
+                </a><span class="info-text-small-medium"></span> 
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="post-entry">
+          <p>
+            <%= Sanitize.clean(message[:body].truncate(250, :omission => '..')) %>
+          </p>
+        </div>
+        <div> 
+          <a href="/message/<%= message[:hash] %>" class="btn btn-success btn-xs">
+            <% if message.status.eql? 'new' %>
+                <span class="fa fa-eye"></span>Open
+            <% else %>
+                <span class="fa fa-eye"></span>View
+            <% end %>
+          </a>´
+        </div>
+      </div>
+    </div>
+  </article>
+</div>

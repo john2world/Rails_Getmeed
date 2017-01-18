@@ -1,0 +1,49 @@
+<div class="profile-course-projects profile-section" ng-if="profile.courses || profile.is_viewer_profile">
+  <h3>
+    Course Projects
+    <a class="open-profile-add-course-project edit-link"
+       ng-click="courseFns.add()"
+       ng-show="profile.is_viewer_profile">
+       <i class="fa fa-plus-square"></i> Add
+    </a>
+  </h3>
+
+  <div ng-repeat="item in profile.courses"
+       id="course-project-{{ item._id }}"
+       class="course-project-entry">
+    <div class="course-project-entry-show" ng-show="!item.showEdit()">
+      <div class="entry-title">
+        <h4>{{ item.title }}</h4>
+        <a class="profile-edit-course-project edit-link"
+           ng-click="courseFns.edit(item)"
+           ng-show="profile.is_viewer_profile">
+           <i class="fa fa-pencil-square-o"></i> Edit
+        </a>
+        <a class="profile-delete-education delete-link"
+           ng-click="courseFns.del(item)"
+           ng-show="profile.is_viewer_profile">
+           <i class="fa fa-times"></i> Delete
+        </a>
+        <span class="profile-date">{{ item.semester }} {{ item.year }}</span>
+      </div>
+      <button class="button button-secondary medium-small profile-add-reference" ng-click="item.showInvites = true" ng-if="!item.showInvites && profile.is_viewer_profile">References</button>
+      <span class="profile-description" ng-bind-html="item.description">
+      </span>
+
+      <skills-section ng-if="item.skills" skills="item.skills"></skills-section>
+
+      <p class="profile-link" ng-if="item.link">
+        <a ng-href="{{ item.link }}" target="_blank">
+          {{ item.link | limitTo:50 }}
+          <span ng-if="item.link.length > 50">...</span>
+        </a>
+      </p>
+
+      <reviews item = "item" current-user="currentUser" ng-if="item.reviews.length > 0"></reviews>
+      <div class="row"></div>
+      <review-invites item="item" course_id="item._id" ng-if="!item.newEntry && item.showInvites"></review-invites>
+    </div>
+    <profile-course-project-edit ng-if="profile.is_viewer_profile"></profile-course-project-edit>
+  </div>
+
+</div>

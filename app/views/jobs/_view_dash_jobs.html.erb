@@ -1,0 +1,48 @@
+<div class="blog-list blog-category-list">
+  <%= render 'jobs/feed_item_type', :data => job %>
+  <article class="post col-md-12 col-sm-12 col-xs-12 col-md-offset-0 col-sm-offset-0 col-xs-offset-0">
+    <div class="post-inner">
+      <div class="content feed-container">
+
+        <div class="date-label">
+          <a href="/job/<%= job[:hash] %>">
+            <% if job.company_logo.blank? %>
+                <img class="img-responsive image-small" src="https://res.cloudinary.com/resume/image/upload/c_scale,w_100/v1424141642/http_library.oregonmetro.gov_rlisdiscovery_browse_graphic_placeholder_lgdixu.png">
+            <% else %>
+                <img class="img-responsive image-small" src="<%= job.company_logo %>"/>
+            <% end %>
+          </a>
+        </div>
+        <div class="article-container">
+          <div class="post-title"><a href="/job/<%= job[:hash] %>"> <%= job[:title] %></a> </div>
+
+          <div class="meta">
+            <ul class="meta-list list-inline">
+              <li class="post-author">
+                <a href="/job/<%= job[:hash] %>"><%= job[:company] %></a>
+                <span class="info-text-small-medium"></span> 
+              </li>
+              <li class="post-comments-link">
+                <i class="glyphicon glyphicon-map-marker"></i> <%= job[:location] %> 
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="post-entry">
+          <% unless job[:description].blank? %> 
+              <%= Sanitize.clean(job[:description].strip.truncate(300, :omission => '..')) %>
+          <% end %>
+        </div>
+        <%= render 'feed/feed_job_actions', :job => job %>
+        <% unless current_user.blank? %>
+            <div> 
+              <span class="info-text-tiny"> Shared with: </span>
+              <span class="info-text-tiny"><span class="fa fa-group"></span> <%= "#{current_user.major}" %>
+                <strong> — <%= "#{current_school_name}" %></strong></span>
+            </div>
+        <% end %>
+      </div>
+    </div>
+
+  </article>
+</div>

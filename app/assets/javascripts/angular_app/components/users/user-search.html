@@ -1,0 +1,9 @@
+<div class="user-search">
+    <nit-advanced-searchbox
+            ng-model="searchParams"
+            placeholder="Search By Name (first name or last name)..."></nit-advanced-searchbox>
+    <div id="user-search-results" ng-if="leadUsers">
+        <users-list users="leadUsers" current-user="currentUser" reg-flow="true" source="dashboard-search">
+        </users-list>
+    </div>
+</div>

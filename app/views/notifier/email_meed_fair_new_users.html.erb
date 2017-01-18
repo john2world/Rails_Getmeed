@@ -1,0 +1,23 @@
+<p>
+  Hi <%= @user[:first_name].blank?? '' : @user[:first_name] %>,
+</p>
+<p>
+  Don't forget to attend our Meed Fair - Summer 15, an online career fair across top 28 universities.
+  <br/>
+  http://getmeed.com/meedfair
+</p>
+<p>
+  Many rising companies like Zenefits are looking to hire students for internship & full-time positions.
+</p>
+<p>
+  Please forward the invitation to other students and faculty that might be interested in attending.
+</p>
+<p>
+  Regards,<br/>
+  Joe, <br/>
+  Student Advisor,<br/>
+  Meed Inc, San Francisco<br/>
+</p>
+<%= render 'notifier/email_footer' %>
+</body>
+</html>

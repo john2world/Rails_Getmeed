@@ -1,0 +1,86 @@
+<div class="bg-slider-wrapper work-references">
+</div>
+<!--//bg-slider-wrapper-->
+
+<section class="promo section section-on-bg" style="padding-top: 20px" data-sr='enter bottom and scale up 20% over 1s and reset'>
+  <div class="container text-center">
+    <div class="any-center">
+      <img src="https://res.cloudinary.com/resume/image/upload/c_scale,w_120/v1427155934/crescent_green_rt6rit.png" style="padding: 20px;">
+    </div>
+    <p class="title" style="line-height: 1.1;">
+      COLLECT WORK REFERENCES
+      <br/><br/>
+      <span style="font-size: 20px;">
+        STUDENTS WITH REFERENCES FROM PREVIOUS EMPLOYERS ARE <span style="font-size: 25px">4x</span> MORE LIKELY TO GET SELECTED.
+      </span>
+    </p>
+
+    <a class="btn btn-cta btn-cta-primary" href='<%= current_user.blank? ? "/login?redirect_url=#{url_for(controller: :reviews, action: :work_references)}" : "#{url_for(controller: :reviews, action: :work_references)}" %>'>LOGIN</a>
+
+    <hr width="20%" style="margin-left: 40%">
+
+    <%= form_tag({:controller => 'users', :action => 'verify', :redirect_url=>"#{url_for(controller: :reviews, action: :work_references)}"}, :class => 'signup-form navbar-form', :html => {:multipart => true}) do %>
+      <%= hidden_field_tag :inviter_id, @inviter_handle %>
+      <div class="form-group">
+        <%= text_field_tag :email, nil, :class => 'form-control', :required => '', :style => 'height:50px;', :id => 'sign_up_tb', :placeholder => 'Enter college email (ex: sam@usc.edu)' %>
+      </div>
+      <%= button_tag(type: 'submit', class: 'btn btn-cta btn-cta-primary', :id => 'splash_input_button', :disable_with => 'Verifying.. ') do %>
+        CREATE PROFILE
+      <% end %>
+      <div class="col-md-2 col-md-offset-4">
+        <% if !alert.blank? %>
+          <p class="label label-important">
+            <%= alert %>
+          </p>
+        <% end %>
+      </div>
+    <% end %>
+
+    <% if @reviews.count() > 2 %>
+      <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+          <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+          <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+          <% @reviews.each_with_index do |review, index| %>
+            <div class="item <%= index == 0? 'active' :'' %>" style="height: 250px;">
+              <div style="display: flex; justify-content: center; height: 80%; width: 100%">
+                <div style="align-self: center; width: 70%">
+                  <span style="font-size: 20px;">
+                    <%= review.user_work.title %> @ <%= review.user_work.company %>
+                  </span>
+                  <br/><br/>
+                  <span style="font-size: 16px;">
+                   Reference for <%= review[:user].name %>
+                  </span>
+                  <br/><br/><br/>
+                  <span style="font-size: 16px; font-style: italic">"<%= review.review_text %>"</span>
+                </div>
+              </div>
+              <div class="carousel-caption">
+                - <%= review.enterprise_user.name %>, <%= review.enterprise_user.title %> @ <%= get_work_reviewer_company_name(review) %>
+              </div>
+            </div>
+        <% end %>
+        </div>
+
+        <!-- Controls -->
+        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    <% end %>
+  </div>
+</section>
+
+<!--//promo-->

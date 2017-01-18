@@ -1,0 +1,122 @@
+<form ng-submit="submitJob(job)" name="jobForm" novalidate>
+    <h5>
+        Fill Job Details:
+    </h5>
+
+    <fieldset>
+        <input type="text" ng-model="job.title" required placeholder="Job Title (*required)"></input>
+    </fieldset>
+
+    <fieldset>
+        <input ng-model="job.location" googleplace type="text" name="location" placeholder="Location (*required)"
+               required></input>
+    </fieldset>
+
+    <fieldset>
+        <input type="text" name="compensation" ng-model="job.compensation"
+               placeholder="Compensation (optional)"></input>
+    </fieldset>
+
+    <fieldset>
+        <selectize required="true" config='jobTypeConfig' options='jobTypeOptions' ng-if="loaded"
+                   ng-model="job.type"></selectize>
+    </fieldset>
+
+    <fieldset>
+        <wysihtml5-toolbar wysihtml5-toolbar-id="wysihtml5-toolbar-job_description"
+                           wysihtml5-textarea-id="job_description"></wysihtml5-toolbar>
+        <textarea name="description" id="job_description" ng-model="job.description" required
+                  placeholder="Paste your job here 4000 characters (*required)"></textarea>
+    </fieldset>
+    <hr>
+
+    <h5>
+        Select Audience:
+    </h5>
+
+    <Strong>
+        Choose Skills:
+    </Strong>
+
+    <div class="info-text-medium">
+        Enter upto 5 skills the candidate must have to perform the job duties.
+    </div>
+
+    <fieldset>
+        <selectize required='true' config='skillsConfig' options='skillsOptions' ng-if="loaded"
+                   ng-model="job.skills"></selectize>
+    </fieldset>
+    <hr>
+    <Strong>
+        Choose Universities:
+    </Strong>
+
+    <div class="info-text-medium">
+        Post this job to all current (and new) universities or restrict to selected universities.
+    </div>
+
+    <fieldset>
+        <selectize required='true' config='schoolsConfig' options='schoolsOptions' ng-if="loaded"
+                   ng-model="job.schools"></selectize>
+    </fieldset>
+
+    <fieldset class="story-tags" style="line-height: 3rem">
+        <a ng-click="addUniversity('all')" class="story-tags">All Universities</a>
+    </fieldset>
+    <hr>
+    <Strong>
+        Choose Majors
+    </Strong>
+
+    <div class="info-text-medium">
+        Select individual majors or major groups like "Software Engineering", "Marketing" etc.
+    </div>
+
+    <fieldset>
+        <selectize required='true' config='majorsConfig' options='majorsOptions' ng-if="loaded"
+                   ng-model="job.majors"></selectize>
+    </fieldset>
+
+    <fieldset class="story-tags" style="line-height: 3rem">
+        <a ng-repeat="major in extraMajors" ng-click="addMajor(major.value)" class="story-tags">{{major.text}}</a>
+    </fieldset>
+    <hr>
+    <h5>
+        Application Notifications:
+    </h5>
+
+    <fieldset>
+        <input type="text" name="emails" ng-model="job.emails" placeholder="Enter comma separated emails (*required)"
+               required></input>
+    </fieldset>
+    <hr>
+    <h5>
+        Screening Question:
+    </h5>
+
+    <fieldset>
+        <input ng-model="job.question.title" name="question_title" placeholder="Enter an Optional Question"
+               type="text"></input>
+    </fieldset>
+
+    <fieldset>
+        <input type="checkbox" name="is_coding" ng-model="job.question.is_coding"></input>
+        <label for="is_coding">Is this is a programming question?</label>
+        <span class="info-text">(Answers are powered by github)</span>
+    </fieldset>
+
+    <fieldset>
+        <wysihtml5-toolbar wysihtml5-toolbar-id="wysihtml5-toolbar-question_description"
+                           wysihtml5-textarea-id="question_description"></wysihtml5-toolbar>
+        <textarea ng-model="job.question.description" name="question_description" id="question_description"
+                  placeholder="Any other additional information (optional)"></textarea>
+    </fieldset>
+    <hr>
+    <a ng-hide="paid || job._id" ng-click="chargeJob(20000)" class="button button-primary">
+        Post
+    </a>
+
+    <button ng-show="paid || job._id" class="button button-primary" type="submit">
+        Save Changes
+    </button>
+</form>

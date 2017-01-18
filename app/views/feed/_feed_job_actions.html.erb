@@ -1,0 +1,40 @@
+<div>
+  <% if job[:applied].blank? %> 
+      <a href="<%= "/job/#{job[:hash]}" %>" class="btn btn-xs btn-success"><span class="glyphicon glyphicon-ok-sign"></span>
+        Apply</a> 
+  <% else %>
+      <div class="job_actions">
+        <div style="display: inline-block;">
+
+
+          <!--<%= form_tag({:controller => 'jobs', :action => 'share', :id => job[:hash]}, :html => {:multipart => true},
+                           :style => 'margin:0px 0px 0px;display: inline-block;', :remote => true) do %>-->
+              <!--<button class="btn btn-xs btn-success" job_id="<%= job[:hash] %>" name="<%= job[:company] %>" type="submit" disable_with="Sharing">-->
+              <!--<span class="glyphicon glyphicon-share "></span>-->
+              <!--<span name="share-text">Share</span>-->
+              <!--</button>-->
+              <!--
+          <% end %>-->
+
+
+          <button class="btn btn-xs btn-primary" job_id="<%= job[:hash] %>" name="<%= job[:company] %>" onclick="forward_job(this)">
+            <span class="fa fa-share-alt-square"></span>Share Job
+          </button>
+          <button class="btn btn-xs btn-danger" job_id="<%= job[:hash] %>" name="<%= job[:company] %>" onclick="send_message(this)">
+            <span class="fa fa-envelope"></span>Follow Up
+          </button>
+          <% unless @user_status_labels.blank? %>
+              <%= form_tag({:controller => 'jobs', :action => 'update_user_status', :id => job[:hash]}, :html => {:multipart => true},
+                           :style => '0px', :class => 'apply-button', :remote => true, :style=>'padding-left:5px') do %>
+                  <div>
+                    <%= select_tag "label", options_for_select(@user_status_labels, job[:status]),
+                                   :class => 'consumer-selectize', :placeholder => "label", :job_id => job[:hash],
+                                   :style => 'width: 118px; padding: 0px 4px 0px 7px;', :type => "job-label" %>
+                  </div>
+              <% end %>
+              </div>
+
+          <% end %>
+          </div>
+  <% end %>
+</div>

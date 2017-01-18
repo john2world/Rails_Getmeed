@@ -1,0 +1,46 @@
+<% if is_edit %>
+    <div class="row" id="objective_render">
+      <div>
+        <span class="profile-item-type"> OBJECTIVE</span><span class="info-text" style="font-weight: bold">  (add objective - highly recommended)</span>
+        <% unless profile[:objective].blank? %>
+            <a id="edit_link" class="edit_hover " onclick="renderEditItem('show_single_objective_true')" style="cursor: pointer;">
+              <strong><span class="glyphicon glyphicon-edit"></span> Edit </strong>
+            </a>
+        <% end %>
+      </div>
+<% else %>
+    <% unless profile[:objective].blank? %>
+        <div class="row">
+          <div class="profile-item-type"> OBJECTIVE</div>
+          <% unless profile[:objective].blank? %>
+              <%= render 'view_objective_form', :is_edit => is_edit, :profile => profile %>
+          <% end %>
+          <hr class="hr-profile-separator">
+        </div>
+    <% end %>
+<% end %>
+
+<% if is_edit %>
+    <% unless profile[:objective].blank? %>
+        <%= render 'view_objective_form', :is_edit => is_edit, :profile => profile %>
+    <% end %>
+    <div id="view_objective_div" class="profile-view-table"></div>
+    <div id="edit_objective_div" style="display: none">
+      <div id="edit_objective_new" class='profile-view-table'>
+        <%= render 'edit_objective_form', :profile => profile %>
+      </div>
+    </div>
+    <div class="any-center">
+      <% if profile[:objective].blank? %>
+          <a id="add_new_objective" href="#new_objective_id" class="any-center">
+            <strong> Add Objective</strong>
+          </a>
+      <% else %>
+          <a id="add_new_objective" href="#new_objective_id" class="any-center" style="display: none">
+            <strong>Add Objective</strong>
+          </a>
+      <% end %>
+    </div>
+    <hr class="hr-profile-separator">
+    </div>
+<% end %>

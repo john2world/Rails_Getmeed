@@ -1,0 +1,29 @@
+<%= render 'shared/alert_message' %>
+<hr class="hr-header">
+<% if @messages.blank? %>
+    <div class="form-view">
+      <table class="row-view">
+        <tr class="empty-messages" style="text-align: center">
+          <p class="info-text-large" style="text-align: center"> Looks like you have no messages yet!
+          </p>
+        </tr>
+      </table>
+    </div>
+<% else %>
+    <div id="content">
+      <div id="my-tab-content" class="tab-content">
+        <div class="tab-pane fade in active" id="all">
+          <% unless @messages.blank? %>
+              <% @messages.each do |message| %>
+                  <%= render 'view_messages', :message => message %>
+                  <hr class="hr-header">
+              <% end %>
+
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <% unless @messages.blank? %>
+        <%= paginate @messages %>
+    <% end %>
+<% end %>

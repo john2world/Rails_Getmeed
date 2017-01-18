@@ -1,0 +1,47 @@
+<div class="modal fade" id="workReferenceInviteModal" tabindex="-1" role="dialog" aria-labelledby="ownerBoxLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header" style="padding-bottom: 0px">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <p class="accordion lightbox-text">Invite employer to recommend this work<p>
+        <hr class="hr-header">
+        <h4 class="work" style="text-align: center; font-weight: initial"></h4>
+      </div>
+      <%= form_tag({:controller => 'reviews', :action => :work_reference_email_invite}, :class => 'form-view-tight',
+                   :html => {:multipart => true}, :remote => true) do %>
+        <div class="modal-body" style="margin-top: 0px; padding-top: 0px; padding-bottom: 0px; margin-bottom: 0px">
+          <div class="form-view-tight" style="margin: 0px">
+            <%= hidden_field_tag :work_id, params[:work_id], :id => 'form_message_id_work_id' %>
+            <%= hidden_field_tag :work_type, params[:work_type], :id => 'form_message_id_work_type' %>
+            <%= hidden_field_tag :parent_id, '', :id => 'form_message_id_parent_id' %>
+            <div class="form-group col-md-12 col-sm-12 col-lg-12 col-xs-12" style="margin-bottom:0px">
+              <label style="color: #333333;font-size: 15px;">
+                <%= text_field_tag :first_name, nil, :class => 'col-md-5 col-sm-5 col-lg-5 col-xs-5', :required => '',
+                                   :placeholder => 'First Name', :style => "height: 40px; margin: 5px" %>
+                <%= text_field_tag :last_name, nil, :class => 'col-md-5 col-sm-5 col-lg-5 col-xs-5', :required => '',
+                                   :placeholder => 'Last Name', :style => "height: 40px; margin: 5px" %>
+                <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12" style="height: 10px;"></div>
+                <%= text_field_tag :email, nil, :class => 'col-md-5 col-sm-5 col-lg-5 col-xs-5', :required => '',
+                                   :placeholder => 'Email', :style => "height: 40px; margin: 5px", :type => 'email' %>
+                <div class="col-md-5 col-sm-5 col-lg-5 col-xs-5" style="height: 10px;"></div>
+              </label>
+            </div>
+            <div class="form-group col-md-12 col-sm-12 col-lg-12 col-xs-12">
+              <label style="color: #333333;font-size: 15px;">
+                <%= text_area_tag :message, nil, :class => 'form-control', :required => '',
+                                  :placeholder => 'Optional Message ...', :cols => 80, :rows => 40, :style => "width: 100%" %>
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <div class="any-center">
+            <%= button_tag(type: 'submit', class: 'btn btn-primary btn-primary', :data => {:disable_with => 'Sending'}) do %>
+              <span class="glyphicon glyphicon-send"></span> Invite
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

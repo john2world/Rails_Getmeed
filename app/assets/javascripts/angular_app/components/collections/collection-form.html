@@ -1,0 +1,103 @@
+<div id="company-form" class="main-inner-wrap">
+  <h4 class="welcome-heading" ng-if="!formData.title">Create Group</h4>
+    <h5 class="welcome-heading" ng-if="formData.title">Hey, you are the first one to create "{{ ::formData.title}}" Collection!</h5>
+    <div class="details"> Groups are a space for you to connect with other users based on a specific topic or interest. Creating and managing groups will enhance your visibility on Meed, adding value to your profile and professional brand. As a creator, you have the ability to conduct workshops, exchange study material, and share projects to receive upvotes to your profile. Groups will expire if there is <em>little</em> or <em>no</em> activity.</div>
+    <hr>
+  <form
+    accept-charset="UTF-8"
+    name="createCollectionForm"
+    ng-submit="submitCreate(formData, createCollectionForm.$valid)"
+    novalidate="novalidate">
+    <fieldset>
+      <p class="image-wrap">
+        <img
+          ng-src="{{ ::CONSTS.default_image }}"
+          class="cover-image"
+          ng-class="{'ng-invalid': !createCollectionForm.coverImageInput.$valid}"
+          ng-show="!formData.imageUrl" />
+        <img
+          ng-src="{{ formData.imageUrl }}"
+          class="cover-image"
+          ng-show="formData.imageUrl" />
+      </p>
+      <input
+        id="cover-image-input"
+        data-fp-apikey="{{ filepickerApiKey }}"
+        data-fp-button-class="button button-secondary filepicker-button"
+        data-fp-button-text="Add Cover"
+        data-fp-openTo="IMAGE_SEARCH"
+        ng-model="formData.imageUrl"
+        name="coverImageInput"
+        required="required"
+        type="filepicker"/>
+    </fieldset>
+    <fieldset>
+      <input
+        type="text"
+        name="title"
+        ng-model="formData.title"
+        placeholder="Group Name"
+        required="required"/>
+    </fieldset>
+    <fieldset>
+      <textarea
+        name="description"
+        ng-model="formData.description"
+        placeholder="Describe your Collection"></textarea>
+    </fieldset>
+    <fieldset class="checkboxes">
+        <input
+          type="checkbox"
+          ng-model="formData.isPrivate">
+        Private Group <span class="details">(Only people who you invite can be part of this)</span>
+    </fieldset>
+    <fieldset class="checkboxes">
+      <h3>Choose Audience:</h3>
+      <p class="error" ng-show="formData.submitted && !someSelected()">Please choose at least one major</p>
+      <input
+        type="checkbox"
+        ng-change="toggleAllMajors(allMajorsChecked)"
+        ng-model="allMajorsChecked" />
+        All Majors <span class="details">(generic)</span>
+      <h4>Engineering</h4>
+      <ul class="major-types">
+        <li ng-repeat="m in engineeringMajorTypes">
+          <label>
+            <input
+              type="checkbox"
+              checklist-value="m._id"
+              checklist-model="formData.majorTypes"/>
+            <span>{{ m.name }}</span>
+          </label>
+        </li>
+      </ul>
+      <h4>Business</h4>
+      <ul class="major-types">
+        <li ng-repeat="m in businessMajorTypes">
+          <label>
+            <input
+              type="checkbox"
+              checklist-value="m._id"
+              checklist-model="formData.majorTypes"/>
+            <span>{{ m.name }}</span>
+          </label>
+        </li>
+      </ul>
+      <h4>Other</h4>
+      <ul class="major-types">
+        <li ng-repeat="m in otherMajorTypes">
+          <label>
+            <input
+              type="checkbox"
+              checklist-value="m._id"
+              checklist-model="formData.majorTypes"/>
+            <span>{{ m.name }}</span>
+          </label>
+        </li>
+      </ul>
+    </fieldset>
+    <loader ng-show="loading"></loader>
+
+    <input type="submit" ng-show="!loading" class="button button-primary" value="submit"/>
+  </form>
+</div>

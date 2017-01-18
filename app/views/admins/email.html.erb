@@ -1,0 +1,29 @@
+<p class="accordion lightbox-text"> Send Custom Email
+</p>
+<hr class="hr-header">
+<%= form_tag({:action => :email_send}, :class => 'form-submit',:style => 'padding: 35px 100px 35px;', :html => {:multipart => true}) do %>
+    <div class="form-view" style="text-align: center;">
+      <label style="color: #333333;font-size: 15px;">
+        <%= text_field_tag :email, nil, :class => 'spanTb', :placeholder => 'Recipient email' %>
+      </label>
+      <label style="color: #333333;font-size: 15px;">
+        <%= text_field_tag :sender_email, nil, :class => 'spanTb', :placeholder => 'Sender email' %>
+      </label>
+      <label style="color: #333333;font-size: 15px;">
+        <%= text_field_tag :subject, nil, :class => 'spanTb', :placeholder => 'Email Subject' %>
+      </label>
+      <label style="color: #333333;font-size: 15px;">
+        <%= text_area :body, :text, :class => 'spanTbTextarea', :placeholder => 'Email Body (Excluding Hi and signature)', :maxlength => 5000 %>
+      </label>
+      <label style="color: #333333;font-size: 15px;">
+        <%= text_field_tag :landing_url, nil, :class => 'spanTb', :placeholder => 'Ex: landing url in the email', :maxlength => 5000 %>
+      </label>
+      <% if !alert.blank? %>
+          <p class="label label-important">
+            <%= alert %>
+          </p>
+      <% end %>
+    </div>
+    <%= submit_tag 'Submit', :class => 'button button-green', :data => { :disable_with => 'Please wait..'} %>
+    </div>
+<% end -%>

@@ -1,0 +1,32 @@
+<% if @show_fb_box %>
+
+    <div class="any-center">
+      <div class="fb-like-box" data-href="https://www.facebook.com/resudotme" data-colorscheme="light" data-show-faces="true" data-header="true" data-stream="false" data-show-border="true"></div>
+    </div>
+    <hr class="hr-header">
+<% end %>
+<% if show_custom_email %>
+    <div class="any-center">
+      <a href="/home?reg=true"><span class="size14">Skip this now, I will import later » </span></a>
+    </div>
+<% end %>
+<div class="box">
+  <% unless get_school_logo_url(current_school_handle).blank? %>
+      <img src="<%= get_school_logo_url(current_school_handle) %>" class="box-icon">
+  <% end %>
+  <div class="any-center">
+    <p>
+
+    </p>
+    <p>
+      <a href="/contacts/gmail">
+        <%= button_tag(type: 'submit', :disable_with => 'Fetching contacts..', class: 'btn btn-primary btn-google-plus cursor buzz-out') do %>
+            <span class="glyphicon glyphicon-user"></span> <%= "#{current_school_handle.upcase} GMAIL" %>
+        <% end %>
+      </a>
+    </p>
+    <p class="info-text">
+	*Remember to select <strong><%= current_school_handle.upcase %> GMAIL ACCOUNT</strong>
+    </p>
+  </div>
+</div>

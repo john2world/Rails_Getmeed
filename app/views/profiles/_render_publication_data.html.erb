@@ -1,0 +1,33 @@
+<% unless publication.blank? %>
+    <div>
+
+      <span id="<%= encode_id(publication[:_id]) %>" class="profile-item-title"><%= publication[:title] %></span>
+      <% if is_edit %>
+        <a id="edit_link" class="edit_hover" onclick="renderEditItem('show_publication_<%= encode_id(publication[:_id]) %>_true')" style="cursor: pointer;">
+          <strong><span class="glyphicon glyphicon-edit"></span> Edit </strong>
+        </a>
+      <% end %>
+      <% if !publication[:year].blank? %>
+          <span class="profile-item-year">[ <%= publication[:year] %> ]</span></span>
+      <% end %>
+
+
+      <td class="profile-item-year">
+
+    </div>
+    <% unless publication[:description].blank? %>
+      <div>
+        <%= publication[:description].html_safe %>
+      </div>
+    <% end %>
+
+    <% if !publication[:link].blank? %>
+      <div>
+        <% if is_valid_link(publication[:link]) %>
+            <a href="<%= publication[:link] %>" target="_blank"><%= publication[:link].truncate(50, :omission => '.. click here').html_safe %> </a>
+        <% else %>
+            <span style="text-decoration: underline"> <%= publication[:link].html_safe %></span>
+        <% end %>
+      </div>
+    <% end %>
+<% end %>

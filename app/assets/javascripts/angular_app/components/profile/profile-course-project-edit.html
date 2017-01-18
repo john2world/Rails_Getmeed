@@ -1,0 +1,76 @@
+<div class="profile-edit-section" ng-show="item.showEdit()">
+  <form
+    accept-charset="UTF-8"
+    name="courseProjectForm"
+    ng-submit="courseFns.submitSave(item, courseProjectForm.$valid)"
+    novalidate="novalidate">
+    <fieldset class="row">
+      <label class="columns six">
+          <span>Title</span>
+
+          <input
+          class="u-full-width"
+          ng-model="item.title"
+          required="required"
+          placeholder="Course Name or Project Title (ex: ECON 201 or Hackathon Project)"
+          type="text" />
+      </label>
+      <label class="columns three">
+        <span>Semester</span>
+        <select
+          class="u-full-width"
+          ng-model="item.semester"
+          ng-options="semester for semester in semesters"
+          required="required"
+          >
+        </select>
+
+      </label>
+      <label class="columns three">
+        <span>Year*</span>
+        <select
+          class="u-full-width"
+          ng-model="item.year"
+          ng-options="year for year in years"
+          required="required"
+          >
+        </select>
+      </label>
+    </fieldset>
+
+    <fieldset class="row">
+      <label class="u-full-width">
+        <span>Description</span>
+        <wysihtml5-toolbar
+            wysihtml5-toolbar-id="wysihtml5-toolbar-{{item._id}}"
+            wysihtml5-textarea-id="item-description-{{item._id}}"></wysihtml5-toolbar>
+        <textarea
+          class="u-full-width"
+          id="item-description-{{item._id}}"
+          ng-model="item.description"
+          required="required"
+          placeholder="Describe your project or what you've learned in this course in few words..."
+                ></textarea>
+      </label>
+    </fieldset>
+
+    <fieldset class="row">
+      <label class="columns six">
+        <span>Skills*</span>
+        <skills-select item="item" profile="profile"></skills-select>
+      </label>
+      <label class="columns six">
+        <span>Link (optional)</span>
+        <input type="url" ng-model="item.link" class="u-full-width">
+      </label>
+    </fieldset>
+    <p
+      ng-show="item.submitted && courseProjectForm.$invalid"
+      class="error">
+        Please enter valid data for all required (*) fields.
+    </p>
+    <input class="button-primary" type="submit" value="Save" />
+    <input type="button" class="button" value="Cancel"  ng-click="courseFns.closeEdit(item, true)"/>
+
+  </form>
+</div>

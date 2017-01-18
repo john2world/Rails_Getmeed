@@ -1,0 +1,11 @@
+<% if @delete == true%>
+    $("#edit_publication_<%= encode_id(@id) %>_true").hide();
+<% elsif @is_new %>
+    viewNewItem('publication');
+    $("#view_publication_div").html("<%= escape_javascript (render 'view_publication_form' , :publication => @user_publication) %>");
+    $("#view_publication_div").attr('id', 'view_publication_' +  '<%= encode_id(@user_publication[:_id]) %>');
+    $('#view_publication_' +  '<%= encode_id(@user_publication[:_id]) %>').append("<div id='view_publication_div'></div>");
+<% else %>
+    renderViewItem('edit_publication_<%= encode_id(@id) %>');
+    $("#show_publication_<%= encode_id(@id) %>_true").html("<%= escape_javascript (render 'render_publication_data' , :publication => @user_publication, :is_edit => @is_editable) %>");
+<% end %>

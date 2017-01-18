@@ -1,0 +1,76 @@
+<% if is_profile_incomplete %>
+    <%= render 'shared/incomplete_profile' %>
+<% end %>
+<script src="//code.highcharts.com/highcharts.js"></script>
+<script src="//code.highcharts.com/modules/exporting.js"></script>
+<div>
+  <table align="center">
+    <tr>
+      <td class="tile">
+        <a href="#profile-insights-header" style="color: white">
+          <div>
+            <div class="tile-header">
+                <span class="tile-header-text">
+                  Total profile views</span>
+            </div>
+            <div class="tile-main">
+              <div class="tile-main-text">
+                <span><%= @total_view_count %></span>
+              </div>
+            </div>
+          </div>
+        </a>
+      </td>
+      <td class="tile-separator">
+      </td>
+      <td class="tile">
+        <a href="#score-insights-header" style="color: white">
+          <div>
+            <div class="tile-header">
+                <span class="tile-header-text">
+                  Resume Score</span>
+            </div>
+            <div class="tile-main">
+              <div class="tile-main-text">
+                <span><%= @resume_score %></span>
+              </div>
+            </div>
+          </div>
+        </a>
+      </td>
+    </tr>
+  </table>
+</div>
+<hr class="hr-header">
+<span id="profile-insights-header" class="lightbox-text"></span>
+<div>
+  <div id="insights-profileviews-trend" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+</div>
+<div style="margin-top: 4%; margin-bottom: 4%">
+
+</div>
+<% unless @company_view_count_data_string.blank? %>
+  <p id="score-insights-header" class="accordion lightbox-text">Views By company</p>
+  <hr class="hr-header">
+  <div>
+    <div id="insights-profileviews-company" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+  </div>
+  <div class="pie-chart" style="margin-top: 4%; margin-bottom: 4%">
+
+  </div>
+<% end %>
+<p id="score-insights-header" class="accordion lightbox-text pie-chart">Resume Score Insights</p>
+<hr class="hr-header pie-chart">
+<div class="pie-chart">
+  <div id="insights-score-contributions" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+</div>
+<script>
+  public_profile_views_data = <%= @view_count_date_data_string %>;
+  load_insights_data_profileviews(public_profile_views_data);
+  <% unless @company_view_count_data_string.blank? %>
+  company_profile_views_data = <%= raw(@company_view_count_data_string) %>;
+  load_insights_data_profileviews_companies(company_profile_views_data);
+  <% end %>
+  resume_score_contributions_data = <%= raw(@resume_score_contributions_data_string) %>;
+  load_insights_data_resume_contributions(resume_score_contributions_data);
+</script>

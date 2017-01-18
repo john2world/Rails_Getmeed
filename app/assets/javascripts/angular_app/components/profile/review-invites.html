@@ -1,0 +1,24 @@
+<div class="review-invites">
+  <div class="panel panel-default">
+    <div class="row panel-heading">
+      <h4 class="panel-title">Invitations</h4>
+    </div>
+    <div class="panel-body">
+      <ul>
+        <div ng-repeat="invite in invites track by $index">
+          <li>
+            <review-invite invite="invite" index="$index" currentUser="currentUser"></review-invite>
+          </li>
+          <li ng-if="invites.length > 1">
+            <hr>
+          </li>
+        </div>
+        <div>
+          <li>
+            <button class="button button-secondary medium-small" ng-click="addReference()">Add Reference</button>
+          </li>
+        </div>
+      </ul>
+    </div>
+  </div>
+</div>

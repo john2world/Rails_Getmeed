@@ -1,0 +1,25 @@
+
+<div class="main-wrap tag">
+    <div class="main">
+        <div class="main-inner-wrap">
+            <div class="row">
+                <section>
+                    <site-nav class="side" user-tags="usertags"></site-nav>
+                    <tag-nav class="side" trending-tags="trendingTags"></tag-nav>
+                    <div class="activity-feed-inner">
+                        <loader ng-show="loading"></loader>
+                        <collection-activity-feed
+                                ng-show="!loading"
+                                ng-if="tag"
+                                feed-items="feedItems"
+                                from-tag="true"
+                                tag-id="tag._id"
+                                title-override="{{ ::tag.title }}">
+                        </collection-activity-feed>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    <signup-modal open="false"></signup-modal>
+</div>

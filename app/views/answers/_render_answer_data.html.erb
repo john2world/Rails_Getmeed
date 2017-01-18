@@ -1,0 +1,72 @@
+<table id="edit_answer_new" class='profile-view-table' xmlns="http://www.w3.org/1999/html">
+	<div class="row">
+		<% if !answers.blank? %>
+			<% answers.each do |answer| %>
+				<div id="view_answer_div">
+					<div class="answer-row">
+						<p>
+							<span class="question-author-title"><a href="/<%= @user_map[answer.user_handle].handle %>"><%= @user_map[answer.user_handle].name %></a></span>
+                     <span>
+                      <% if !current_user.blank? and !answer.user_handle.eql? current_user.handle %>
+                        <% if !current_user.blank? and (@user_upvotes.blank? or !@user_upvotes.answer_ids.include? answer.id.to_s) %>
+                          <a href="#upvote" id="upvote_<%= answer.id %>" class="upvote"><img src="http://res.cloudinary.com/resume/image/upload/c_scale,w_18/v1386492865/upvote_epc4nq.png"/></a>
+                          <a href="#downvote" id="downvote_<%= answer.id %>" class="votehidden"><img src="http://res.cloudinary.com/resume/image/upload/c_scale,w_18/v1386493038/downvote_kwq32s.png"/></a>
+
+                        <% elsif !current_user.blank? %>
+                          <a href="#downvote" id="downvote_<%= answer.id %>" class="downvote"><img src="http://res.cloudinary.com/resume/image/upload/c_scale,w_18/v1386493038/downvote_kwq32s.png"/></a>
+                          <a href="#upvote" id="upvote_<%= answer.id %>" class="votehidden"><img src="http://res.cloudinary.com/resume/image/upload/c_scale,w_18/v1386492865/upvote_epc4nq.png"/></a>
+                        <% end %>
+                     <% end %>
+											 <% if answer.upvote_count.blank? %>
+                       <span class="upvotecount" id="upvotecount_<%= answer.id %>"> 0 </span>
+                    <% else %>
+                       <span class="upvotecount" id="upvotecount_<%= answer.id %>"> <%= answer.upvote_count %></span>
+                    <% end %>
+                  </span>
+						</p>
+
+						<p>
+							<span class="question-author-status"><%= @user_map[answer.user_handle].major %>, </span>
+
+						<p/>
+
+						<% unless @user_map[answer.user_handle].blank? %>
+							<p>
+								<span class="question-author-status"><%= @user_map[answer.user_handle].degree %> at </span>
+									<span class="question-author-status" style="font-weight: bold"><%= @user_map[answer.user_handle].school %> </span>
+							</p>
+						<% end %>
+
+						<span style="font-size: 12px;color: #999999;"><%= answer.date.strftime("%B %d") %></span>
+						<br/>
+						<br/>
+
+						<p> <%= answer.description.html_safe %></p>
+						<% if !answer.gist_id.blank? %>
+							<br/>
+
+							<p><code data-gist-id="<%= answer.gist_id %>" data-gist-hide-footer="true"></code></p>
+						<% end %>
+					</div>
+				</div>
+				<hr class="hr-question-separator">
+			<% end %>
+		<% else %>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<% if current_user.blank? %>
+
+			<% else %>
+				<span style="margin-left: 36%">  Be the first one to <span style="font-size: 20px;">Answer</span> or <span style="font-size: 20px;">Upvote</span></span>
+
+				<div style="margin-left: 30%" class="info-text">(Share your knowledge that influence your meed score,
+					profile views etc.)
+				</div>
+			<% end %>
+		<% end %>
+
+	</div>
+</table>

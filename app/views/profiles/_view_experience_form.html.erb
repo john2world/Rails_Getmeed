@@ -1,0 +1,40 @@
+<div id="show_experience_<%= encode_id(experience[:_id]) %>_<%= @is_editable %>" class='profile-view-table'>
+  <%= render 'render_experience_data', :experience => experience, :is_edit => @is_editable, :index => index %>
+  <% if @is_editable %>
+    <br/>
+
+    <%= hidden_field_tag :index, index, :id => 'hidden_index' %>
+    <ul class="list-group">
+      <% unless experience[:invites].blank? %>
+        <% experience[:invites].each do |invite| %>
+          <li class="list-group-item">
+            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5"><%= invite.name %></div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"><%= invite.reference_email %></div>
+            <div class="col-lg-3 col-md-3 col-sm-2 col-xs-3">
+            <span class="label label-<%= get_label_from_reference_status(invite.status) %>">
+              <%= invite.status.titleize %>
+            </span>
+            </div>
+            <div style="clear:both"></div>
+          </li>
+        <% end %>
+      <% end %>
+      <li class="list-group-item">
+        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#workReferenceInviteModal"
+                onclick="populate_work_reference_invite(this);" data-intro="Request References for this work" data-position="right">
+          Add Reference
+        </button>
+      </li>
+    </ul>
+  <% end %>
+</div>
+<% if @is_editable %>
+    <div id="edit_experience_<%= encode_id(experience[:_id]).to_s %>_<%= @is_editable %>" class='profile-view-table' style='display: none;'>
+      <%= render 'edit_experience_form', :experience => experience, :index => index %>
+    </div>
+<% end %>
+<% unless @is_editable %>
+    <div>
+      <%= render 'profiles/profile_kudos', :data => experience %>
+    </div>
+<% end %>

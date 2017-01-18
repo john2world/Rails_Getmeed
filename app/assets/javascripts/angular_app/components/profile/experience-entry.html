@@ -1,0 +1,35 @@
+<div class="experience-entry">
+  <div class="experience-entry-show" ng-show="!item.showEdit()">
+    <div class="entry-title">
+      <h4>
+        {{ item.company }}, {{ item.title }}
+        <a class="open-profile-edit-experience edit-link"
+           ng-click="fns.edit(item)"
+           ng-show="profile.is_viewer_profile">
+           <i class="fa fa-pencil-square-o"></i> Edit
+        </a>
+        <a class="profile-delete-experience delete-link"
+           ng-click="fns.del(item)"
+           ng-show="profile.is_viewer_profile">
+           <i class="fa fa-times"></i> Delete
+        </a>
+      </h4>
+      <span class="profile-date">
+        {{ item.startDate() | date:"MMMM, yyyy" }}
+        -
+        {{ item.endDate() | date:"MMMM, yyyy" }}
+      </span>
+    </div>
+    <div class="profile-description" ng-bind-html="item.description"></div>
+
+    <skills-section ng-if="item.skills" skills="item.skills"></skills-section>
+
+    <p class="profile-link" ng-if="item.link">
+      <a ng-href="{{ item.link }}" target="_blank">
+        {{ item.link | limitTo:50 }}
+        <span ng-if="item.link.length > 50">...</span>
+      </a>
+    </p>
+  </div>
+  <experience-entry-edit ng-if="profile.is_viewer_profile"></experience-entry-edit>
+</div>

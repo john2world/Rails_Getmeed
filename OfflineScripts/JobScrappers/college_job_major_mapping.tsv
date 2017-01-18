@@ -1,0 +1,82 @@
+10	Architecture	Architecture	arc_architecture
+18	Communication	Communications	art_communications
+152	Criminal Justice	Criminology	art_criminology
+29	English	English	art_english
+325	Environmental Studies	Environmental Studies	art_environmental_studies
+167	Film & Television	Film	art_film
+32	French	French	art_french
+41	Italian	Italian Studies	art_italian_studies
+219	Korean	Korean	art_korean
+51	Music	Music	art_music
+54	Philosophy	Philosophy	art_philosophy
+64	Spanish	Spanish And Portuguese	art_spanish_n_portuguese
+6278	Game Art and Animation	Game Design	bachelor - junior_game design
+2	Accounting	Accounting	business_accounting
+99	Management Science & Engineering	Management Science and Engineering	business_eng_management
+92	Finance	Finance	business_finance
+102	Human Resource Management	Human Resources Management	business_human_resources
+77	Marketing	Marketing	business_marketing
+107	Business Economics	Business Economics	eco_business_economics
+116	Management	Management	eco_management
+1	Aeronautics & Astronautics	Aerospace, Aeronautical and Astronautical/Space Engineering	eng_aerospace_aeronautical_astronautical_space
+95	Biomedical Engineering	Biomedical Engineering	eng_biomed
+15	Chemical Engineering	Chemical Engineering and Materials Science	eng_chem_mat
+16	Civil Engineering	Civil Engineering	eng_civil
+114	Computer Engineering Technology	Computer Engineering	eng_comp
+120	Computer Science & Engineering	Computer Software Engineering	eng_computer_software
+26	Electrical Engineering	Electrical Engineering	eng_electrical
+30	Environmental Engineering-Science	Environmental Engineering	eng_environmental_engineering
+49	Mechanical Engineering	Mechanical Engineering	eng_mechanical
+98	Nuclear Engineering	Nuclear Engineering	eng_nuclear_engineering
+36	German Studies	German	german
+87	Graphic Design/Multimedia	Graphic Design	graphic_design
+4	American Studies	American Studies	int_amer_stud
+109	Interdisciplinary Engineering	Interdisciplinary Studies	int_disc_stud
+44	Latin American Studies	Latin American Studies	int_latin_stud
+150	Media Arts	Media Studies	int_media_studies
+222	Middle Eastern Studies	Middle Eastern Studies	int_mid_studies
+59	Religious Studies	Religious Studies	int_relig_stud
+101	Organizational Leadership	Organizations And Information Technology	jun_organizations_and information technology
+67	Urban Studies	Urban Studies	jun_urban_studies
+83	Information Technology/MIS	Information Systems Management	mas_information_systems management
+40	Industrial Engineering	Industrial Engineering & Operational Research	master of engineering_industrial engineering & operational research
+9	Applied Physics	Applied Physics	master of science_applied physics
+43	Japanese	Japanese	phi_japanese
+108	Actuarial Science	Actuarial Science	sci_actuarial_science
+181	Advertising	Advertising	sci_advertising
+119	Astronomy	Astronomy	sci_astronomy
+128	Biochemistry	Biochemistry	sci_biochemistry
+105	Bioengineering	Bioengineering	sci_bioengineering
+12	Biological Sciences	Biology	sci_biology
+1020	Biotechnology	Biotechnology	sci_biotechnology
+14	Business Administration	Business Administration	sci_business_administration
+17	Chemistry	Chemistry	sci_chemistry
+211	Child Development	Childhood/Special Education And Psychology	sci_childhood/special_education and psychology
+20	Computer Science	Computer Science	sci_comp
+129	Electrical & Computer Engineering	Electrical And Computer Engineering	sci_electrical_and computer engineering
+27	Engineering	Engineering Studies	sci_engineering_studies
+159	Financial Engineering	Financial Engineering	sci_financial_engineering
+42	International Relations	International Relations	sci_international_relations
+182	Kinesiology	Kinesiology	sci_kinesiology
+48	Mathematics	Mathematics	sci_math
+97	Molecular Biology	Molecular and Cell Biology	sci_molecular_n_cell_biology
+212	Neurology/Neuroscience	Neuroscience	sci_neuroscience
+52	Operations Research	Operations Research and Management	sci_opers_rsch_mgmt
+131	Pharmacy	Pharmaceutical Science	sci_pharmaceutical_science
+57	Physics	Physics	sci_physics
+284	Public Health	Public Health	sci_public_health
+56	Public Policy	Public Policy, Planning, And Development	sci_public_policy, planning, and development
+79	Public Relations	Public Relations	sci_public_relations
+202	Real Estate	Real Estate Development	sci_real_estate development
+65	Statistics	Statistics	sci_stats
+235	Systems Engineering	Systems Design Engineering	sci_systems_design engineering
+3	African & Afro-American Studies	African American Studies	soc_afr_amer_stud
+6	Anthropology: Social Sciences	Anthropology	soc_anthropology
+24	Economics	Economics	soc_economics
+213	Geography	Geography	soc_geography
+37	History	History	soc_history
+45	Linguistics	Linguistics	soc_linguistics
+55	Political Science	Political Science	soc_political
+58	Psychology	Psychology	soc_psychology
+63	Sociology	Sociology	soc_sociology
+11	Art	Arts And Business	sop_arts_and business

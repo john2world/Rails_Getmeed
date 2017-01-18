@@ -1,0 +1,39 @@
+<%= form_tag({:action => 'save_experience'}, :id => 'form_experience_new', :remote => true) do %>
+    <%= hidden_field_tag :hidden_id, '', :id => 'form_new_hidden_id' %>
+    <div class="form-inline">
+      <div class="form-group">
+        <%= text_field_tag :experience_company, nil, :placeholder => 'ex: Microsoft', :class => 'form-control', :required => '' %>
+      </div>
+      <div class="form-group">
+        <%= text_field_tag :experience_title, nil, :placeholder => 'ex: Software Engineer', :class => 'form-control', :required => '' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="form-inline">
+        <%= select_month(Date.today, {:field_name => 'start_month'}, {:class => 'form-control input-small'}) %>
+        &nbsp;
+        <%= select_year(Date.today, {:field_name => 'start_year', :start_year => 1900, :end_year => 2020}, {:class => 'form-control input-small'}) %>
+        -
+        <%= select_month(Date.today, {:field_name => 'end_month'}, {:class => 'form-control input-small'}) %>
+        &nbsp;
+        <%= select_year(Date.today, {:field_name => 'end_year', :start_year => 1900, :end_year => 2020}, {:class => 'form-control input-small'}) %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= text_area :experience_description, :text, :class => 'form-control', :id => 'profile-experience-new', :placeholder => 'Try to describe what you have done in this company, teams you worked with, skills learned etc in this experience (485 characters). (*required)', :rows => 3, :cols => 80, :required => '' %>
+    </div>
+    <div class="form-group">
+      <%= text_field_tag :work_skills, nil, :placeholder => 'Skills ex: Java, C++, Team building, project ownership (comma separated). (*required)', :class => 'form-control skills'%>
+    </div>
+    <p class="label label-important" id="work_skills_alert" style="display: none;">
+    </p>
+    <div class="form-group">
+      <%= text_field_tag :link, nil, :placeholder => 'Any supporting link to experience', :class => 'form-control' %>
+    </div>
+    <div>
+      <%= button_tag(type: 'submit', :id => 'save_experience_new', class: 'btn btn-sm btn-primary',
+                     data: {disable_with: 'Saving.. '}) do %>
+          <span class="glyphicon glyphicon-floppy-disk "></span> Save
+      <% end %>
+    </div>
+<% end %>

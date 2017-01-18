@@ -1,0 +1,57 @@
+<div class="activity-feed-item">
+    <div class="row">
+        <poster-info-user user="user" ng-if="showPosterInfo == 'true'"
+                ></poster-info-user>
+        <div class="status-form">
+
+            <form name="publishForm" class="status-submit-form" ng-submit="submitPublish(publishForm.$valid)"
+                  novalidate="novalidate">
+            <textarea
+                    id="status-textarea"
+                    name="description"
+                    class="u-full-width"
+                    ng-model="publishFormData.caption"
+                    placeholder="{{::placeholderText}}"
+                    required="required"></textarea>
+
+                <div ng-if="scrapeLoading" id="scrapeLoading">
+                    <loader></loader>
+                </div>
+                <div class="step-2" ng-if="item">
+                    <meedpost-preview></meedpost-preview>
+                </div>
+                <div class="tag_audience_options">
+                    <div ng-if="loading">
+                        <loader></loader>
+                    </div>
+                    <div ng-if="!loading">
+                        <tag-collections
+                                collections="allCollections"
+                                ng-if="allCollections && !collectionId"></tag-collections>
+                        <tags-select
+                                tag-id="defaultTagId"
+                                tags="tags"
+                                ng-if="tags"></tags-select>
+                    </div>
+                    <button type="submit" class="button button-secondary submission-cta" ng-show="!button_loading">
+                        <span>Submit</span>
+                    </button>
+                    <button type="submit" class="button button-primary submission-cta" disabled="disabled"
+                            ng-show="button_loading">
+                        <span>Please Wait...</span><i class="fa fa-refresh fa-spin"></i>
+                    </button>
+
+                    <div class="item-form-wrap" ng-if="showAttachments =='true'">
+                        <input
+                                id="feed-item-file"
+                                data-fp-apikey="{{ filepickerApiKey }}"
+                                data-fp-button-class="button button-primary-reverse medium-small"
+                                data-fp-button-text="Attach Files"
+                                ng-model="formData.imageUrl"
+                                type="filepicker"/>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

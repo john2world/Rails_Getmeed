@@ -1,0 +1,74 @@
+<% if @with_media %>
+    <% if @variation == 1 %>
+        <p style="Margin-top: 0;color: #565656;font-family: 'Lucida Grande';font-size: 16px;line-height: 25px;Margin-bottom: 25px">
+          How are you doing? Hope you are cranking this semester! Have you heard of Meed? A professional platform dedicated to connecting students from top schools like
+          yours to the hottest employers including Facebook, Google, and AppDynamics.
+        </p>
+        <p style="Margin-top: 0;color: #565656;font-family: 'Lucida Grande';font-size: 16px;line-height: 25px;Margin-bottom: 25px">
+          <a href="<%= @url %>" style="color:#00a651;">Click here</a> to accept this special invitation from us!
+          this weekend.
+        </p>
+    <% elsif @variation == 2 %>
+
+        <p style="Margin-top: 0;color: #565656;font-family: 'Lucida Grande';font-size: 16px;line-height: 25px;Margin-bottom: 25px">
+          How are you doing? Hope you are cranking this semester! We built a professional platform for university students and employers to be part of a single
+          ecosystem. Being exclusive for colleges and elite employers, your experience is tailored for your majors,
+          career goals and skills.
+        </p>
+
+        <p style="Margin-top: 0;color: #565656;font-family: 'Lucida Grande';font-size: 16px;line-height: 25px;Margin-bottom: 25px">
+          <a href="<%= @url %>" style="color:#00a651;">Click here</a> to access <%= @school_handle %> updates, jobs
+          tailored for you and other career insights.
+        </p>
+
+    <% elsif @variation == 3 %>
+        <p style="Margin-top: 0;color: #565656;font-family: 'Lucida Grande';font-size: 16px;line-height: 25px;Margin-bottom: 25px">
+          How are you doing? Hope you are cranking this semester! Have you heard of Meed? A professional platform for connecting with your class, alumni and jobs
+          exclusive to top schools like yours. Recent employers on board - Twitter, Facebook, Quora, AppDynamics etc.
+        </p>
+        <p style="Margin-top: 0;color: #565656;font-family: 'Lucida Grande';font-size: 16px;line-height: 25px;Margin-bottom: 25px">
+          <a href="<%= @url %>" style="color:#00a651;">Click here</a> to accept this special invitation from us!
+        </p>
+    <% else %>
+        <p>
+        <span style="font-size:13px; font-family: 'Open Sans', 'lucida grande', arial, verdana, 'lucida sans unicode', tahoma, sans-serif;line-height: 18px; ">
+            Have you ever thought why finding a right internship or job is really a hard process?
+        </span>
+        </p>
+    <% end %>
+<% else %>
+    <% if @variation == 1 %>
+        <p>
+          How are you doing? Hope you are cranking this semester! Have you heard of Meed? A professional platform dedicated to connecting students from top schools like
+          yours to the hottest employers like Facebook, Google, Quora, Twitter, AppDynamics and 200 others are on board already!
+
+        </p>
+        <p>
+          <a href="<%= @url %>">Click here</a> to accept this special invitation from us! this weekend.
+        </p>
+    <% elsif @variation == 2 %>
+
+        <p>
+          How are you doing? Hope you are cranking this semester! We built a professional platform for university students and employers to be part of a single
+          ecosystem. Being exclusive to few universities, we provide best tailored experience for you based on your majors, courses and
+          skills. Hottest employers like Facebook, Google, Quora, Twitter, AppDynamics and 200 others are on board already!
+        </p>
+
+        <p>
+          <a href="<%= @url %>">Click here</a> to access <%= @school_handle %> updates from peers, jobs
+          tailored for you and career insights.
+        </p>
+
+    <% elsif @variation == 3 %>
+        <p>
+          How are you doing? Hope you are cranking this semester! Have you heard of Meed? A professional platform for connecting with your class, alumni and jobs
+          exclusive to top schools like yours. Recent employers on board - Twitter, Facebook, Quora, AppDynamics and 200 others.
+        </p>
+        <p>
+          <a href="<%= @url %>" >Click here</a> to accept this special invitation from us! this weekend.
+        </p>
+    <% end %>
+    <p>
+      P.S: You can always opt out of our product with a simple click! :)
+    </p>
+<% end %>

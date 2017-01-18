@@ -1,0 +1,33 @@
+var rant = $('#sign_up_rant');
+<% if @error.blank? %>
+$('#modal_header').html('Create Meed Account!');
+rant.html("<%= escape_javascript (render 'users/create_easy_form' , :email => @email) %>");
+$('#bottom_action').html("");
+rant.slideDown();
+<% else %>
+rant.slideUp();
+rant.html('');
+$('#alert_error').html('<div class="any-center"><p class="label label-important"> <%= @error %>  </p></div>')
+<% end %>
+
+$("#degree").selectize({
+    maxItems: 1,
+    persist: false,
+    create: true
+});
+
+$("#major").selectize({
+    maxItems: 1,
+    persist: false,
+    create: true
+});
+
+$("#minor").selectize({
+    maxItems: 1,
+    persist: false,
+    create: true
+});
+
+$("#handle").change(function () {
+    checkHandle();
+});

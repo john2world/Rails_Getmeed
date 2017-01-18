@@ -1,0 +1,28 @@
+<li>
+  <div class="comment">
+    <div class="avatar-wrap">
+        <div class="user-image-badge-{{ ::user.badge }}"></div>
+        <a ng-href="/{{ ::user.handle }}">
+            <img ng-src="{{ ::user.small_image_url}}"/>
+        </a>
+    </div>
+
+    <div class="comment-description" ng-bind-html="::comment.description" ng-text-truncate="comment.description" ng-tt-chars-threshold="400" ng-hide="comment.editing">
+    </div>
+    <form
+      accept-charset="UTF-8"
+      name="commentForm"
+      ng-submit="submitComment(commentForm.$valid)"
+      novalidate="novalidate">
+
+      <textarea
+        class="comment-textarea"
+        name="description"
+        ng-model="commentData.description"
+        required="required"
+        placeholder="Comment... "
+        ng-keydown="keydown($event)"
+        ></textarea>
+    </form>
+  </div>
+</li>

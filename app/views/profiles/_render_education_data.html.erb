@@ -1,0 +1,28 @@
+<% unless education.blank? %>
+    <div>
+      <span id="<%= encode_id(education.id) %>" class="profile-item-title"><%= education.name %></span>
+      <% if is_edit %>
+        <a id="edit_link" class="edit_hover" onclick="renderEditItem('show_education_<%= encode_id(education.id) %>_true')" style="cursor: pointer;">
+          <strong><span class="glyphicon glyphicon-edit"></span> Edit </strong>
+        </a>
+      <% end %>
+      <span class="profile-item-year">
+                    [
+      <% if !education.start_year.blank? %>
+                        <%= education.start_year %>
+                    <% end %>
+      -
+      <% if !education.end_year.blank? %>
+                       <%= education.end_year %>
+                    <% end %>]
+                      </span>
+    </div>
+    <div>
+      <% if !education.degree.blank? %>
+          <span class="profile-position-title"><%= education.degree %></span>
+      <% end %>
+      <% if !education.major.blank? %>
+          <span class="profile-position-title"> - <%= education.major %></span>
+      <% end %>
+    </div>
+<% end %>

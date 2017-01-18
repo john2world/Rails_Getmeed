@@ -1,0 +1,94 @@
+<div class="site-nav">
+    <nav>
+        <ul class="shortcuts">
+            <li class="heading">
+                <i class="fa fa-bookmark"></i> SHORTCUTS
+            </li>
+
+            <li>
+                <a href="/" target="_self">
+                    <i class="fa fa-home"></i> Dashboard
+                </a>
+            </li>
+            <li>
+                <a target="_self" href="/categories/all">
+                    <i class="fa fa-th-large"></i> Browse Groups
+                </a>
+            </li>
+            <li>
+                <a target="_self" href="/jobs/all">
+                    <i class="fa fa-briefcase"></i> Browse Jobs
+                </a>
+            </li>
+
+            <li ng-repeat="c in userCollections">
+                <a ng-href="{{ ::c.url }}"><i class="fa fa-users"></i> <span ng-text-truncate="c.title"
+                                                                             ng-tt-chars-threshold="15"
+                                                                             ng-tt-no-toggling> </span> </a>
+            </li>
+
+        </ul>
+        <ul class="shortcuts">
+            <li class="heading">
+                <i class="fa fa-check-circle-o"></i> ACTIONS
+            </li>
+            <li class="action" ng-if="currentUser.is_profile_incomplete">
+                <a target="_self" href="/profile">
+                    <i class="fa fa-plus-square"></i> Complete Profile
+                </a>
+            </li>
+            <li class="action" ng-if="currentUser.badge != 'influencer'">
+                <a target="_self" href="/profile">
+                    <i class="fa fa-object-group"></i> Build Portfolio
+                </a>
+            </li>
+
+            <li class="action">
+                <a target="_self" href="/collections/new">
+                    <i class="fa fa-plus-square"></i> Create Group
+                </a>
+            </li>
+
+            <li class="action" ng-if="currentUser.badge == 'influencer'">
+                <a target="_self" href="/jobs/new" target="_self">
+                    <i class="fa fa-plus-square"></i> Post Job
+                </a>
+            </li>
+
+            <li class="action">
+                <a require-company current-user="currentUser"  ng-if="currentUser.badge == 'influencer'" ng-href="/jobs/manage/">
+                    <i class="fa fa-plus-square"></i> Manage Jobs
+                </a>
+            </li>
+            <li class="action">
+                <a require-company current-user="currentUser"  ng-if="currentUser.badge == 'influencer'" ng-href="/job_applicants">
+                    <i class="fa fa-plus-square"></i> Manage Applicants
+                </a>
+            </li>
+            <li class="action">
+                <a require-company current-user="currentUser"  ng-if="currentUser.badge == 'influencer'" ng-href="/company/edit">
+                    <i class="fa fa-plus-square"></i> Edit Company
+                </a>
+            </li>
+        </ul>
+        <ul class="shortcuts story-tags">
+            <li class="heading">
+                <i class="fa fa-line-chart"></i> TRENDING TAGS
+            </li>
+            <li ng-repeat="tag in trendingTags">
+                <a class="story-tags"
+                   ng-href="/feed/tag/{{ ::tag._id}}"
+                        >
+                    <i class="fa fa-{{ ::tag.icon}}"></i> <span ng-text-truncate="tag.title"
+                                                                ng-tt-chars-threshold="15"
+                                                                ng-tt-no-toggling> {{ ::tag.title }}</span>
+                </a>
+            </li>
+        </ul>
+
+    </nav>
+
+    <span class="copyright">&copy; 2015 Meed Inc</span>
+          <span class="action">
+        </span>
+</div>

@@ -1,0 +1,56 @@
+<%= form_tag({:action => 'save_publication'}, :id => 'form_' + encode_id(publication[:_id]), :remote => true) do %>
+    <div class="form-inline">
+      <%= hidden_field_tag :hidden_id, encode_id(publication[:_id]), :id => 'publication_hidden' %>
+      <div class="form-group">
+        <% if publication[:title].blank? %>
+            <%= text_field_tag :publication_title, nil, :placeholder => 'Ex: Operating Systems', :class => 'form-control input-medium', :required => '' %>
+        <% else %>
+            <%= text_field_tag :publication_title, nil, :value => publication[:title], :placeholder => 'Ex: Operating Systems', :class => 'form-control input-medium', :required => '' %>
+        <% end %>
+      </div>
+      <div class="form-group" style="float: right;">
+        &nbsp;
+        <% if publication[:semester].blank? %>
+            <%= select_year(Date.today, {:field_name => 'year', :start_year => 1900, :end_year => 2020}, {:class => 'form-control input-mini'}) %>
+        <% else %>
+            <%= select_year(get_year(publication[:year]), {:field_name => 'year', :start_year => 1900, :end_year => 2020}, {:class => 'form-control input-mini'}) %>
+        <% end %>
+      </div>
+    </div>
+    <div class="form-group">
+
+      <% if publication[:description].blank? %>
+          <%= text_area :publication, :text, :id => "profile-publication-#{encode_id(publication[:_id])}", :class => 'form-control', :placeholder => 'Try to describe what you have done in this publication, projects worked on and skills learned in this publication (485 characters). (*required)', :rows => 3, :cols => 80, :required => '' %>
+
+      <% else %>
+          <%= text_area :publication, :text, :id => "profile-publication-#{encode_id(publication[:_id])}", :class => 'form-control', :value => (publication[:description].html_safe), :placeholder => 'Try to describe what you have done in this publication, projects worked on and skills learned in this publication (485 characters). (*required)', :rows => 3, :cols => 80, :required => '' %>
+      <% end %>
+    </div>
+    <div class="form-group">
+      <% if publication[:skills].blank? %>
+          <%= text_field_tag :publication_skills, nil, :placeholder => 'Skills ex: Java, C++,  (comma separated). (*required)', :class => 'form-control' %>
+      <% else %>
+          <%= text_field_tag :publication_skills, nil, :value => publication[:skills].kind_of?(Array)? publication[:skills].join(',').html_safe : publication[:skills].html_safe, :placeholder => 'Skills ex: Java, C++,  (comma separated). (*required)', :class => 'form-control'%>
+      <% end %>
+    </div>
+    <div class="form-group">
+      <% if publication[:link].blank? %>
+          <%= text_field_tag :link, nil, :placeholder => 'Web link to your publication (if you have any personal project page etc.)', :class => 'form-control' %>
+
+      <% else %>
+          <%= text_field_tag :link, nil, :value => publication[:link].html_safe, :placeholder => 'link to your publication (if you have any personal project page etc.)', :class => 'form-control' %>
+      <% end %>
+    </div>
+
+    <div class="form-group">
+      <%= button_tag(type: 'submit', :id => 'save_publication_'+encode_id(publication[:_id]), class: 'btn btn-sm btn-primary',
+                     :data => { disable_with: 'Saving...'}) do %>
+          <span class="glyphicon glyphicon-floppy-disk "></span> Save
+      <% end %>
+      <%= button_tag(type: 'submit', :id => 'delete_publication_'+encode_id(publication[:_id]), class: 'btn btn-sm btn-danger',
+                     :confirm => 'Are you sure to delete this publication?', :name => 'delete',
+                     :data => { disable_with: 'Deleting...'}) do %>
+          <span class="glyphicon glyphicon-trash "></span> Delete
+      <% end %>
+    </div>
+<% end %>

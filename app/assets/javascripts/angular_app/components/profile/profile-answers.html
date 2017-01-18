@@ -1,0 +1,16 @@
+<div class="profile-answers profile-section" ng-if="profile.answers">
+  <h3>Answers</h3>
+  <div ng-repeat="answer in profile.answers" id="answer-{{ answer._id }}" class="answer-entry">
+    <div class="entry-title">
+      <h4>{{ answer.title }}</h4>
+      <span class="profile-date">  {{ answer.date | date:"MMMM d" }}</span>
+    </div>
+    <p class="profile-link" ng-if="profile.questions[answer.question_id]">
+      <a ng-href="/questions/{{answer.question_id}}" target="_blank">
+        {{ profile.questions[answer.question_id].title }}
+      </a>
+    <p>
+    <div class="profile-description" ng-bind-html="answer.description"></div>
+    <code ng-if="answer.gist_id" data-gist-id="{{ answer.gist_id }}" data-gist-hide-footer="true"></code>
+   </div>
+</div>

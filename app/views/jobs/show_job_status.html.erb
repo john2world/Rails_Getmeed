@@ -1,0 +1,115 @@
+<p class="accordion lightbox-text">
+  <% if @success %>
+      <% if !@users.blank? %>
+          Total applications: <span style="font-size: 37px"><%= @users.length %></span>
+      <% else %>
+          No Applications yet
+      <% end %>
+  <% else %>
+      <% if @error.eql? 'job_deleted' %>
+          Job not found!
+      <% elsif @error.eql? 'not_authorized' %>
+          Authorization Realm!
+      <% end %>
+  <% end %>
+</p>
+<hr class="hr-header">
+<% if !@job.blank? %>
+    <% if @job[:live] %>
+        <p class="any-center">
+          <span class="label label-info"> This job is now live! </span>
+          <span style="text-decoration: underline"> <a href="/job/<%= @job[:hash] %>/edit?token=<%= @job[:email] %>">Edit
+            this listing</a> </span>
+        </p>
+    <% else %>
+        <p class="any-center">
+          <span class="label label-warning"> This job is under verification! </span>
+        </p>
+    <% end %>
+<% end %>
+
+<% if !@success %>
+    <div class="form-view">
+      <table class="table">
+        <tr class="profile-insight" style="text-align: center">
+          <th>
+            <span class="info-text-large-center"> <%= @message %></span>
+          </th>
+        </tr>
+      </table>
+    </div>
+<% end %>
+<% if @success %>
+    <div class="form-view">
+      <table class="row-view">
+        <%= render 'view_dash_jobs', :job => @job %>
+      </table>
+      <hr>
+
+      <% if !@job_applications.blank? %>
+          <%= form_tag({:action => 'download_pdf_bundle', :controller => 'profiles'}, :class => 'table', :id => 'form_download_pdf') do %>
+              <%= submit_tag 'Download [selected]', :id => 'download_bundle_button', :handle_blob => '', :style => 'display:none',:class => 'button button-green-large any-center', :onclick => "download_bundle('#{@job[:_id]}');" %>
+              <table id="applicants_table" class="table table-bordered table-striped">
+                <thead>
+                <%= hidden_field_tag :job_id, @job[:_id] %>
+                <tr>
+                  <th class="job-applicant-heading">
+                    <input type="checkbox" class="checkall">
+                  </th>
+                  <th class="job-applicant-heading">
+                    Name<span class="info-text"> ^</span>
+                  </th>
+                  <th class="job-applicant-heading">
+                    Majors<span class="info-text"> ^</span>
+                  </th>
+                  <th class="job-applicant-heading">
+                    Year<span class="info-text"> ^</span>
+                  </th>
+                  <th class="job-applicant-heading">
+                    University<span class="info-text">^</span>
+                  </th>
+                  <th class="job-applicant-heading">
+                    Application Status
+                  </th>
+                  <th class="job-applicant-heading">
+                    Resume score <span class="info-text"> ^</span>
+                  </th>
+                  <th class="job-applicant-heading">
+                    PDF
+                  </th>
+                </tr>
+                </thead>
+                <tbody>
+                <% @users.each do |user| %>
+                    <%= render 'render_job_applicant_header', :user => user, :job_id => @job[:_id], :school => nil %>
+                <% end %>
+                </tbody>
+              </table>
+          <% end %>
+      <% else %>
+          <table class="table">
+            <tr>
+              <td>
+              </td>
+              <td>
+                No applicants to this job yet.
+              </td>
+              <td>
+              </td>
+            </tr>
+          </table>
+      <% end %>
+    </div>
+<% end %>
+<hr>
+<div>
+  <strong>Star</strong> = <span class="info-text">star resume</span>, <strong>View</strong> =
+  <span class="info-text">viewed resume</span>, <strong>Contact</strong> =
+  <span class="info-text">contacted and awaiting response</span>, <strong>Interview</strong> =
+  <span class="info-text">scheduled interview</span>, <strong>Offer</strong>=
+  <span class="info-text">made an offer</span>,
+  <strong>Accepted</strong> = <span class="info-text">student accepted offer</span>, <strong>Declined</strong> =
+  <span class="info-text">student declined offer</span>, <strong>Archive</strong> =
+  <span class="info-text"> archive resume to hide (refresh to affect)</span>
+</div>
+<hr class="hr-header">

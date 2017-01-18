@@ -1,0 +1,89 @@
+<%= render 'notifier/email_header' %>
+<center class="wrapper" style="display: table;table-layout: fixed;width: 100%;min-width: 620px;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;background-color: #fbfbfb">
+
+  <div style="margin:0 auto;max-width:600px;padding:20px 0;text-align:center" align="center">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tbody><tr>
+        <td>
+          <table width="100%" style="padding-bottom:10px;width:100%">
+            <tbody>
+            <tr>
+              <td>
+                <%= render 'notifier/email_logo' %>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h1 style="border-bottom-color:#f0efef;border-bottom-style:solid;border-bottom-width:1px;font-size:22px;font-weight:600;line-height:22px;margin:10px 0;padding-bottom:30px">You're signed up for AMA with <%= @ama_author.name %>!</h1>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div style="border-radius:3px;margin:0 auto;padding:5px;width:275px">
+                  <span  style="border-radius:5px;border:1px solid #999999;color:#999999;font-size:13px;line-height:14px;padding:5px 10px;text-decoration:none;text-transform:uppercase" target="_blank">
+                    <%= @time_string %>
+                  </span>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding-top:30px">
+                <div>
+                  <img src="<%= @ama.author_picture %>" style="border-radius:50%;min-height:80px;width:80px">
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h1 style="font-size:36px;margin-bottom:10px"><%= @ama_author.name %></h1>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h2 style="color:#999999;font-size:17px;font-weight:normal;margin-bottom:25px;text-transform:none"><%= @ama.title %></h2>
+              </td>
+            </tr>
+            <tr>
+              <td style="color:#999999;font-size:15px;font-weight:normal;padding-top:20px;text-transform:none">
+                Ask your questions early! The participant with the best question will win a one-on-one with a Google recruiter!
+              </td>
+            </tr>
+            <tr>
+              <td style="color:#999999;font-size:13px;font-weight:600;padding-top:20px;text-transform:uppercase">
+                <!--  <%= @ama.followers.count() %> are attending -->
+              </td>
+            </tr>
+            <tr>
+              <td style="padding-bottom:10px">
+                <!-- followers -->
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <table style="width:100%">
+                  <tbody><tr>
+                    <td>
+                      <a href="http://email.producthunt.com/track/click/30558051/www.producthunt.com?p=eyJzIjoiekZNbFNmNFlBMnY2aTdIaVRnOXprTTlTNmprIiwidiI6MSwicCI6IntcInVcIjozMDU1ODA1MSxcInZcIjoxLFwidXJsXCI6XCJodHRwczpcXFwvXFxcL3d3dy5wcm9kdWN0aHVudC5jb21cXFwvbGl2ZVxcXC9odWdoLW1vbmFoYW5cXFwvZ2NhbFwiLFwiaWRcIjpcImZjZjIzZjE1NDBmMjQzNjVhZGY3YzkyNjMxZmJkNmRhXCIsXCJ1cmxfaWRzXCI6W1wiNzEyNWM5N2FjY2YyOTczY2UxODVhZWM0MWFmNTUyNmViNWU0YTdjMVwiXX0ifQ" style="background:#3b83f5;border-radius:20px;color:white;font-size:12px;min-height:36px;line-height:40px;margin:auto 5px 5px auto;padding:15px 25px 15px;text-decoration:none;text-transform:uppercase;vertical-align:top;white-space:nowrap" target="_blank">
+                        <img width="24" height="30" alt="Add to Google Calendar" src="http://15f.dubhacks.co/images/company_logos/facebook.png" style="margin-right:8px;margin-top:5px">
+                        <span style="vertical-align:top; font-size: 20px;">RSVP On Facebook</span>
+                      </a>
+                    </td>
+                  </tr>
+
+                  </tbody></table>
+              </td>
+            </tr>
+            </tbody></table>
+        </td>
+      </tr>
+      <tr>
+        <%= render 'notifier/email_footer' %>
+      </tr>
+
+      </tbody></table>
+  </div>
+</center>
+
+</body>
+</html>

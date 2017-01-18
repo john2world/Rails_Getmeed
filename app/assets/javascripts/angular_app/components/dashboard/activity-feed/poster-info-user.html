@@ -1,0 +1,37 @@
+<div class="avatar-wrap" current-user="currentUser">
+    <div class="user-image-badge-{{ ::user.badge }}"></div>
+    <a ng-href="/{{ ::user.handle }}">
+        <img ng-src="{{ ::user.small_image_url}}"/>
+    </a>
+</div>
+<div class="poster-name-and-headline">
+    <p class="name" ng-if="!event">
+        <a ng-href="/{{ ::user.handle }}" class="poster-name" hovercard user="user" current-user="currentUser">
+            {{ ::user.name }}
+        </a>
+
+        <span ng-if="feedType == 'story' || feedType == 'ama' || feedType == 'native_story'">
+          <span class="action"><i class="fa fa-caret-right"></i></span>
+          <a ng-href="{{ collection.url }}" class="link"> {{ collection.title }}</a>
+        </span>
+
+        <span ng-if="feedType == 'comment'">
+          <span class="helper" ng-text-truncate="user.headline" ng-tt-chars-threshold="50" ng-tt-no-toggling>{{ ::user.headline }} </span>
+        </span>
+    </p>
+    <p class="name" ng-if="event">
+        <a ng-href="/{{ ::user.handle }}" class="poster-name">
+            {{ ::user.name }}
+        </a>
+        <span class="action"><i class="fa fa-caret-right"></i></span>
+
+        <a class="link" ng-href="/{{ ::event.user.handle }}" ng-text-truncate="event.user.name" ng-tt-words-threshold="3" ng-tt-no-toggling> {{ ::event.user.name }} </a> — <span class="activity-user-headline" ng-text-truncate="::event.user.headline" ng-tt-words-threshold="4" ng-tt-no-toggling>{{ ::event.user.headline }} </span>
+    </p>
+
+    <div class="activity-user-headline" ng-if="feedType != 'comment'">
+        <span ng-text-truncate="user.headline" ng-tt-chars-threshold="50" ng-tt-no-toggling>{{ ::user.headline }} </span>
+        &nbsp;·&nbsp;
+        <abbr class="timeago activity-feed-item-timestamp" title="{{ ::time }}">{{ ::time
+            }}</abbr>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+<div ng-if="profile.user.badge != 'influencer'" class="row profile">
+    <div class="main">
+        <div class="profile-loader" ng-show="!profile">
+            <loader></loader>
+        </div>
+        <profile></profile>
+    </div>
+</div>
+
+<div ng-if="profile.user.badge == 'influencer'" class="main-wrap row profile">
+    <influencers-profile-header profile="profile"></influencers-profile-header>
+    <div class="main">
+        <div class="profile-loader" ng-show="!profile">
+            <loader></loader>
+        </div>
+        <influencers-profile ng-if="profile && profile.user.badge == 'influencer'"></influencers-profile>
+    </div>
+
+</div>
+<div class="influencer-signup-modal modal" id="influencer-signup-modal">
+    <influencer-signup-form></influencer-signup-form>
+</div>

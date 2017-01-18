@@ -1,0 +1,46 @@
+<div class="bg-slider-wrapper course-insights">
+</div>
+<!--//bg-slider-wrapper-->
+
+<section class="promo section section-on-bg" data-sr='enter bottom and scale up 20% over 1s and reset'>
+  <div class="container text-center">
+    <div class="any-center">
+      <img src="https://res.cloudinary.com/resume/image/upload/c_scale,w_140/v1439246733/Amazon_in_Meed-01_f9kfey.png" style="padding: 20px;">
+    </div>
+    <p class="title" style="line-height: 1.1;">
+        WIN AMAZON $50 GIFT CARD
+      <br/>
+      <span style="font-size: 20px;">
+        FOR SURVEYING YOUR CLASS COURSES! (VALID UNTIL August 15th)
+      </span>
+    </p>
+
+
+    <a class="btn btn-cta btn-cta-primary" href='<%= current_user.blank? ? "/login?redirect_url=#{url_for(controller: :reviews, action: :course_insights)}" : "#{url_for(controller: :reviews, action: :course_insights)}" %>'>LOGIN</a>
+
+    <hr width="20%" style="margin-left: 40%">
+
+    <%= form_tag({:controller => 'users', :action => 'verify'}, :class => 'signup-form navbar-form', :html => {:multipart => true}) do %>
+        <%= hidden_field_tag :inviter_id, @inviter_handle %>
+
+        <div class="form-group">
+          <%= text_field_tag :email, nil, :class => 'form-control', :required => '', :style => 'height:50px;', :id => 'sign_up_tb', :placeholder => 'Enter college email (ex: sam@usc.edu)' %>
+        </div>
+        <%= button_tag(type: 'submit', class: 'btn btn-cta btn-cta-primary', :id => 'splash_input_button', :disable_with => 'Verifying.. ') do %>
+            SIGN UP
+        <% end %>
+        <p>
+        </p>
+
+        <div class="col-md-2 col-md-offset-4">
+          <% if !alert.blank? %>
+              <p class="label label-important">
+                <%= alert %>
+              </p>
+          <% end %>
+        </div>
+    <% end %>
+  </div>
+</section>
+
+<!--//promo-->

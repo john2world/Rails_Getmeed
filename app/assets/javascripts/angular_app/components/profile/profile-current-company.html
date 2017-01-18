@@ -1,0 +1,23 @@
+<div class="profile-current-company profile-section" >
+    <div class="profile-current-company-show" ng-show="!showEdit('current-company')">
+        <h3>
+            CURRENT COMPANY
+            <a class="open-profile-edit-current-company edit-link"
+               ng-click="editCurrentCompany()"
+               ng-show="profile.is_viewer_profile">
+                <i class="fa fa-pencil-square-o"></i> Edit
+            </a>
+        </h3>
+        <p class="profile-current-company"> {{ profile.user.current_company }}</p>
+    </div>
+    <div class="profile-edit-section" id="profile-edit-current-company" ng-show="showEdit('current-company')">
+        <form accept-charset="UTF-8" ng-submit="submitUpdateCurrentCompany()">
+            <h3 class="u-full-width"> CURRENT COMPANY</h3>
+            <fieldset class="row">
+                <tag-company only-one="true" model="formData.company_id"></tag-company>
+            </fieldset>
+            <input class="button-primary" type="submit" value="Save" />
+            <input type="button" class="button close-modal" value="Cancel"  ng-click="closeCurrentCompany(true)"/>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,48 @@
+<% if !notice.blank? %>
+    <p class="label label-info any-center">
+      <%= notice %>
+    </p>
+<% end %>
+<div class="row">
+  <div class="span9">
+    <a href="/admin/view"><-- back</a>
+
+    <form class="well span5">
+      <p class="accordion lightbox-text">Waitlisted users
+      </p>
+
+      <div class="form-view">
+        <table>
+          <tr>
+            <td>
+              handle
+            </td>
+            <td style="float: right">
+              email entries
+            </td>
+          </tr>
+          <tr style="text-align: center">
+            <td>
+              <hr class="hr-profile-item">
+            </td>
+          </tr>
+          <% if !@waitlists.blank? %>
+              <% @waitlists.each do |waitlist| %>
+                  <tr>
+                    <td>
+                      <strong> <%= waitlist[:_id] %></strong>
+                    </td>
+                    <td style="float: right">
+                      <strong> <%= waitlist[:email_ids] %></strong>
+                    </td>
+                  </tr>
+              <% end %>
+          <% else %>
+              none
+          <% end %>
+
+        </table>
+      </div>
+    </form>
+  </div>
+</div>

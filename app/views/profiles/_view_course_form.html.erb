@@ -1,0 +1,13 @@
+<div id="show_course_<%= encode_id(course[:_id]).to_s %>_<%= @is_editable %>" class='profile-view-table'>
+  <%= render 'render_course_data', :course => course, :is_edit => @is_editable %>
+</div>
+<% if @is_editable %>
+    <div id="edit_course_<%= encode_id(course[:_id]).to_s %>_<%= @is_editable %>" class='profile-view-table' style='display: none;'>
+      <%= render 'edit_course_form', :course => course %>
+    </div>
+<% end %>
+<% unless @is_editable %>
+    <div>
+      <%= render 'profiles/profile_kudos', :data => course %>
+    </div>
+<% end %>

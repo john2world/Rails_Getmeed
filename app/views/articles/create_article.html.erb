@@ -1,0 +1,201 @@
+<p class="accordion lightbox-text"> Submit to Meed
+</p>
+<% unless current_user.is_meediorite? %>
+    <div class="any-center"><span class="label label-warning">An invite is needed!</span></div>
+<% end %>
+<hr class="hr-header">
+<div id="share_link_box">
+  <div>
+    <% if current_user.is_meediorite? %>
+        <% if current_user.image_url.blank? or current_user.is_default_image? %>
+            <p style="font-size: 17px;
+                    line-height: 22px;
+                    font-weight: 300;
+                    text-align: left;">
+              Please update your profile picture first!
+            </p>
+
+            <div class="info-text-medium" >
+              You need to have a valid profile identity for posting on Meed.
+            </div>
+        <% else %>
+            <p style="font-size: 17px;
+                    line-height: 22px;
+                    font-weight: 300;
+                    text-align: left;"> Submit news, questions, display essays, course projects and personal
+              projects to start showing your strengths beyond a one page profile.
+            </p>
+
+            <div>
+              <ul>
+                <li class="info-text-medium">
+                  Have a question about whether or not your paper on 18th century russian literature actually makes an
+                  argument?
+                  Submit your essay to get community support and feedback!
+                </li>
+                <p>
+                </p>
+
+                <li class="info-text-medium">
+                  Want to show off to employers that amazing coding project you did in your sophomore year? Share the
+                  link to
+                  your
+                  github project and receive upvotes/comments!
+                </li>
+                <p>
+                </p>
+                <li class="info-text-medium">
+                  Read an interesting article about the San Francisco Court’s ruling about Uber’s employees status?
+                  Submit
+                  to Meed community and show employers how well informed you are!
+                </li>
+              </ul>
+            </div>
+        <% end %>
+
+    <% else %>
+        <div class="info-text-medium">
+          <p> Meed Submissions are useful career related articles, projects or even term papers that are curated
+            by Meed community. Currently submissions are accepted by our most active members,
+            specifically those that have been invited by others in the community.</p></div>
+    <% end %>
+  </div>
+  <hr class="hr-silent">
+  <% unless alert.blank? %>
+      <p id="warning" class="label label-important any-center">
+        <%= alert %>
+      </p>
+  <% end %>
+  <% if current_user.is_meediorite? %>
+      <% if current_user.is_default_image? %>
+          <%= render 'profiles/render_profile_photo', :is_edit => true, :user => current_user %>
+          <div class="any-center">
+            <a href="/submit/post" class="btn btn-large btn-primary">Continue</a>
+          </div>
+      <% else %>
+          <div class="blog-list blog-category-list">
+            <article class="post col-md-12 col-sm-12 col-xs-12 col-md-offset-0 col-sm-offset-0 col-xs-offset-0">
+              <div class="post-inner">
+                <div class="content feed-container">
+                  <div class="date-label">
+                    <img class="img-responsive image-small" src="http://res.cloudinary.com/resume/image/upload/c_scale,w_75/v1441138078/Screen_Shot_2015-09-01_at_1.07.37_PM_g8an6z.png">
+                  </div>
+                  <div class="article-container">
+                    <div class="post-title">
+                      Start with a link
+                    </div>
+                    <div class="meta">
+                      <ul class="meta-list list-inline">
+                      </ul>
+                    </div>
+                  </div>
+                  <%= form_tag({:action => :scrape, :controller => 'scrape'}, :id => 'scrape_form', :style => 'padding: 0px 0px 0px', :remote => true) do %>
+                      <div class="form">
+                        <div class="form-group" style="border-color: #00a651">
+                          <%= text_field_tag :activity_description, nil, :required => '', :id => 'scrape_box', :placeholder => 'Link to your news article or your project..', :class => 'form-control', :style => 'border-color: #00a651;' %>
+                          <label id="status" style="display: none;"> </label>
+                          <%= hidden_field_tag :url, nil, :id => 'hidden_scrape_url' %>
+                        </div>
+                      </div>
+                  <% end -%>
+                </div>
+              </div>
+            </article>
+          </div>
+          <div class="accordion lightbox-text any-center">
+            OR
+          </div>
+
+          <div class="blog-list blog-category-list">
+            <article class="post col-md-12 col-sm-12 col-xs-12 col-md-offset-0 col-sm-offset-0 col-xs-offset-0">
+              <div class="post-inner">
+                <div class="content feed-container">
+                  <div class="date-label">
+                    <img class="img-responsive image-small" src="https://res.cloudinary.com/resume/image/upload/v1428980012/Screen_Shot_2015-04-13_at_7.53.08_PM_rzxtxe.png">
+                  </div>
+                  <div class="article-container">
+                    <div class="post-title">
+                      Upload files
+                    </div>
+                    <div class="meta">
+                      <ul class="meta-list list-inline">
+                        <li>
+                          Related to your courses, term papers or even personal projects
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <%= form_for @feed_item, :remote => true, url: '/scrape', method: :scrape, :class => 'row', :html => {:id => 'file_upload_form'} do |f| %>
+                      <div class="any-center">
+                        <div>
+                          <%= f.filepicker_field :file_url, onchange: 'onFileUpload(event)', :button_text => 'Import files', :button_class => 'btn btn-md btn-success' %>
+                        </div>
+                        <div><span class="info-text-small"> (We support any filetype)</span></div>
+
+                        <hr>
+                      </div>
+                  <% end %>
+                  <div id="loading-indicator" class="info-text-xlarge any-center" style="display:none">
+                    <img src="https://res.cloudinary.com/resume/image/upload/c_scale,w_20/v1430628948/cube_gfkju6.gif" align="center"/>
+                    Please Wait..
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+          <div class="any-center">
+            <p class="info-text-medium"> ** You can add submissions to your Meed profile </p>
+          </div>
+      <% end %>
+
+  <% else %>
+      <div class="any-center">
+        <p class="accordion lightbox-text"> Would you like to post on Meed?
+        </p>
+        <%= form_tag({:action => :take_survey, :controller => 'surveys'}, :id => 'scrape_form', :style => 'padding: 0px 0px 0px', :remote => true) do %>
+
+            <p>
+              <%= radio_button('survey', "meediorite_interest", 'yes') %> Yes, I am interested
+            </p>
+
+            <p>
+              <%= radio_button('survey', "meediorite_interest", 'no') %> Nah, just checking out
+            </p>
+
+
+            <%= button_tag(type: 'submit', class: 'btn btn-sm btn-primary', :data => {:disable_with => 'Submitting..'}) do %>
+                <span class="glyphicon glyphicon-ok-circle"></span> Submit!
+            <% end %>
+            </div>
+        <% end -%>
+
+  <% end %>
+</div>
+<div id="feed_item_preview">
+
+</div>
+
+<script>
+
+    $('#scrape_box').on('input paste', function () {
+        var scrape_box = $("#scrape_box");
+        var url = scrape_box.val();
+        if (url != '') {
+            var label = $("#status");
+            label.val('');
+            if (validateURL(url)) {
+                scrape_box.attr('disabled', 'true')
+                $("#ent").css("background-color", "green");
+                $("#loading-indicator").show();
+                $("#hidden_scrape_url").val(url);
+                $("#scrape_form").submit();
+            } else {
+                label.show();
+                label.attr('class', 'label label-danger');
+                label.append("Invalid URL!");
+            }
+        }
+    });
+
+
+</script>

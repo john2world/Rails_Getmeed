@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="span9">
+    <form >
+      <p class="accordion lightbox-text">Influencers
+      </p>
+
+      <div class="form-view">
+        <table>
+          <tr>
+            <td>
+              profile
+            </td>
+            <td>
+              name
+            </td>
+            <td>
+              bio
+            </td>
+          </tr>
+          <% @influencers.each do |influencer| %>
+              <tr style="padding: 10px">
+                <td>
+                  <a href="https://getmeed.com/<%= influencer[:handle] %>" target="_blank">https://getmeed.com/<%= influencer[:handle] %></a>
+                </td>
+                <td >
+                  <strong> <%= influencer[:name] %></strong>
+                </td>
+                <td>
+                  <strong> <%= influencer[:bio] %></strong>
+                </td>
+              </tr>
+          <% end %>
+        </table>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,77 @@
+<div class="bg-slider-wrapper">
+  <div class="flexslider bg-slider">
+    <ul class="slides">
+      <li class="slide slide-<%= @school.id %>-1"></li>
+      <li class="slide slide-<%= @school.id %>-2"></li>
+
+    </ul>
+  </div>
+</div>
+<!--//bg-slider-wrapper-->
+
+<section class="promo section section-on-bg">
+  <div class="container text-center">
+
+    <div class="any-center" style="padding: 20px;">
+      <img src="https://res.cloudinary.com/resume/image/upload/c_scale,w_150/v1441733835/Meed_white_b7vmlz.png" style="padding: 20px;">
+
+      <p class="logo">
+        <%= @school.name %>
+      </p>
+
+    </div>
+    <%= form_tag({:controller => 'schools', :action => 'verify'}, :class => 'signup-form navbar-form', :html => {:multipart => true}) do %>
+        <div class="form-group">
+          <%= text_field_tag :email, nil, :class => 'form-control', :required => '', :style => 'height:50px;', :id => 'sign_up_tb', :placeholder => "Enter college email (ex: sam@#{@school.id}.edu)" %>
+        </div>
+        <%= button_tag(type: 'submit', class: 'btn btn-cta btn-cta-primary', :id => 'splash_input_button', :data => { :disable_with => 'Verifying.. '}) do %>
+            Sign Up
+        <% end %>
+        <p>
+        </p>
+
+        <div class="col-md-2 col-md-offset-4">
+          <% if !alert.blank? %>
+              <p class="label label-important">
+                <%= alert %>
+              </p>
+          <% end %>
+        </div>
+        </div>
+    <% end -%>
+    </section>
+<!--//promo-->
+
+<div class="sections-wrapper">
+
+  <!-- ******Why Section****** -->
+  <section id="why" class="section why">
+    <div class="container">
+      <h2 class="title text-center">Exclusive to <%= @school.id.upcase %> students</h2>
+
+      <p class="intro text-center">Create, connect and discover opportunities.</p>
+
+      <div id="content">
+        <ul id="company_jobs_tabs" class="nav nav-tabs nav-justified" data-tabs="tabs">
+          <li class="active"><a href="#jobs" data-toggle="tab" onclick="window.location.hash = 'jobs'">JOBS</a></li>
+        </ul>
+        <div id="my-tab-content" class="tab-content">
+          <div class="tab-pane fade in active" id="jobs">
+            <div id="job-tab-content" class="tab-content">
+              <% if @jobs.blank? %>
+                  <span class="info-text-medium">No matching jobs posted for your meed profile!</span>
+              <% else %>
+                  <% @jobs.each do |job| %>
+                      <%= render 'jobs/view_dash_jobs', :job => job %>
+                  <% end %>
+              <% end %>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <!--//container-->
+  </section>
+</div>
+<!--//section-wrapper-->

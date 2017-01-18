@@ -1,0 +1,57 @@
+<div class="headline-bg">
+</div>
+<section class="login-section access-section section">
+  <div class="container">
+    <div class="row">
+      <%= form_tag({:action => :create, :email => @email}, :class => 'login-form', :html => {:multipart => true}) do %>
+          <div class="form-box col-md-8 col-sm-12 col-xs-12 col-md-offset-2 col-sm-offset-0 xs-offset-0">
+            <div class="form-box-inner">
+              <h2 class="title text-center">Verify Your Email To Continue!</h2>
+
+              <div class="row any-center">
+                <div class="form-container col-md-10 col-md-offset-1">
+                  <p>  Please enter the verification code sent to <strong><%= @email %></strong> .
+                    <br/>If you haven't received it yet? Please check your spam folder .
+
+                  <div class="input-group col-md-6 col-md-offset-3">
+                    <%= text_field_tag :token, nil, :class => 'form-control', :required => '', :value => params[:token], :placeholder => 'Verification Code (*)', :style => "font-size: 12px" %>
+                    <span class="input-group-btn">
+                          <%= button_tag(type: 'submit', class: 'btn btn-primary btn-primary',  :data => { :disable_with => 'Please wait..'} ) do %>
+                            Verify
+                          <% end %>
+                        </span>
+                  </div>
+                  <!-- /input-group -->
+                  <br>
+
+                  <p>
+                    or <%= link_to 'click here', :controller => 'users', :action => 'verify', :email => @email %>  to
+                    send again. 
+                  </p>
+                  <hr>
+                  <div class="col-md-2 col-md-offset-4">
+                    <% unless alert.blank? %>
+                        <p class="label label-important">
+                          <%= alert %>
+                          <% if !@error.blank? and @error.eql? 'not_student' %>
+                              If you are an employer, you should sign up here -
+                              <a href="https://enterprise.getmeed.com" target="_blank">Enterprise</a>
+                          <% end %>
+                        </p>
+                    <% end %>
+                  </div>
+                </div>
+                <!--//form-container-->
+                <!--//social-btns-->
+              </div>
+              <!--//row-->
+            </div>
+            <!--//form-box-inner-->
+          </div>
+      <% end %>
+      <!--//form-box-->
+    </div>
+    <!--//row-->
+  </div>
+  <!--//container-->
+</section>

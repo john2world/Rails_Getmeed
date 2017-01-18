@@ -1,0 +1,47 @@
+<div class="comment-actions">
+    <a class="upvoted" ng-if="currentUser && comment.has_viewer_upvoted">
+        Upvoted
+                      <span class="count" ng-if="comment.upvote_count > 0">
+                        {{ comment.upvote_count }}
+                      </span>
+    </a>
+    <span ng-if="currentUser && !comment.has_viewer_upvoted">
+        <a
+                class="upvote"
+                ng-click="comment.upvote()"
+
+                >
+            <i class="fa fa-caret-up"></i>
+            Upvote
+                          <span class="count" ng-if="comment.upvote_count > 0">
+                            {{ comment.upvote_count }}
+                          </span>
+
+        </a>
+         &nbsp;·&nbsp;
+    </span>
+        <span ng-if="!currentUser">
+
+    <a
+
+            class="upvote open-signup-modal"
+            >
+        <i class="fa fa-caret-up"></i>
+        Upvote
+                      <span class="count" ng-if="comment.upvote_count > 0">
+                        {{ comment.upvote_count }}
+                      </span>
+    </a>
+        &nbsp;·&nbsp;
+            </span>
+
+    <abbr class="timeago activity-feed-item-timestamp" title="{{ ::comment.create_time }}">
+        {{ ::time
+        }}</abbr>
+    <span ng-if="comment.is_viewer_author">
+    &nbsp;·&nbsp;
+    <a class="edit" ng-click="edit()">Edit</a>
+    &nbsp;·&nbsp;
+    <a class="delete" ng-click="del()">Delete</a>
+        </span>
+</div>

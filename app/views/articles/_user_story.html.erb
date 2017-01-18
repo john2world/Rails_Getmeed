@@ -1,0 +1,76 @@
+<% unless data[:user].blank? %>
+    <div class="blog-list blog-category-list" style="overflow: hidden">
+      <article class="post col-md-12 col-sm-12 col-xs-12 col-md-offset-0 col-sm-offset-0 col-xs-offset-0" style="margin-bottom: 0px">
+        <div>
+          <div class="content feed-container">
+            <div class="date-label">
+              <a href="/<%= data[:user].handle %>">
+                <% if !data[:user].blank? and data[:user].is_meediorite? %>
+                    <div class="user-image-badge">M</div>
+                <% end %>
+                <% if data[:user][:image_url].blank? %>
+                    <img class="img-responsive image-small" src="http://res.cloudinary.com/resume/image/upload/v1409877319/user_male4-128_q1iypj_lgzk5i.jpg">
+                <% else %>
+                    <img class="img-responsive image-small" src="<%= data[:user][:image_url] %>"/>
+                <% end %>
+              </a>
+            </div>
+            <div class="article-container col-md-8 col-sm-8 col-xs-8" style="padding-left: 0px;">
+              <div id="link-<%= data.id %>" class="post-title">
+                <a href="/<%= data[:user].handle %>"><%= data[:user].name %></a>
+              </div>
+              <div class="meta">
+                <ul class="meta-list list-inline" style="border-bottom: none">
+                  <li class="post-author">
+                    —
+                    <% if data[:user].headline.blank? %>
+                        Class of <%= data[:user].year %> 
+                    <% else %>
+                        <%= data[:user].headline %> 
+                    <% end %>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="article-container col-md-4 col-sm-4 col-xs-4">
+              <div id="share_<%= data.id %>" class="social-share"></div>
+            </div>
+            <div style="clear:both"></div>
+            <div class="post-entry embed-styling border-blockquote" style="margin-top: 1vh">
+              <div class="card article">
+                <div class="hdr">
+                  <div>
+                    <div style="line-height: 22px;"><%= data[:caption] %></div>
+                  </div>
+                </div>
+                <hr class="hr-profile-item">
+                <div class="bd" style="border-left-color: rgb(0, 0, 0);">
+                  <div class="pair-bd">
+                    <div class="art-bd">
+                      <a target="_blank" href="<%= data.external_url %>" class="" style="padding-bottom: 46.8553459119497%; background-color: rgb(255, 255, 255);">
+                        <img class="art-bd-img" src="<%= data.large_image_url %>" style="opacity: 1; max-height: 25vh; display: inherit">
+                      </a>
+                    </div>
+                    <div class="txt-bd" style="padding:0px">
+                      <div class="title" style="margin-bottom: 5px;margin-top: 5px;">
+                        <a target="_blank" href="<%= data.external_url %>"><%= data.title %></a>
+                      </div>
+                      <p class="info-text-medium"><%= @data.description.truncate(500).html_safe %></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <% unless data.collections.blank? %>
+                  <span class="glyphicon glyphicon-tag"> </span> <%= "#{data.collections.join(", ")}" %>
+                <% end %>
+              </div>
+            </div>
+            <div class="user-feed-actions" id="feed-actions-<%= position.blank? ? '' : "#{position}-" %><%= data[:_id] %>"> 
+              <%= render 'feed/feed_actions', :data => data, :position => position %> 
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+<% end %>

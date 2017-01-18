@@ -1,0 +1,123 @@
+<section style=" color: rgb(34, 34, 34);display: table;; border: 0px none rgb(34, 34, 34);font: normal normal normal normal 15px / 24px 'Proxima Nova', 'Open Sans', 'Gill Sans MT', 'Gill Sans', Corbel, Arial, sans-serif;outline: rgb(34, 34, 34) none 0px;">
+  <div style="color: rgb(34, 34, 34);
+          float: left;
+          height: 221px;
+          max-height: 250px;
+          width: 200px;
+          perspective-origin: 100px 110.5px;
+          transform-origin: 100px 110.5px;
+          border: 1px solid #d1d1d1;
+          border-radius: 5px 5px 5px 5px;
+          font: normal normal normal normal 15px / 24px 'Proxima Nova', 'Open Sans', 'Gill Sans MT', 'Gill Sans', Corbel, Arial, sans-serif;
+          margin: 0px 15px 0px 0px;
+          outline: rgb(34, 34, 34) none 0px;
+          overflow: hidden;">
+    <a href="<%= @url %>"><img width="200" src="<%= collection.large_image_url %>" id="IMG_3" alt=''/></a>
+  </div>
+  <a href="<%= @url %>" style="color: rgb(34, 34, 34);
+          float: left;
+          height: 18px;
+          width: 370px;
+          perspective-origin: 185px 9px;
+          transform-origin: 185px 9px;
+          border: 0px none rgb(34, 34, 34);
+          font: normal normal normal normal 18px / 18px 'Proxima Nova', 'Open Sans', 'Gill Sans MT', 'Gill Sans', Corbel, Arial, sans-serif;
+          margin: 0px 0px 25px;
+          outline: rgb(34, 34, 34) none 0px;">
+    <%= collection.title %>
+  </a>
+  <!-- ngIf: collection.follower_count > 0 -->
+
+
+  <div style=" color: rgb(34, 34, 34);
+          float: left;
+          height: 96px;
+          width: 259px;
+          perspective-origin: 129.5px 48px;
+          transform-origin: 129.5px 48px;
+          border: 0px none rgb(34, 34, 34);
+          font: normal normal normal normal 15px / 24px 'Proxima Nova', 'Open Sans', 'Gill Sans MT', 'Gill Sans', Corbel, Arial, sans-serif;
+          outline: rgb(34, 34, 34) none 0px;">
+    <p style="color: rgb(34, 34, 34);
+            height: 24px;
+            width: 259px;
+            perspective-origin: 129.5px 12px;
+            transform-origin: 129.5px 12px;
+            border: 0px none rgb(34, 34, 34);
+            font: normal normal normal normal 15px / 24px 'Proxima Nova', 'Open Sans', 'Gill Sans MT', 'Gill Sans', Corbel, Arial, sans-serif;
+            margin: 0px;
+            outline: rgb(34, 34, 34) none 0px;">
+      Created by <span style=" color: rgb(163, 163, 174);
+            height: 20px;
+            text-align: left;
+            width: 489px;
+            perspective-origin: 244.5px 10px;
+            transform-origin: 244.5px 10px;
+            border: 0px none rgb(163, 163, 174);
+            font: normal normal normal normal 13px / 15.6px 'Proxima Nova', 'Open Sans', 'Gill Sans MT', 'Gill Sans', Corbel, Arial, sans-serif;
+            list-style: none inside none;
+            margin: 0px;
+            outline: rgb(163, 163, 174) none 0px;">
+    <a href="https://getmeed.com/<%= owner.handle %>" style=" color: rgb(0, 166, 81);
+            cursor: pointer;
+            text-align: left;
+            text-decoration: none;
+            border: 0px none rgb(0, 166, 81);
+            font: normal normal normal normal 14px / 16.8px 'Proxima Nova', 'Open Sans', 'Gill Sans MT', 'Gill Sans', Corbel, Arial, sans-serif;
+            list-style: none inside none;
+            outline: rgb(0, 166, 81) none 0px;"><%= owner.name %></a>
+    — <%= owner.headline %>
+    </span>
+    </p>
+
+    <p style=" color: rgb(34, 34, 34);
+            height: 24px;
+            width: 259px;
+            perspective-origin: 129.5px 12px;
+            transform-origin: 129.5px 12px;
+            border: 0px none rgb(34, 34, 34);
+            font: normal normal normal normal 15px / 24px 'Proxima Nova', 'Open Sans', 'Gill Sans MT', 'Gill Sans', Corbel, Arial, sans-serif;
+            margin: 0px;
+            outline: rgb(34, 34, 34) none 0px;">
+      Submissions <strong style=" color: rgb(34, 34, 34);
+            border: 0px none rgb(34, 34, 34);
+            font: normal normal bold normal 15px / 24px 'Proxima Nova', 'Open Sans', 'Gill Sans MT', 'Gill Sans', Corbel, Arial, sans-serif;
+            outline: rgb(34, 34, 34) none 0px;"><%= collection.submission_count %></strong>
+    </p>
+    <% if collection.contributors.length > 0 %>
+        <p style=" color: rgb(34, 34, 34);
+                height: 24px;
+                width: 259px;
+                perspective-origin: 129.5px 12px;
+                transform-origin: 129.5px 12px;
+                border: 0px none rgb(34, 34, 34);
+                font: normal normal normal normal 15px / 24px 'Proxima Nova', 'Open Sans', 'Gill Sans MT', 'Gill Sans', Corbel, Arial, sans-serif;
+                margin: 0px;
+                outline: rgb(34, 34, 34) none 0px;">
+          Contributors <strong style=" color: rgb(34, 34, 34);
+                border: 0px none rgb(34, 34, 34);
+                font: normal normal bold normal 15px / 24px 'Proxima Nova', 'Open Sans', 'Gill Sans MT', 'Gill Sans', Corbel, Arial, sans-serif;
+                outline: rgb(34, 34, 34) none 0px;"><%= collection.contributors.length %></strong>
+        </p>
+    <% end %>
+    <p style=" color: rgb(34, 34, 34);
+            height: 24px;
+            width: 259px;
+            perspective-origin: 129.5px 12px;
+            transform-origin: 129.5px 12px;
+            border: 0px none rgb(34, 34, 34);
+            font: normal normal normal normal 15px / 24px 'Proxima Nova', 'Open Sans', 'Gill Sans MT', 'Gill Sans', Corbel, Arial, sans-serif;
+            margin: 0px;
+            outline: rgb(34, 34, 34) none 0px;">
+      Followers <strong style=" color: rgb(34, 34, 34);
+            height: 24px;
+            width: 259px;
+            perspective-origin: 129.5px 12px;
+            transform-origin: 129.5px 12px;
+            border: 0px none rgb(34, 34, 34);
+            font: normal normal normal normal 15px / 24px 'Proxima Nova', 'Open Sans', 'Gill Sans MT', 'Gill Sans', Corbel, Arial, sans-serif;
+            margin: 0px;
+            outline: rgb(34, 34, 34) none 0px;"><%= collection.follower_count %></strong>
+    </p>
+  </div>
+</section>

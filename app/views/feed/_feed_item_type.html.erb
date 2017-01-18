@@ -1,0 +1,54 @@
+<% if data[:type].blank? %> 
+    <span class="feed-story-type">  
+        <span class="fa fa-user"></span> Featured
+    </span>
+<% elsif data[:type].eql? 'userwork' %> 
+    <span class="feed-story-type">  
+                <span class="glyphicon glyphicon-briefcase"></span> Profile Update
+            </span>
+<% elsif data[:type].eql? 'internship' %> 
+    <span class="feed-story-type">  
+                <span class="glyphicon glyphicon-briefcase"></span> Profile Update
+            </span>
+<% elsif data[:type].eql? 'job' %> 
+    <span class="feed-story-type "> 
+    <span class="glyphicon glyphicon-briefcase"></span>  Recommended Job
+  </span>
+<% elsif data[:type].eql? 'publication' %> 
+    <span class="feed-story-type">  
+                <span class="fa fa-share-alt-square"></span>  Profile Update
+            </span>
+<% elsif data[:type].eql? 'coursework' %> 
+    <span class="feed-story-type">  
+                <span class="glyphicon glyphicon-book"></span> Profile Update
+            </span>
+<% elsif data[:type].eql? 'user_course_review' %> 
+  <span class="feed-story-type">  
+    <span class="glyphicon glyphicon-leanpub"></span> Course Reviews
+  </span>
+<% elsif data[:type].eql? UserFeedTypes::USER_WORK_REFERENCE %> 
+  <span class="feed-story-type feed-story-type-orange">  
+    <span class="glyphicon glyphicon-edit"></span> Company Reference
+  </span>
+<% elsif data[:type].eql? 'education' %> 
+    <span class="feed-story-type">  
+                <span class="fa fa-graduation-cap"></span> Profile Update
+            </span>
+<% elsif data[:type].eql? 'story' %> 
+    <span class="feed-story-type feed-story-type-green">  
+                <span class="glyphicon glyphicon-star"></span> Meed Post
+            </span>
+<% elsif data[:type].eql? 'profile_picture' %> 
+    <span class="feed-story-type">  
+               <span class="fa fa-smile-o"></span> New Head Shot
+            </span>
+
+<% elsif data[:type].eql? 'cover_video' or data[:type].eql? 'video' %> 
+    <span class="feed-story-type">  
+                <span class="glyphicon glyphicon-picture"></span> Culture
+            </span>
+<% elsif data[:type].eql? 'story' %>
+    <span class="feed-story-type ">  
+        <span class="glyphicon glyphicon-picture"></span> Latest Story
+    </span>
+<% end %> 

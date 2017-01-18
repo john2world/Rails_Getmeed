@@ -1,0 +1,34 @@
+<div class="modal fade" id="deactivateAccountModal" tabindex="-1" role="dialog" aria-labelledby="ownerBoxLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <%= form_tag({:controller => :home, :action => :deactivate_survey}, :class => 'form-submit',:style => 'padding: 0px;', :html => {:multipart => true}, :remote => true) do %>
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="ownerLabel">Danger Zone!</h4>
+        </div>
+        <div class="modal-body">
+          <div class="bs-callout bs-callout-danger" id="callout-inline-form-width">
+            <h4>Confirm Account Deactivation</h4>
+            <br>
+            <p>
+              Deactivating your account disables your profile, your job applications and other content will no longer be visible to people.
+            </p>
+            <p>If you have any questions/concerns <a href="/contact">contact us</a></p>
+            <p>If you wish to proceed with deactivation, fill the short survey and Click on Deactivate again.</p>
+          </div>
+          <p style="text-align: center">What was your reason for leaving Meed? </p>
+            <div class="col-sm-4 col-md-4 col-xs-4 col-lg-4"><%= check_box_tag 'job', 'job' %> I got a job</div>
+            <div class="col-sm-4 col-md-4 col-xs-4 col-lg-4"><%= check_box_tag 'graduated', 'graduated' %> I graduated</div>
+            <div class="col-sm-4 col-md-4 col-xs-4 col-lg-4"><%= check_box_tag 'testing', 'testing' %> I was testing</div>
+            <br/><br/>
+            Other: <%= text_field_tag 'other' %>
+        </div>
+        <div class="modal-footer">
+          <div class="any-center">
+            <%= submit_tag 'Ok', :class => 'button button-default', :disable_with => 'Please wait..', :style => "width: 100px" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

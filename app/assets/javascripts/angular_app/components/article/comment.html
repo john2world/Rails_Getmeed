@@ -1,0 +1,25 @@
+<div class="comment" ng-attr-id="{{ 'comment-' + comment._id }}">
+    <poster-info-user user="::comment.user"
+                      feed-type="comment"
+            ></poster-info-user>
+    <div class="comment-description" ng-bind-html="::comment.description" ng-text-truncate="comment.description" ng-tt-chars-threshold="400" ng-hide="comment.editing">
+    </div>
+    <form
+      accept-charset="UTF-8"
+      name="commentForm"
+      ng-submit="submitComment(commentForm.$valid)"
+      novalidate="novalidate"
+      ng-if="comment.editing">
+
+      <textarea
+        id="comment-textarea"
+        name="description"
+        ng-model="comment.description"
+        hide-html-tags
+        autogrow
+        required="required"
+        placeholder="Answer or Comment... "
+        ng-keydown="keydown($event)"
+        ></textarea>
+    </form>
+</div>

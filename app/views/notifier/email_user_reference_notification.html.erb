@@ -1,0 +1,34 @@
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+<span style="margin-left: 47%;">
+	<img alt="" src="https://res.cloudinary.com/resume/image/upload/c_scale,w_50/v1427155934/crescent_green_rt6rit.png" />
+	<br/>
+</span>
+<hr style="color:#999999">
+
+<p>
+  <span style="font-family: 'Open Sans', 'lucida grande', arial, verdana, 'lucida sans unicode', tahoma, sans-serif;">Hi <%= @user.name %>,</span>
+</p>
+
+<p>
+  <span style="font-family: 'Open Sans', 'lucida grande', arial, verdana, 'lucida sans unicode', tahoma, sans-serif;">
+    Congrats! <%= @eu.first_name %> has written a reference for your work at <%= @work.company %> as <%= @work.title %>.
+    <br/><br/>
+    The reference has been added to your profile. Use the below link to request references for other internships / experiences Or check the status of your current reference invitations.
+  </span>
+  <br/><br/>
+  <%= link_to 'Your References', @url, :style => 'font-family: "Open Sans", "lucida grande", arial, verdana,
+    "lucida sans unicode", tahoma, sans-serif; font-size: 14px; color:#00a651;' %>
+</p>
+<br/>
+<p>
+  <span style="font-family: 'Open Sans', 'lucida grande', arial, verdana, 'lucida sans unicode', tahoma, sans-serif;">&mdash;
+    Meed Team
+  </span>
+</p>
+
+</body>
+</html>

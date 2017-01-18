@@ -1,0 +1,44 @@
+<% if is_edit %>
+    <div class="row" id="experiences">
+      <div>
+          <span class="profile-item-type"> EXPERIENCE</span><span class="info-text" style="font-weight: bold"> (add experiences - if any)</span>
+      </div>
+<% else %>
+    <% if !experiences.blank? %>
+        <div class="row">
+          <div class="profile-item-type"> EXPERIENCE</div>
+          <% experiences.each_with_index do |experience, index| %>
+              <%= render 'view_experience_form', :experience => experience, :index => index %>
+              <% if index != experiences.length-1 %>
+                  <hr class="hr-profile-item">
+              <% end %>
+          <% end %>
+          <hr class="hr-profile-separator">
+        </div>
+    <% end %>
+<% end %>
+<% if is_edit %>
+    <% if !experiences.blank? %>
+        <% experiences.each_with_index do |experience, index| %>
+            <%= render 'view_experience_form', :experience => experience, :index => index %>
+            <% if index != experiences.length-1 %>
+                <hr class="hr-profile-item">
+            <% end %>
+        <% end %>
+        <hr class="hr-profile-separator">
+    <% end %>
+      <div id="view_experience_div">
+      </div>
+      <div id="edit_experience_div" style="display: none">
+        <div id="edit_experience_new" class='profile-view-table'>
+          <%= render 'new_experience_form' %>
+        </div>
+      </div>
+      <a id="add_new_experience" href="#new_experience_id">
+        <div class="any-center">
+          <strong>Add Experience</strong>
+        </div>
+      </a>
+      <hr class="hr-profile-separator">
+    </div>
+<% end %>

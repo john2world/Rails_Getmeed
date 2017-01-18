@@ -1,0 +1,24 @@
+<div class="ama-header">
+  <div class="header-bg">
+    <div class="header-intro">
+      <img class="current-user-avatar" width="100" height="100" ng-src="{{ ama.author.image_url }}" data-pin-nopin="true">
+      <div class="primary-text">{{ama.author.first_name}} {{ama.author.last_name}}</div>
+      <div class="secondary-text">{{ama.author.headline}}</div>
+      <div class="divider"></div>
+        <div class="follow-cta">
+                <span class="cta">
+                  <a class="button button-primary" ng-if="!isFollowing" ng-click="follow()"><i class="fa fa-user-plus"></i> Follow <span class="count" ng-if="profile.user.follower_count > 0">
+          {{ profile.user.follower_count }}
+        </span></a>
+                  <a class="button button-primary-reverse unfollow " ng-if="isFollowing" ng-click="unfollow()"><i class="fa fa-user-times"></i> Following</a>
+                </span>
+        </div>
+      <div class="divider"></div>
+      <div class="ama-time columns four offset-by-four">
+        LIVE AMA ON {{ama.event.start_dttm | formatDateTimeStringFriendly}}
+      </div>
+      <div class="row"></div>
+      <div class="divider"></div>
+    </div>
+  </div>
+</div>

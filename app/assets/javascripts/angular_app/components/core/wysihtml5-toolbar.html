@@ -1,0 +1,33 @@
+<div id="{{ wysihtml5ToolbarId }}" class="wysihtml5-toolbar">
+  <div class="block">
+    <a data-wysihtml5-command="bold" title="CTRL+B" href="javascript:;" unselectable="on"><strong>bold</strong></a>
+    <a data-wysihtml5-command="italic" title="CTRL+I" href="javascript:;" unselectable="on"><em>italic</em></a>
+    <a data-wysihtml5-command="underline" title="CTRL+U" href="javascript:;" unselectable="on"><u>underline</u></a>
+  </div>
+  <div class="block">
+   <!--  <a data-wysihtml5-command="insertImage" href="javascript:;" unselectable="on" class=""><i class="fa fa-image"></i></a> -->
+    <a data-wysihtml5-command="insertUnorderedList" href="javascript:;" unselectable="on"><i class="fa fa-list-ul"></i></a>
+    <a data-wysihtml5-command="insertOrderedList" href="javascript:;" unselectable="on"><i class="fa fa-list-ol"></i></a>
+  </div>
+
+  <div class="block">
+    <a data-wysihtml5-action="change_view"><i class="fa fa-code"></i></a>
+  </div>
+  <div data-wysihtml5-dialog="insertImage" style="display: none;" class="wysihtml5-dialog">
+    <label>
+      Image:
+      <input data-wysihtml5-dialog-field="src" value="http://" type="text">
+    </label>
+    <label>
+      Align:
+      <select data-wysihtml5-dialog-field="className">
+        <option value="">default</option>
+        <option value="wysiwyg-float-left">left</option>
+        <option value="wysiwyg-float-right">right</option>
+      </select>
+    </label>
+    <p class="button-wrap">
+      <a data-wysihtml5-dialog-action="save">OK</a>&nbsp;<a data-wysihtml5-dialog-action="cancel">Cancel</a>
+    </p>
+  </div>
+</div>

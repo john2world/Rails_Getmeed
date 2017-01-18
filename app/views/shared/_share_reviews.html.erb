@@ -1,0 +1,38 @@
+<div class="modal fade" id="shareReviewsModal" tabindex="-1" role="dialog" aria-labelledby="ownerBoxLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" id="closePromotionDialog" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <p class="accordion lightbox-text">
+          Win a gift card. Spread the word!
+        </p>
+        <hr class="hr-profile-header">
+      </div>
+      <div class="modal-body">
+        <img src="https://res.cloudinary.com/resume/image/upload/c_scale,w_350/v1439246733/Amazon_in_Meed-01_f9kfey.png" style="margin-left: 20%;">
+        <hr class="hr-profile-header">
+        <div> Invite your friends to review courses for improving course insights. Use the following referrer link for a
+          chance to win a <strong>$50 worth</strong> Amazon gift card!
+        </div>
+      </div>
+      <div class="modal-footer any-center">
+        <div class="form-group">
+          <div class="any-center">
+            <div id="share_reviews_modal" >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+    $("#share_reviews_modal").jsSocials({
+        url: '<%= "https://getmeed.com/insights/courses/dash?referrer=#{current_user.handle}&campaign_type=c_insights" %>',
+        text: '<%= "Course reviews at #{current_school_name}!"%>',
+        showCount: "inside",
+        showLabel: false,
+        shares: ["facebook", "twitter",  "linkedin", "email"]
+    });
+</script>

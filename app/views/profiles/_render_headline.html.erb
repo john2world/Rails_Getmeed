@@ -1,0 +1,46 @@
+<% if is_edit %>
+    <div class="row" id="headline_render">
+      <div>
+        <span class="profile-item-type"> HEADLINE</span><span class="info-text" style="font-weight: bold">  (add your headline in few words)</span>
+        <% unless user[:headline].blank? %>
+            <a id="edit_link" class="edit_hover " onclick="renderEditItem('show_single_headline_true')" style="cursor: pointer;">
+              <strong><span class="glyphicon glyphicon-edit"></span> Edit </strong>
+            </a>
+        <% end %>
+      </div>
+<% else %>
+    <% unless user[:headline].blank? %>
+        <div class="row">
+          <div class="profile-item-type"> HEADLINE</div>
+          <% unless user[:headline].blank? %>
+              <%= render 'view_headline_form', :user => user,  :is_edit => is_edit %>
+          <% end %>
+          <hr class="hr-profile-separator">
+        </div>
+    <% end %>
+<% end %>
+
+<% if is_edit %>
+    <% unless user[:headline].blank? %>
+        <%= render 'view_headline_form', :user => user, :is_edit => is_edit %>
+    <% end %>
+    <div id="view_headline_div" class="profile-view-table"></div>
+    <div id="edit_headline_div" style="display: none">
+      <div id="edit_headline_new" class='profile-view-table'>
+        <%= render 'edit_headline_form', :user => user%>
+      </div>
+    </div>
+    <div class="any-center">
+      <% if user[:headline].blank? %>
+          <a id="add_new_headline" href="#new_headline_id" class="any-center">
+            <strong> Add headline</strong>
+          </a>
+      <% else %>
+          <a id="add_new_headline" href="#new_headline_id" class="any-center" style="display: none">
+            <strong>Add headline</strong>
+          </a>
+      <% end %>
+    </div>
+    <hr class="hr-profile-separator">
+    </div>
+<% end %>

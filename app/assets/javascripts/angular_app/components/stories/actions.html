@@ -1,0 +1,56 @@
+<ul class="story-actions">
+  <li ng-if="!currentUser">
+    <a class="button button-primary medium-small open-signup-modal">
+      <span class="label"><i class="fa fa-caret-up"></i> </span>
+      <span class="count" ng-if="story.feed_item.kudos_count > 0">
+        {{ story.feed_item.kudos_count }}
+      </span>
+    </a>
+  </li>
+
+  <li ng-if="currentUser && !story.feed_item.viewer_gave_kudos">
+    <a
+      class="button button-primary medium-small give-kudos"
+      ng-click="story.feed_item.giveKudos()">
+      <span class="label"><i class="fa fa-caret-up"></i>  <span ng-if="story.feed_item.kudos_count == 0">UPVOTE</span></span>
+      <span class="count" ng-if="story.feed_item.kudos_count > 0">
+        {{ story.feed_item.kudos_count }}
+      </span>
+    </a>
+  </li>
+
+  <li ng-if="story.feed_item.viewer_gave_kudos">
+    <a
+      class="button button-disabled medium-small">
+      <span class="label"><i class="fa fa-caret-up"></i>  </span>
+      <span class="count" ng-if="story.feed_item.kudos_count > 0">
+        {{ story.feed_item.kudos_count }}
+      </span>
+    </a>
+  </li>
+
+  <li ng-if="story.feed_item.can_downvote">
+    <a ng-click="!story.feed_item.downvoted && story.feed_item.downvote()">
+      {{story.feed_item.downvoted ? 'Downvoted' : 'Downvote'}}
+    </a>
+  </li>
+
+  <li ng-if="story.feed_item.view_count > 0">
+    <a ng-href="{{ ::story.feed_item.path }}">
+      <span class="label">Views</span>
+      <span class="count">{{ ::story.feed_item.view_count }}</span>
+    </a>
+  </li>
+
+  <li ng-if="story.is_viewer_author">
+    <a target="_self" ng-href="/stories/{{::story.slug}}/edit">
+      <span class="label">Edit</span>
+    </a>
+  </li>
+
+  <li ng-if="story.is_viewer_author">
+    <a ng-click="showConfirm()">
+      <span class="label">Delete</span>
+    </a>
+  </li>
+</div>

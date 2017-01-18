@@ -1,0 +1,83 @@
+.tag-nav
+  font-size: $font_size_medium_small
+  nav
+    position: fixed
+    width: 8%
+  ul
+    margin-bottom: 1rem
+
+  li
+    display: inline-block
+    width: 70%
+  a
+    color: $light_text
+  .secondary
+    color: $secondary
+
+  em
+    text-decoration: underline
+    font-style: normal
+
+  &.side
+    float: left
+    position: absolute
+    left: 65rem
+
+  &.bottom
+    display: none
+    margin-top: 1.5rem
+    width: 100%
+    float: left
+    li
+      width: auto
+      margin-right: 1.5rem
+
+  .heading
+    color: $primary
+    font-weight: bold
+
+  .community-rules
+    .heading
+      color: $primary
+      font-weight: bold
+    li
+      color: $light_text
+
+  .private-school
+    color: $badge_executive
+
+  .copyright
+    color: $very_light_text
+
+@media(max-width: 8300px)
+  .tag-nav
+    nav
+      position: fixed
+      width: 8%
+
+  .tag-nav.side
+    text-align: right
+    left: 65rem !important
+
+    li
+      width: 100%
+
+@media(max-width: 1500px)
+  .tag-nav
+    nav
+      position: fixed
+      width: 11%
+
+
+@media(max-width: 1080px)
+  .tag-nav.side
+    display: none
+  .tag-nav.bottom
+    display: block
+
+@media(max-width: 1000px)
+  .tag-nav.side
+    left: -20rem
+
+
+

@@ -1,0 +1,5 @@
+<% unless @photo.blank? %>
+$("#image_article_photo").attr('src', '<%= @photo.large_image_url %>');
+$("#photo_id").attr('value', '<%= @photo.id %>');
+$("#photo_url").attr('value', '<%= @photo.large_image_url %>');
+<% end %>

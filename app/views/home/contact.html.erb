@@ -1,0 +1,156 @@
+<% if @user.blank? %>
+  <div class="headline-bg contact-headline-bg">
+  </div>
+  <!-- ******Contact Section****** -->
+  <section class="contact-section section section-on-bg">
+    <div class="container">
+      <h2 class="title text-center">Contact Us</h2>
+      <p class="intro text-center">Good, bad or ugly, we would love to hear!</p>
+      <%= form_tag({:action => :contact_us}, :class => 'contact-form',
+                   :html => {:multipart => true}) do %>
+        <div class="row text-center recruiter-contact-form">
+          <div class="contact-form-inner col-md-8 col-sm-12 col-xs-12 col-md-offset-2 col-sm-offset-0 xs-offset-0">
+            <div class="row recruiter-contact-form has-feedback">
+              <div class="col-md-6 col-sm-6 col-xs-12 form-group" style="padding-right: 0px">
+                <label class="sr-only" for="cname">Your name</label>
+                <%= text_field_tag :email, nil, :class => 'form-control', :type => 'email', :required => '',
+                                   :placeholder => 'Your Contact Email' %>
+              </div>
+              <div class="col-md-6 col-sm-6 col-xs-12 form-group" style="padding-right: 0px">
+                <label class="sr-only" for="cemail">Email address</label>
+                <%= text_field_tag :subject, nil, :class => 'form-control', :required => '', :placeholder => 'Subject' %>
+              </div>
+              <div class="col-md-12 col-sm-12 col-xs-12 form-group" style="padding-right: 0px">
+                <label class="sr-only" for="cmessage">Your message</label>
+                <%= text_area :body, :text, :class => 'form-control dont-show-wysiwyg', :required => '',:placeholder => 'Description', :rows => 12 %>
+              </div>
+              <div class="col-md-12 col-sm-12 col-xs-12 form-group" style="padding-right: 0px">
+                <%= button_tag(type: 'submit', class: 'btn btn-md btn-success', :disable_with => 'Sending..') do %>
+                  Submit
+                <% end %>
+              </div>
+            </div>
+            <!--//row-->
+          </div>
+        </div>
+      <% end -%>
+      <!--//contact-form-->
+    </div>
+    <!--//container-->
+  </section>
+  <!--//contact-section-->
+  <!-- ******Other Contact Section****** -->
+  <section class="contact-other-section section">
+    <div class="container text-center">
+      <h2 class="title">Other ways to reach us</h2>
+
+      <p class="intro">You can also get in touch in following ways</p>
+
+      <div class="row">
+        <ul class="other-info list-unstyled col-md-6 col-sm-10 col-xs-12 col-md-offset-3 col-sm-offset-1 xs-offset-0">
+          <li><i class="fa fa-envelope-o"></i><a href="#">contact@getmeed.com</a></li>
+          <li>
+            <i class="fa fa-twitter"></i><a href="https://twitter.com/getonmeed" target="_blank">@getonmeed</a>
+          </li>
+          <!--<li><i class="fa fa-phone"></i><a href="tel:+0800123456">0800 123 456</a></li>-->
+          <!--<li><i class="fa fa-map-marker"></i>Queen Square <br/> 56 College Green Road<br/>BS1 XR18<br/>Bristol<br/>UK-->
+          <!--</li>-->
+        </ul>
+      </div>
+      <!--//row-->
+    </div>
+    <!--//container-->
+  </section>
+  <!--//contact-other-section-->
+<% else %>
+    <div class="headline-bg contact-headline-bg">
+    </div>
+    <!-- ******Contact Section****** -->
+    <section class="contact-section section section-on-bg">
+      <div class="container">
+      <h2 class="title text-center">Contact Us</h2>
+      <p class="intro text-center">Good, bad or ugly, we would love to hear!</p>
+      <%= form_tag({:action => :contact_us}, :html => {:multipart => true}) do %>
+        <div class="row text-center recruiter-contact-form">
+          <div class="contact-form-inner col-md-8 col-sm-12 col-xs-12 col-md-offset-2 col-sm-offset-0 xs-offset-0">
+            <div class="row recruiter-contact-form">
+              <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                <label class="sr-only" for="cname">Your name</label>
+                <%= text_field_tag :email, nil, :class => 'form-control', :type => 'email', :required => '',
+                                   :placeholder => 'Your Contact Email' %>
+              </div>
+              <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                <label class="sr-only" for="cemail">Email address</label>
+                <%= text_field_tag :subject, nil, :class => 'form-control', :required => '', :placeholder => 'Subject' %>
+              </div>
+              <div class="col-md-12 col-sm-12 col-xs-12 form-group">
+                <label class="sr-only" for="cmessage">Your message</label>
+                <%= text_area :body, :text, :class => 'form-control', :required => '', :id => 'dont-show-wysiwyg', :placeholder => 'Description', :rows => 12 %>
+              </div>
+              <div class="col-md-12 col-sm-12 col-xs-12 form-group">
+                <%= button_tag(type: 'submit', class: 'btn btn-md btn-success', :disable_with => 'Sending..') do %>
+                    Submit
+                <% end %>
+              </div>
+            </div>
+            <!--//row-->
+          </div>
+        </div>
+        <!--//row-->
+      <% end -%>
+    </div>
+        </section>
+    
+<% end %>
+
+<script>
+  $(document).ready(function() {
+    $('.contact-form').formValidation({
+      framework: 'bootstrap',
+      icon: {
+        valid: 'glyphicon glyphicon-ok',
+        invalid: 'glyphicon glyphicon-remove',
+        validating: 'glyphicon glyphicon-refresh'
+      },
+      fields: {
+        subject: {
+          validators: {
+            notEmpty: {
+              message: 'Subject is required'
+            },
+            stringLength: {
+              min: 6,
+              message: 'The Subject must be more than 6 characters'
+            },
+            regexp: {
+              regexp: /^[a-zA-Z0-9]+.*$/,
+              message: 'The subject must contain characters'
+            }
+          }
+        },
+        description: {
+          validators: {
+            notEmpty: {
+              message: 'Description is required'
+            },
+            stringLength: {
+              min: 10,
+              message: 'The Description must be more than 10 characters'
+            },
+            regexp: {
+              regexp: /^[a-zA-Z0-9]+.*$/,
+              message: 'The Description must contain characters'
+            }
+          }
+        },
+        email: {
+          validators: {
+            emailAddress: {
+              message: 'The value is not a valid email address'
+            }
+          }
+        }
+      }
+    });
+  });
+</script>

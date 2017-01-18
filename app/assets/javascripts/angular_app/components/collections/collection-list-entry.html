@@ -1,0 +1,28 @@
+<li class="collection-list-entry">
+  <div class="image-wrap">
+      <a ng-if="userCollections" ng-href="/submit/post/{{ ::collection._id }}" class="biglink"></a>
+      <a ng-if="!userCollections" href="{{ ::collection.linkUrl }}" target="_self" class="biglink"></a>
+    <div class="image-overlay"></div>
+    <img width="200" ng-src="{{ ::collection.small_image_url }}" />
+    <p class="collection-title">
+      {{ ::collection.title }}
+      <span
+        class="submission-count"
+        ng-if="::collection.submission_count > 0"
+        >{{ ::collection.follower_count }}</span>
+    </p>
+    <p class="button-wrap" ng-if="!userCollections && collection.follower_count > 0">
+      <a
+        ng-click="collection.follow()"
+        ng-if="currentUser && !collection.is_viewer_following"
+        class="button medium-small button-primary  follow"><i class="fa fa-plus"></i> Join  </a>
+        <a
+                ng-if="!currentUser"
+                class="button medium-small button-primary  open-signup-modal follow"><i class="fa fa-plus"></i> Join  </a>
+      <a
+        ng-click="collection.unfollow()"
+        ng-if="currentUser && collection.is_viewer_following"
+        class="button medium-small button-primary-inverse unfollow"><i class="fa fa-check-circle"></i> Joined</a>
+    </p>
+  </div>
+</li>

@@ -1,0 +1,24 @@
+<div class="comments">
+  <ul class="comments" ng-if="true">
+    <li ng-if="windowManager.hasMore()" class="more-comments">
+      <a ng-click="loadMoreComments()" >View previous comments ({{windowManager.max}})</a>
+      <hr>
+    </li>
+
+    <div ng-repeat="comment in item.comments | limitTo: windowManager.showingAmount : windowManager.showingBegin">
+      <li>
+        <comment comment="comment" currentUser="currentUser"></comment>
+      </li>
+
+      <li>
+        <comment-actions comment="comment" currentUser="currentUser"></comment-actions>
+      </li>
+
+      <li>
+        <hr>
+      </li>
+    </div>
+
+    <comment-form item="item" user="currentUser" class="comment-form"></comment-form>
+  </ul>
+</div>

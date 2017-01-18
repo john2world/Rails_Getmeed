@@ -1,0 +1,5 @@
+<% unless @comment.blank? %>
+$("#<%= @position.blank? ? '' : "#{@position}_" %>comment_box_<%= @comment.feed_id %>").val('');
+$("#<%= @position.blank? ? '' : "#{@position}_" %>comment_tagline_<%= @comment.feed_id %>").val('');
+$("#<%= @position.blank? ? '' : "#{@position}_" %>comment_thread_<%= @comment.feed_id %>").append("<%= escape_javascript (render 'comments/render_comment' , :data => @comment) %>");
+<% end %>

@@ -1,0 +1,48 @@
+<p class="accordion lightbox-text"> Contact <%= @user[:first_name] %> <%= @user[:last_name] %>
+</p>
+<hr class="hr-header">
+<% if current_user.blank? and params[:insightToken].blank? %>
+    <%= form_tag({:action => :send_email}, :style => 'padding: 35px 100px 35px;', :html => {:multipart => true}) do %>
+        <p>
+          <span class="info-text-large">To: </span><%= @user.name %>
+        </p>
+        <label style="color: #333333;font-size: 15px;">
+          <%= text_field_tag :email, nil, :class => 'form-control', :required => '', :placeholder => 'Your email (*Required)' %>
+        </label>
+        <label style="color: #333333;font-size: 15px;">
+          <%= text_field_tag :subject, nil, :class => 'form-control', :required => '', :placeholder => 'Message Subject (*Required)' %>
+        </label>
+        <label style="color: #333333;font-size: 15px;">
+          <%= text_area_tag :description, nil, :class => 'form-control', :placeholder => 'Message Body (*Required)', :cols => 15, :rows => 100 %>
+        </label>
+        <% if !alert.blank? %>
+            <p class="label label-important">
+              <%= alert %>
+            </p>
+        <% end %>
+        <%= submit_tag 'Send Message', :class => 'button button-green offset37', :disable_with => 'Please wait..' %>
+    <% end -%>
+<% else %>
+    <%= form_tag({:action => :initiate_message, :controller => 'messages'}, :style => 'padding: 35px 100px 35px;', :html => {:multipart => true}) do %>
+        <p>
+          <span class="info-text-large">To: </span><%= @user.name %>
+        </p>
+        <%= hidden_field_tag :id, params[:id], :id => 'form_message_id_hidden_id' %>
+        <%= hidden_field_tag :insightToken, params[:insightToken], :id => 'form_message_id_hidden_insightToken' %>
+
+        <label style="color: #333333;font-size: 15px;">
+          <%= text_field_tag :subject, nil, :class => 'form-control', :required => '', :placeholder => 'Message Subject (*Required)' %>
+        </label>
+        <label style="color: #333333;font-size: 15px;">
+          <%= text_area_tag :description, nil, :class => 'form-control', :placeholder => 'Message Body (*Required)', :rows => 15, :cols => 100 %>
+        </label>
+        <% if !alert.blank? %>
+            <p class="label label-important">
+              <%= alert %>
+            </p>
+        <% end %>
+        <div class="any-center">
+          <%= submit_tag 'Send Message', :class => 'btn btn-md btn-primary', :disable_with => 'Please wait..' %>
+        </div>
+    <% end -%>
+<% end %>

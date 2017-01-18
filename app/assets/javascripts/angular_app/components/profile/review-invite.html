@@ -1,0 +1,80 @@
+<div class="row review-invite">
+  <div ng-if="!invite.new">
+    <div class="columns three">{{invite.reference_first_name}} {{invite.reference_last_name}}</div>
+    <div class="columns three">{{invite.reference_email}}</div>
+    <div class="columns three">{{invite.status}}</div>
+    <div class="columns two" ng-if="invite.status != 'Reference Received'">
+      <button class="button button-secondary medium-small" ng-click="remind()" ng-if="!invite.reminded">Send Reminder</button>
+      <button class="button medium-small" ng-disable="true" ng-if="invite.reminded">Reminder Sent</button>
+    </div>
+  </div>
+  <div ng-if="invite.new">
+    <form
+            accept-charset="UTF-8"
+            name="inviteForm"
+            ng-submit="sendInvite(invite, inviteForm.$valid)"
+            novalidate="novalidate"
+            >
+      <input type="hidden" ng-model="invite.course_id" name="course_id" />
+      <fieldset class="row">
+        <label class="columns six">
+          <span>First Name*</span>
+          <input
+                  class="u-full-width"
+                  ng-model="invite.reference_first_name"
+                  required="required"
+                  type="text" />
+        </label>
+        <label class="columns six">
+          <span>Last Name*</span>
+          <input
+                  class="u-full-width"
+                  ng-model="invite.reference_last_name"
+                  required="required"
+                  type="text" />
+        </label>
+      </fieldset>
+      <fieldset class="row">
+        <label class="columns six">
+          <span>Email*: </span>
+          <input
+                  class="u-full-width"
+                  ng-model="invite.reference_email"
+                  required="required"
+                  type="text" />
+        </label>
+        <label class="columns six">
+          <span>Type*: </span>
+          <select
+                  class="u-full-width"
+                  name="reviewType"
+                  ng-model="invite.reviewType"
+                  required>
+            <option value="professor">Professor</option>
+            <option value="assistant">TA/RA</option>
+            <option value="student">Project Mate</option>
+          </select>
+        </label>
+      </fieldset>
+      <fieldset class="row">
+        <label class="u-full-width">
+          <span>Message*</span>
+        <textarea
+                ng-model="invite.message"
+                id="item-description-{item._id}"
+                class="u-full-width"
+                required="required"></textarea>
+        </label>
+      </fieldset>
+
+      <p
+              ng-show="item.submitted && inviteForm.$invalid"
+              class="error">
+          Please enter valid data for all required (*) fields.
+      </p>
+      <input class="button-primary" type="submit" value="Invite" />
+      <input type="button" class="button" value="Cancel" ng-click="cancelReference(invite)"/>
+
+    </form>
+  </div>
+</div>

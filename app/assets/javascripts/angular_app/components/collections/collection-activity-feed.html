@@ -1,0 +1,12 @@
+<div id="activity-feed">
+  <div class="activity-feed-loader" ng-show="!feedItems && !noFeedItems"><loader></loader></div>
+  <div class="row feed-title-wrap">
+    <p class="feed-title">Top submissions in <strong>{{ title() }}</strong></p>
+  </div>
+  <div ng-show="feedItems || noFeedItems">
+    <ul tagged-infinite-scroll="getMore()" tagged-infinite-scroll-disabled="scroll_disabled">
+      <activity-feed-item all-collections="allCollections" tags="tags" ng-repeat="f in feedItems" feed-item="f" show-user-actions="true"></activity-feed-item>
+        <loader ng-if="scroll_fetching"> </loader>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,8 @@
+<ul class="jobs-list" tagged-infinite-scroll="getMoreJobs()" tagged-infinite-scroll-disabled="scroll_disabled || fixedSize">
+    <job-list-entry
+            ng-repeat="j in jobs"
+            job="j"
+            current-user="currentUser"
+            >
+    </job-list-entry>
+</ul>

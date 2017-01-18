@@ -1,0 +1,7 @@
+<% if @error.blank? %>
+window.location.replace("<%= @data.url%>");
+<% else %>
+var alert = $("#errors_alert");
+alert.show();
+alert.html('<%= "#{@error}"%>');
+<% end %>

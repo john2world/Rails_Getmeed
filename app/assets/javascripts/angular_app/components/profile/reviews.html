@@ -1,0 +1,18 @@
+<div class="reviews">
+  <ul>
+    <div ng-repeat="review in item.reviews track by $index">
+      <li ng-if="$index == 0 || showAll">
+        <review review="review" currentUser="currentUser"></review>
+      </li>
+      <li ng-if="item.reviews.length > 1 && ($index == 0 || showAll)">
+        <hr>
+      </li>
+    </div>
+    <li ng-if="item.reviews.length > 1 && !showAll">
+      <a ng-click="showReviews(true)">View {{ ::item.reviews.length - 1}} more review<span ng-if="item.reviews.length > 2">s</span> </a>
+    </li>
+    <li ng-if="item.reviews.length > 1 && showAll">
+      <a ng-click="showReviews(false)">Hide {{ ::item.reviews.length - 1}} review<span ng-if="item.reviews.length > 2">s</span> </a>
+    </li>
+  </ul>
+</div>

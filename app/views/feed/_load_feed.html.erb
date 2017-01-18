@@ -1,0 +1,21 @@
+<% if @feed_items.blank? %>
+    <div class="any-center">
+      <div class="info-text-large-center" style="font-size: 24px;"> Nothing to show...!</div>
+    </div>
+<% else %>
+    <% @feed_items.each do |feed_item| %>
+        <% if feed_item.class.name.eql? Job.to_s %>
+            <%= render 'jobs/view_dash_jobs', :job => feed_item %>
+        <% else %>
+            <% if feed_item[:poster_type].eql? 'company' %>
+                <% unless feed_item[:company].blank? %>
+                    <%= render 'feed/feed_item_render', :data => feed_item, :company => feed_item[:company], :position => position %>
+                <% end %>
+            <% elsif feed_item[:poster_type].eql? 'product' %>
+                <%= render 'feed/feed_item_render', :data => feed_item, :position => position %>
+            <% elsif feed_item[:poster_type].eql? 'user' %>
+                <%= render 'feed/feed_item_render', :data => feed_item, :position => position %>
+            <% end %>
+        <% end %>
+    <% end %>
+<% end %>

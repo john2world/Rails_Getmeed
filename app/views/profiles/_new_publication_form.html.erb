@@ -1,0 +1,28 @@
+<%= form_tag({:action => 'save_publication'}, :id => 'form_publication_new', :remote => true) do %>
+    <div class="form-inline">
+      <div class="form-group">
+        <%= text_field_tag :publication_title, nil, :placeholder => 'Ex: Young Entrepreneur Award', :class => 'form-control input-medium', :required => '' %>
+      </div>
+      <div class="form-group" style="float: right;">
+        <%= hidden_field_tag :hidden_id, '', :id => 'form_new_hidden_id' %>
+        <%= select_year(Date.today, {:field_name => 'year', :year => 1900}, {:class => 'form-control input-mini'}) %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= text_area :publication, :text, :class => 'form-control', :id => 'profile-publicationwork-new_id', :placeholder => 'Describe your publication in few words and give any supportive links below (485 chars). (*required)', :rows => 2, :cols => 80, :required => '' %>
+    </div>
+    <div class="form-group">
+      <%= text_field_tag :link, nil, :placeholder => 'link to your publication', :class => 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= button_tag(type: 'submit', :id => 'delete_publication_new', class: 'btn btn-danger btn-sm',
+                     :style => 'display:none', :confirm => 'Are you sure to delete this publication?',
+                     :name => 'delete', data: {disable_with: 'Deleting.. '}) do %>
+          <span class="glyphicon glyphicon-trash "></span> Delete
+      <% end %>
+      <%= button_tag(type: 'submit', :id => 'save_publication_new', class: 'btn btn-primary btn-sm',
+                     data: {disable_with: 'Saving.. '}) do %>
+          <span class="glyphicon glyphicon-floppy-disk "></span> Save
+      <% end %>
+    </div>
+<% end -%>

@@ -1,0 +1,30 @@
+<div class="row" ng-if="currentUser && feedItem.user_state">
+    <div class="left-panel">
+        <div class="greetings">
+            <p>Nice To Meed You!</p>
+
+            <div ng-if="currentUser.badge == 'influencer'">
+                <p class="badge-tagline">Your badge is "Influencer"
+                </p>
+                <a class="open-badge-modal badge-influencer"></a>
+            </div>
+
+            <div ng-if="currentUser.badge == 'new-hire'">
+                <p class="badge-tagline">Your badge is "New Hire"
+                </p>
+                <a class="open-badge-modal badge-new-hire"></a>
+            </div>
+
+        </div>
+    </div>
+    <div class="right-panel">
+        <h4 class="activity-feed-item-checklist">
+            <div ng-if="currentUser">
+                <p>Complete this checklist to <br/>
+                    get started!</p>
+            </div>
+        </h4>
+        <check-list item="feedItem">
+        </check-list>
+    </div>
+</div>

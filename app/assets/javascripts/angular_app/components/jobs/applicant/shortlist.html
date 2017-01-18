@@ -1,0 +1,22 @@
+<div class="modal">
+  <legend>Shortlisted! Send email to <span type="student-name">{{::applicant.name}}</span>?</legend>
+  <span class="info-text">(** You can get contact information from their profile now)</span>
+  <form novalidate>
+    <p>
+      <span class="info-text-large">To: </span>
+      <span type="student-name">{{::applicant.name}}</span>
+    </p>
+    <fieldset>
+      <input ng-model="subject" required placeholder="Email Subject (*Required)" type="text"></input>
+    </fieldset>
+
+    <fieldset>
+      <textarea ng-model="description" required cols=45 rows=10 placeholder="Email Body (*Required)"></textarea>
+    </fieldset>
+
+    <button ng-click="close(true)" class="medium-small button-secondary-inverse unfollow ng-scope">
+      <span class="glyphicon glyphicon-ok-circle"></span>Send Email
+    </button>
+    <button ng-click="close(false)" class="medium-small button-primary-inverse unfollow ng-scope">Not Now</button>
+  </form>
+</div>

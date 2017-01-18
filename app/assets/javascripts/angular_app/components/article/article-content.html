@@ -1,0 +1,56 @@
+<div class="main-inner-wrap article-content">
+    <loader ng-if="!article"></loader>
+    <div class="feed-user-actions">
+        <feed-user-action-buttons item="article" ></feed-user-action-buttons>
+    </div>
+    <div ng-if="article">
+        <poster-info item="article"></poster-info>
+        <!--<abbr class="timeago activity-feed-item-timestamp" title="{{ ::article.create_time }}">{{ ::article.create_time }}</abbr>-->
+        <activity-feed-item-caption item="article" ng-hide="isEditing"></activity-feed-item-caption>
+
+        <div class="article-body" ng-hide="isEditing">
+            <div class="picture-wrap" ng-if="article.large_image_url">
+                <a ng-href="{{ ::article.external_url }}" target="_blank">
+                    <img ng-src="{{ ::article.large_image_url }}"/>
+                </a>
+            </div>
+            <div class="story-tags" ng-if="article.tag_objects">
+                Tags:
+                <span  ng-repeat="tag in article.tag_objects">
+                    <a      ng-if="tag._id == 'portfolio'" class="story-tags-private"
+                            ng-href="/{{ ::article.user.handle }}#portfolio">
+
+                        <i class="fa fa-{{ ::tag.icon}}"></i> {{ ::tag.title }}
+                    </a>
+                    <a      ng-if="tag._id != 'portfolio'" class="story-tags"
+                            >
+
+                        <i class="fa fa-{{ ::tag.icon}}"></i> {{ ::tag.title }}
+                    </a>
+                </span>
+            </div>
+
+            <div class="story-link">
+                <a ng-href="{{ ::article.external_url }}" ng-click="article.trackClick()" target="_blank">
+                    {{ ::article.title }}
+                </a>
+            </div>
+            <div class="feed-actions">
+                <feed-item-action-buttons item="article"></feed-item-action-buttons>
+                <feed-item-social-share-modal item="article"></feed-item-social-share-modal>
+            </div>
+        </div>
+
+        <feed-item-form item="article" is-editing="isEditing" all-tags="tags" all-collections="allCollections" ng-if="isEditing"></feed-item-form>
+    </div>
+    <comments item="article" current-user="currentUser" show-write-comment="true"></comments>
+    <div class="signin-cta" ng-if="!currentUser">
+    <span class="cta">
+      <a class="button button-primary open-signup-modal">Sign In To Participate</a>
+    </span>
+    </div>
+    <hr/>
+    <div class="row">
+        <site-nav class="side" user-collections="userCollections"></site-nav>
+    </div>
+</div>

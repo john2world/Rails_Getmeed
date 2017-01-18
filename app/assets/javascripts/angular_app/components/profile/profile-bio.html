@@ -1,0 +1,25 @@
+<div class="profile-bio profile-section" >
+    <div class="profile-bio-show" ng-show="!showEdit('bio')">
+        <h3>
+            SHORT BIO
+            <a class="open-profile-edit-bio edit-link"
+               ng-click="editBio()"
+               ng-show="profile.is_viewer_profile">
+                <i class="fa fa-pencil-square-o"></i> Edit
+            </a>
+        </h3>
+        <p class="profile-bio"> {{ profile.user.bio }}</p>
+    </div>
+    <div class="profile-edit-section" id="profile-edit-bio" ng-show="showEdit('bio')">
+        <form accept-charset="UTF-8" ng-submit="submitUpdateBio()">
+            <h3 class="u-full-width"> SHORT BIO</h3>
+            <fieldset class="row">
+        <textarea type="text" ng-model="profile.user.bio" placeholder="Short Bio example: I am an early Facebook employee who on the first messaging platform that made into production. Today that is FB messenger." class="u-full-width">
+        </textarea>
+            </fieldset>
+
+            <input class="button-primary" type="submit" value="Save" />
+            <input type="button" class="button close-modal" value="Cancel"  ng-click="closeBio(true)"/>
+        </form>
+    </div>
+</div>

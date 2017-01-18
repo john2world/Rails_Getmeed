@@ -1,0 +1,40 @@
+<% unless course.blank? %>
+    <div>
+      <span id="<%= encode_id(course[:_id]) %>" class="profile-item-title"><%= course[:title] %></span>
+      <% if is_edit %>
+        <a id="edit_link" class="edit_hover" onclick="renderEditItem('show_course_<%= encode_id(course[:_id]) %>_true')" style="cursor: pointer;">
+          <strong><span class="glyphicon glyphicon-edit"></span> Edit </strong>
+        </a>
+      <% end %>
+      <span class="profile-item-year">
+      [
+        <% if !course[:semester].blank? %>
+          <%= course[:semester] %>
+      <% end %>
+        <% if !course[:year].blank? %>
+          <%= course[:year] %>
+      <% end %> ]
+        </span>
+    </div>
+    <div>
+      <% unless course[:description].blank? %>
+          <%= (course[:description].html_safe) %>
+      <% end %>
+    </div>
+    <div>
+      <% if !course[:link].blank? %>
+          <% if is_valid_link(course[:link]) %>
+              <a href="<%= course[:link] %>" target="_blank"><%= course[:link].truncate(50, :omission => '.. click here').html_safe %> </a>
+          <% else %>
+              <span style="text-decoration: underline"> <%= course[:link].html_safe %></span>
+          <% end %>
+      <% end %>
+      <div>
+        <% if !course[:skills].blank? and course[:skills].to_s.length > 4  %>
+            <span class="profile-skills">
+              Skills — <%= course[:skills].kind_of?(Array)? course[:skills].join(', ').html_safe : course[:skills].html_safe %>
+            </span>
+        <% end %>
+      </div>
+<% end %>
+</div>

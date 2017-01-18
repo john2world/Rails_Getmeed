@@ -1,0 +1,29 @@
+@mixin box-shadow($top, $left, $blur, $spread, $color, $inset: false)
+  @if $inset
+    -webkit-box-shadow: inset $top $left $blur $spread $color
+    -moz-box-shadow: inset $top $left $blur $spread $color
+    box-shadow: inset $top $left $blur $spread $color
+  @else
+    -webkit-box-shadow: $top $left $blur $spread $color
+    -moz-box-shadow: $top $left $blur $spread $color
+    box-shadow: $top $left $blur $spread $color
+
+@mixin vertical-gradient($top, $bottom, $stop)
+  background: $top /* Old browsers */
+  background: -moz-linear-gradient(top,  $top 0%, $bottom $stop) /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$top), color-stop($stop,$bottom)) /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  $top 0%,$bottom $stop) /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  $top 0%,$bottom $stop) /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  $top 0%,$bottom $stop) /* IE10+ */
+  background: linear-gradient(to bottom,  $top 0%,$bottom $stop) /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#000000',GradientType=0 ) /* IE6-9 */
+
+
+@mixin text-shadow-light-text
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4)
+
+@mixin transition($transition...)
+  -moz-transition:    $transition
+  -o-transition:      $transition
+  -webkit-transition: $transition
+  transition:         $transition

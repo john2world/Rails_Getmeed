@@ -1,0 +1,93 @@
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+<center>
+    <span>
+        <img alt="" src="https://res.cloudinary.com/resume/image/upload/c_scale,w_50/v1427155934/crescent_green_rt6rit.png" />
+        <br/>
+        <center>
+        <span style="color:#888888; font-family: 'Open Sans', 'lucida grande', arial, verdana, 'lucida sans unicode', tahoma, sans-serif;line-height: 18px;  font-size: 13px">
+
+        </span>
+        </center>
+    </span>
+</center>
+<hr style="color:#999999">
+<p>
+  <% if @user[:first_name].blank? %>
+      <span style="font-family: 'Open Sans', 'lucida grande', arial, verdana, 'lucida sans unicode', tahoma, sans-serif;line-height: 18px; ">Hello!</span>
+  <% else %>
+      <span style="font-family: 'Open Sans', 'lucida grande', arial, verdana, 'lucida sans unicode', tahoma, sans-serif;line-height: 18px; ">Howdy <%= @user[:first_name] %>
+        !
+        </span>
+  <% end %>
+</p>
+
+<p>
+        <span style="font-size:13px; font-family: 'Open Sans', 'lucida grande', arial, verdana, 'lucida sans unicode', tahoma, sans-serif;line-height: 18px; ">
+        The Resume team is very thankful to you for making 2014 such a wonderful year! We are thrilled to have you on board with us.
+
+        </span>
+</p>
+
+
+<p>
+        <span style="font-size:13px; font-family: 'Open Sans', 'lucida grande', arial, verdana, 'lucida sans unicode', tahoma, sans-serif;line-height: 18px; ">
+          Without you, we might not have achieved a <strong style="font-size: 15px">4X </strong> growth in users, gained a presence in <strong style="font-size: 15px">25</strong> top universities in the US, or received over <strong style="font-size: 15px">9000</strong> job applications and <strong style="font-size: 15px">57K</strong> profile views. What's more, over <strong style="font-size: 15px">3000</strong> students contacted by companies!
+        As a token of all this success, we are going to ship you a <span style="text-decoration: underline">free</span> personalized t-shirt with your resume handle on it. Take a look and claim:
+        </span>
+</p>
+
+
+<center>
+
+    <a href="<%=@url %>">
+        <img alt="" src="http://res.cloudinary.com/resume/image/upload/c_scale,w_300/v1416987682/Screen_Shot_2014-11-25_at_11_40_58_PM_tnwg9e.png"/>
+    </a>
+</center>
+
+    <span style="font-size:13px;font-family: 'Open Sans', 'lucida grande', arial, verdana, 'lucida sans unicode', tahoma, sans-serif;line-height: 18px; ">
+      Happy Thanksgiving and happy holidays!
+      <p>
+        Resume Team,
+        <br>
+        <strong>San Francisco</strong>
+      </p>
+  </span>
+
+<center>
+  <p>
+    <a href="<%= @url %>">
+      <button style="display: inline-block;
+              font-family: 'Open Sans', 'lucida grande', arial, verdana, 'lucida sans unicode', tahoma, sans-serif;line-height: 18px;
+              vertical-align: top;
+              line-height: 1;
+              font-size: 13px;
+              text-align: center;
+              border: 0;
+              border-radius: 2px;
+              cursor: pointer;
+              -webkit-box-sizing: border-box;
+              -moz-box-sizing: border-box;
+              box-sizing: border-box;
+              color: white;
+              text-shadow: 0 1px rgba(0, 0, 0, 0.08);
+              background: #4ebd4a;
+              height: 30px;
+              padding: 0 28px;">
+        <%= 'Get mine »' %>
+      </button>
+    </a>
+  </p>
+</center>
+<p>
+  <br>
+</p>
+
+<p style="margin-top: 5%;">
+  <span style="font-size:10px; color: #888888;font-family: 'Open Sans', 'lucida grande', arial, verdana, 'lucida sans unicode', tahoma, sans-serif;line-height: 18px;">Don't wish to hear from us? :( <a href="<%= @unsubscribe_link %>" style="color:#00a651;">unsubscribe</a></span>
+</p>
+</body>
+</html>

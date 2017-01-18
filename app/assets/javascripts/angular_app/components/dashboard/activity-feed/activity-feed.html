@@ -1,0 +1,6 @@
+<div id="activity-feed">
+    <ul tagged-infinite-scroll="getMore()" tagged-infinite-scroll-disabled="scroll_disabled">
+      <activity-feed-item all-collections="allCollections" tags="tags" ng-repeat="f in feedItems" show-user-actions="true" feed-item="f"></activity-feed-item>
+        <loader ng-if="scroll_fetching"> </loader>
+    </ul>
+</div>

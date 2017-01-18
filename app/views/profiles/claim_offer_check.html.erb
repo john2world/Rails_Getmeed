@@ -1,0 +1,30 @@
+<div class="row-view">
+  <%= render 'view_header' %>
+  <%= render 'view_objective' %>
+  <%= render 'view_educations' %>
+  <%= render 'view_courses' %>
+  <%= render 'view_publications' %>
+  <%= render 'view_internships' %>
+  <%= render 'view_experiences' %>
+  <%= render 'view_answers' %>
+
+  <div class="row">
+          <div class="any-center">
+            <% if !params[:reg].blank? %>
+                <a href="/home?reg=true" class="anchor-tag-button button-green" style="margin-top: 3%;text-decoration: none">Proceed
+                  »
+                </a>
+            <% elsif !params[:incomplete].blank? %>
+                <a href="/thanksgiving/claim/complete" class="anchor-tag-button button-green" style="margin-top: 3%;text-decoration: none">Get
+                  Tshirt »
+                </a>
+                <% else %>
+                <a href="/home" class="anchor-tag-button button-green" style="margin-top: 3%;text-decoration: none">Proceed
+                  »
+                </a>
+            <% end %>
+          </div>
+  </div>
+  <hr>
+</div>
+

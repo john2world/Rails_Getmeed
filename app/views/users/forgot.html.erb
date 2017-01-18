@@ -1,0 +1,59 @@
+<div class="headline-bg contact-headline-bg">
+</div>
+<!-- ******Contact Section****** -->
+<section class="contact-section section section-on-bg">
+  <div class="container">
+    <h2 class="title text-center">Forgot Password?</h2>
+
+    <%= form_tag({:action => 'forgotme'}, :class => 'contact-form', :html => {:multipart => true}) do %>
+        <div class="row text-center recruiter-contact-form">
+          <div class="contact-form-inner col-md-6 col-sm-12 col-xs-12 col-md-offset-3 col-sm-offset-0 xs-offset-0">
+            <div class="row recruiter-contact-form">
+              <% if !alert.blank? %>
+                <p class="label label-important">
+                  <%= alert %>
+                </p>
+              <% end %>
+              <div class="col-md-8 col-sm-8 col-xs-8 form-group col-md-offset-2 col-sm-offset-2 col-xs-offset-2 form-group" style="padding-right: 0px;">
+                <label class="sr-only" for="cname">School Email</label>
+                <%= text_field_tag :email, nil, :class => 'form-control has-feedback', :required => '', :placeholder => 'Enter your school email' %>
+              </div>
+              <div class="col-md-12 col-sm-12 col-xs-12 form-group">
+                <%= button_tag(type: 'submit', class: 'btn btn-md btn-success', :disable_with => 'Resetting..') do %>
+                    Submit
+                <% end %>
+              </div>
+            </div>
+            <!--//row-->
+          </div>
+        </div>
+    <% end -%>
+    <!--//contact-form-->
+  </div>
+  <!--//container-->
+</section>
+<!--//contact-section-->
+<script>
+  $(document).ready(function() {
+    $('.contact-form').formValidation({
+      framework: 'bootstrap',
+      icon: {
+        valid: 'glyphicon glyphicon-ok',
+        invalid: 'glyphicon glyphicon-remove',
+        validating: 'glyphicon glyphicon-refresh'
+      },
+      fields: {
+        email: {
+          validators: {
+            emailAddress: {
+              message: 'The value is not a valid email address'
+            },
+            regexp: {
+              regexp: /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.[a-z]{2,3}$/,
+            }
+          }
+        }
+      }
+    });
+  });
+</script>

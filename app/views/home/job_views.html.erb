@@ -1,0 +1,39 @@
+<p class="accordion lightbox-text">Job views
+</p>
+<hr class="hr-header">
+<table class="table" style="margin-top: 15%">
+  <tr>
+    <td class="job-applicant-heading">
+      Job title
+    </td>
+    <td class="job-applicant-heading">
+      Company
+    </td>
+    <td class="job-applicant-heading">
+      Location
+    </td>
+  </tr>
+  <% if !@jobs.blank? %>
+      <% @jobs.each do |job| %>
+          <% if !job.blank? %>
+              <tr>
+                <td>
+                  <a href="/job/<%= job[:hash] %>" class="job-applicant-name" target="_blank"> <%= job[:title].upcase %></a>
+                </td>
+                <td>
+                  <%= job[:company] %>
+                </td>
+                <td>
+                  <%= job[:location] %>
+                </td>
+              </tr>
+          <% end %>
+      <% end %>
+  <% else %>
+      <tr>
+        <td class="info-text-large" style="text-align: center">
+          No job has viewed your profile yet.
+        </td>
+      </tr>
+  <% end %>
+</table>

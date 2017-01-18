@@ -1,0 +1,50 @@
+<% if is_edit %>
+    <div class="row" id="courses">
+      <div><span class="profile-item-type"> COURSE PROJECTS</span><span class="info-text" style="font-weight: bold"> (add courses - highly recommended)</span>
+      </div>
+<% else %>
+    <% if !courses.blank? %>
+        <div class="row">
+          <div class="profile-item-type"> COURSE PROJECTS</div>
+
+          <% if !courses.blank? %>
+              <% courses.each_with_index do |course, index| %>
+                  <%= render 'view_course_form', :course => course %>
+                  <% if index != courses.length-1 %>
+                      <hr class="hr-profile-item">
+                  <% end %>
+              <% end %>
+              <hr class="hr-profile-separator">
+          <% end %>
+        </div>
+    <% end %>
+<% end %>
+
+<% if is_edit %>
+    <% if !courses.blank? %>
+        <% courses.each_with_index do |course, index| %>
+            <%= render 'view_course_form', :course => course %>
+            <% if index != courses.length-1 %>
+                <hr class="hr-profile-item">
+            <% end %>
+        <% end %>
+        <hr class="hr-profile-separator">
+    <% end %>
+    <div id="view_course_div">
+    </div>
+    <div id="edit_course_div" style="display: none">
+      <div id="edit_course_new" class='profile-view-table'>
+        <%= render 'new_course_form' %>
+      </div>
+    </div>
+    <a id="add_new_course" href="#new_course_id">
+      <div class="any-center">
+        <strong>Add Course</strong>
+      </div>
+    </a>
+    <hr class="hr-profile-separator">
+    </div>
+<% end %>
+
+
+

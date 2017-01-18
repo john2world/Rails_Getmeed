@@ -1,0 +1,130 @@
+<ul style="color: rgb(34, 34, 34);
+        width: 770px;
+        perspective-origin: 385px 0px;
+        transform-origin: 385px 0px;
+        border: 0px none rgb(34, 34, 34);
+        font: normal normal normal normal 15px / 24px 'Proxima Nova', 'Open Sans', 'Gill Sans MT', 'Gill Sans', Corbel, Arial, sans-serif;
+        list-style: circle inside none;
+        margin: 0px;
+        outline: rgb(34, 34, 34) none 0px;
+        padding: 0px;">
+
+  <li style=" box-sizing: border-box;
+          color: rgb(34, 34, 34);
+          float: left;
+          height: 150px;
+          min-width: 220px;
+          position: relative;
+          text-align: center;
+          width: 192.5px;
+          perspective-origin: 96.25px 75px;
+          transform-origin: 96.25px 75px;
+          border: 0px none rgb(34, 34, 34);
+          font: normal normal normal normal 15px / 24px 'Proxima Nova', 'Open Sans', 'Gill Sans MT', 'Gill Sans', Corbel, Arial, sans-serif;
+          list-style: none inside none;
+          margin: 0px 0px 15px;
+          outline: rgb(34, 34, 34) none 0px;">
+    <div style="color: rgb(34, 34, 34);
+            display: inline-block;
+            height: 150px;
+            min-width: 220px;
+            position: relative;
+            text-align: center;
+            perspective-origin: 87.625px 76px;
+            transform-origin: 87.625px 76px;
+            border: 1px solid rgb(209, 209, 209);
+            border-radius: 10px 10px 10px 10px;
+            font: normal normal normal normal 15px / 24px 'Proxima Nova', 'Open Sans', 'Gill Sans MT', 'Gill Sans', Corbel, Arial, sans-serif;
+            list-style: none inside none;
+            outline: rgb(34, 34, 34) none 0px;
+            overflow: hidden;">
+
+  <img width="200" src="<%= collection.small_image_url %>" id="IMG_6" alt='' />
+      <a style=" box-sizing: border-box;
+              color: #333;
+              height: 36px;
+              position: absolute;
+              text-align: center;
+              text-shadow: rgba(0, 0, 0, 0.4) 1px 1px 2px;
+              top: 0px;
+              align-self: stretch;
+              perspective-origin: 86.625px 18px;
+              transform-origin: 86.625px 18px;
+              border: 0px none rgb(255, 255, 255);
+              font: normal normal bold normal 15px / 18px 'Proxima Nova', 'Open Sans', 'Gill Sans MT', 'Gill Sans', Corbel, Arial, sans-serif;
+              list-style: none inside none;
+              margin: 10px 0px 0px;
+              outline: rgb(255, 255, 255) none 0px;
+              padding: 0px 10px;" href="<%= @url %>">
+        <%= collection.title %>
+        <span style=" color: #333;
+                text-align: center;
+                text-shadow: rgba(0, 0, 0, 0.4) 1px 1px 2px;
+                border: 0px none rgb(255, 255, 255);
+                font: normal normal bold normal 15px / 18px 'Proxima Nova', 'Open Sans', 'Gill Sans MT', 'Gill Sans', Corbel, Arial, sans-serif;
+                list-style: none inside none;
+                outline: rgb(255, 255, 255) none 0px;">(18)</span>
+
+      </a>
+
+      <p style="bottom: 10px;
+              box-sizing: border-box;
+              color: rgb(255, 255, 255);
+              height: 36px;
+              position: absolute;
+              text-align: center;
+              text-shadow: rgba(0, 0, 0, 0.4) 1px 1px 2px;
+              width: 173.25px;
+              z-index: 5;
+              align-self: stretch;
+              perspective-origin: 86.625px 18px;
+              transform-origin: 86.625px 18px;
+              border: 0px none rgb(255, 255, 255);
+              font: normal normal bold normal 15px / 18px 'Proxima Nova', 'Open Sans', 'Gill Sans MT', 'Gill Sans', Corbel, Arial, sans-serif;
+              list-style: none inside none;
+              margin: 20px 0px 0px;
+              outline: rgb(255, 255, 255) none 0px;
+              padding: 0px 10px;">
+        <a href="<%= @url %>" style="box-sizing: border-box;
+                color: rgb(255, 255, 255);
+                cursor: pointer;
+                display: inline-block;
+                height: 26px;
+                letter-spacing: 1px;
+                text-align: center;
+                text-decoration: none;
+                text-transform: uppercase;
+                white-space: nowrap;
+                width: 100.188px;
+                perspective-origin: 50.0938px 13px;
+                transform-origin: 50.0938px 13px;
+                background: rgb(254, 74, 73) none repeat scroll 0% 0% / auto padding-box border-box;
+                border: 1px solid rgb(254, 74, 73);
+                border-radius: 4px 4px 4px 4px;
+                font: normal normal 600 normal 11px / 24px 'Proxima Nova', 'Open Sans', 'Gill Sans MT', 'Gill Sans', Corbel, Arial, sans-serif;
+                list-style: none inside none;
+                margin: 0px 0px 10px;
+                outline: rgb(255, 255, 255) none 0px;
+                padding: 0px 10px;"><%= follow ? 'Following' : 'Follow' %> <span style="color: rgb(255, 255, 255);
+                cursor: pointer;
+                letter-spacing: 1px;
+                text-align: center;
+                text-transform: uppercase;
+                white-space: nowrap;
+                border: 0px none rgb(255, 255, 255);
+                font: normal normal 600 normal 11px / 24px 'Proxima Nova', 'Open Sans', 'Gill Sans MT', 'Gill Sans', Corbel, Arial, sans-serif;
+                list-style: none inside none;
+                outline: rgb(255, 255, 255) none 0px;">(<%= collection.submission_count %>)</span></a>
+        <!-- end ngIf: currentUser && !collection.is_viewer_following -->
+
+        <!-- ngIf: !currentUser -->
+
+        <!-- ngIf: currentUser && collection.is_viewer_following -->
+
+      </p>
+      <!-- end ngIf: !userCollections && collection.follower_count > 0 -->
+
+    </div>
+  </li>
+
+</ul>

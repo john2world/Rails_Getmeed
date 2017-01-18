@@ -1,0 +1,73 @@
+<div class="main-wrap">
+  <div class="row">
+    <section class="main">
+      <site-nav class="side" user-collections="userCollections"></site-nav>
+      <tag-nav class="side" trending-tags="trendingTags"></tag-nav>
+
+      <div class="story-show">
+        <div layout='column' class="story-show-inner">
+          <div layout layout-align="center center">
+            <h1 class="md-display-2">{{::story.title}}</h1>
+          </div>
+
+          <hr>
+          <div layout='row' layout-align="space-between center">
+            <poster-info-user
+              feed-type="{{ ::story.feed_item.type }}"
+              user="::story.feed_item.user"
+              event="::story.feed_item.event"
+              time="::story.created_at"
+              collection="story.feed_item.collection"
+              helper-text="{{ ::story.feed_item.helper_text }}">
+            </poster-info-user>
+
+            <user-follow-button user="story.feed_item.user" current-user="currentUser"></user-follow-button>
+          </div>
+
+          <hr>
+
+          <p>
+            <strong>Internship:</strong>
+            {{story.position}}
+          </p>
+
+          <p>
+            <strong>Company:</strong>
+            {{story.company.name}}
+          </p>
+
+          <p>
+            <strong>Location:</strong>
+            {{story.location}}
+          </p>
+
+          <img ng-src="{{::story.photo}}" ng-if="::story.photo" alt="{{::story.title}}" class="story-image">
+
+          <hr>
+
+          <div layout layout-align="space-between center">
+            <story-actions story="story" current-user="currentUser"></story-actions>
+            <jssocials item="story"></jssocials>
+          </div>
+
+          <hr>
+
+          <div ng-repeat="answer in story.story_answers">
+            <strong>{{answer.title}}</strong>
+            <p ng-bind-html="answer.content"></p>
+          </div>
+
+          <div layout layout-align="center center">
+            <a ng-if="!story.is_viewer_author" ng-href="/stories/new?type=intern" class="button button-primary">
+              <span class="label">Submit Your Own</span>
+            </a>
+          </div>
+
+          <hr>
+
+          <comments item="story.feed_item" current-user="currentUser" show-write-comment="false"></comments>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

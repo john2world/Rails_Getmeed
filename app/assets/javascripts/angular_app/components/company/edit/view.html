@@ -1,0 +1,44 @@
+<div class="main-wrap">
+  <div class="row">
+    <section id="activity-feed-wrap" class="main">
+      <site-nav class="side" user-collections="userCollections"></site-nav>
+      <tag-nav class="side" trending-tags="trendingTags"></tag-nav>
+
+      <div id="company-form" class="main-inner-wrap row">
+        <form ng-submit="submit()" name="companyEditForm" novalidate="novalidate">
+          <fieldset>
+            <p class="image-wrap">
+              <img
+                ng-src="{{ ::CONSTS.default_image }}"
+                class="company-logo-new"
+                ng-class="{'ng-invalid': !companyEditForm.companyLogoFile.$valid}"
+                ng-show="!company.company_logo" />
+              <img
+                ng-src="{{ company.company_logo }}"
+                class="company-logo-new"
+                ng-show="company.company_logo" />
+            </p>
+          </fieldset>
+          <fieldset>
+            <input ng-model="company.company_logo" required data-fp-openTo="IMAGE_SEARCH" data-fp-button-class="button button-secondary filepicker-button" data-fp-button-text="Change Logo" name="companyLogoFile" id="company-logo-file" data-fp-apikey="{{::filepickerApiKey}}" type="filepicker"/>
+          </fieldset>
+
+          <fieldset>
+            <input ng-model="company.name" type="text" name="name" placeholder="* Company Name" required>
+          </fieldset>
+
+          <fieldset>
+            <input ng-model="company.location" googleplace type="text" name="location" placeholder="* Location or Headquarters" class= 'form-control input-small' required>
+          </fieldset>
+
+          <fieldset>
+            <textarea ng-model="company.description" ="description" cols="80" rows="10" class='form-control' placeholder="Explain what your company does, about people, culture and anything that students need to know. This is your chance to showcase.  (2000 char limit)"></textarea>
+          </fieldset>
+
+          <loader ng-show="loading"></loader>
+          <input type="submit" ng-show="!loading" class="button button-primary" value="submit"/>
+        </form>
+      </div>
+    </section>
+  </div>
+</div>

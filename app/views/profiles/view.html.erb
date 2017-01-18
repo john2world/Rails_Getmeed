@@ -1,0 +1,8 @@
+<%= render 'view_resume_control' %>
+<script>
+    <% if current_user.blank? %>
+    var photo_urls = [];
+    photo_urls.push('https://res.cloudinary.com/resume/image/upload/v1425428847/14393607719_f34f6ce448_o_auogth.jpg');
+    $.backstretch(photo_urls, {duration: 3000, fade: 750});</script>
+  <% end %>
+  </script>

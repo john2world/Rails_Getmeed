@@ -1,0 +1,60 @@
+<% unless job.blank? %>
+    <div class="modal fade" id="applyModal" tabindex="-1" role="dialog" aria-labelledby="ownerBoxLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <p class="accordion lightbox-text">
+              <% if is_profile_incomplete %>
+                  Your profile is incomplete
+              <% else %>
+                  <% if job[:question].blank? %>
+                      Apply Confirmation
+                  <% else %>
+                      Answer Question
+                  <% end %>
+              <% end %>
+            </p>
+            <hr class="hr-profile-header">
+          </div>
+          <%= form_tag({:controller => 'jobs', :action => :apply_job, :verify_token => params[:verify_token], :id => job[:id]}, :class => 'row', :html => {:multipart => true}) do %>
+              <div class="modal-body">
+                <% if is_profile_incomplete %>
+                    <%= render 'shared/incomplete_profile' %>
+                <% else %>
+                    <% unless job[:question].blank? %>
+                        <%= render 'questions/render_question_data', :question => job[:question], :answers => nil %>
+                    <% end %>
+                    <div id="cover_note_box" style="display: none">
+                      <div class="company-position-title">ADD COVER NOTE</div>
+                      <hr class="hr-profile-item">
+                      <%= text_area :cover_description, :text, :class => 'form-control', :placeholder => 'Explain in short why you are fit for this role. (Only first 500 characters will be considered).', :id => 'cover_note_text_area', :rows => 3, :cols => 80, :maxlength => 200 %>
+                      <div class="any-center" id="cancel_cover_note_cta">
+                        <a style="cursor: pointer;" onclick="hideCoverNote();">Cancel</a>
+                      </div>
+                    </div>
+                    </div>
+                    <div class="modal-footer">
+                      <div class="any-center">
+                        <% unless @is_valid %>
+                            <p class="any-center info-text">Note: This job is not posted to your majors. You can still
+                              apply
+                              but your application position in the stack might vary.</p>
+                        <% end %>
+                <% end %>
+                <% if is_profile_incomplete %>
+                    <%= button_tag(type: 'submit', class: 'btn btn-sm btn-primary', :disabled => true) do %>
+                        <span class="glyphicon glyphicon-ok-circle "></span> Complete now
+                    <% end %>
+                <% else %>
+                    <%= button_tag(type: 'submit', class: 'btn btn-sm btn-primary', :data => {:disable_with => 'Submitting..'}) do %>
+                        <span class="glyphicon glyphicon-ok-circle "></span> Submit
+                    <% end %>
+                <% end %>
+                </div>
+                </div>
+                </div>
+          <% end %>
+          </div>
+    </div>
+<% end %>

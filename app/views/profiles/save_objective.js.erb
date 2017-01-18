@@ -1,0 +1,15 @@
+<% if @delete == true%>
+$("#edit_single_objective_true").hide();
+$("#add_new_objective").show();
+<% elsif @is_new %>
+viewNewItem('objective');
+$("#view_objective_div").html("<%= escape_javascript (render 'view_objective_form', :is_edit => true, :profile => @profile) %>");
+$("#view_objective_div").attr('id', 'view_objective_' +  '<%= @user[:handle] %>');
+$('#view_objective_' +  '<%= @user[:handle] %>').append("<div id='view_objective_div'></div>");
+
+$("#add_new_objective").hide();
+<% else %>
+renderViewItem('edit_single_objective');
+$("#show_single_objective_true").html("<%= escape_javascript (render 'render_objective_data',:is_edit => true,  :profile => @profile) %>");
+$("#add_new_objective").hide();
+<% end %>

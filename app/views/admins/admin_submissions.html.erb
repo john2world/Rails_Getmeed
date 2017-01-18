@@ -1,0 +1,44 @@
+<p class="accordion lightbox-text">
+  <% if @feed_items.blank? %>
+      You are all done!
+  <% else %>
+      Submissions with no collection
+
+  <% end %>
+</p>
+<hr class="hr-header">
+<div class="any-center">
+  <span class="label label-success">
+  <% unless flash[:alert].blank? %>
+    <%= flash[:alert] %>
+  <% end %>
+      </span>
+</div>
+<% @feed_items.each do |feed_item| %>
+    <div id="<%= feed_item.id %>">
+      <%= form_tag({:action => :admin_map_submission_collection}, :remote => true, :class => 'form-submit', :style => 'padding: 35px 100px 35px;', :html => {:multipart => true}) do %>
+          <%= hidden_field_tag :feed_id, feed_item.id, :id => 'form_new_hidden_id' %>
+          <p><%= feed_item[:user].name %> </p>
+
+          <p><%= feed_item.caption %></p>
+          <img src="<%= feed_item.small_image_url %>">
+
+          <div>
+            <p><a href="<%= feed_item.url %>"><%= feed_item.title %></a></p>
+            <br/>
+
+            <p><a href="<%= feed_item.external_url %>"><%= feed_item.external_url %></a></p>
+          </div>
+          <p>
+          </p>
+
+          <div class="form-group">
+            <%= select_tag :collection_id, options_for_select(@public_collections.collect { |s| [s[:title], s[:_id]] }),
+                           multiple: false, :style => 'width: 100%; height: 30px', :class => 'enterprise-selectize',
+                           :prompt => 'Choose Collection (*)' %>
+          </div>
+          <%= submit_tag 'Submit', :class => 'btn btn-primary', :data => {:disable_with => 'Please wait..'} %>
+      <% end -%>
+      <hr>
+    </div>
+<% end -%>

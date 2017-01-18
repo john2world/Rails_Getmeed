@@ -1,0 +1,49 @@
+<% if !user.blank? %>
+    <tr>
+      <td>
+        <%= check_box_tag 'checkbox_' + user.handle, user[:handle], false %>
+      </td>
+      <td class="job-applicant-td">
+        <a href="/<%= user[:handle] %>?insightToken=<%= job_id %>" class="job-applicant-name" target="_blank"> <%= user[:first_name].upcase %> <%= user[:last_name].upcase %>
+          </a>
+      </td>
+      <td class="job-applicant-td">
+        <%= user.major %>
+      </td>
+      <td class="job-applicant-td">
+        <%= user.year %>
+      </td>
+      <td class="job-applicant-td">
+        <%= @user_school_map[user.handle]%>
+      </td>
+      <td class="job-applicant-td">
+        <select id="job_status_ddn_<%= user.handle %>" style="width:100%">
+          <option value="" selected="selected">NEW</option>
+          <% get_job_status_types.each do |key, value| %>
+              <% if !@user_job_app_stats_map.blank? and @user_job_app_stats_map[user.handle].eql? key.to_s %>
+                  <option id="<%= user.handle %>" selected="selected" value="<%= user.handle %>_<%= job_id %>_<%= key.to_s %>"><%= key.to_s %></option>
+               <% else %>
+                  <option id="<%= user.handle %>" value="<%= user.handle %>_<%= job_id %>_<%= key %>"><%= key.to_s %></option>
+              <% end %>
+
+          <% end %>
+        </select>
+      </td>
+
+      <td class="job-applicant-td">
+        <%= @profile_map[user.handle].score %>
+      </td>
+
+
+      <td class="job-applicant-td">
+        <a href="/<%= user[:handle] %>/pdf?token=<%= params[:id] %>">Download</a>
+      </td>
+    </tr>
+    <% if !school.blank? %>
+        <tr>
+          <td>
+            <%= school.name %>
+          </td>
+        </tr>
+    <% end %>
+<% end %>

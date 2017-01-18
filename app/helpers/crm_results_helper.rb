@@ -1,0 +1,2 @@
+module CrmResultsHelper
+end

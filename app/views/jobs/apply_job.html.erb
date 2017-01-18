@@ -1,0 +1,14 @@
+<p class="accordion lightbox-text">
+  Your application has been submitted!
+</p>
+<div class="info-text any-center"> Checkout other jobs
+  <span style="text-decoration:underline">posted</span> for you!
+</div>
+
+<hr class="hr-header">
+<div class="job_actions any-center">
+</div>
+<%= render 'load_jobs', :jobs => @jobs %>
+<% unless @jobs.blank? %>
+    <%= paginate @jobs %>
+<% end %>

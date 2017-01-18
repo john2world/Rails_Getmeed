@@ -1,0 +1,10 @@
+<%= form_tag({:action => :create_easy, :email => @email}, :class => 'login-form', :remote => true, :html => {:multipart => true}) do %>
+    <div class="form-group">
+      <%= text_field_tag :token, nil, :class => 'form-control', :required => '', :value => params[:token], :placeholder => 'Verification Code (*)' %>
+    </div>
+    <div id="alert_error">
+    </div>
+    <%= button_tag(type: 'submit', class: 'btn btn-primary btn-primary', :data => { :disable_with => 'Please wait..' }) do %>
+        Verify
+    <% end %>
+<% end %>

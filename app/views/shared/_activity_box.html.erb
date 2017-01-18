@@ -1,0 +1,29 @@
+<hr class="hr-activity-box">
+<%= form_tag({:action => :publish_story, :controller => 'posts'}, :id => 'activity_box_form', :style => 'display:none', :remote => true) do %>
+    <% unless alert.blank? %>
+        <p id="warning" class="label label-important any-center">
+          <%= alert %>
+        </p>
+    <% end %>
+    <div id="activity_form" class="form-group">
+      <%= select_tag :type, options_for_select(UserPostType.constants.collect { |u| [u.to_s.capitalize!, u.to_s.downcase!] }), :class => 'form-control input-mini', :style => 'width:auto', :id => 'activity_box_type' %>
+      <span id="activity_info" class="info-text-small">
+            </span>
+    </div>
+    <div class="form-group">
+      <%= text_field_tag :title, nil, :class => 'form-control',:required => '', :placeholder => 'Title of the question', :id => 'activity_title_box', :style => 'display:none;' %>
+    </div>
+    <div class="form-group">
+      <%= text_area :activity_description, nil, :id => 'activity_box', :placeholder => 'Post questions, project requirements or articles to your class (support external links)', :class => 'form-control', :rows => 4, :cols => 80 %>
+    </div>
+    <img src="<%= asset_path 'common/ajax-loader.gif' %>" id="loading-indicator" style="display:none"/>
+    <div id="feed_item_preview" style="margin-right: 20%">
+    </div>
+
+    <div class="form-group any-center">
+      <%= button_tag(type: 'submit', class: 'btn btn-sm btn-primary', :disable_with => 'Publishing..') do %>
+          <span class="glyphicon glyphicon-edit"></span> Share it!
+      <% end %>
+    </div>
+
+<% end -%>

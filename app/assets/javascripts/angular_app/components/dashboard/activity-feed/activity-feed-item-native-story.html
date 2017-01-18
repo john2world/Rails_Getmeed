@@ -1,0 +1,47 @@
+<div class="row">
+    <poster-info item="feedItem"></poster-info>
+    <div class="feed-user-actions" ng-if="showUserActions == 'true'">
+        <feed-user-action-buttons item="feedItem"></feed-user-action-buttons>
+    </div>
+    <div class="activity-feed-item-story">
+        <div layout='column' style="display:block">
+            <div class="crop-image" ng-if="feedItem.large_image_url">
+                <a flex ng-href="{{ ::feedItem.external_url }}" ng-click="feedItem.trackClick()" target="_blank">
+                    <img ng-src="{{::feedItem.large_image_url}}"/>
+                </a>
+            </div>
+
+            <div class="story-link">
+                <a ng-href="{{ ::feedItem.external_url }}" ng-click="feedItem.trackClick()" target="_blank">
+                    {{ ::feedItem.title }}
+                </a>
+            </div>
+            <div class="story-description" ng-text-truncate="feedItem.description" ng-tt-words-threshold="15" ng-tt-no-toggling>
+                {{ ::feedItem.description }}
+            </div>
+        </div>
+        <hr>
+        <div class="story-tags" ng-if="feedItem.tag_objects">
+            Tags:
+                <span ng-repeat="tag in feedItem.tag_objects">
+                    <a ng-if="tag._id == 'portfolio'" class="story-tags-private"
+                       ng-href="/{{ ::feedItem.user.handle }}#portfolio">
+
+                        <i class="fa fa-{{ ::tag.icon}}"></i> {{ ::tag.title }}
+                    </a>
+                    <a ng-if="tag._id != 'portfolio'" class="story-tags"
+                       ng-href="/feed/tag/{{ ::tag._id}}"
+                            >
+
+                        <i class="fa fa-{{ ::tag.icon}}"></i> {{ ::tag.title }}
+                    </a>
+                </span>
+        </div>
+        <div class="feed-actions">
+            <feed-item-action-buttons item="feedItem"></feed-item-action-buttons>
+            <feed-item-social-share-modal item="feedItem"></feed-item-social-share-modal>
+        </div>
+    </div>
+
+    <comments item="feedItem" current-user="currentUser" show-write-comment="false"></comments>
+</div>

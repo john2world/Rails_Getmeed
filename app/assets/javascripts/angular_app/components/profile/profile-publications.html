@@ -1,0 +1,43 @@
+<div class="profile-publications profile-section" ng-if="profile.publications">
+  <h3>
+    Publications
+    <a class="open-profile-add-publication edit-link"
+       ng-click="publicationFns.add()"
+       ng-show="profile.is_viewer_profile">
+       <i class="fa fa-plus-square"></i> Add
+    </a>
+  </h3>
+  <div ng-repeat="item in profile.publications"
+       id="publication-{{ item._id }}"
+       class="publication-entry">
+
+    <div class="publication-entry-show" ng-show="!item.showEdit()">
+      <div class="entry-title">
+        <h4>
+          {{ item.title }}
+          <a class="open-profile-edit-publication edit-link"
+             ng-click="publicationFns.edit(item)"
+             ng-show="profile.is_viewer_profile">
+             <i class="fa fa-pencil-square-o"></i> Edit
+          </a>
+          <a class="profile-delete-publication delete-link"
+             ng-click="publicationFns.del(item)"
+             ng-show="profile.is_viewer_profile">
+             <i class="fa fa-times"></i> Delete
+          </a>
+        </h4>
+        <span class="profile-date">{{ item.year }}</span>
+      </div>
+      <div class="profile-description" ng-bind-html="item.description"></div>
+      <p class="profile-link" ng-if="item.link">
+        <a ng-href="{{ item.link }}" target="_blank">
+          {{ item.link | limitTo:50 }}
+          <span ng-if="item.link.length > 50">...</span>
+        </a>
+      </p>
+    </div>
+
+    <profile-publication-edit ng-if="profile.is_viewer_profile"></profile-publication-edit>
+
+  </div>
+</div>

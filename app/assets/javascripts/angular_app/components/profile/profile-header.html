@@ -1,0 +1,73 @@
+<div class="profile-header profile-section">
+    <div class="follow-cta">
+                <span ng-if="showFollow" class="cta">
+                  <a class="button button-primary" ng-if="currentUser && !isFollowing" ng-click="follow()"><i
+                          class="fa fa-user-plus"></i> Follow <span class="count"
+                                                                    ng-if="profile.user.follower_count > 0">
+          {{ profile.user.follower_count }}
+        </span></a>
+                    <a class="button button-primary open-signup-modal" ng-if="!currentUser"><i
+                            class="fa fa-user-plus"></i> Follow <span class="count"
+                                                                      ng-if="profile.user.follower_count > 0">
+          {{ profile.user.follower_count }}
+        </span></a>
+                  <a class="button button-primary-reverse unfollow " ng-if="currentUser && isFollowing"
+                     ng-click="unfollow()"><i class="fa fa-user-times"></i> Following <span class="count" ng-if="profile.user.follower_count > 0">
+          {{ profile.user.follower_count }}
+        </span></a>
+                </span>
+    </div>
+  <div class="profile-header-show" ng-if="!profile.user.showEdit()">
+    <div class="profile-image-wrap">
+      <img id="profile-img" ng-src="{{ profile.user.large_image_url }}" />
+      <profile-image-edit profile="profile" ng-if="profile.is_viewer_profile"></profile-image-edit>
+    </div>
+
+    <p class="profile-name-row">
+      <span class="profile-name h3">{{ profile.user.getName() | uppercase }}</span>
+      <a class="open-profile-edit-header edit-link"
+         ng-click="headerFns.edit(profile.user)"
+         ng-if="profile.is_viewer_profile">
+         <i class="fa fa-pencil-square-o"></i> Edit
+      </a>
+<!--       <a class="button button-primary"
+         ng-if="!profile.is_viewer_profile"
+         ng-href="{{ profile.contact_link }}">
+         <i class="fa fa-paper-plane"></i>
+         <span>Send Message</span>
+      </a> -->
+      <a class="button"
+         ng-if="profile.is_viewer_profile"
+         ng-href="{{ profile.pdf_link }}"
+         target="_blank">
+          <i class="fa fa-arrow-circle-down"></i>
+         <span>Download PDF</span>
+      </a>
+    </p>
+      <p class="profile-phone-number-row" ng-if="profile.email">
+          <i class="fa fa-email"></i> {{ profile.email }}
+      </p>
+    <p class="profile-major-row">
+      <span class="profile-major">{{ profile.user.getMajor() }}</span><span class="profile-minor" ng-if="profile.user.getMinor()">, {{ profile.user.getMinor() }}</span>
+    </p>
+    <p class="profile-degree-row">
+      {{ profile.user.degree }}
+    </p>
+
+      <p class="profile-phone-number-row" ng-if="profile.phone_number">
+          <i class="fa fa-phone"></i> {{ profile.phone_number }} <span> (visible only to you)</span>
+      </p>
+    <p class="profile-phone-number-row" ng-if="profile.user.phone_number">
+      <i class="fa fa-phone"></i> {{ profile.user.phone_number }}
+    </p>
+    <p class="profile-school-row" ng-if="profile.school">
+      {{ profile.school.name }} — {{ profile.user.year }}
+    </p>
+    <p class="profile-gpa-row" ng-if="profile.user.gpa">
+      GPA &mdash; {{ profile.user.gpa }}
+    </p>
+  </div>
+
+  <profile-header-edit ng-if="profile.is_viewer_profile && profile.user.showEdit()"></profile-header-edit>
+
+</div>

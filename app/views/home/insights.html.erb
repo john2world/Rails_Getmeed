@@ -1,0 +1,7 @@
+<hr class="hr-header">
+<% unless alert.blank? %>
+    <p id="warning" class="label label-info offset4" style="margin-bottom: 3%">
+      <%= alert %>
+    </p>
+<% end %>
+<%= render 'profiles/insights' %>

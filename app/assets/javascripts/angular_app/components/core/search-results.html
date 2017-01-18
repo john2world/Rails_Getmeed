@@ -1,0 +1,73 @@
+<div class="search-results">
+  <a class="close"><i class="fa fa-times clear"></i></a>
+
+  <div
+    class="results-section"
+    ng-if="hits.job.length + hits.user.length + hits.company.length == 0">
+    <h4>No Results</h4>
+  </div>
+
+  <div class="results-section" ng-if="hits.job.length">
+    <h4>Jobs</h4>
+    <ul>
+      <li ng-repeat="job in hits.job" class="result result-{{ ::job.type }}">
+        <a ng-href="{{ ::job.url }}" class="biglink">&nbsp;</a>
+        <a ng-href="{{ ::job.url }}" class="img-link">
+          <img ng-src="{{ ::job.logo }}" />
+        </a>
+        <span class="search-title">
+          <a ng-href="{{ ::job.url }}">
+            {{ ::job.title }}
+          </a>
+        </span>
+        <div ng-bind-html="job.company"></div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="results-section" ng-if="hits.user.length">
+    <h4>Users</h4>
+    <ul>
+      <li ng-repeat="user in hits.user" class="result result-{{ ::user.type }}">
+        <a ng-href="{{ ::user.url }}" class="biglink">&nbsp;</a>
+        <a ng-href="{{ ::user.url }}" class="img-link">
+          <img ng-src="{{ ::user.logo }}" />
+        </a>
+        <span class="search-title">
+          <a ng-href="{{ ::user.url }}">
+            {{ ::user.name }}
+          </a>
+        </span>
+        <div ng-bind-html="user.html"></div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="results-section" ng-if="hits.company.length">
+    <h4>Companies</h4>
+    <ul>
+      <li ng-repeat="company in hits.company" class="result result-{{ ::company.type }}">
+        <a ng-href="{{ ::company.url }}" class="biglink">&nbsp;</a>
+        <a ng-href="{{ ::company.url }}" class="img-link">
+          <img ng-src="{{ ::company.logo }}" />
+        </a>
+        <span class="search-title">
+          <a ng-href="{{ ::company.url }}">
+            {{ ::company.title }}
+          </a>
+        </span>
+            <!--         <div ng-bind-html="hit.html"></div> -->
+
+              <!--       {{ ::hit.major }}
+                    {{ ::hit.university }}
+                    {{ ::hit.course }}
+                    {{ ::hit.internship }}
+                    {{ ::hit.experience }}
+                    {{ ::hit.skill }} -->
+
+      </li>
+    </ul>
+  </div>
+
+
+</div>

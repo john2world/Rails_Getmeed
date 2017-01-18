@@ -1,0 +1,30 @@
+<div class="activity-feed-item">
+  <div class="row">
+    <div class="avatar-wrap">
+      <a ng-href="/{{ ::user.handle }}">
+        <img class="img-responsive image-small" src="https://res.cloudinary.com/resume/image/upload/v1431041283/Screen_Shot_2015-05-07_at_4.03.40_PM_umhshk.png">
+      </a>
+    </div>
+    <div class="poster-name-and-headline">
+      <p class="name">
+        <a class="poster-name">
+          External Job link
+        </a>
+      </p>
+    </div>
+    <div class="status-form">
+      <form name="importForm" class="status-submit-form" ng-submit="importJob(importForm.$valid)" novalidate="novalidate" id="status-box">
+        <textarea ng-model="importUrl" id="status-textarea" name="activity_description" class="u-full-width" ng-model="publishFormData.caption" placeholder="Post your ATS job link to get started" required="required"></textarea>
+        <div ng-if="scrapeLoading" id="scrapeLoading">
+          <loader></loader>
+        </div>
+        <button ng-show="!button_loading" type="submit" class="button button-secondary" style="display: block;" >
+          <i class="fa fa-bolt"></i> <span>Import Job</span>
+        </button>
+        <button type="submit" class="button button-primary" style="display: block;" disabled="disabled" ng-show="button_loading">
+          <span>Please Wait...</span><i class="fa fa-refresh fa-spin"></i>
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

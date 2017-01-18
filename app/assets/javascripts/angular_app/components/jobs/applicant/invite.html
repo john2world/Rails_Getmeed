@@ -1,0 +1,27 @@
+<div class="modal">
+  <legend>Customize your Invitation</legend>
+  <form name="inviteForm" novalidate>
+    <fieldset>
+      <label>Email Subject (*Required)</label>
+      <input ng-model="subject" required value="" placeholder='Email Subject (*Required)' type="text">
+    </fieldset>
+
+    <fieldset>
+      <label>Email Body (*Required)</label>
+      <textarea ng-model="description" placeholder="Email Body (*Required)" required cols="45" rows="10"></textarea>
+    </fieldset>
+
+    <div class="info-text">
+      <strong>{{::currentUser.name}},</strong>
+      <br>
+      {{::currentUser.headline}},
+      <br>
+      {{::currentUser.current_company}}
+    </div>
+
+    <button ng-click="close(true)" class="medium-small button-secondary-inverse">
+      <span class="glyphicon glyphicon-ok-circle"></span>Send
+    </button>
+    <button ng-click="close(false)" class="medium-small button-primary-inverse unfollow ng-scope">Cancel</button>
+  </form>
+</div>

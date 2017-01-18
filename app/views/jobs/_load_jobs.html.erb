@@ -1,0 +1,12 @@
+<% if jobs.blank? %>
+    <div class="any-center">
+      <div class="info-text-large-center" style="font-size: 24px;"> No Related Jobs...!</div>
+    </div>
+<% else %>
+    <% jobs.each do |job| %>
+        <%= render 'view_dash_jobs', :job => job %>
+    <% end %>
+    <% unless jobs.blank? %>
+        <%= paginate jobs %>
+    <% end %>
+<% end %>

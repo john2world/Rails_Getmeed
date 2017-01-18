@@ -1,0 +1,36 @@
+<div>
+    <ul ng-if="currentUser.badge != 'influencer'">
+        <li ng-if="!item.user_state.profile_complete">
+            <i class="fa fa-dot-circle-o"> </i> Complete your <a class="/profile">profile</a>
+        </li>
+        <li ng-if="item.user_state.profile_complete">
+            <i class="fa fa-check"> </i> <span class="strike">Complete basic profile</span>(required)
+        </li>
+        <li ng-if="item.user_state.profile_picture_blank">
+            <i class="fa fa-dot-circle-o"> </i> Add <a class="/profile">profile picture</a> (required)
+        </li>
+        <li ng-if="!item.user_state.profile_picture_blank">
+            <i class="fa fa-check"> </i> <span class="strike">Add profile picture</span> (required)
+        </li>
+        <li ng-if="!item.user_state.last_portfolio_submission_date">
+            <i class="fa fa-dot-circle-o"> </i> Build your brand
+        </li>
+    </ul>
+
+
+    <ul ng-if="currentUser.badge == 'influencer'">
+
+        <li>
+            <i class="fa fa-dot-circle-o"> </i> Share your knowledge
+        </li>
+        <li>
+            <i class="fa fa-dot-circle-o"> </i> Answer <a href="/feed/tag/question">questions</a>
+        </li>
+        <li>
+            <i class="fa fa-dot-circle-o"> </i> Become a featured influencer
+        </li>
+        <!--<li ng-if="!item.user_state.profile_complete">-->
+            <!--<i class="fa fa-dot-circle-o"> </i> Host an AMA (Ask Me Anything)-->
+        <!--</li>-->
+    </ul>
+</div>

@@ -1,0 +1,10 @@
+<div class="row" ng-show="feedItem.recommended_users.length > 0">
+  <span class="activity-feed-item-recommended-caption">
+      People You Should Follow (Classmates, Alumni And Influencers)
+  </span>
+    <users-list users="feedItem.recommended_users" current-user="currentUser" source="dashboard-feed">
+    </users-list>
+</div>
+
+
+

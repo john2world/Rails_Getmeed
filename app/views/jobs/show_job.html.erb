@@ -1,0 +1,148 @@
+<% if is_profile_incomplete %>
+    <%= render 'shared/incomplete_profile' %>
+<% end %>
+<% if current_user.blank? %>
+    <div id="top_signup_banner">
+      To apply for this job and other jobs,
+      <a href="/?ab_id=<%= params[:ab_id] %>&redirect_url=<%= request.original_url %>" target="_blank">Sign Up</a> for Meed!
+    </div>
+<% end %>
+<div class="galleria">
+  <% @company.get_video_urls.each do |video_url| %>
+      <a href="<%= video_url %>"><span class="video"></span></a>
+  <% end %>
+  <% unless @company[:photos].blank? %>
+      <% @company[:photos].each do |photo| %>
+          <img src='<%= photo.large_image_url %>' data-title="<%= photo.description %>"/>
+      <% end %>
+  <% end %>
+</div>
+<div class="any-center">
+  <%= hidden_field_tag :id, @company[:_id], :id => 'blog_hidden' %>
+  <% if @company[:company_logo].blank? %>
+      <img class="img-circle image-medium" src="https://res.cloudinary.com/resume/image/upload/c_scale,w_100/v1424141642/http_library.oregonmetro.gov_rlisdiscovery_browse_graphic_placeholder_lgdixu.png">
+  <% else %>
+      <% if @company[:cover_image_url].blank? %>
+          <img class="image-medium company-picture-holder" src="<%= @company[:company_logo] %>">
+      <% else %>
+          <img class="image-medium company-picture-holder" src="<%= @company[:company_logo] %>">
+      <% end %>
+      <div>
+        <hr class="hr-profile-item">
+      </div>
+  <% end %>
+</div>
+<div class="row">
+  <% if @company.blank? %>
+      <div class="profile-insight" style="text-align: center">
+        <span> Doh! This job must have been deleted.</span>
+      </div>
+  <% else %>
+      <div class="job-details-company">
+        <a href="/<%= @job[:company_id] %>" data-intro="Click for company page" data-position="right">
+          <%= @job[:company] %></a>
+      </div>
+      <div style="float: right;">
+        <%= render 'shared/meed_share', :job => @job %>
+      </div>
+      <div class="job-details-header">
+        <%= @job[:title] %>
+      </div>
+      <div class="job-type">
+        <%= get_job_type_from_code(@job[:type]) %>
+      </div>
+      <div class="info-text-large">
+        <%= @job[:location] %>
+      </div>
+      <div>
+        <hr class="hr-profile-item">
+      </div>
+      <% unless @job[:company_overview].blank? %>
+          <div class="job-details-body">
+            <div class="company-position-title" align="center">COMPANY OVERVIEW</div>
+            <div>
+              <hr class="hr-profile-item">
+            </div>
+            <p class="description-padding">
+              <%= @job[:company_overview].html_safe %>
+            </p>
+          </div>
+          <hr class="hr-profile-item">
+      <% end %>
+      <div class="job-details-body">
+        <div class="company-position-title" align="center">JOB DESCRIPTION</div>
+        <div>
+          <hr class="hr-profile-item">
+        </div>
+        <p class="description-padding">
+
+          <%= @job[:description].html_safe %>
+        </p>
+      </div>
+      <hr class="hr-profile-item">
+      <div class="any-center">
+        <% if @applied %>
+            <button class="btn btn-primary btn-success" disabled="disabled">
+              <span class="glyphicon glyphicon-ok-sign"></span> Applied
+            </button>
+        <% else %>
+            <% if current_user.blank? %>
+                <a href="/users/create?ab_id=<%= params[:ab_id] %>&redirect_url=<%= request.original_url %>" data-intro="Click to apply" data-position="top" class="btn btn-primary btn-success">
+                  <span class="glyphicon glyphicon-ok-sign"></span> Apply Now »
+                </a>
+            <% else %>
+                <button class="btn btn-primary btn-success" data-toggle="modal" data-target="#applyModal" data-intro="Click to apply" data-position="top">
+                  <span class="glyphicon glyphicon-ok-sign"></span> Apply Now »
+                </button>
+            <% end %>
+        <% end %>
+      </div>
+      <hr class="hr-profile-item">
+  <% end %>
+</div>
+<script>
+
+    //    var photo_urls = [];
+    //    photo_urls.push('https://res.cloudinary.com/resume/image/upload/c_scale,w_1000/v1425428847/14393607719_f34f6ce448_o_auogth.jpg');
+    //    $.backstretch(photo_urls, {duration: 7000, fade: 750});
+    var image_data = [];
+    <% @company[:photos].each do |photo| %>
+    image_data.push({
+        image: '<%= photo.large_image_url %>',
+        thumb: '<%= photo.large_image_url %>',
+        description: '<%= photo.description %>'
+    });
+    <% end %>
+    loadGalleria();
+    var sharingConfig = {
+        url: "<%= CGI::escape(@metadata[:share_url]) %>",
+        title: "<%= @metadata[:title].blank? ? "" : CGI::escape(@metadata[:title]) %>",
+        image: "<%= @metadata[:image_url].blank? ? "" : CGI::escape(@metadata[:image_url]) %>",
+        networks: {
+            facebook: {
+                enabled: true,
+                load_sdk: true,
+                url: "<%= CGI::escape(@metadata[:share_url_short]) %>"
+            },
+            google_plus: {
+                enabled: true
+            },
+            twitter: {
+                enabled: true,
+                url: "<%= @metadata[:share_url_short].blank? ? "" : CGI::escape(@metadata[:share_url_short]) %>",
+                description: "<%= @metadata[:title].blank? ? "" : CGI::escape(@metadata[:title]) %>"
+            },
+            email: {
+                enabled: true,
+                url: "<%= CGI::escape(@metadata[:share_url_short]) %>",
+                title: "<%= @metadata[:title].blank? ? "" : URI::encode(@metadata[:title]) %>",
+                description: '<%= URI.encode(@metadata[:email_share_body]) %>%20' + '<%= CGI::escape(@metadata[:share_url_short]) %>'
+            },
+            pinterest: {
+                enabled: false
+            }
+        }
+    };
+
+    t = new Share(".share-button", sharingConfig);
+</script>

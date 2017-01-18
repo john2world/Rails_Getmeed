@@ -1,0 +1,322 @@
+/* General
+ *-------------------------------------------------*/
+.profile
+  width: 100%
+  float: left
+
+.basic-profile-body
+  padding: 2rem
+
+.upload-resume
+  padding-top: 1rem
+  text-align: center
+
+.ama-tab-body
+  padding: 2rem
+
+.recent-activity-tab
+  padding: 2rem
+
+.profile-loader
+  text-align: center
+
+.add-to-portfolio-wrap
+  margin-top: 5%
+  &.mid
+    width: 100%
+    text-align: center
+
+input[type=filepicker]
+  display: none
+
+#profile-img
+  width: 10rem
+  height: 10rem
+  border-radius: 100%
+  object-fit: cover
+
+.profile-image-wrap
+  position: absolute
+  left: 50%
+  width: 118px
+  margin-left: -59px
+  text-align: center
+
+@media(max-width: 600px)
+  .profile-image-wrap
+    width: 100%
+    position: static
+    margin: 0 auto
+
+#profile-inner
+  margin-top: 6rem
+  .event_cta
+    text-align: center
+
+.profile-description
+  ul, ol
+    margin-left: 1.5rem
+  ul > li
+    list-style-type: disc
+  ol > li
+    list-style-type: decimal
+  img
+    margin: 0 auto
+    max-height: 20rem
+    max-width: 100%
+
+.profile-section
+  border-bottom: 1px solid $light_border
+  padding-top: 1.5rem
+  padding-bottom: 1.5rem
+  width: 100%
+  // float: left
+  content: ""
+  display: table
+  clear: both
+
+  &:last-child
+    border-bottom: 0
+
+  /* Don't double up on margin bottoms here*/
+  p:last-child
+    margin-bottom: 0
+
+  h3, .profile-name
+    font-size: $font_size_medium_large
+    text-transform: uppercase
+    font-weight: bold
+    color: $dark_text
+  h4
+    font-size: $font_size_regular
+    float: left
+    margin: 0
+    font-weight: bold
+
+.profile-date
+  float: right
+  text-align: right
+  font-size: $font_size_medium_small
+  &:before
+    content: "[ "
+  &:after
+    content: " ]"
+
+.profile-add-reference
+  float: right
+  text-align: right
+  font-size: $font_size_medium_small
+
+.entry-title
+  width: 100%
+  float: left
+
+label
+  span
+    width: 100%
+    float: left
+// input, select
+//   width: 100%
+//   float: left
+
+
+
+form
+  margin-bottom: 0
+
+/* Header
+ *-------------------------------------------------*/
+.profile-image
+  text-align: center
+  p
+    margin: 0
+
+.profile-header
+  p
+    margin: 0
+  .profile-school-row
+    margin-top: 1.5rem
+
+  .profile-phone-number-row
+    float: right
+
+  .follow-cta
+    float: right
+
+  border: 0
+
+
+.profile-major-row, .profile-degree-row
+  color: $light_text
+  font-size: $font_size_medium_small
+  max-width: 25rem
+
+.profile-school-row
+  font-weight: bold
+
+.profile-name-row .button
+  float: right
+
+/* Exerience and Education
+ *-------------------------------------------------*/
+
+.experience-entry, .education-entry
+  margin-bottom: 1.5rem
+
+/* Course Projects
+ *-------------------------------------------------*/
+
+.course-project-entry
+  margin-bottom: 1.5rem
+  &:last-child
+    margin-bottom: 0
+
+/* All skills sections
+ *-------------------------------------------------*/
+.skills-section
+  // margin-top: 1.5rem
+  margin-bottom: 1.5rem
+  color: $light_text
+  font-weight: bold
+
+
+
+/* Collections */
+
+.profile-collections
+  .created-collections, .followed-collections
+    width: 100%
+    float: left
+  .details
+    padding-top: 1rem
+    padding-bottom: 1rem
+    font-size: $font_size_medium_large
+    color: $light_text
+
+.portfolio-empty
+  .details
+    text-align: center
+    font-size: $font_size_medium_large
+    color: $light_text
+    padding-top: 8rem
+    padding-bottom: 8rem
+  .description
+    text-align: left !important
+    font-size: $font_size_regular !important
+    padding: 2rem
+    ul.info
+      list-style-type: square
+      li
+        list-style-type: square
+        margin: 1rem
+
+/* Tab */
+.profile
+  .tab-nav
+    width: 100%
+    border-bottom: 1px solid $light_border
+    height: 6.5rem
+    font-size: $font_size_medium_large
+    padding-top: 20px
+    a
+      color: $body_text_color
+      border-radius: 5px 5px 0 0
+      border: 1px solid $light_border
+      border-bottom: 0
+      width: 33%
+      box-sizing: border-box
+      display: block
+      float: left
+      background: #fff
+      position: relative
+      z-index: 2
+      padding: 0.5rem
+      padding-left: 2rem
+      &.active
+        height: 4.1rem
+        font-weight: bold
+      &:hover
+        text-decoration: none
+  #collections-tab
+    display: none
+
+  #portfolio-tab
+    display: none
+
+  #ama-tab
+    display: none
+
+.reviews
+  float: left
+  width: 95%
+  margin: 0.5rem 0 0.5rem 2rem
+  .comment-description
+    margin-left: 50px
+
+
+
+/* Editing
+ *-------------------------------------------------*/
+
+.edit-link, .delete-link
+  font-size: $font_size_medium_small
+  margin-left: 1.5rem
+  text-transform: none
+  font-weight: normal
+  font-family: $body_font
+  letter-spacing: normal
+  line-height: 2.4rem
+  cursor: pointer
+
+.edit-link
+  color: $link_color
+  &:hover
+    color: $link_color
+
+.delete-link
+  color: $delete_color
+  &:hover
+    color: $delete_color
+
+
+.button-wrap
+  text-align: center
+
+.profile
+  label
+    input, select
+      font-weight: normal
+
+.review-invites
+  li, ul
+    margin-bottom: 0
+
+/* Media Queries
+ *-------------------------------------------------*/
+
+@media (max-width: 550px)
+  .profile-name-row .button-primary
+    padding: 0 1rem
+    span
+      display: none
+
+/* Larger than phablet (also point when grid becomes active) */
+@media (min-width: 550px)
+  .profile-name-row .button-primary
+    span
+      display: inline
+
+
+
+@media print
+  #header-nav
+    display: none
+  .profile
+    h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6
+      letter-spacing: 0
+    .profile-date
+      width: 300px
+    .loader
+      display: none
+    .profile-description,.education-degree-major
+      font-weight: normal

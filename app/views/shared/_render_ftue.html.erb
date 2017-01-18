@@ -1,0 +1,85 @@
+<div class="row-view">
+  <hr class="hr-profile-separator">
+  <div class="row">
+
+    <div class="article-title">
+      Meed score
+    </div>
+    <div>
+      <hr class="hr-profile-separator">
+    </div>
+    <div style="margin-top:2%" class="job-details-body">
+      <h3>
+        1. Complete Profile
+      </h3>
+      <ul class="ul-bullet">
+        <li>
+          <span>
+            Your score is designed from 85% of the details on your profile.
+          </span>
+        </li>
+      </ul>
+      <h3>
+        2. Questions and Answers <span class="info-text-cyan">(new)</span>
+      </h3>
+      <ul class="ul-bullet">
+        <li>
+          <span>
+            <span style="text-decoration: underline">Resume score</span> is an important heuristic calculated from your resume (GPA, profile completeness, coursework, internships, honors, publications).
+            Most importantly <span class="text-highlight"> participating, answering</span> and <span class="text-highlight"> upvoting </span> answers plays a key role in your score.
+          </span>
+        </li>
+        <li>
+          <span>
+
+            This score is used in <span class="text-highlight">sorting</span> resumes for employers.  Hence It quantifies your resume score to employers.
+          </span>
+        </li>
+      </ul>
+      <h3>
+        3. Better Resume insights <span class="info-text-cyan">(coming up soon)</span>
+      </h3>
+      <ul class="ul-bullet">
+        <li>
+          <span>
+             We are constantly working on improving insights for your resume.
+          </span>
+        </li>
+        <li>
+          <span>
+            Applying to jobs is seamless as your resume lives in the cloud. It can be updated even after applying for a job.
+          </span>
+        </li>
+        <li>
+
+          <span>
+            <% if current_user.blank? %>
+
+             Share your handle, <a href="http://resu.me/">getmeed.com/[your username]</a> to publicize your profile and get better insights.
+                <% else %>
+
+             Share your handle, <a href="http://resu.me/<%= current_user.handle %>">getmeed.com/<%= current_user.handle %></a> to show your profile,
+             answers added to your resume etc. for adding more weight.
+                <% end %>
+          </span>
+        </li>
+      </ul>
+      <h3>
+        4. Rich resume editing tools <span class="info-text-cyan">(coming up soon)</span>
+      </h3>
+      <ul class="ul-bullet">
+        <li>
+          <span>
+             We are soon coming up with rich editing features for editing resume, answers etc.
+          </span>
+        </li>
+      </ul>
+
+    </div>
+    <hr class="hr-profile-item">
+    <%= form_tag({:controller => 'first_user_experiences', :action => :ftue_update}, :class => 'row-view', :html => {:multipart => true}) do %>
+        <%= hidden_field_tag :ftue_type, 'seen_questions_intro' %>
+        <%= submit_tag 'Get Started', :class => 'button button-green-large lightbox-button-center', :disable_with => 'Please wait..' %>
+    <% end %>
+  </div>
+</div>

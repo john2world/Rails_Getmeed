@@ -1,0 +1,28 @@
+<% if data[:source_type].blank? %>
+    <% if data[:video_type].eql? 'youtube' and !data[:video_id].blank? %>
+        <iframe id="ytplayer" type="text/html" width="300" height="200"
+                src="https://www.youtube.com/embed/<%= data[:video_id] %>?autoplay=0&controls=0&rel=0&showinfo=0"
+                frameborder="0">
+        </iframe>
+
+    <% elsif data[:video_type].eql? 'vimeo' and !data[:video_id].blank? %>  
+        <iframe src="https://player.vimeo.com/video/<%= data[:video_id] %>" width="300" height="200" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+        <p><a href="https://vimeo.com/131311606">Welcome to Meed</a> from
+          <a href="https://vimeo.com/user39700723">Meed Inc</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
+    <% elsif !data[:large_image_url].blank? %>
+        <img class="image-responsive" style="max-height: 200px" src='<%= data[:large_image_url] %>' data-title="<%= data[:title] %>"/>
+    <% end %> 
+<% else %>  
+    <% if data[:source_type].eql? 'youtube' and !data[:video_id].blank? %>
+        <iframe id="ytplayer" type="text/html" width="300" height="200"
+                src="https://www.youtube.com/embed/<%= data[:video_id] %>?autoplay=0&controls=0&rel=0&showinfo=0"
+                frameborder="0">
+        </iframe>
+    <% elsif data[:source_type].eql? 'vimeo' and !data[:video_id].blank? %>  
+        <iframe src="https://player.vimeo.com/video/<%= data[:video_id] %>" width="300" height="200" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+        <p><a href="https://vimeo.com/131311606">Welcome to Meed</a> from
+          <a href="https://vimeo.com/user39700723">Meed Inc</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
+    <% elsif !data[:large_image_url].blank? %>
+        <img class="image-responsive" style="max-height: 200px" src='<%= data[:large_image_url] %>' data-title="<%= data[:title] %>"/>
+    <% end %> 
+<% end %>

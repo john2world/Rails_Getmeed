@@ -1,0 +1,22 @@
+<% if current_user.blank? and !params[:showRajni] %>
+  <% if !@profile_is_public %>
+    <div class="alert alert-success alert-dismissable any-center">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <div class="any-center-28">
+        Profile is protected. Please <strong><a href="/login?redirect_url=<%= request.url %>">login</a></strong> to view the profile.
+      </div>
+    </div>
+  <% else %>
+    <div class="alert alert-success alert-dismissable any-center">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <div class="any-center-28">
+        Are you a student? click <strong><a href="/?reg=true">here</a></strong> to connect with companies and other students like <%= @user.first_name.upcase %> !
+      </div>
+    </div>
+  <% end %>
+<% end %>
+<% unless notice.blank? %>
+  <p id="success" class="label label-success any-center">
+    <%= notice %>
+  </p>
+<% end %>

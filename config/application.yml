@@ -1,0 +1,69 @@
+common: &common
+  facebook:
+    key: 'asdjhasxas'
+    secret : 'xyz'
+  twitter:
+    key: 'asdjhasxas'
+    secret : 'abx'
+
+  sendgrid_username: 'vadrevu'
+  sendgrid_password: 'ResumeLover'
+  linkedin_client_js_appid: '75jxyngjm8f1kq'
+  filepicker_api_key: 'Agxb1eRqwSB2mr4BhJwj2z'
+  clearbit_key: '93489c1f4729f420329109957f24d57a'
+  #clearbit_key: 'da9c7205812bb46548f7b1862d207a32'
+  stripe_publishable_key: pk_ktMbiAhYGulwQ9OsWCSIkdfF6jagV
+  stripe_secret_key: TiH9IbkGOZ8xduW7M0vUKSTkjWwaauJT
+  sovren_account_id: '32215752'
+  sovren_service_key: 'zwbDwscb0qyc6RoZVeXybBYymzJvTtrA5mcuf6hM'
+  gmail_client_id: '624172768828-2i0avctjchaods9ck3jvqvd02mj2rf7o.apps.googleusercontent.com'
+  gmail_client_secret : 'nYYPEFTGNY5H-pkXpad5s4sd'
+development:
+  <<: *common
+  hostname: 'localhost'
+  security: 'http://'
+  FB_APP_ID: '555557461265342'
+  FB_APP_SECRET: '0d7dda5ea8eca2b5eb24a982479d0c57'
+  port: '3000'
+  host: 'localhost:3000'
+  TWITTER_KEY: 'nvgf9ZtoJX8U8qCzW2G2Uw'
+  TWITTER_SECRET: 'bbyINuEsbn9qFbd2nW9qv09D8iqv17I6UH1hPUox40'
+  recruiter_hostname: 'localhost'
+  aws_access_key_id: 'AKIAI6T3L3DU6GSSR75Q'
+  aws_secret_access_key: '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'
+  embedly_key: '84347754d6984ea5a01a46f491853010'
+  intercom_app_id: 'xcqesob5'
+  intercom_secret: '698999a12d993459ee0063e79378f32dcec5fb38'
+  linkedin_client_id: '755sj5008yofqp'
+  linkedin_client_secret: 'VKssiZ7HQUF76fpB'
+  linkedin_redirect_url: 'http://localhost:3002/auth/linkedin/callback'
+  elastic_search_url: 'localhost:9200'
+  GITHUB_KEY: '25f16023801bf4bde546'
+  GITHUB_SECRET: '9e21c0d74e6d0aa7cc5e561987b1906015a0cd74'
+
+test:
+  <<: *common
+  intercom_app_id: 'xcqesob5'
+  intercom_secret: '698999a12d993459ee0063e79378f32dcec5fb38'
+elastic_search_url: 'localhost:9200'
+production:
+  <<: *common
+  hostname: 'getmeed.com'
+  host: 'getmeed.com'
+  recruiter_hostname: 'talent.getmeed.com'
+  blog_hostname: 'blog.getmeed.com'
+  security: 'https://'
+  port: ''
+  TWITTER_KEY: 'F0O34qtW6k1ux7dsXF747FUFl'
+  TWITTER_SECRET: 'B2cxlVKraCRItMaOdICYNjtiHs25tYYsdDdoF4wZCd5maSLkMB'
+  FB_APP_ID: '219288138250944'
+  FB_APP_SECRET: '538e451bbc75bf04d3428ba76a9c67eb'
+  embedly_key: '84347754d6984ea5a01a46f491853010'
+  intercom_app_id: '51a4564c6a008d823163382d7abbbbfff07ab03b'
+  intercom_secret: '460005b6b6d32c601d93e22a785c52b2ca4c4f66'
+  linkedin_client_id: '755hesbuosawwa'
+  linkedin_client_secret: 'zi5zyzVx9lXjHEUi'
+  linkedin_redirect_url: 'https://getmeed.com/auth/linkedin/callback'
+  elastic_search_url: 'ec2-54-176-121-193.us-west-1.compute.amazonaws.com:9200'
+  GITHUB_KEY: 'a6604ca6d455355ae153'
+  GITHUB_SECRET: 'a477c345f544f32b6f78b9eb807cf574e4cc49f5'

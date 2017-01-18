@@ -1,0 +1,84 @@
+<div id="profile-inner" class="main-inner-wrap">
+  <profile-header profile="profile"></profile-header>
+  <div class="tab-nav" ng-show="hasCollections">
+    <a id="show-profile-tab" class="active" ng-click="showTab('profile-tab')">Basic Profile</a>
+      <a id="show-portfolio-tab" title="portfolio" ng-click="showTab('portfolio-tab')">Portfolio Timeline<span ng-if="portfolioFeedItems.length > 0"> ({{ ::portfolioFeedItems.length }}) </span></a>
+      <a id="show-collections-tab" ng-click="showTab('collections-tab')">Recent Activity <span ng-if="feedItems.length > 0"> ({{ ::feedItems.length }}) </span></a>
+  </div>
+  <div class="tab" id="profile-tab">
+      <div class="upload-resume">
+          <profile-resume-upload ng-if="profile.is_viewer_profile" profile="profile"></profile-resume-upload>
+      </div>
+    <div class="profile-body" ng-if="profile.profile_is_public">
+      <profile-headline></profile-headline>
+      <profile-objective></profile-objective>
+      <profile-education></profile-education>
+      <profile-course-projects></profile-course-projects>
+      <profile-publications></profile-publications>
+      <profile-internships fns="internshipFns" profile="profile" years="years" months="months" class="profile-section"></profile-internships>
+      <profile-experiences fns="experienceFns" profile="profile" years="years" months="months"></profile-experiences>
+
+      <p ng-if="profile.is_viewer_profile" class="button-wrap">
+        <a ng-click="showTab('portfolio-tab')" class="button button-primary">Build Portfolio Timeline</a>
+      </p>
+    </div>
+  </div>
+    <div class="tab" id="portfolio-tab">
+        <div ng-if="portfolioFeedItems && portfolioFeedItems.length > 0">
+            <div class="activity-feed-inner">
+                <status-box ng-if="currentUser.handle == profile.user.handle" user="currentUser" tags="tags" default-tag-id="portfolio" all-collections="allCollections" show-attachments='true' feed-items="portfolioFeedItems"
+                            placeholder-text="Add links, files or even thoughts to your portfolio..."
+                            class="status-form"></status-box>
+                <portfolio-activity-feed
+                        ng-show="!loading"
+                        feed-items="portfolioFeedItems">
+                </portfolio-activity-feed>
+            </div>
+        </div>
+        <div class="portfolio-empty" ng-if="!portfolioFeedItems || portfolioFeedItems.length == 0">
+            <status-box ng-if="currentUser.handle == profile.user.handle" user="currentUser" tags="tags" default-tag-id="portfolio" all-collections="allCollections" show-attachments='true' feed-items="portfolioFeedItems"
+                        placeholder-text="Add links, files or even thoughts to your portfolio..."
+                        class="status-form"></status-box>
+            <div class="details">
+                <span ng-if="!profile.is_viewer_profile">
+                    <strong>{{::profile.user.first_name }}</strong>'s Portfolio is empty!
+                </span>
+                <span ng-if="profile.is_viewer_profile">
+                    <strong>Your</strong> Portfolio is empty!
+                    <div class="add-to-portfolio-wrap mid" >
+                        <a class="button button-primary button-status-focus">
+                            <span> START BUILDING PORTFOLIO </span>
+                        </a>
+                        <div id="tutorial-rules">
+                            <div class="description">
+                                <ul class="info">
+                                    <li>
+                                        Your portfolio is a timeline of your professional highlights. It's a detailed extension of your resume that gives showcases more about yourself. It validates your personality
+                                    </li>
+                                    <li>
+                                        These submissions are your own original work. (e.g. papers you’ve written, links to independent or school projects, published articles or even a thought.)
+                                    </li>
+                                    <li>
+                                        Please <em>do not</em> upload your resume or cover letters to your portfolio. Your "Basic Profile" section acts in place of your resume and is easier for recruiters to review, assess, and search. Cover letters should be submitted directly to employers.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </span>
+            </div>
+        </div>
+    </div>
+
+  <div class="tab" id="collections-tab" ng-show="hasCollections">
+      <div class="activity-feed-inner">
+          <portfolio-activity-feed
+                  ng-show="!loading"
+                  feed-items="feedItems">
+          </portfolio-activity-feed>
+          <profile-collections profile="profile" currentUser="currentUser"></profile-collections>
+      </div>
+  </div>
+
+
+</div>

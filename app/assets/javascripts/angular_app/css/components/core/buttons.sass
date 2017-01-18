@@ -1,0 +1,99 @@
+/* Basic buttons (overridden from SkeletonCSS)
+ ***************************************************/
+
+@mixin button($text_color: $secondary, $border_color: $secondary, $background_color: transparent)
+  color: $text_color
+  background-color: $background_color
+  text-decoration: none
+  // +transition(color 0.5s, background-color 0.5s, border-color 0.5s)
+  display: inline-block
+  height: 38px
+  padding: 0 30px
+  border: 1px solid $border_color
+  text-align: center
+  font-size: 13px
+  font-weight: 600
+  line-height: 38px
+  letter-spacing: .1rem
+  text-transform: uppercase
+  text-decoration: none
+  white-space: nowrap
+  border-radius: 4px
+  cursor: pointer
+  box-sizing: border-box
+
+
+  &:hover //, &:focus
+    color: darken($text_color, 10%)
+    border-color: darken($border_color, 10%)
+    background-color: darken($background_color, 10%)
+    text-decoration: none
+
+.button, button, input[type="submit"], input[type="reset"], input[type="button"]
+  +button($primary, $primary, transparent)
+
+  &.button-primary
+    +button($lightest_text, $primary, $primary)
+
+  &.button-secondary
+    +button($lightest_text, $secondary, $secondary)
+
+  &.button-secondary-inverse
+    +button($secondary, $secondary, $lightest_text)
+
+  &.button-tertiary
+    +button($light_text, $light_text, transparent)
+
+  &.button-primary-inverse
+    +button($primary, $primary, $lightest_text)
+
+  &.button-red
+    +button($lightest_text, $red_button, $red_button)
+    i.fa
+      color: $lightest_text
+  &.button-red-inverse
+    +button($red_button, $red_button, $lightest_text)
+    i.fa
+      color: $red_button
+  &.button-black
+    +button($lightest_text, $body_text_color, $body_text_color)
+  &.button-black-inverse
+    +button($body_text_color, $body_text_color, $lightest_text)
+
+
+  &.button-disabled, &:disabled
+    +button($very_light_text, $very_light_text, $lighter_background)
+    cursor: default
+    &:hover //, &:focus
+      color: $very_light_text
+      background-color: $lighter_background
+      border-color: $very_light_text
+      cursor: default
+
+  &.button-facebook
+    +button($facebook_color, $facebook_color)
+    i
+      color: $facebook_color !important
+
+  &.button-twitter
+    +button($twitter_color, $twitter_color)
+    i
+      color: $twitter_color !important
+
+  &.button-linkedin
+    +button($linkedin_color, $linkedin_color)
+    i
+      color: $linkedin_color !important
+
+  &.button-email
+    +button($email_color, $email_color)
+    i
+      color: $email_color !important
+
+  &.medium-small
+    padding: 0
+    padding-left: 1rem
+    font-size: 11px
+    padding-right: 1rem
+    line-height: 2.4rem
+    height: auto

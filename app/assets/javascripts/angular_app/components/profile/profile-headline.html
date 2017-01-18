@@ -1,0 +1,25 @@
+<div class="profile-headline profile-section" ng-if="(profile.user.headline || (currentUser.handle == profile.handle))">
+  <div class="profile-headline-show" ng-show="!showEdit('headline')">
+    <h3>
+      Headline
+      <a class="open-profile-edit-headline edit-link"
+         ng-click="editHeadline()"
+         ng-show="profile.is_viewer_profile">
+         <i class="fa fa-pencil-square-o"></i> Edit
+      </a>
+    </h3>
+    <p class="profile-headline"> {{ profile.user.headline }}</p>
+  </div>
+  <div class="profile-edit-section" id="profile-edit-headline" ng-show="showEdit('headline')">
+    <form accept-charset="UTF-8" ng-submit="submitUpdateHeadline()">
+      <h3 class="u-full-width">Headline</h3>
+      <fieldset class="row">
+        <textarea type="text" ng-model="profile.user.headline" class="u-full-width">
+        </textarea>
+      </fieldset>
+
+      <input class="button-primary" type="submit" value="Save" />
+      <input type="button" class="button close-modal" value="Cancel"  ng-click="closeEditHeadline(true)"/>
+    </form>
+  </div>
+</div>

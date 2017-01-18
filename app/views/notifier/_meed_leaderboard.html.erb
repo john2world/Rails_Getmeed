@@ -1,0 +1,40 @@
+<p style="Margin-top: 0;color: #565656;font-family: 'Lucida Grande';font-weight: bold;font-size: 16px;line-height: 25px;Margin-bottom: 25px; text-align: left;">
+  Your current Meed score is <%= @user.meed_points %> pts.
+  <% if !user[:rank].blank? and user[:rank] > 0 %>
+      and your rank on Meederboard: <%= user[:rank]  %>
+  <% end %>
+</p>
+<p style="Margin-top: 0;color: #565656;font-family: 'Lucida Grande';font-size: 16px;line-height: 25px;Margin-bottom: 25px; text-align: left;">
+  Earn more points:
+</p>
+<ul>
+  <li style="Margin-top: 0;color: #565656;font-family: 'Lucida Grande';font-size: 14px;line-height: 25px;Margin-bottom: 25px; text-align: left;">
+    <%= MEED_POINTS::FRIEND_REFERRER %> pts  - Use this link to invite friends and classmates who can follow your collections - <%= referrer_url %>
+  </li>
+  <li style="Margin-top: 0;color: #565656;font-family: 'Lucida Grande';font-size: 14px;line-height: 25px;Margin-bottom: 25px; text-align: left;">
+    <%= MEED_POINTS::COLLECTION_CREATE %> pts  - <a href="https://getmeed.com/submit/post" style="color:#00a651"> Create Collection</a>
+  </li>
+  <li style="Margin-top: 0;color: #565656;font-family: 'Lucida Grande';font-size: 14px;line-height: 25px;Margin-bottom: 25px; text-align: left;">
+    <%= MEED_POINTS::COLLECTION_FOLLOWER %> pts  - <a href="https://getmeed.com/submit/post" style="color:#00a651"> Someone follows your collection</a>
+  </li>
+  <li style="Margin-top: 0;color: #565656;font-family: 'Lucida Grande';font-size: 14px;line-height: 25px;Margin-bottom: 25px; text-align: left;">
+    <%= MEED_POINTS::COLLECTION_SUBMISSION %> pts  - <a href="https://getmeed.com/submit/post" style="color:#00a651"> Someone submits to your collection</a>
+  </li>
+  <li style="Margin-top: 0;color: #565656;font-family: 'Lucida Grande';font-size: 14px;line-height: 25px;Margin-bottom: 25px; text-align: left;">
+    <%= MEED_POINTS::SUBMIT_POST %> pts  - <a href="https://getmeed.com/submit/post" style="color:#00a651"> For each submission you make </a>
+  </li>
+
+</ul>
+<div style="margin:14px 0;display:block;text-align:center">
+  <a href="https://getmeed.com/?lb=1" style="background:linear-gradient(to bottom,#49ad41 0%,#3d9936 100%);border-radius:4px;color:#ffffff;display:inline-block;padding:12px 40px;margin:0 auto;max-width:98.5%;text-decoration:none;text-transform:uppercase;font-family:Helvetica,Arial,sans-serif;font-size:15px;font-weight:normal;letter-spacing:2px" target="_blank">MEED SCOREBOARD</a><span style="color:#9a9a9a"></span></div>
+<!--[if mso]>
+<v:rect xmlns:v="urn:schemas-microsoft-com:vml"
+        href="http://resume.createsend1.com/t/t-l-ttljiid-l-y/" style="width:108px"
+        fillcolor="#41637E" strokecolor="#41637E" strokeweight="6px">
+    <v:stroke linestyle="thinthin"></v:stroke>
+    <v:textbox style="mso-fit-shape-to-text:t" inset="0px,7px,0px,7px">
+        <center style="font-size:13px;line-height:15px;color:#FFFFFF;font-family:Georgia,serif;font-weight:bold;mso-line-height-rule:exactly;mso-text-raise:0px">
+        </center>
+    </v:textbox>
+</v:rect>
+<![endif]-->

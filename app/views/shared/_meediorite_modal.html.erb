@@ -1,0 +1,58 @@
+'<div class="modal fade" id="meedioriteModal" tabindex="-1" role="dialog" aria-labelledby="ownerBoxLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" id="closePromotionDialog" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <p class="accordion lightbox-text">
+          <% if current_user.is_meediorite? %>
+              Introducing Meed Posts
+          <% end %>
+        </p>
+        <hr class="hr-profile-header">
+      </div>
+      <div class="modal-body">
+        <% if current_user.is_meediorite? %>
+            <div class="any-center">
+              <img src="http://res.cloudinary.com/resume/image/upload/c_scale,w_200/v1439508717/Megaphone-01_wlgbyc.png">
+              <hr class="hr-silent">
+
+            </div>
+
+            <hr class="hr-profile-header">
+            <strong>What are Meed Posts?
+            </strong>
+
+            <div class="info-text-medium">
+              Meed Posts are career related articles, videos, or even questions that you think Meed community would find interesting and useful. Currently this feature is only open to Meediorites.
+            </div>
+            <hr class="hr-silent">
+            <strong>Increase Your Reputation Score!
+            </strong>
+
+            <div class="info-text-medium">
+              As you share Meed posts, your reputation score increases based on the quality of the post and
+              the amount of upvotes/comments you receive.
+            </div>
+            <hr class="hr-silent">
+            <strong>What's in it for me?
+            </strong>
+
+            <div class="info-text-medium">
+              Employers will pay more attention to your job applications, exclusive access to company events, and VIP
+              access to Meed Career Fairs.
+            </div>
+
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <div class="any-center">
+          <% if current_user.is_meediorite? %>
+              <a href="/submit/post" class="btn btn-md btn-primary">
+                <span class="glyphicon glyphicon-ok-circle"></span> Start Posting!
+              </a>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

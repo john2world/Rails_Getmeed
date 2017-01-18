@@ -1,0 +1,57 @@
+<% unless user.blank? %>
+    <tr>
+      <td id="header" class="profile-name">
+        <%= user.first_name.upcase %> <%= user.last_name.upcase %>
+        <% if is_edit %>
+            <a id="edit_link" class="edit_hover " onclick="renderEditItem('show_single_header_true')" style="cursor: pointer;"><strong><span class="glyphicon glyphicon-edit"></span> Edit </strong></a>
+        <% end %>
+      </td>
+      <td id="header_email" style="text-align: right;">
+        <% if is_edit or !params[:showRajni].blank? %>
+            <%= user.email %>
+        <% elsif is_viewer_profile %>
+            <a href="/<%= user[:handle] %>/pdf?token=<%= user[:handle] %>" class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-download-alt"></span> Download PDF</a>
+        <% else %>
+            <% if params[:insightToken].blank? %>
+                <% if current_user.blank? %>
+                    <a href="/?reg=true" class="btn btn-sm btn-success cursor buzz-out" style="text-decoration: none"><span class="glyphicon glyphicon-send"></span> Send
+                      Message</a>
+                <% else %>
+                    <a href="<%= "/#{user.handle}/contact" %>" class="btn btn-sm btn-success" style="text-decoration: none"><span class="glyphicon glyphicon-send"></span> Send
+                      Message</a>
+                <% end %>
+            <% else %>
+                <a href="<%= "/#{user.handle}/contact?insightToken=#{params[:insightToken]}" %>" class="btn btn-sm btn-success" style="text-decoration: none"><span class="glyphicon glyphicon-send"></span> Send
+                  Message</a>
+            <% end %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td class="profile-item-major">
+        <span style="color: #808080"><%= user.major %><%= !user.minor.blank? ? ', ' + user.minor : '' %></span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span style="color: #808080"> <%= user.degree %> </span>
+      </td>
+      <% if !user.phone_number.blank? and !current_user.blank? %>
+          <td id="header_gpa" class="profile-header-gpa">
+            ✆ <%= user.phone_number.to_s %>
+          </td>
+      <% end %>
+    </tr>
+    <tr>
+      <% unless school.blank? %>
+          <td class="profile-item-title">
+            <%= school.name %> — <%= user.year %>
+          </td>
+      <% end %>
+      <% unless user.gpa.blank? %>
+          <td id="header_gpa" class="profile-header-gpa">
+            GPA — <%= user.gpa.to_s %>
+          </td>
+      <% end %>
+    </tr>
+<% end %>

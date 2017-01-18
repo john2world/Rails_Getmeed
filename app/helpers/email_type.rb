@@ -1,0 +1,15 @@
+module EmailType
+  WELCOME = 'welcome'
+  INVITATION = 'invitation'
+  MESSAGE_USER_TO_ENTERPRISER = 'message_user_to_enterpriser'
+  MESSAGE_ENTERPRISER_TO_USER = 'message_enterpriser_to_user'
+  VERIFICATION = 'verification'
+  NEW_JOB_APPLICATION = 'new_job_application'
+  JOB_VIEW ='job_view'
+  JOB_ALERTS = 'job_alerts'
+  JOB_ALERT = 'job_alert'
+  INCOMPLETE_RESUME = 'incomplete_resume'
+  KUDOS = 'kudos'
+  WEEKLY_DIGEST = 'weekly_digest'
+  INVITE_USERS = 'invite_users'
+end

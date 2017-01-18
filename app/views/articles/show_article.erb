@@ -1,0 +1,93 @@
+<% if current_user.blank? %>
+    <%= render 'shared/signup_modal' %>
+<% end %>
+<div class="row-view">
+	<% if @article.blank? %>
+		<div class="profile-insight" style="text-align: center">
+			<span> Doh! This article must have been deleted.</span>
+		</div>
+	<% end %>
+	<% unless @article.blank? %>
+		<div class="article-title">
+			<% unless @article[:title].blank? %>
+				<%= @article[:title].html_safe %>
+			<% end %>
+		</div>
+		<hr class="hr-profile-item">
+		<div class="row">
+			<div class="job-details-company">
+				<div class="company-title-small">
+					<% unless @article[:company].blank? %>
+						<% unless @article[:company][:company_logo].blank? %>
+							<img src="<%= @article[:company][:company_logo] %>" class="img-responsive image-small">
+						<% end %>
+						<a href="<%= get_company_url(@article[:company][:_id]) %>"> <%= @article[:company][:name] %></a>
+						<% if current_user.blank? %>
+							<a href="/?reg=true" class="anchor-tag-button button-green" style="text-decoration: none; float: right">Follow
+								Company</a>
+
+						<% else %>
+							<% unless @article[:is_viewer_following] %>
+								<button class="button button-green" style="float: right;" id="follow_company_<%= @article[:company].id %>">Follow
+									Company
+								</button>
+							<% end %>
+						<% end %>
+					<% end %>
+					<hr class="hr-profile-item">
+				</div>
+				<% unless  @article[:photo].blank? or @article[:photo][:large_image_url].blank? %>
+					<% if !@article[:type].blank? and @article[:type].eql? 'video' %>
+						<div class="iframe-center">
+							<% if @article[:source].downcase.eql? 'youtube' %>
+								<div id="box_video" style="background:url(<%= @article[:photo][:large_image_url]%>) repeat center top fixed">
+									<div id="overlay_video">
+										<a href="https://www.youtube.com/embed/<%= @article[:video_id] %>?autoplay=1&controls=0&rel=0&showinfo=0" target="_blank">
+											<span id="play__video__yt-article-<%= @article.id %>" class="play_video">►</span>
+										</a>
+									</div>
+								</div>
+							<% elsif @article[:source].downcase.eql? 'vimeo' %>
+								<div id="box_video" style="background:url(<%= @article[:photo][:large_image_url]%>) repeat center top fixed">
+									<div id="overlay_video">
+										<a href="//player.vimeo.com/video/<%= @article[:video_id] %>?title=0&amp;byline=0&amp;portrait=0" target="_blank">
+											<span id="play__video__vimeo-article-<%= @article.id %>" class="play_video">►</span>
+										</a>
+									</div>
+								</div>
+							<% end %>
+						</div>
+					<% elsif  @article[:type].eql? 'photo' %>
+						<img id="box_photo_detail" src="<%= @article[:photo][:large_image_url] %>" />
+
+					<% else %>
+                      <img id="box_photo_detail" src="<%= @article[:photo][:large_image_url] %>" />
+
+            <% end %>
+				<% end %>
+				<% if @article[:author].blank? %>
+					<div class="article-heading" style="text-align: right">
+						Source: <%= @article[:source] %>
+					</div>
+				<% else %>
+					<div class="article-heading">
+						Source: <a href="<%= @article[:author_url] %>"><%= @article[:author] %></a>
+					</div>
+				<% end %>
+				<hr class="hr-profile-separator">
+				<% unless @article[:html].blank? %>
+					<div style="margin-top:2%" class="article-description">
+						<%= @article[:html].html_safe %>
+					</div>
+					<hr class="hr-profile-separator">
+				<% end %>
+	<% end %>
+	</div>
+	<% unless @article[:external_url].blank? %>
+		<div>
+			Continue Reading.. <a href="<%= @article[:external_url] %>"> <%= @article[:external_url] %></a>
+			<hr class="hr-profile-separator">
+		</div>
+	<% end %>
+	</div>
+</div>

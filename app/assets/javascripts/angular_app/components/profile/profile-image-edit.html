@@ -1,0 +1,11 @@
+<form action="/profiles/photo/save" id="profile-image-form">
+  <input
+    id="profile-image-input"
+    data-fp-apikey="{{ filepickerApiKey }}"
+    data-fp-button-class="button button-secondary medium-small filepicker-button"
+    data-fp-button-text="Change Picture"
+    ng-change="onPhotoUpload()"
+    ng-model="profile.user.image_url"
+    type="filepicker"
+    value="{{ profile.user.image_url }}" />
+</form>

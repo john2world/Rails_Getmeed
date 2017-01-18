@@ -1,0 +1,52 @@
+<div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="ownerBoxLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header" style="padding-bottom: 0px;">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="liue">&times;</button>
+        <p id="modal_header" class="accordion lightbox-text">
+          Join The Largest University Career Network!
+        </p>
+        <hr class="hr-profile-header">
+      </div>
+      <div class="modal-body" style="padding-bottom: 0px; padding-top:0px;">
+        <div id="sign_up_rant">
+          <p class="any-center">
+            Meed offers curated content for students, by students and many more goodies to start your career. Check out our video to learn more!
+          </p>
+          <p class="any-center">
+          <div class="fb-video" data-allowfullscreen="1" data-href="/getonmeed/videos/vb.1588841004692369/1618396221736847/?type=1">
+            <div class="fb-xfbml-parse-ignore">
+              <blockquote cite="https://www.facebook.com/getonmeed/videos/1618396221736847/">
+                <a href="https://www.facebook.com/getonmeed/videos/1618396221736847/">Welcome to Meed</a>
+                <p>Meed is changing the way you start your career.</p>Posted by
+                <a href="https://www.facebook.com/getonmeed">Meed</a> on Tuesday, June 23, 2015
+              </blockquote>
+            </div>
+          </div>
+          <div style="margin-top: 5px;">
+            <div class="fb-like" data-href="https://www.facebook.com/getonmeed" data-layout="standard" data-action="like" data-show-faces="false" data-share="true"></div>
+          </div>
+          </p>
+        </div>
+      </div>
+      <div class="modal-footer" style="padding-top: 0px; border-top:none">
+        <div id="bottom_action" class="any-center">
+          <%= form_tag({:action => 'verify_easy', :controller => 'users'}, :class => 'login-form', :remote => true, :html => {:multipart => true}) do %>
+              <div class="form-group">
+                <%= hidden_field_tag :redirect_url, request.path %>
+                <%= text_field_tag :email, nil, :class => 'form-control', :required => '', :style => 'border-color: #00a651;height:50px;', :id => 'sign_up_tb', :placeholder => 'Enter college email (ex: sam@usc.edu)' %>
+              </div>
+              <div id="alert_error">
+              </div>
+              <%= button_tag(type: 'submit', class: 'btn btn-primary btn-primary', :data => {:disable_with => 'Please wait..'}) do %>
+                  <span class="fa fa-user-plus"></span> SIGN UP
+              <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+    $('#redirect_url').val(window.location.pathname);
+</script>

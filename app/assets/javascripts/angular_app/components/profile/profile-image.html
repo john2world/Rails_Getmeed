@@ -1,0 +1,7 @@
+<div class="profile-image profile-section">
+  <p class="profile-image-row">
+    <img id="profile-img" ng-src="{{ profile.user.large_image_url }}" />
+  </p>
+  <profile-image-edit profile="profile" ng-if="profile.is_viewer_profile"></profile-image-edit>
+
+</div>

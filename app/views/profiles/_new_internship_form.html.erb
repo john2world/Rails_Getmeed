@@ -1,0 +1,39 @@
+<%= form_tag({:action => 'save_internship'}, :id => 'form_internship_new', :remote => true) do %>
+    <%= hidden_field_tag :hidden_id, '', :id => 'form_new_hidden_id' %>
+    <div class="form-inline">
+      <div class="form-group">
+        <%= text_field_tag :internship_company, nil, :placeholder => 'ex: Microsoft', :class => 'form-control', :required => '' %>
+      </div>
+      <div class="form-group">
+        <%= text_field_tag :internship_title, nil, :placeholder => 'ex: Software Engineer', :class => 'form-control', :required => '' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="form-inline">
+        <%= select_month(Date.today, {:field_name => 'start_month'}, {:class => 'form-control input-small'}) %>
+        &nbsp;
+        <%= select_year(Date.today, {:field_name => 'start_year', :start_year => 1900, :end_year => 2020}, {:class => 'form-control input-small'}) %>
+        -
+        <%= select_month(Date.today, {:field_name => 'end_month'}, {:class => 'form-control input-small'}) %>
+        &nbsp;
+        <%= select_year(Date.today, {:field_name => 'end_year', :start_year => 1900, :end_year => 2020}, {:class => 'form-control input-small'}) %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= text_area :internship_description, :text, :class => 'form-control', :id => 'profile-internship-new', :placeholder => 'Try to describe what you have done in this internship, teams you worked with, skills learned etc in this internship (485 characters). (*required)', :rows => 3, :cols => 80, :required => '' %>
+    </div>
+    <div class="form-group">
+      <%= text_field_tag :intern_skills, nil, :placeholder => 'Skills ex: Java, C++, Team building, project ownership (comma separated). (*required)', :class => 'form-control skills' %>
+    </div>
+    <p class="label label-important" id="intern_skills_alert" style="display: none;">
+    </p>
+    <div class="form-group">
+      <%= text_field_tag :link, nil, :placeholder => 'Any supporting link to internship', :class => 'form-control' %>
+    </div>
+    <div>
+      <%= button_tag(type: 'submit', :id => 'save_internship_new', class: 'btn btn-sm btn-primary',
+                     data: {disable_with: 'Saving.. '}) do %>
+          <span class="glyphicon glyphicon-floppy-disk "></span> Save
+      <% end %>
+    </div>
+<% end %>

@@ -1,0 +1,15 @@
+<% unless current_user.blank? %>
+    <div> 
+      <span class="info-text-tiny"> Shared with: </span>
+      <strong>
+                <span class="info-text-tiny"><span class="glyphicon glyphicon-<%= ((data[:privacy].blank?) or (data[:privacy].eql? 'everyone')) ? 'globe' : 'user' %>"></span>
+                  <% if data[:privacy_text].blank? %>
+                  Everyone
+                  <% else %>
+                  <%= data[:privacy_text].html_safe %>
+                  <% end %>
+
+                </span>
+          </strong>  
+    </div>
+<% end %>

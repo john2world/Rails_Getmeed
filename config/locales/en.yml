@@ -1,0 +1,7 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  user_already_exists_please_login: User already exists! Please login.
+  please_enter_a_valid_corporate_email: Please enter a valid "corporate" email.
+  payment_error: Payment error.

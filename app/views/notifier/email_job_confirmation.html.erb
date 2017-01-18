@@ -1,0 +1,94 @@
+<%= render 'notifier/email_header' %>
+<center class="wrapper" style="display: table;table-layout: fixed;width: 100%;min-width: 620px;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;background-color: #fbfbfb">
+  <%= render 'notifier/email_logo' %>
+  <table class="centered" style="border-collapse: collapse;border-spacing: 0;Margin-left: auto;Margin-right: auto">
+    <tbody>
+    <tr>
+      <td class="border" style="padding: 0;vertical-align: top;font-size: 1px;line-height: 1px;background-color: #e9e9e9;width: 1px">​</td>
+      <td style="padding: 0;vertical-align: top">
+        <table class="one-col" style="border-collapse: collapse;border-spacing: 0;Margin-left: auto;Margin-right: auto;width: 600px;background-color: #ffffff;font-size: 14px">
+          <tbody>
+          <tr>
+            <td class="column" style="padding: 0;vertical-align: top;text-align: left">
+              <div>
+                <div class="column-top" style="font-size: 32px;line-height: 32px">&nbsp;</div>
+              </div>
+              <table class="contents" style="border-collapse: collapse;border-spacing: 0;width: 100%">
+                <tbody>
+                <tr>
+                  <td class="padded" style="padding: 0;vertical-align: top;padding-left: 32px;padding-right: 32px">
+
+                    <p style="Margin-top: 0;color: #565656;font-family: 'Lucida Grande';font-size: 16px;line-height: 25px;Margin-bottom: 25px; text-align: left;">
+                      Congrats on applying for the "<%= @job.title %>" at <%= @company.name%>. Your application has been received and will be going under review over the next few days.
+                    </p>
+
+                    <p style="Margin-top: 0;color: #000000;font-family: 'Lucida Grande';font-size: 20px;line-height: 25px;Margin-bottom: 25px; text-align: left;">
+                      What Happens Next?
+                    </p>
+                    <p style="Margin-top: 0;color: #565656;font-family: 'Lucida Grande';font-size: 16px;line-height: 25px;Margin-bottom: 25px; text-align: left;">
+                      <ul style="list-style-type:disc; Margin-top: 0;color: #565656;font-family: 'Lucida Grande';font-size: 16px;line-height: 25px;Margin-bottom: 25px; text-align: left;">
+                        <li>We'll review all submitted applications and feature top applicants to the company.</li>
+                        <li>Want to stand out? Add some original coursework and projects to your <a href="<%= get_user_profile_url(@user.handle)+"#portfolio" %>" style='font-family: "Open Sans", "lucida grande", arial, verdana, "lucida sans unicode", tahoma, sans-serif;font-size: 14px;color:#00a651;'>portfolio</a>.</li>
+                        <li>In a week, <a href="<%= get_job_url(encode_id(@job.id)) %>" style='font-family: "Open Sans", "lucida grande", arial, verdana, "lucida sans unicode", tahoma, sans-serif;font-size: 14px;color:#00a651;'>follow up </a> with the recruiter to reiterate your interest and inquire about next steps.</li>
+                      </ul>
+                    </p>
+                    <% unless @recommended_job.blank? %>
+                      <p style="Margin-top: 0;color: #565656;font-family: 'Lucida Grande';font-size: 16px;line-height: 25px;Margin-bottom: 25px; text-align: left;">
+                        While you’re waiting, check out another job that we think you'd be a great match for:
+                      </p>
+
+                      <div class="post-title" style="-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;font-size: 18px;line-height: 22px;font-weight: 300;text-align: left;margin-top: 0;color: #666666;font-family: 'Open Sans','lucida grande',arial,verdana,'lucida sans unicode',tahoma,sans-serif;text-justify: inter-word;">
+                        <a href="<%= get_job_url(encode_id(@recommended_job.id)) %>" style="-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;background: 0 0;color: #444;text-decoration: none;text-align: left;">
+                          <%= @recommended_job[:title].truncate(50) %>
+                        </a>
+                      </div>
+                      <div class="meta" style="-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;font-size: 12px;color: #999999;margin-bottom: 0;font-family: 'Open Sans','lucida grande',arial,verdana,'lucida sans unicode',tahoma,sans-serif;text-justify: inter-word;text-align: justify;">
+                        <ul class="meta-list list-inline" style="-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;margin-top: 0;margin-bottom: 10px;padding-left: 0;margin-left: 0;list-style: none;border-top: none;border-bottom: 1px solid #ccc;padding-top: 5px;">
+                          <li class="post-author" style="-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;display: inline-block;padding-right: 5px;padding-left: 0;">
+                            <a href="<%= get_job_url(encode_id(@recommended_job.id)) %>" style="-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;background: 0 0;color: #999999;text-decoration: none;">
+                              <%= @recommended_job[:company] %>
+                            </a>
+                            <span class="info-text-small-medium" style="-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;font-size: 10px;color: #888888;line-height: 17px;margin-bottom: 1%;">
+
+                            </span>
+                          </li>
+                          <li class="post-comments-link" style="-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;display: inline-block;padding-right: 5px;padding-left: 5px; color: #999999; text-decoration: none; background: 0">
+                            <i class="glyphicon glyphicon-map-marker" style="-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;position: relative;top: 1px;display: inline-block;font-family: 'Glyphicons Halflings';font-style: normal;font-weight: 400;line-height: 1;-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: grayscale;"></i>
+                            <%= @recommended_job[:location].split(",").last(3).map{|t| t.strip()}.join(", ") %>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="post-entry" style="-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;margin-bottom: 15px;margin-left: 1%;color: #777777;font-size: 13px;line-height: 18px;text-align: left;">
+                        <%= Sanitize.clean(@recommended_job[:description].truncate(500, :omission => '..').html_safe)%>
+                      </div>
+                      <div style="width: 100%;padding: 5px;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;">
+                        <a class="btn btn-xs btn-success" href="<%= get_job_url(encode_id(@recommended_job.id)) %>" style="-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;background: 0 0;color: #fff;text-decoration: none;display: inline-block;padding: 6px 12px;margin-bottom: 0;font-size: 14px;font-weight: 400;line-height: 1.42857143;text-align: center;white-space: nowrap;vertical-align: middle;cursor: pointer;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;background-image: none;border: 1px solid transparent;border-radius: 4px;background-color: #5cb85c;border-color: #4cae4c; width: 33%; margin-left: 33%">
+                          <span class="glyphicon glyphicon-ok-sign" style="-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;position: relative;top: 1px;display: inline-block;font-family: 'Glyphicons Halflings';font-style: normal;font-weight: 400;line-height: 1;-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: grayscale;"></span> Apply
+                        </a>
+                      </div>
+                      <p style="Margin-top: 0;color: #565656;font-family: 'Lucida Grande';font-size: 16px;line-height: 25px;Margin-bottom: 25px; text-align: left;">
+                      </p>
+                    <% end %>
+                    <p style="Margin-top: 0;color: #565656;font-family: 'Lucida Grande';font-size: 16px;line-height: 25px;Margin-bottom: 25px; text-align: left;">
+                      - Meed Team
+                    </p>
+
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+      <td class="border" style="padding: 0;vertical-align: top;font-size: 1px;line-height: 1px;background-color: #e9e9e9;width: 1px">​</td>
+    </tr>
+    </tbody>
+  </table>
+  <div class="spacer" style="font-size: 1px;line-height: 32px;width: 100%">&nbsp;</div>
+</center>
+<%= render 'notifier/email_footer' %>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<div class="main-wrap" >
+  <div class="comingsoon-loader" ng-show="!load">
+    <loader></loader>
+  </div>
+  <div class="coming-soon" ng-show="load">
+    <section class="promo section section-on-bg">
+      <div class="container text-center">
+        <div class="any-center" style="padding: 20px;">
+          <img ng-if="!campaign_type" src="https://res.cloudinary.com/resume/image/upload/c_scale,w_100/v1439937394/Meed_logo_green_fcfhir.png">
+          <img ng-if="campaign_type == 'chipotle'" src="https://res.cloudinary.com/resume/image/upload/c_crop,h_160,w_500/v1445452705/MeedxChipotle_wlddlu.png" style="padding: 20px;">
+          <img ng-if="campaign_type == 'hbo_now'" src="https://res.cloudinary.com/resume/image/upload/c_scale,w_350/v1446163698/HBO_Meed_c7xlkh.png" style="padding: 20px;">
+
+            <br/>
+          <p class="title i-needmeed-text">
+             THE PROFESSIONAL COMMUNITY FOR UNIVERSITY STUDENTS
+
+          </p>
+          <p class="title i-needmeed-text">
+            is coming to <span ng-if="!school || !school.name">your school!</span><span ng-if="school.name">{{ school.name }}!</span>
+          </p>
+        </div>
+        <form
+                name="signupForm"
+                ng-submit="join(formData, signupForm.$valid)"
+                novalidate="novalidate">
+          <fieldset class="row">
+            <input
+                    class="columns three offset-by-four"
+                    name="email"
+                    ng-model="formData.university_email"
+                    ng-pattern="universityEmailPattern"
+                    placeholder="Enter your college email address"
+                    required="required"
+                    type="email"
+                    >
+            <input type="submit" class="button button-primary columns two" value="Sign Up" />
+          </fieldset>
+          <p
+            ng-show="emailSignupData.submitted && emailSignupForm.$invalid"
+            class="error">
+            Please enter a valid .edu email address.
+          </p>
+            <p ng-if="campaign_type == 'hbo_now'" class="title i-needmeed-text-secondary">
+                Enter now to learn more about the HBO NOW Promotion
+            </p>
+        </form>
+        <img class="promo-company-image" ng-if="campaign_type == 'jobs' || compaign_type == 'recref'" src="https://res.cloudinary.com/resume/image/upload/v1445451666/Comps_rpsyxz.png">
+      </div>
+    </section>
+    <!--//promo-->
+
+    <div class="sections-wrapper">
+
+      <!-- ******Why Section****** -->
+      <section id="why" class="section why">
+        <div class="container">
+          <div data-sr='wait 0.2s, scale up 30% and reset'>
+            <h1 class="intro primary-text">Why Do Students Use Meed?</h1>
+          </div>
+          <div class="content">
+            <div class="columns five offset-by-one">
+              <h3>PROFESSIONAL IDENTITY</h3>
+              <p class="secondary-text">Create rich profiles that showcase your expertise to employers and peers way beyond your resume</p>
+              <div class="row">
+                <a href="https://getmeed.com/tcparker" class="columns three"><img class="profile-img" ng-src="https://res.cloudinary.com/resume/image/upload/w_150,c_fit/hpswey11uvqrch0z37uy.png" src="https://res.cloudinary.com/resume/image/upload/w_150,c_fit/hpswey11uvqrch0z37uy.png" data-pin-nopin="true"></a>
+                <p class="columns nine teritiary-text quote">“I found it really easy to apply for jobs--a few simple clicks, like never before!”</p>
+                <p class="teritiary-text" style="text-align: right">- Tanya Parker, USC</p>
+              </div>
+              <h4 class="secondary-text">Sample Profiles:</h4>
+              <div class="columns twelve">
+                <a href="https://getmeed.com/lakatz2" class="columns three"><img class="profile-img" ng-src="https://res.cloudinary.com/resume/image/upload/w_150,c_fit/c136yirq6abd8jgmbgxg.jpg" src="https://res.cloudinary.com/resume/image/w_150,c_fit/v1442153895/c136yirq6abd8jgmbgxg.jpg" data-pin-nopin="true"></a>
+                <a href="https://getmeed.com/gl1036" class="columns three"><img class="profile-img" ng-src="https://res.cloudinary.com/resume/image/upload/w_150,c_fit/g4t3a9qlwifwn1bgaee9.jpg" src="https://res.cloudinary.com/resume/image/upload/w_150,c_fit/g4t3a9qlwifwn1bgaee9.jpg" data-pin-nopin="true"></a>
+                <a href="https://getmeed.com/moujaes" class="columns three"><img class="profile-img" ng-src="https://res.cloudinary.com/resume/image/upload/w_150,c_fit/icawnacrbsxq4tbdnz2h.jpg" src="https://res.cloudinary.com/resume/image/upload/w_150,c_fit/icawnacrbsxq4tbdnz2h.jpg" data-pin-nopin="true"></a>
+                <a href="https://getmeed.com/ameybhavsar" class="columns three"><img class="profile-img" ng-src="https://res.cloudinary.com/resume/image/upload/w_150,c_fit/lyc0xnyhbntg8s7xkwee.jpg" src="https://res.cloudinary.com/resume/image/upload/w_150,c_fit/lyc0xnyhbntg8s7xkwee.jpg" data-pin-nopin="true"></a>
+              </div>
+              <div class="columns twelve">
+                <a href="https://getmeed.com/kmcalpi" class="columns three"><img class="profile-img" ng-src="https://res.cloudinary.com/resume/image/upload/v1442153816/eulzbr9mrlmtqmp7x2xt.jpg" src="https://res.cloudinary.com/resume/image/upload/v1442153816/eulzbr9mrlmtqmp7x2xt.jpg" data-pin-nopin="true"></a>
+                <a href="https://getmeed.com/san339" class="columns three"><img class="profile-img" ng-src="https://res.cloudinary.com/resume/image/upload/w_150,c_fit/iob2iggxgb28umgkhury.jpg" src="https://res.cloudinary.com/resume/image/upload/w_150,c_fit/iob2iggxgb28umgkhury.jpg" data-pin-nopin="true"></a>
+                <a href="https://getmeed.com/seadatbe" class="columns three"><img class="profile-img" ng-src="https://res.cloudinary.com/resume/image/upload/v1442153731/srremrtunqi9o0o86nn6.jpg" src="https://res.cloudinary.com/resume/image/upload/v1442153731/srremrtunqi9o0o86nn6.jpg" data-pin-nopin="true"></a>
+                <a href="https://getmeed.com/dhaval" class="columns three"><img class="profile-img" ng-src="https://res.cloudinary.com/resume/image/upload/w_150,c_fit/ta2qrv3lryhrkkotqilq.jpg" src="https://res.cloudinary.com/resume/image/upload/w_150,c_fit/ta2qrv3lryhrkkotqilq.jpg" data-pin-nopin="true"></a>
+              </div>
+              <!--//quote-->
+            </div>
+            <!--//content-->
+            <div class="columns five">
+              <figure class="figure">
+                <img class="img-responsive" src="https://res.cloudinary.com/resume/image/upload/v1444967675/Profile_wwyqj7.jpg" alt=""/>
+                <figcaption class="figure-caption">(Sample Meed Profile)</figcaption>
+              </figure>
+            </div>
+          </div>
+
+          <div class="content">
+            <div class="columns five offset-by-one">
+              <div class="row">
+                <a href="https://getmeed.com/company/appdynamics" class="columns three"><img class="company-logo" ng-src="http://res.cloudinary.com/resume/image/upload/c_scale,w_100/v1448332244/6IQ5x7Y8RPukOewCp9Ly_wbfrut.png" src="http://res.cloudinary.com/resume/image/upload/c_scale,w_100/v1448332244/6IQ5x7Y8RPukOewCp9Ly_wbfrut.png" data-pin-nopin="true"></a>
+                <a href="https://getmeed.com/company/techcrunch" class="columns three"><img class="company-logo" ng-src="https://res.cloudinary.com/resume/image/upload/v1445303304/techcrunch-logo-square_zf5ht0.jpg" src="https://res.cloudinary.com/resume/image/upload/v1445303304/techcrunch-logo-square_zf5ht0.jpg" data-pin-nopin="true"></a>
+                <a href="https://getmeed.com/company/quora" class="columns three"><img class="company-logo" ng-src="http://res.cloudinary.com/resume/image/upload/v1406667381/ynyylhry19xxbvcogxwj.png" src="http://res.cloudinary.com/resume/image/upload/v1406667381/ynyylhry19xxbvcogxwj.png" data-pin-nopin="true"></a>
+                <a href="https://getmeed.com/company/oracle" class="columns three"><img class="company-logo" ng-src="http://res.cloudinary.com/resume/image/upload/c_scale,h_75,w_75/v1380648870/download_fephvr.jpg" src="http://res.cloudinary.com/resume/image/upload/c_scale,h_75,w_75/v1380648870/download_fephvr.jpg" data-pin-nopin="true"></a>
+              </div>
+              <div class="row">
+                <a href="https://getmeed.com/company/affirm" class="columns three"><img class="company-logo" ng-src="https://www.filepicker.io/api/file/dTaRCxGRR1aG6CFBHrP5/convert?w=100" src="https://www.filepicker.io/api/file/dTaRCxGRR1aG6CFBHrP5/convert?w=100" data-pin-nopin="true"></a>
+                <a href="https://getmeed.com/company/zenefits" class="columns three"><img class="company-logo" ng-src="https://res.cloudinary.com/resume/image/upload/v1445363946/zenefits-logo_nj92ta.png" src="https://res.cloudinary.com/resume/image/upload/v1445363946/zenefits-logo_nj92ta.png" data-pin-nopin="true"></a>
+                <a href="https://getmeed.com/company/thetileapp" class="columns three"><img class="company-logo" ng-src="https://res.cloudinary.com/resume/image/upload/v1445363996/9AsZUrWXw65FQw8blLlcPw-Tile_PrimaryLogo_DarkGrey_gdghy1.png" src="https://res.cloudinary.com/resume/image/upload/v1445363996/9AsZUrWXw65FQw8blLlcPw-Tile_PrimaryLogo_DarkGrey_gdghy1.png" data-pin-nopin="true"></a>
+                <a href="https://getmeed.com/company/cliqr" class="columns three"><img class="company-logo" ng-src="https://res.cloudinary.com/resume/image/upload/v1445364046/CliQr-logo_dowe8f.jpg" src="https://res.cloudinary.com/resume/image/upload/v1445364046/CliQr-logo_dowe8f.jpg" data-pin-nopin="true"></a>
+              </div>
+            </div>
+            <div class="columns six">
+              <h3>EMPLOYMENT OPPORTUNITIES</h3>
+              <p class="secondary-text">Search for opportunities at over 15,000 companies, then use your Professional Identity to apply for</p>
+              <ul class="secondary-text">
+                <li type="circle">Full-Time Jobs</li>
+                <li type="circle">Internships</li>
+                <li type="circle">Professional Part-Time Jobs</li>
+              </ul>
+              <div class="row">
+                <div class="columns three">
+                  <a href="https://getmeed.com/appdynamics"><img class="profile-img" ng-src="https://res.cloudinary.com/resume/image/upload/w_150,h_150,c_thumb,g_face/AAEAAQAAAAAAAAM4AAAAJGRjZGNkOTc1LTk4YzgtNGEyZC05N2IxLTRjZDEwYWIzYzQwMw_bitlh1.jpg" src="https://res.cloudinary.com/resume/image/upload/w_150,h_150,c_thumb,g_face/AAEAAQAAAAAAAAM4AAAAJGRjZGNkOTc1LTk4YzgtNGEyZC05N2IxLTRjZDEwYWIzYzQwMw_bitlh1.jpg" data-pin-nopin="true"></a>
+                </div>
+                <p class="columns nine teritiary-text quote">“Meed is an easy-to-use recruitment tool with a lot of reach to great college students. I definitely recommend this product to others.”</p>
+                <p class="teritiary-text" style="text-align: right">- Heidi Newiger, Recruiter, AppDynamics</p>
+              </div>
+              <!--//quote-->
+            </div>
+            <!--//content-->
+          </div>
+
+          <div class="content">
+            <div class="columns five offset-by-one">
+              <h3>PROFESSIONAL COMMUNITY</h3>
+              <p class="secondary-text">Engage and Connect with peers and industry experts in a professional setting.</p>
+              <!--//quote-->
+            </div>
+            <!--//content-->
+            <div class="columns five">
+              <div class="row">
+                <a href="https://getmeed.com/collection/ravi_tech-news/5604391478cb777987000001" class="columns four"><img class="collection-image" ng-src="https://res.cloudinary.com/resume/image/upload/v1445303606/Home_-_Meed_p9atrs.png" src="https://res.cloudinary.com/resume/image/upload/v1445303606/Home_-_Meed_p9atrs.png" data-pin-nopin="true"></a>
+                <a href="https://getmeed.com/collection/product-design-and-growth/5616e744e2a07f446d000003" class="columns four"><img class="collection-image" ng-src="https://res.cloudinary.com/resume/image/upload/v1445303661/Home_-_Meed_jadnqs.png" src="https://res.cloudinary.com/resume/image/upload/v1445303661/Home_-_Meed_jadnqs.png" data-pin-nopin="true"></a>
+                <a href="https://getmeed.com/collection/ravi_interview-and-job-hunting-tips/5604415078cb77bbf0000001" class="columns four"><img class="collection-image" ng-src="https://res.cloudinary.com/resume/image/upload/v1445303691/Home_-_Meed_j3h623.png" src="https://res.cloudinary.com/resume/image/upload/v1445303691/Home_-_Meed_j3h623.png" data-pin-nopin="true"></a>
+              </div>
+              <div class="row">
+                <a href="https://getmeed.com/collection/ravi_enterpreneurship/560593b5e90e9d7cba000001" class="columns four"><img class="collection-image" ng-src="https://res.cloudinary.com/resume/image/upload/v1445364761/Home_-_Meed_xgduw4.png" src="https://res.cloudinary.com/resume/image/upload/v1445364761/Home_-_Meed_xgduw4.png" data-pin-nopin="true"></a>
+                <a href="https://getmeed.com/collection/pro-tips-for-students/560f0913e90e9d6caf000017" class="columns four"><img class="collection-image" ng-src="https://res.cloudinary.com/resume/image/upload/v1445364735/Home_-_Meed_epqimc.png" src="https://res.cloudinary.com/resume/image/upload/v1445364735/Home_-_Meed_epqimc.png" data-pin-nopin="true"></a>
+                <a href="https://getmeed.com/collection/urbanism/562586cde2a07f792b000008" class="columns four"><img class="collection-image" ng-src="https://res.cloudinary.com/resume/image/upload/v1445364695/Home_-_Meed_s9r4i2.png" src="https://res.cloudinary.com/resume/image/upload/v1445364695/Home_-_Meed_s9r4i2.png" data-pin-nopin="true"></a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!--//container-->
+      </section>
+    </div>
+    <!--//section-wrapper-->
+  </div>
+</div>

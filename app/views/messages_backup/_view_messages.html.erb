@@ -1,0 +1,26 @@
+<tr>
+  <td class="table-left">
+    <%= hidden_field_tag :id, message[:_id], :id => 'job_hidden' %>
+    <% if !message[:company_logo].blank? %>
+        <img src="<%= message[:company_logo] %>">
+    <% else %>
+        <div class="message-img-dash">
+          <img src="http://res.cloudinary.com/resume/image/upload/c_scale,w_75/v1380703820/job-placeholder-7fc3a446aeeea79b2ba1574cec94539a_pwqjpk.png" class="job-img-dash">
+        </div>
+    <% end %>
+  </td>
+  <td class="table-left">
+    <a href="/message/<%= message[:hash] %>">
+          <span class="message-subject">
+            <%= message[:subject] %>
+    </a>
+    <br/>
+          <span class="message-sender">
+            <%= message[:sender] %>
+            </span>
+    <br/>
+        <span class="message-body">
+          <%= Sanitize.clean(message[:body].truncate(250, :omission => '..')) %>
+        </span>
+  </td>
+</tr>

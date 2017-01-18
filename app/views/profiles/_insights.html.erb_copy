@@ -1,0 +1,203 @@
+<% if is_profile_incomplete %>
+    <div class="alert alert-danger alert-dismissable">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <span class="any-center-38">
+        Your Meed profile is incomplete! <a href="/<%= current_user[:handle] %>?reg=true">
+        Update here</a>
+      </span>
+    </div>
+<% end %>
+<script src="//code.highcharts.com/highcharts.js"></script>
+<script src="//code.highcharts.com/modules/exporting.js"></script>
+<script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap-collapse.js"></script>
+<div id="activity-content">
+    <ul id="home_tabs" class="nav nav-tabs" data-tabs="tabs">
+      <li><a href="#profileinsights" data-toggle="tab">Profile Insights1</a></li>
+      <li class="active"><a href="#companyinsights" data-toggle="tab">Company Insights</a></li>
+    </ul>
+    <div id="activity-tab-content" class="tab-content">
+      <div class="tab-pane" id="profileinsights">
+        <div>
+            <table align="center">
+                <tr>
+                  <td class="tile">
+                    <a href="#profile-insights-header" style="color: white">
+                      <div>
+                        <div class="tile-header">
+                            <span class="tile-header-text">
+                              Totals profile views
+                            </span>
+                        </div>
+                        <div class="tile-main">
+                          <div class="tile-main-text">
+                            <span><%= @total_view_count %></span>
+                          </div>
+                        </div>
+                      </div>
+                    </a>
+                  </td>
+                  <td class="tile-separator">
+                  </td>
+                  <td class="tile">
+                    <a href="#score-insights-header" style="color: white">
+                      <div>
+                        <div class="tile-header">
+                            <span class="tile-header-text">Resume Score</span>
+                        </div>
+                        <div class="tile-main">
+                          <div class="tile-main-text">
+                            <span><%= @resume_score %></span>
+                          </div>
+                        </div>
+                      </div>
+                    </a>
+                  </td>
+                </tr>
+            </table>
+        </div>
+        <hr class="hr-header">
+        <span id="profile-insights-header" class="lightbox-text"></span>
+        <div>
+            <div id="insights-profileviews-trend" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+        </div>
+        <div style="margin-top: 4%; margin-bottom: 4%"></div>
+        <% unless @company_view_count_data_string.blank? %>
+          <p id="score-insights-header" class="accordion lightbox-text">Views By company</p>
+          <hr class="hr-header">
+          <div>
+            <div id="insights-profileviews-company" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+        </div>
+          <div style="margin-top: 4%; margin-bottom: 4%"></div>
+        <% end %>
+        <p id="score-insights-header" class="accordion lightbox-text">Resume Score Insights</p>
+        <hr class="hr-header">
+        <div>
+            <div id="insights-score-contributions" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+        </div>
+      </div>
+      <div class="tab-pane" id="companyinsights">
+        <div>
+          <table class="table table-striped">
+            <tr>
+              <th>Job</th>
+              <th>mean</th>
+              <th>min</th>
+              <th>max</th>
+            </tr>
+            <% @company_salaries_byJob.take(5).each do |salary| %>
+                <tr>
+                  <td><%= salary[:job]%></td>
+                  <td><%= salary[:mean]%></td>
+                  <td><%= salary[:min]%></td>
+                  <td><%= salary[:max]%></td>
+                </tr>
+            <% end %>
+          </table>
+        </div>
+        <div>
+          <table class="table table-striped">
+            <tr>
+              <th>Rating</th>
+              <th>Value</th>
+            </tr>
+            <% @company_ratings.each do |rating| %>
+                <tr>
+                  <td><%= rating['name']%></td>
+                  <td><%= rating['value']%></td>
+                </tr>
+            <% end %>
+          </table>
+        </div>
+        <hr class="hr-header">
+        <div id="insights-company-hiring-trend" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+        <hr class="hr-header">
+        <div id="insights-company-skills" style="height: 400px; margin: 0 auto"></div>
+        <hr class="hr-header">
+        <div id="insights-company-major" style="height: 400px; margin: 0 auto"></div>
+        <hr class="hr-header">
+        <div>
+          <table align="center">
+            <tr>
+              <td>
+                <div class="tile">
+                    <br/>
+                    <div class="tile-header">
+                            <span class="tile-header-text">
+                              Interview Difficulty
+                            </span>
+                </div>
+                    <div class="tile-main">
+                  <div class="tile-main-text">
+                    <span><%= @interview_difficulty %></span>
+                  </div>
+                </div>
+                </div>
+              </td>
+              <td>
+                <div id="insights-company-interview-experience" style="margin: 0; height: 500px; width: 500px"></div>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <hr class="hr-header">
+        <div id="insights-company-hiring-sources" style="margin: 0;"></div>
+      </div>
+    </div>
+</div>
+<div class="accordion" id="accordion2">
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+        Collapsible Group Item #1
+      </a>
+    </div>
+    <div id="collapseOne" class="accordion-body collapse in">
+      <div class="accordion-inner">
+        Anim pariatur cliche...
+      </div>
+    </div>
+  </div>
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+        Collapsible Group Item #2
+      </a>
+    </div>
+    <div id="collapseTwo" class="accordion-body collapse">
+      <div class="accordion-inner">
+        Anim pariatur cliche...
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+    public_profile_views_data = <%= @view_count_date_data_string %>;
+    load_insights_data_profileviews(public_profile_views_data);
+    <% unless @company_view_count_data_string.blank? %>
+    company_profile_views_data = <%= raw(@company_view_count_data_string) %>;
+    load_insights_data_profileviews_companies(company_profile_views_data);
+    <% end %>
+    resume_score_contributions_data = <%= raw(@resume_score_contributions_data_string) %>;
+    load_insights_data_resume_contributions(resume_score_contributions_data);
+    <% unless @major_data_string.blank? %>
+        major_data = <%= raw(@major_data_string) %>;
+        load_insights_data_major(major_data);
+    <% end %>
+    <% unless @hiring_major_year_data_string.blank? %>
+        major_year_data = <%= raw(@hiring_major_year_data_string) %>;
+        load_insights_data_major_year(major_year_data);
+    <% end %>
+    <% unless @skills_data_string.blank? %>
+        skills_data = <%= raw(@skills_data_string) %>;
+        load_insights_data_skills(skills_data);
+    <% end %>
+    <% unless @interview_experience_data_string.blank? %>
+        exp_data = <%= raw(@interview_experience_data_string) %>;
+        load_insights_data_interview_experience(exp_data);
+    <% end %>
+    <% unless @hiring_sources_data_string.blank? %>
+        sources_data = <%= raw(@hiring_sources_data_string) %>;
+        load_insights_data_Hiring_sources(sources_data);
+    <% end %>
+</script>

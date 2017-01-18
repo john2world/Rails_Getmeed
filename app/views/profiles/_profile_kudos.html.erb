@@ -1,0 +1,28 @@
+<% unless params[:showRajni] %>
+    <% if current_user.blank? %>
+        <div>
+          <div>
+            <a href="/?reg=true" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-star-empty"></span>
+              <%= "Kudos #{data[:kudos_count]}" %></a>
+          </div>
+        </div>
+    <% else %>
+        <div>
+          <% unless data[:handle].eql? current_user.handle %>
+              <%= form_tag({:controller => 'kudos', :action => 'give_kudos_from_profile', :id => data[:_id]}, :style => 'margin: 0 0 0', :html => {:multipart => true}, :remote => true) do %>
+                  <% if !data[:viewer_gave_kudos].blank? and data[:viewer_gave_kudos] %>
+                      <%= button_tag(type: 'submit', :id => data[:_id], class: 'btn btn-xs btn-default', :disabled => true) do %>
+                          <span class="glyphicon glyphicon-star "></span> <%= (!data[:kudos_count].blank? and data[:kudos_count]>0) ? "#{data[:kudos_count]}" : '' %>
+                      <% end %>
+                  <% else %>
+                      <%= button_tag(type: 'submit', :id => data[:_id], class: 'btn btn-xs btn-default') do %>
+                          <span class="glyphicon glyphicon-star "></span> <%= (!data[:kudos_count].blank? and data[:kudos_count]>0) ? "#{data[:kudos_count]}" : '' %>
+                      <% end %>
+                  <% end %>
+              <% end %>
+          <% end %>
+        </div>
+    <% end %>
+<% end %>
+
+

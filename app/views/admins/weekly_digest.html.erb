@@ -1,0 +1,36 @@
+<p class="accordion lightbox-text">
+     Generate Weekly Digest
+</p>
+<hr class="hr-header">
+<div class="any-center">
+  <span class="label label-success">
+  <% unless flash[:alert].blank? %>
+    <%= flash[:alert] %>
+  <% end %>
+      </span>
+</div>
+
+<%= form_tag({:action => :weekly_digest_generate}, :class => 'form-submit', :style => 'padding: 35px 100px 35px;', :html => {:multipart => true}) do %>
+    <div class="form-view" style="text-align: center;">
+      <div>
+        <img src="https://res.cloudinary.com/resume/image/upload/c_scale,w_800/v1450758513/Software_Engineering_Community_-_Meed_amwvnl.png" width="600">
+      </div>
+      <div class="form-group">
+        <%= text_field_tag :collection_id, nil, :class => 'form-control', :required => true, :placeholder => 'Please add target default collection id (required)' %>
+      </div>
+      <div>
+        <img src="https://res.cloudinary.com/resume/image/upload/c_scale,w_800/v1450758698/For_anyone_who_s_new_to_building_web_frameworks__This_is_a_detailed_write_up__-_Meed_bw1mm8.png" width="700">
+      </div>
+
+      <div class="form-group">
+        <%= text_field_tag :feed_ids, nil, :class => 'form-control', :required => true, :placeholder => 'Please add feed ids separated by comma 3 MAX (required)' %>
+      </div>
+      <div>
+        <img src="http://res.cloudinary.com/resume/image/upload/c_scale,w_800/v1450759498/Software_Developer_at_Cargo_Chief_-_Meed_ebwkap.png" width="700">
+      </div>
+      <div class="form-group">
+        <%= text_field_tag :job_ids, nil, :class => 'form-control', :required => true, :placeholder => 'Please add job ids separated by comma 2 MAX (required)' %>
+      </div>
+    </div>
+    <%= submit_tag 'Submit', :class => 'btn btn-primary', :data => {:disable_with => 'Please wait..'} %>
+<% end -%>

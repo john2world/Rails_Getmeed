@@ -1,0 +1,47 @@
+<div id="comment_<%= data.id %>">
+  <div class="blog-list blog-category-list">
+    <article class="post comment-post col-md-12 col-sm-12 col-xs-12 col-md-offset-0 col-sm-offset-0 col-xs-offset-0">
+      <div class="post-inner">
+        <div class="content comment-content comment-feed-container">
+          <div class="date-label comment-date-label">
+            <a href="/<%= data[:user].handle %>">
+              <% if !current_user.blank? and !data[:user].blank? and data[:user].is_meediorite? %>
+                  <div class="user-image-comment-badge">M</div>
+              <% end %>
+              <% if data[:user][:image_url].blank? %>
+                  <img class="img-responsive image-tiny" src="http://res.cloudinary.com/resume/image/upload/c_scale,w_75/v1405632414/user_male4-128_q1iypj.png" style="float:left;margin:0 5px 0 0;"/>
+              <% else %>
+                  <img class="img-responsive image-tiny" src="<%= data[:user][:image_url] %>" style="float:left;margin:0px 0px 0 5px"/>
+              <% end %>
+            </a>
+          </div>
+          <div class="article-container">
+            <div class="post-title">
+              <a href="<%= data[:user].profile_url %>" class="comment-title"><%= data[:user].name %></a>
+              <% if data.commenter_tagline.blank? %>
+                  <% if data[:user].headline.blank? %>
+                        <span class="info-text-small">
+                             Class of <%= data[:user].year %>
+                            </span>
+                  <% else %>
+                      <span class="info-text-small"> <%= data[:user].headline %></span>
+                  <% end %>
+              <% else %>
+                  <span class="info-text-small"> <%= data.commenter_tagline %></span>
+              <% end %>
+            </div>
+            <div class="comment-description">
+              <%= data.description.html_safe %>
+            </div>
+            <% unless current_user.blank? %>
+              <span id="feed-comment-actions-<%= data.id %>">
+                <%= render 'comments/render_comment_actions', :data => data %>
+              </span>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+</div>
+<hr class="hr-profile-separator">

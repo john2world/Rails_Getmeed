@@ -1,0 +1,78 @@
+<div class="main-wrap">
+  <div class="row">
+    <section id="activity-feed-wrap" class="main">
+      <site-nav class="side" user-collections="userCollections"></site-nav>
+      <tag-nav class="side" trending-tags="trendingTags"></tag-nav>
+
+      <h1>
+        All Jobs
+      </h1>
+
+      <hr class="hr-header" />
+
+      <div ng-hide="jobs && jobs.length > 0">
+        <div class="aligned-center feed-container">
+          <div class="inner-container">
+            <a class="button post" ng-href="/jobs/new">
+              <i class="fa fa-edit"></i> Post Job
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div id="activity-feed" ng-show="jobs && jobs.length > 0">
+        <a class="button post" ng-href="/jobs/new">
+          <i class="fa fa-edit"></i> Post Job
+        </a>
+
+        <ul tagged-infinite-scroll="getMore()" tagged-infinite-scroll-disabled="scroll_disabled">
+          <li ng-repeat="job in jobs" class="row activity-feed-item activity-feed-item-storyactivity-feed-item">
+            <div class="poster-info">
+              <div class="avatar-wrap">
+                <img ng-src="{{ ::job.company_logo}}"/>
+              </div>
+
+              <div class="poster-name-and-headline">
+                <p class="name">
+                  <a href="/job/{{::job.hash}}" target="_blank" class="poster-name">
+                    {{ ::job.title }}
+                  </a>
+                </p>
+              </div>
+            </div>
+
+            <div class="activity-feed-item-content">
+              <div class="activity-feed-item-description-wrap" ng-class="{noimage: !feedItem.small_image_url }">
+
+                    <span class="activity-feed-item-caption">
+                        <div ng-bind-html="::job.description" ng-text-truncate="::job.description" ng-tt-words-threshold="30"></div>
+                    </span>
+              </div>
+            </div>
+
+            <div class="feed-actions">
+              <div class="feed-item-action-buttons">
+                <a class="button medium-small" ng-class='{"button-primary-inverse": job.live, "button-primary": !job.live}' ng-click="toggle(job)">
+                  <span class="label">
+                    <i class="fa " ng-class='{"fa-pause": job.live, "fa-play": !job.live}'></i> {{job.live ? "Pause" : "Resume"}}
+                  </span>
+                </a>
+
+                <a class="feed-item-action edit" ng-href="/jobs/{{::job._id}}/edit">
+                  <span class="label">Edit</span>
+                </a>
+
+                <a class="feed-item-action delete" ng-click="del(job)">
+                  <span class="label">Delete</span>
+                </a>
+              </div>
+            </div>
+          </li>
+
+          <loader ng-if="scroll_fetching"> </loader>
+        </ul>
+      </div>
+    </section>
+  </div>
+</div>
+

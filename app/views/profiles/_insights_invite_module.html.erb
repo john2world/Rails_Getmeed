@@ -1,0 +1,36 @@
+<%= form_tag({:controller => 'home', :action => 'invite_users'}, :class => 'form-submit', :html => {:multipart => true}) do %>
+
+    <div style="margin-bottom: 10%">
+      <% if from_job_apply %>
+          Invite <strong>THREE</strong> friends who could
+          <strong><span style="text-decoration: underline">ENDORSE</span></strong> your Meed.
+      <% else %>
+          Invite <strong>THREE</strong> friends to
+          <strong><span style="text-decoration: underline">UNLOCK</span></strong> your resume insights (who viewed your
+          resume etc)
+      <% end %>
+
+    </div>
+    <div class="row" style="text-align: center;margin-bottom: 10%">
+      <%= hidden_field_tag :show_easter, params[:showEaster], :id => 'course_hidden' %>
+      <div><%= text_field_tag :invite_id_1, nil, :class => 'spanTbThree', :placeholder => 'friend email' %>
+        @<%= @school_prefix_handle %>
+      </div>
+      <div><%= text_field_tag :invite_id_2, nil, :class => 'spanTbThree', :placeholder => 'friend email' %>
+        @<%= @school_prefix_handle %>
+      </div>
+      <div><%= text_field_tag :invite_id_3, nil, :class => 'spanTbThree', :placeholder => 'friend email' %>
+        @<%= @school_prefix_handle %>
+      </div>
+
+      <% if !alert.blank? %>
+          <p class="label label-important">
+            <%= alert %>
+          </p>
+      <% end %>
+    </div>
+    <%= submit_tag 'Invite Friends', :class => 'button button-blue', :disable_with => 'Sending emails..' %>
+    <br/>    <br/>
+
+<% end %>
+

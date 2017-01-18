@@ -1,0 +1,30 @@
+<div class="collections-browse">
+    <categories-feed
+    private-collections="privateCollections"
+    public-collections="publicCollections"
+    currentUser="currentUser"
+    category="category"
+    load-category="loadCategory"
+    ></categories-feed>
+  <div class="main-wrap">
+    <div class="row">
+      <section class="main" >
+          <site-nav class="side" user-collections="userCollections"></site-nav>
+        <div class="main-inner-wrap">
+          <p class="feed-title">Top groups in <strong>{{ ::category.title }}</strong></p>
+          <loader ng-show="loading"></loader>
+          <collections-list ng-show="!loading"
+            collections="allCollections"
+            category="category"
+            currentUser="currentUser"
+            show-new="showNew"></collections-list>
+        </div>
+      </section>
+    </div>
+    <div class="row">
+        <site-nav class="bottom" user-collections="userCollections"></site-nav>
+    </div>
+  </div>
+</div>
+
+

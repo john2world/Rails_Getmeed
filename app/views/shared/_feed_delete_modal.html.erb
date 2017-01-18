@@ -1,0 +1,26 @@
+<div class="modal fade" id="feedDeleteModal" tabindex="-1" role="dialog" aria-labelledby="ownerBoxLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <p class="accordion lightbox-text">
+          Confirmation
+        </p>
+        <hr class="hr-profile-header">
+      </div>
+      <div class="modal-body">
+        Are you sure you want to delete your post?
+      </div>
+      <div class="modal-footer">
+        <%= form_tag({:controller => 'feed', :action => :delete}, :style => 'margin: 0px 0px 0px', :html => {:multipart => true}, :remote => true) do %>
+            <%= hidden_field_tag :feed_id, '', :id => 'feed_delete_id' %>
+            <div class="any-center">
+            <%= button_tag(type: 'submit', class: 'btn btn-sm btn-danger') do %>
+                <span class="glyphicon glyphicon-trash"></span> Delete
+            <% end %>
+            </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

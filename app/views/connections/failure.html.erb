@@ -1,0 +1,12 @@
+<p class="accordion lightbox-text">
+  Please try again :(
+</p>
+<hr class="hr-header">
+<div class="any-center">
+  <label class="label label-important" style="margin-left: 6%">Something went wrong!</label>
+</div>
+<% if current_user.blank? %>
+    <%= render 'connections/import_waiting_list_connections', :school_handle => @school_prefix_handle %>
+<% else %>
+    <%= render 'connections/import_connections', :school_prefix => get_school_prefix, :school_prefix_handle => @school_prefix_handle, :show_custom_email => true %>
+<% end %>

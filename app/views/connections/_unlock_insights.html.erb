@@ -1,0 +1,44 @@
+<hr class="job-create-hr" style="margin-top: 4%">
+<p class="job-create-heading offset1">
+  Invite by Email
+</p>
+<hr class="job-create-hr">
+<%= form_tag({:controller => 'home', :action => 'invite_users'}, :class => 'form-submit-small', :html => {:multipart => true}) do %>
+    <div class="row" style="text-align: center;margin-bottom: 10%;">
+      <div><%= text_field_tag :invite_id_1, nil, :class => 'spanTbThree', :placeholder => 'friend email' %>
+        @<%= get_school_prefix %>
+      </div>
+      <div><%= text_field_tag :invite_id_2, nil, :class => 'spanTbThree', :placeholder => 'friend email' %>
+        @<%= get_school_prefix %>
+      </div>
+      <div><%= text_field_tag :invite_id_3, nil, :class => 'spanTbThree', :placeholder => 'friend email' %>
+        @<%= get_school_prefix %>
+      </div>
+
+      <% unless alert.blank? %>
+          <p class="label label-important">
+            <%= alert %>
+          </p>
+      <% end %>
+    </div>
+    <%= submit_tag 'Invite Connections', :class => 'button button-blue', :disable_with => 'Sending emails..' %>
+<% end %>
+<span class="any-center size18">OR</span>
+<hr class="job-create-hr" style="margin-top: 7%">
+<p class="job-create-heading offset1">
+  Invite <%= current_school_handle.upcase %> contacts
+</p>
+<hr class="job-create-hr">
+<div class="form-submit-small">
+  <img src="<%= get_school_logo_url(current_school_handle) %>" class="univ-logo">
+  <br/>
+  <br/>
+  <a href="/contacts/gmail">
+    <%= button_tag "#{current_school_handle.upcase} GMAIL", :id => '', :class => 'button btn-google-plus', :disable_with => 'Fetching contacts..' %>
+  </a>
+  <br/>
+  <br/>
+
+	<span class="info-text">
+	*Remember to select <strong><%= current_school_handle.upcase %> GMAIL ACCOUNT</strong>  </span>
+</div>

@@ -1,0 +1,28 @@
+<p class="accordion lightbox-text">Messages Inbox
+</p>
+<hr class="hr-header">
+<% if @messages.blank? %>
+    <div class="form-view">
+      <table class="row-view">
+        <tr class="empty-messages" style="text-align: center">
+          <p class="info-text-large" style="text-align: center"> Looks like you have no messages!
+          </p>
+        </tr>
+      </table>
+    </div>
+<% else %>
+    <div id="content">
+      <div id="my-tab-content" class="tab-content">
+        <div class="tab-pane fade in active" id="all">
+          <% unless @messages.blank? %>
+              <table class="table">
+                <% @messages.each do |message| %>
+                    <%= render 'view_messages', :message => message %>
+                <% end %>
+              </table>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <%= paginate @messages %>
+<% end %>

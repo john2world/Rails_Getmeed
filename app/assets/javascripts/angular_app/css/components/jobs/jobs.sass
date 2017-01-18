@@ -1,0 +1,149 @@
+$job_company_logo_width: 7.2rem
+
+
+
+
+.job-loader
+  width: 100%
+  text-align: center
+
+
+.job-single
+  .main-inner-wrap
+    margin-top: 5rem
+    padding-bottom: 30rem // To leave space for the job feed which has a fixed position
+  .galleria
+    width: 100%
+    img
+      width: 100%
+  .job-description
+    p
+      margin-bottom: 1.5rem
+    li
+      margin-bottom: 0.5rem
+      list-style-position: outside
+    ul, ol
+      margin-left: 6%
+    ul li
+      list-style-type: disc
+    ol li
+      list-style-type: decimal
+
+  section
+    h4
+      text-align: center
+
+  .job-company-logo
+    float: left
+    width: $job_company_logo_width
+    // border-radius: 50%
+    overflow: hidden
+    height: $job_company_logo_width
+    margin-right: 1.5rem
+    text-align: center
+    line-height: $job_company_logo_width
+    a
+      display: block
+      width: 100%
+      height: 100%
+    img
+      // width: 100%
+      // height: 100%
+      max-width: $job_company_logo_width
+      max-height: $job_company_logo_width
+
+  .job-basics
+    margin-bottom: 1.5rem
+    width: 100%
+    float: left
+    h3, p
+      margin-bottom: 0.5rem
+    h3
+      font-size: $font_size_medium_large
+    .job-metadata
+      font-size: $font_size_medium_small
+
+  .author-basics
+    @extend .job-basics
+    h2.author-basics-title
+      font-size: $font_size_large
+      color: $light_text
+    h3.author-name
+      font-size: $font_size_regular
+    .author-headline
+      color: $very_light_text
+      .author-work
+        font-size: $font_size_regular
+        width: 100%
+        display: block
+      .author-bio
+        font-size: $font_size_medium_small
+
+  .apply
+    float: right
+    margin-left: 15px
+
+.job-title
+  float: left
+
+#job-apply-modal
+  max-width: 100%
+  h2
+    font-size: $font_size_medium_large
+
+  textarea
+    min-height: 200px
+
+
+  .open-covernote-form
+    margin-left: 15px
+    float: right
+
+  .step
+    display: none
+
+  .notify
+    margin-left: 15px
+    margin-top: 15px
+
+
+  // #covernote-form
+  //   display: none
+
+#job-follow-up-modal
+  textarea
+    min-height: 200px
+
+
+
+/* MEDIA QUERIES! */
+
+/* Bigger than mobile */
+@media (min-width: 340px)
+  #job-apply-modal
+    width: auto
+
+
+/* Bigger than 550 */
+@media (min-width: 550px)
+  .job-title
+    float: none
+
+
+/* Bigger than 750 */
+@media (min-width: 750px)
+
+
+/* Bigger than 1000 */
+@media (min-width: 1000px)
+
+
+
+
+
+
+
+
+
+
+

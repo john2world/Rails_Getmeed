@@ -1,0 +1,8 @@
+if (<%= @success %>) {
+  $('#messageRecruiterModal').modal('toggle');
+} else {
+  button = $('#messageRecruiterModal').find(".modal-footer > div > button");
+  // set text
+  inner_html = button.html().replace("Send Message", "Try Again");
+  button.html(inner_html);
+}

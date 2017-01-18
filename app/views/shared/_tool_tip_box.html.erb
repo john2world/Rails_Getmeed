@@ -1,0 +1,35 @@
+<div style="margin-top: 1%">
+  <% if is_profile_incomplete and params[:reg].blank? %>
+      <%= render 'shared/incomplete_profile' %>
+<% elsif current_user.image_url.blank? %>
+      <div class="alert alert-danger alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <span class="any-center" style="color: #383838"> <strong>Important: </strong>Your Meed profile picture is absent, update your photo <a href="/<%= current_user[:handle] %>">here</a></span>
+      </div>
+  <% elsif (rand(1..5) == 1) and params[:reg].blank? %>
+      <div class="alert alert-success alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <div class="any-center"><strong>Pro tip: </strong>Give kudos to others and receive some in return. It helps in
+          better <span style="text-decoration:underline">profile ranking</span></div>
+      </div>
+  <% elsif (rand(1..5) == 2) and params[:reg].blank? %>
+      <div class="alert alert-success alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <div class="any-center"><strong>Pro tip: </strong>Ask questions to get answers from right people, knowledge
+          sharing improves your <span style="text-decoration:underline">profile ranking</span></div>
+      </div>
+  <% elsif (rand(1..5) == 3) and params[:reg].blank? %>
+      <div class="alert alert-success alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <div class="any-center"><strong>Pro tip: </strong>Invite people you know who could vet your skills and share
+          their updates — <a style="font-size: 14px;color:#00a651;" href="/connections"> Learn more </a></div>
+      </div>
+  <% elsif (rand(1..5) == 4) and params[:reg].blank? %>
+      <div class="alert alert-success alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <div class="any-center"><strong>Pro tip: </strong>Use search to find other students by their skills, courses,
+          internships etc to interact with them.
+        </div>
+      </div>
+  <% end %>
+</div>

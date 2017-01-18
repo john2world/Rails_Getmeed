@@ -1,0 +1,23 @@
+<img src="<%= asset_path 'common/ajax-loader.gif' %>" id="loading-indicator" style="display:none"/>
+<div class="any-center">
+  <% if user.is_meediorite? %>
+      <div class="user-image-badge">M</div>
+  <% end %>
+  <% if user.image_url.blank? %>
+      <img class="img-responsive image-medium" style="bottom: 0px" src="http://res.cloudinary.com/resume/image/upload/v1409877319/user_male4-128_q1iypj_lgzk5i.jpg" id="image_profile_photo"/>
+  <% else %>
+      <img class="img-responsive image-medium " style="bottom: 0px" src="<%= user.image_url %>" id="image_profile_photo"/>
+  <% end %>
+  <% if is_edit %>
+      <%= form_for user, :remote => true, url: '/profiles/photo/save', method: :save_profile_photo, :class => 'row', :html => {:id => 'logo_upload_form'} do |f| %>
+          <div class="any-center">
+            <div>
+              <%= f.filepicker_field :image_url, onchange: 'onPhotoUpload("logo_upload_form", event)', :button_text => 'Import photo', :button_class => 'btn btn-xs btn-success' %>
+            </div>
+            <div><span class="info-text-small"> (Import from Computer, Dropbox, Facebook etc.)</span>
+            </div>
+            <hr>
+          </div>
+      <% end %>
+  <% end %>
+</div>

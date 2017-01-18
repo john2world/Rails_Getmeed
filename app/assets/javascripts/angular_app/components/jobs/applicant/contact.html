@@ -1,0 +1,24 @@
+<div class="modal">
+  <legend>Send Email to <span type="student-name">{{::applicant.name}}</span></legend>
+  <form ng-submit="contactForm.$valid && close(true)" name="contactForm" novalidate>
+    <p>
+      <span class="info-text-large">To: </span>
+      <span type="student-name">{{::applicant.name}}</span>
+    </p>
+
+    <fieldset>
+      <input ng-model="subject" required placeholder='Message Subject (*Required)' type="text"></input>
+    </fieldset>
+
+    <fieldset>
+      <wysihtml5-toolbar wysihtml5-toolbar-id="wysihtml5-toolbar-contact_description" wysihtml5-textarea-id="contact_description"></wysihtml5-toolbar>
+      <textarea ng-model="description" id="contact_description" required placeholder='Message Body (*Required)' cols=45 rows=10></textarea>
+    </fieldset>
+
+    <button class="medium-small button-secondary-inverse unfollow ng-scope">
+      <span class="glyphicon glyphicon-ok-circle"></span>Send Email
+    </button>
+
+    <button ng-click="close(false)" class="medium-small button-primary-inverse unfollow ng-scope">Not Now</button>
+  </form>
+</div>

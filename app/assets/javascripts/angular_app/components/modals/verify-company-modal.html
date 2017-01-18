@@ -1,0 +1,14 @@
+<div class="sign-up-modal">
+  <form ng-submit="submit()" class="signup-form" ng-hide="valid_email">
+    <div class="form-group">
+      <p ng-repeat="err in errors.email">{{err}}</p>
+      <input ng-model="email" class="form-control" name="email" placeholder="Enter corporate email (ex: sam@microsoft.com)" required="required" type="text">
+    </div>
+
+    <button class="button" type="submit">
+      connect company
+    </button>
+  </form>
+
+  <p ng-show="valid_email">Your email looks good. Sent a verification email to <strong>{{email}}</strong></p>
+</div>

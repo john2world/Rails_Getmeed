@@ -1,0 +1,43 @@
+<p class="accordion lightbox-text">Jobs Status in last <%= params[:days].to_i %> days for <a href="/<%= params[:handle] %>"><%= params[:handle] %></a>
+</p>
+<hr class="hr-header">
+<div id="content">
+  <div id="my-tab-content" class="tab-content">
+    <table class="table">
+      <tr>
+        <td class="job-applicant-heading">
+          Job title
+        </td>
+        <td class="job-applicant-heading">
+          Company
+        </td>
+        <td class="job-applicant-heading">
+          View Count
+        </td>
+        <td class="job-applicant-heading">
+          Apply Count
+        </td>
+      </tr>
+      <% unless @jobs_metadata.blank? %>
+        <% @jobs_metadata.each do |job| %>
+          <% if !job.blank? %>
+            <tr>
+              <td class="job-applicant-td">
+                <a href="/job/<%= encode_id(job[:job_id]) %>" class="job-applicant-name" target="_blank"> <%= job[:title].upcase %></a>
+              </td>
+              <td class="job-applicant-td">
+                <a href="/<%= job[:company_id] %>"><%= job[:company] %></a>
+              </td>
+              <td class="job-applicant-td">
+                <%= job[:view_count] %>
+              </td>
+              <td class="job-applicant-td">
+                <%= job[:apply_count] %>
+              </td>
+            </tr>
+          <% end %>
+        <% end %>
+      <% end %>
+    </table>
+  </div>
+</div>

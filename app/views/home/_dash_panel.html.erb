@@ -1,0 +1,30 @@
+<% unless alert.blank? %>
+    <div class="alert alert-info alert-dismissable">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= alert %>
+    </div>
+<% end %>
+<div id="content">
+  <ul id="allTabs" class="nav nav-tabs nav-justified" data-tabs="tabs">
+    <li id="myfeed" class="active" ><a href="#feed" data-toggle="pill"><span class="fa fa-group"></span> My Feed</a></li>
+    <li id="show_jobs">
+      <a href="#jobs" data-toggle="pill" data-intro="Jobs for you" data-position="bottom" data-tier="home-1">
+        <span class="glyphicon glyphicon-briefcase"></span> Jobs
+      </a>
+    </li>
+  </ul>
+  <div id="all-tab-content" class="tab-content">
+    <div class="tab-pane fade in active" id="feed">
+      <%= render 'feed/render_feed_items' %>
+    </div>
+    <div class="tab-pane fade in" id="jobs">
+      <%= render 'jobs/render_jobs' %>
+    </div>
+  </div>
+</div>
+<script>
+  $(document).ready(function () {
+    loadJobs('all');
+    loadFeed('all');
+  });
+</script>

@@ -1,0 +1,36 @@
+<div class="profile-education profile-section" ng-if="profile.educations || profile.is_viewer_profile">
+  <h3>
+    Education
+    <a class="open-profile-add-education edit-link"
+       ng-click="educationFns.add()"
+       ng-show="profile.is_viewer_profile">
+       <i class="fa fa-plus-square"></i> Add
+    </a>
+  </h3>
+  <div ng-repeat="item in profile.educations"
+       id="education-{{ item._id }}"
+       class="education-entry">
+    <div class="education-entry-show" ng-show="!item.showEdit()">
+      <div class="entry-title">
+        <h4>
+          {{ item.name }}
+          <a class="open-profile-edit-education edit-link"
+             ng-click="educationFns.edit(item)"
+             ng-show="profile.is_viewer_profile">
+             <i class="fa fa-pencil-square-o"></i> Edit
+          </a>
+          <a class="profile-delete-education delete-link"
+             ng-click="educationFns.del(item)"
+             ng-show="profile.is_viewer_profile">
+             <i class="fa fa-times"></i> Delete
+          </a>
+
+        </h4>
+        <span class="profile-date">{{ item.start_year }} - {{ item.end_year }}</span>
+      </div>
+      <p class="education-degree-major">{{ item.degree }} - {{ item.major }}</p>
+    </div>
+
+    <profile-education-edit ng-if="profile.is_viewer_profile"></profile-education-edit>
+  </div>
+</div>

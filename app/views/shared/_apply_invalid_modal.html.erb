@@ -1,0 +1,23 @@
+<div class="modal fade" id="invalidApplyModal" tabindex="-1" role="dialog" aria-labelledby="ownerBoxLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <p class="accordion lightbox-text">
+          This job is not posted for your majors!
+        </p>
+        <hr class="hr-profile-header">
+      </div>
+      <div class="modal-body">
+        <div style="text-align: center">
+          Sorry, It appears this job doesn't fit your majors.
+        </div>
+        </div>
+        <div class="modal-footer">
+          <div class="any-center">
+            <%= button_to 'Take me to my Jobs', "javascript:location.href = '#{url_for :controller => "/home"}#jobs'", class: 'btn btn-sm btn-primary cursor buzz-out' %>
+          </div>
+        </div>
+        </div>
+      </div>
+</div>

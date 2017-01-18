@@ -1,0 +1,99 @@
+<div class="profile-edit-section" ng-show="item.showEdit()">
+<form
+  accept-charset="UTF-8"
+  name="experienceForm"
+  ng-submit="fns.submitSave(item, experienceForm.$valid)"
+  novalidate="novalidate"
+  >
+  <fieldset class="row">
+    <label class="columns six">
+      <span>Company</span>
+      <tag-company only-one="true" model="item.company"></tag-company>
+    </label>
+    <label class="columns six">
+      <span>Title</span>
+      <input
+        class="u-full-width"
+        ng-model="item.title"
+        required="required"
+        type="text" />
+    </label>
+  </fieldset>
+  <fieldset class="row">
+    <label class="columns three">
+      <span>Start Month</span>
+      <select
+        class="u-full-width"
+        ng-model="item.start_month_num"
+        ng-options="month.num as month.display for month in months"
+        required="required"
+        >
+      </select>
+    </label>
+    <label class="columns three">
+      <span>Start Year*</span>
+      <select
+        name="start_year"
+        class="u-full-width"
+        ng-model="item.start_year"
+        ng-options="year for year in years | maxFilter:item.end_year"
+        required="required"
+        >
+      </select>
+    </label>
+    <label class="columns three">
+      <span>End Month</span>
+      <select
+        class="u-full-width"
+        ng-model="item.end_month_num"
+        ng-options="month.num as month.display for month in months"
+        >
+      </select>
+    </label>
+    <label class="columns three">
+      <span>End Year</span>
+      <select
+        name="end_year"
+        class="u-full-width"
+        ng-model="item.end_year"
+        ng-options="year for year in years | minFilter:item.start_year"
+        >
+      </select>
+
+    </label>
+  </fieldset>
+
+  <fieldset class="row">
+    <label class="u-full-width">
+      <span>Description*</span>
+      <wysihtml5-toolbar
+          wysihtml5-toolbar-id="wysihtml5-toolbar-{{item._id}}"
+          wysihtml5-textarea-id="item-description-{{item._id}}"></wysihtml5-toolbar>
+      <textarea
+        ng-model="item.description"
+        id="item-description-{{item._id}}"
+        class="u-full-width"
+        required="required"></textarea>
+    </label>
+  </fieldset>
+
+  <fieldset class="row">
+    <label class="columns six">
+      <span>Skills*</span>
+      <skills-select item="item" profile="profile"></skills-select>
+    </label>
+    <label class="columns six">
+      <span>Link (optional)</span>
+      <input type="url" ng-model="item.link" class="u-full-width">
+    </label>
+  </fieldset>
+  <p
+    ng-show="item.submitted && experienceForm.$invalid"
+    class="error">
+    Please enter valid data for all required (*) fields.
+  </p>
+  <input class="button-primary" type="submit" value="Save" />
+  <input type="button" class="button" value="Cancel" ng-click="fns.closeEdit(item, true)"/>
+
+</form>
+</div>

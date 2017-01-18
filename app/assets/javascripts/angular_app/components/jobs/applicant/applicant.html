@@ -1,0 +1,87 @@
+<div class="row activity-feed-item activity-feed-item-story">
+  <div class="poster-info">
+    <div class="avatar-wrap">
+      <div class="user-image-badge-{{ ::applicant.badge }}"></div>
+      <a ng-href="/{{ ::applicant.handle }}">
+        <img ng-src="{{ ::applicant.small_image_url}}"/>
+      </a>
+    </div>
+
+    <div class="poster-name-and-headline">
+      <p class="name">
+        <a ng-href="/{{ ::applicant.handle }}" target="_blank" class="poster-name">
+          {{ ::applicant.name }}
+        </a>
+
+        <span ng-if="::applicant.applied_time">
+          <span class="action"><i class="fa fa-caret-right"></i></span>
+          <a ng-href="/job/{{ ::applicant.job.hash }}" target="_blank" class="link"> {{ ::applicant.job.title }}</a>
+          </span>
+        </span>
+      </p>
+
+      <div class="activity-user-headline">
+        <span ng-text-truncate="::applicant.headline" ng-tt-chars-threshold="50" ng-tt-no-toggling></span>
+        <span>{{::applicant.degree}} ({{::applicant.major}})</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="activity-feed-item-content">
+    <div class="activity-feed-item-description-wrap" ng-class="{noimage: !feedItem.small_image_url }">
+      <div class="picture-wrap" ng-if="feedItem.small_image_url">
+        <a ng-href="{{ ::feedItem.external_url }}" ng-click="feedItem.trackClick()" target="_blank">
+          <img ng-src="{{ ::feedItem.small_image_url }}"/>
+        </a>
+      </div>
+
+      <div class="story-link" ng-if="applicant.answer">
+        <span style="font-size: 12px;color: #999999;">{{applicant.answer.date}}</span>
+        <span ng-bind-html="::applicant.answer.description"></span>
+        <code ng-if="answer.gist_id" data-gist-id="{{applicant.answer.gist_id}}" data-gist-hide-footer="true"></code>
+      </div>
+
+      <div class="story-link" ng-if="!applicant.answer">
+        <i class="fa fa-quote-left"></i>
+        <span ng-bind-html="::applicant.story"></span>
+        <i class="fa fa-quote-right"></i>
+      </div>
+    </div>
+
+    <div class="feed-actions">
+      <div class="feed-item-action-buttons">
+        <a ng-click="shortList(applicant)" class="button button-primary medium-small" ng-if="tab == 'applications'">
+          <span class="label"><i class="fa fa-check-square"></i> Short List</span>
+        </a>
+
+        <a ng-click="invite(applicant)" class="button button-primary medium-small" ng-if="tab == 'recommendations'">
+          <span class="label"><i class="fa fa-envelope"></i> Invite</span>
+        </a>
+
+        <a ng-click="profile(applicant)" ng-href="/{{ ::applicant.handle }}" target="_blank" class="feed-item-action">
+          <span class="label">Profile</span>
+        </a>
+
+        <a ng-click="contact(applicant)" class="feed-item-action" ng-if="tab == 'shortlisted'">
+          <span class="label">Contact</span>
+        </a>
+
+        <a ng-click="notes(applicant)" class="feed-item-action" ng-if="tab == 'shortlisted' || tab == 'applications'">
+          <span class="label">Notes</span>
+        </a>
+
+        <a ng-href="/{{::applicant.handle}}/pdf?token={{::applicant.job._id}}" target="_self" class="feed-item-action" ng-if="tab == 'shortlisted'">
+          <span class="label">Download</span>
+        </a>
+
+        <a ng-click="archive(applicant)" class="feed-item-action" ng-if="tab == 'recommendations' || tab == 'applications'">
+          <span class="label">Archive</span>
+        </a>
+
+        <a class="feed-item-action" ng-if="tab == 'applications'">
+          <span class="label">Applied</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

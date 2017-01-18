@@ -1,0 +1,3 @@
+<% unless @photo.blank? %>
+$("#image_profile_photo").attr('src', '<%= @photo.large_image_url %>');
+<% end %>

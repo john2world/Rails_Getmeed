@@ -1,0 +1,21 @@
+
+<div class="row">
+  <% if is_edit and !answers.blank? %>
+      <div>
+        <span class="profile-item-type" style="text-align: center"> ANSWERS</span><span class="info-text" style="font-weight: bold"> (show/hide answers on your resume)</span>
+      </div>
+  <% else %>
+      <% if !answers.blank? %>
+          <div class="profile-item-type"> ANSWERS</div>
+          <%= render 'render_user_answers_data', :answers => answers %>
+          <hr class="hr-profile-separator">
+      <% end %>
+  <% end %>
+  <% if is_edit %>
+      <% if !answers.blank? %>
+          <%= render 'render_user_answers_data', :answers => answers %>
+      <% end %>
+      <div id="view_answer_div">
+      </div>
+  <% end %>
+  </div>

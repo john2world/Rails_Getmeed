@@ -1,0 +1,45 @@
+<% if is_edit %>
+    <div class="row" id="educations">
+      <div>
+        <span class="profile-item-type"> EDUCATION</span>
+        <span class="info-text" style="font-weight: bold"> (add previous education)</span>
+      </div>
+<% else %>
+    <% unless educations.blank? %>
+        <div class="row">
+          <div class="profile-item-type"> EDUCATION</div>
+          <% educations.each_with_index do |education, index| %>
+              <%= render 'view_education_form', :is_edit => is_edit, :education => education %>
+              <% if index != educations.length-1 %>
+                  <hr class="hr-profile-item">
+              <% end %>
+          <% end %>
+          <hr class="hr-profile-separator">
+        </div>
+    <% end %>
+<% end %>
+<% if is_edit %>
+    <% unless educations.blank? %>
+        <% educations.each_with_index do |education, index| %>
+            <%= render 'view_education_form', :is_edit => is_edit, :education => education %>
+            <% if index != educations.length-1 %>
+                <hr class="hr-profile-item">
+            <% end %>
+        <% end %>
+        <hr class="hr-profile-separator">
+    <% end %>
+    <div id="view_education_div">
+    </div>
+    <div id="edit_education_div" style="display: none">
+      <div id="edit_education_new" class='profile-view-table'>
+        <%= render 'new_education_form' %>
+      </div>
+    </div>
+    <a id="add_new_education" href="#new_education_id">
+      <div class="any-center">
+        <strong>Add Education</strong>
+      </div>
+    </a>
+    <hr class="hr-profile-separator">
+    </div>
+<% end %>

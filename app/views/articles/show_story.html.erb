@@ -1,0 +1,112 @@
+<% if @data.blank? %>
+    <p class="accordion lightbox-text">
+      This post is removed/ deleted
+    </p>
+<% elsif @data[:poster_type].eql? 'user' %>
+    <p class="accordion lightbox-text">
+      Participate in the discussion
+    </p>
+    <hr class="hr-profile-item">
+    <% if !current_user.blank? and @data.poster_id.eql? current_user.handle %>
+        <p class="accordion lightbox-text">
+          Start a discussion
+        </p>
+        <hr class="hr-profile-item">
+        <%= render 'feed/social_groups', :data => @data %>'
+    <% end %>
+    <%= render 'articles/user_story', :position => 'story', :data => @data %>
+    <%= render 'feed/feed_comment', :type => '', :feed_id => @data.id, :comments => @data[:comments], :position => nil %>
+    <%= render 'articles/related_stories', :data => @related_content %>
+<% else %>
+    <div class="blog-entry-wrapper">
+      <div class="blog-entry">
+        <article class="post">
+          <% if @data[:photo].blank? %>
+              <img class="blog-entry-heading" style="background: linear-gradient(
+                      rgba(0, 0, 0, 0.1),
+                              rgba(0, 0, 0, 0.1)
+                      ),  url('<%= @data[:large_image_url].to_s%>') no-repeat 50% top;
+              ">
+
+              <div class="container text-center">
+                <h2 class="title"><%= @data.caption %></h2>
+              </div>
+              </img>
+          <% else %>
+              <header class="blog-entry-heading" style="background: linear-gradient(
+                      rgba(0, 0, 0, 0.1),
+                              rgba(0, 0, 0, 0.1)
+                      ),  url('<%= @data[:photo][:large_image_url].to_s%>') no-repeat 50% top;
+              ">
+                <div class="container text-center">
+                  <h2 class="title"><%= @data.caption %></h2>
+                </div>
+              </header>
+          <% end %>
+
+          <div class="article-views"><span class="glyphicon glyphicon-eye-open"></span> <%= @data[:view_count] %> views
+          </div>
+
+          <div class="blog-entry-content col-md-11 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1 col-xs-offset-0">
+            <p>
+              <%= @data.description.html_safe %>
+            </p>
+          </div>
+        </article>
+      </div>
+    </div>
+    <div id="jobs_status">
+      <div id="content">
+        <ul id="allTabs" class="nav nav-tabs nav-justified" data-tabs="tabs">
+          <% unless @data[:jobs].blank? %>
+              <li id="show_jobs" class="active">
+                <a href="#jobs" data-toggle="pill" data-intro="Jobs for you" data-position="bottom" data-tier="home-1">
+                  <span class="glyphicon glyphicon-briefcase"></span> Jobs
+                </a>
+              </li>
+          <% end %>
+        </ul>
+        <div id="all-tab-content" class="tab-content">
+          <div class="table tab-pane fade in active" id="jobs">
+            <% unless @data[:jobs].blank? %>
+                <% @data[:jobs].each do |job| %>
+                    <%= render 'jobs/jobs_student_view', :job => job %>
+                <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+<% end %>
+<div class="modal fade" id="comment-delete-confirm" tabindex="-1" role="dialog" aria-labelledby="ownerBoxLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="ownerLabel">Confirmation</h4>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to delete your comment?
+      </div>
+      <div class="modal-footer">
+        <%= form_tag({:controller => 'comments', :action => :delete}, :style => 'margin: 0px 0px 0px', :html => {:multipart => true}, :remote => true) do %>
+            <%= hidden_field_tag :comment_id, '', :id => 'comment_delete_id' %>
+            <%= submit_tag 'Delete', :class => 'button button-red' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+    <% if current_user.blank? %>
+    $(document).ready(function () {
+      if (window.location.search.indexOf('ssm=true') > 0) {
+        showSignUpModal(0);
+        // Hide the close button for modal
+        $("#signUpModal > .modal-dialog > .modal-content > .modal-header > button.close").hide()
+      } else {
+        showSignUpModal();
+      }
+    });
+    <% end %>
+</script>

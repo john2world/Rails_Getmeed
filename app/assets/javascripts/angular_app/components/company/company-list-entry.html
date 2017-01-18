@@ -1,0 +1,38 @@
+<li class="company-list-entry css-fade">
+    <div class="company-logo-row">
+        <div class="company-logo-wrap">
+            <a ng-href="/company/{{ ::company._id }}" class="biglink">&nbsp;</a>
+            <img ng-src='{{ ::company.company_logo }}' class="company-logo" ng-show="company.company_logo" />
+            <img ng-src='{{getTextImagePlaceholder(generateCompensationText(job), 150, 150)}}' class="company-logo" ng-show="!company.company_logo"/>
+        </div>
+        <h5 class='company-name'>
+           {{ ::company.name | truncateText }}
+        </h5>
+    </div>
+    <hr>
+    <!--<p class="job-location">-->
+        <!--<i class="fa fa-map-marker" ng-if="job.location"></i> {{ ::company.location }}-->
+    <!--<span class="label" ng-if="job.type === 'Mini Internship (Hourly)' && job.hourly_hours">-->
+      <!--<span class="meta-spacer"></span>-->
+      <!--<i class="fa fa-hourglass-start"></i>-->
+      <!--{{ job.hourly_hours }} hrs-->
+    <!--</span>-->
+    <!--<p class="job-compensation button job-compensation-medium-small" ng-if="job.type.startsWith('Mini Internship') && (job.fixed_compensation || job.hourly_compensation) && job.company_logo">-->
+        <!--<span class="label" >  ${{ generateCompensationText(job) }}</span>-->
+    <!--</p>-->
+    <!--</p>-->
+    <!--<p class="job-metadata">-->
+        <!--<span class="job-type">{{ ::job.type | underscoresToSpaces }} </span>-->
+        <!--&lt;!&ndash;<abbr class="timeago job-timestamp" title="{{ ::job.create_dttm }}">{{ ::job.create_dttm }}</abbr>&ndash;&gt;-->
+    <!--</p>-->
+    <div class="button-wrap">
+        <a
+                ng-click="follow()"
+                ng-if="currentUser && !company.is_viewer_following"
+                class="button medium-small button-primary follow">Follow </a>
+        <a
+                ng-click="unfollow()"
+                ng-if="currentUser && company.is_viewer_following"
+                class="button medium-small button-primary-inverse unfollow">Following</a>
+    </div>
+</li>

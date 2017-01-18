@@ -1,0 +1,11 @@
+var rant = $('#sign_up_rant');
+<% if @error.blank? %>
+$('#modal_header').html('Verify Your Email To Continue!');
+rant.html("<%= escape_javascript (render 'users/verify_easy_text' , :email => @email) %>");
+$('#bottom_action').html("<%= escape_javascript (render 'users/verify_easy_code_form' , :email => @email) %>");
+rant.slideDown();
+<% else %>
+rant.slideUp();
+rant.html('');
+$('#alert_error').html('<div class="any-center"><p class="label label-important"> <%= @error %>  </p></div>')
+<% end %>

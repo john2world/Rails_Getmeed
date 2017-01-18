@@ -1,0 +1,13 @@
+require 'raven'
+<<<<<<< HEAD
+unless Rails.env.downcase == "production"
+  Raven.configure do |config|
+    config.dsn = 'https://9646730815d54262af2336b023256cf8:d5080752bb9b4435a9626a71a85e1a5b@app.getsentry.com/22552'
+  end
+end
+=======
+
+Raven.configure do |config|
+  config.dsn = 'https://9646730815d54262af2336b023256cf8:d5080752bb9b4435a9626a71a85e1a5b@app.getsentry.com/22552'
+end
+>>>>>>> master

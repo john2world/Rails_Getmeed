@@ -1,0 +1,18 @@
+module UserStateTypes
+  INVITE_FRIENDS = 'invite_friends'
+  PROFILE_PICTURE_BLANK = 'profile_picture_blank'
+  PROFILE_COMPLETE = 'profile_complete'
+  LAST_PROFILE_UPDATED = 'last_profile_updated'
+  APPLY_JOBS_DATE = 'apply_jobs_date'
+  FOLLOW_COLLECTION_DATE = 'follow_collection_date'
+  CREATE_COLLECTION_DATE = 'create_collection_date'
+  LAST_SUBMISSION_DATE = 'last_submission_date'
+  UPVOTE_RECEIVE_DATE = 'upvote_receive_date'
+  MEED_BADGE = 'meed_badge'
+  COMMENT_RECEIVE_DATE = 'comment_receive_date'
+  FOLLOWER_RECEIVE_DATE = 'follower_receive_date'
+  MEED_POINTS_UPDATE = 'meed_points_update'
+  FACEBOOK_IMPORT = 'facebook_import'
+  FOLLOW_COMPANY_DATE = 'follow_company_date'
+  PORTFOLIO_SUBMISSION = 'portfolio_submission'
+end

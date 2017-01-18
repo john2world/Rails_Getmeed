@@ -1,0 +1,14 @@
+<li
+  class="
+    activity-feed-item
+    poster-type-{{ ::feedItem.poster_type}}
+    activity-feed-item-{{ ::templateType(feedItem.type, feedItem.poster_type) }}
+  "
+  id="activity-feed-item-{{ ::feedItem._id}}">
+  <div ng-include="::templateUrl(feedItem.type, feedItem.poster_type)" current-user="currentUser" ng-hide="isEditing"></div>
+
+  <div class="row" ng-if="isEditing">
+    <poster-info item="feedItem"></poster-info>
+    <feed-item-form item="feedItem" all-tags="tags" all-collections="allCollections"></feed-item-form>
+  </div>
+</li>

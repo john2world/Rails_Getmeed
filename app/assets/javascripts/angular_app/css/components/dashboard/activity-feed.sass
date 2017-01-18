@@ -1,0 +1,555 @@
+/* Activity Feed
+ *-------------------------------------------------*/
+
+.main-wrap
+  float: left
+  width: 100%
+  margin-top: 5rem
+  .row
+    margin-top: 1rem
+
+.activity-feed-loader
+  width: 100%
+  text-align: center
+
+.modal
+  .jssocials-shares
+    text-align: center
+  h4
+    text-align: center
+  .share-url
+    font-size: $font_size_regular
+    color: $light_text
+
+#activity-feed-wrap
+  background: transparent
+
+#activity-feed
+  position: relative
+  z-index: 2
+  float: left
+  width: 100%
+
+#activity-feed-nav
+  float: left
+
+
+.status-form
+  .button
+    .fa
+      color: $lightest_text !important
+
+
+.activity-feed-item
+  padding: 15px
+  border-radius: 1.2rem
+  background: $lightest_background
+  width: 100%
+  margin-bottom: 1rem
+  box-sizing: border-box
+  +box-shadow(0, 0px, 0px, 1px, rgba(61, 61, 69, 0.15))
+  .fa
+    color: $light_text
+  .jssocials .fa
+    color: $lightest_text
+  .submission-cta
+    float: right
+  .checkboxes
+    color: $light_text
+    padding-top: 1rem
+    padding-bottom: 1rem
+    font-size: $font_size_medium_small
+  .rules
+    padding-left: 4rem
+    color: $light_text
+    a
+      color: $light_text
+    em
+      text-decoration: underline
+      font-style: normal
+
+  .poster-name-and-headline
+    .name, .helper
+      height: 2rem
+
+
+  .tag_audience_options
+    display: none
+
+.activity-feed-action
+  @extend .activity-feed-item
+  border-color: $primary
+  border-style: solid
+
+@media (min-width: 830px)
+  .activity-feed-item
+    width: 100%
+
+.follow-wrap
+  float: right
+  width: 30%
+  text-align: right
+  margin: 0
+  a
+    padding: 1rem
+    margin: 0
+    height: auto
+    font-size: $font_size_tiny
+    line-height: 100%
+
+
+
+.activity-feed-item-timestamp
+  font-size: $font_size_small
+  color: $light_text
+  margin-top: 0.5rem
+
+.activity-feed-item-portfolio
+  font-size: $font_size_small
+  margin-top: 0.5rem
+  margin-right: 1rem
+  color: $red_button
+  .fa
+    color: $red_button
+  a
+    color: $red_button !important
+    border: 1px solid $red_button !important
+
+
+.activity-feed-item-checklist
+  background-color: $primary
+  opacity: 0.7
+  width: 100%
+  word-break: break-word
+  margin-bottom: 1rem
+  color: $darker_text
+  font-size: $font_size_medium_large
+  .left-panel
+    float: left
+    .greetings
+      padding-top: 5rem
+      padding-left: 5rem
+      p
+        font-size: $font_size_largest
+        color: $lightest_text
+        line-height: $font_size_x_large
+        margin-bottom: 1rem
+      .badge-tagline
+        font-size: $font_size_medium_large
+        font-weight: 300
+      .badge-new-hire, .badge-manager, .badge-director, .badge-executive, .badge-influencer
+        padding-left: 14rem
+  .right-panel
+    float: right
+    padding-right: 1rem
+  .discuss
+    font-size: $font_size_medium_small
+    color: $light_text
+  p
+    font-size: $font_size_large
+    color: $dark_text
+    font-weight: bold
+    text-align: center
+  ul
+    margin-top: 0
+  li
+    color: $lightest_text
+    font-size: $font_size_medium_large
+    text-align: left
+    a
+      color: $lightest_text
+      text-decoration: underline
+    .strike
+      text-decoration: line-through
+    .fa
+      color: $lightest_text
+
+.activity-feed-item-title,
+.activity-feed-item-caption,
+.activity-feed-item-recommended-caption
+  float: left
+  width: 90%
+  padding-top: 1rem
+  word-break: break-word
+  color: $darker_text
+  font-size: $font_size_regular
+  line-height: $font_size_medium_large
+  .discuss
+    font-size: $font_size_medium_small
+    color: $light_text
+  .tag-line
+    color: $light_text
+
+#rules-modal
+  width: 50%
+  .rules-details
+    h5
+      text-align: left
+      color: $light_text
+      margin-bottom: 0rem
+    em
+      text-decoration: underline
+      font-style: normal
+    .dos
+      color: $primary
+    .donts
+      color: $error
+  .rule
+    padding-left: 1rem
+
+
+
+.activity-feed-action-message
+  background: #f9f9f9
+  border-left: 10px solid #ccc
+  margin: 1.5em 4rem
+  padding: 0.5em 10px
+  quotes: "\201C""\201D""\2018""\2019"
+
+.activity-feed-action-title
+  @extend .activity-feed-item-title
+  padding-left: 4rem
+  width: 100%
+
+blockquote:before
+  color: #ccc
+  content: open-quote
+  font-size: 4em
+  line-height: 0.1em
+  margin-right: 0.25em
+  vertical-align: -0.4em
+
+blockquote:after
+  color: #ccc
+  content: close-quote
+  font-size: 4em
+  line-height: 0.1em
+  margin-left: 0.25em
+  vertical-align: -0.4em
+
+.hr-vertical
+  border-left: 1px solid #fff
+  border-right: 1px solid #fff
+  height: 30.5rem
+  position: absolute
+  right: 32rem
+  top: 1rem
+
+.activity-feed-item-recommended-caption
+  padding-left: 2rem
+  padding-bottom: 1rem
+
+
+.activity-feed-item-description-wrap
+  width: 92%
+  float: left
+  position: relative
+
+
+.activity-feed-item-description
+  float: left
+  max-height: 10rem
+  width: 100%
+  li
+    list-style-type: disc
+
+.picture-wrap a.button
+  padding-left: 1rem
+  padding-right: 1rem
+
+/* Stories
+ *-------------------------------------------------*/
+
+.activity-feed-item-story, .activity-feed-item-user
+  .picture-wrap
+    float: left
+    margin-right: 1rem
+    text-align: center
+    width: 15rem
+    img
+      max-width: 15rem
+      max-height: 15rem
+
+  hr
+    border-top: 1px solid $lightest_text
+
+  .activity-feed-item-caption, .activity-feed-item-title
+    margin-bottom: 1rem
+    width: 94%
+    
+  .story-block
+    border: 1px solid $light_border
+
+  .story-link
+    word-wrap: break-word
+    font-size: $font_size_medium_large
+    line-height: $font_size_x_large
+    a
+      color: $darker_text
+
+  .story-description
+    color: $light_text
+    font-size: $font_size_medium
+    font-weight: $font_size_regular
+
+.activity-user-headline
+  color: $light_text
+  font-size: $font_size_small
+
+.story-tags, .story-tags-event
+  word-wrap: break-word
+  color: $light_text
+  font-size: $font_size_small
+  img
+    border-radius: 2rem
+  a
+    font-size: $font_size_small
+    color: $link_color
+    border-radius: 0.5rem
+    text-decoration: none
+    border: 1px solid $input_border
+    padding: 0.4rem
+    background: $lightest_text
+    margin: 0.2rem
+    i
+      color: $link_color !important
+
+  .story-tags-private
+    color: $error
+    border: 1px solid $error
+    box-shadow: 0px 0px 1px $error
+    i
+      color: $error !important
+
+.story-tags-event
+  color: $secondary
+  a
+    color: $secondary
+    border: 1px solid $secondary
+    border-radius: 0rem
+    padding: 0.3rem
+
+
+.story-tags-title
+  word-wrap: break-word
+  color: $light_text
+  font-size: $font_size_regular
+
+
+
+/* Product posts
+ *-------------------------------------------------*/
+
+.activity-feed-item-product
+  background: $link_color
+  padding-top: 0.5rem
+  opacity: 0.7
+  padding-bottom: 0.5rem
+  height: 5.6rem
+  line-height: 5.6rem
+  a
+    font-size: $font_size_medium_large
+    width: 100%
+    text-align: center
+    margin: 0
+    height: 4.8rem
+    line-height: 4.8rem
+    color: $lightest_text
+    width: 100%
+    display: block
+    font-weight: 500
+    &:hover
+      text-decoration: none
+
+
+/* Feed actions
+ *-------------------------------------------------*/+
+.feed-actions, .feed-user-actions
+  bottom: 0
+  left: 0
+  right: 0
+  .feed-item-action-buttons
+    float: left
+    padding-top: 1rem
+    padding-left: 0
+    .button-primary-reverse .fa
+      color: $primary
+    .button-red-inverse .fa
+      color: $error
+    .button-primary .fa
+      color: $lightest_text
+    .button-primary-inverse .fa
+      color: $primary !important
+    .fa
+      color: $lightest_text
+    .button-disabled
+      .fa-caret-up, .fa-caret-down
+        color: $light_text
+    .fa-caret-up
+      font-size: $font_size_medium_large
+      vertical-align: -0.2rem
+  .count
+    font-weight: bold
+  .button
+    margin-right: 0.5rem
+    .count
+      border-left: 1px solid
+      padding-left: 0.8rem
+  .feed-item-action
+    color: $very_light_text
+    font-size: $font_size_medium_small
+    margin-right: 0.5rem
+    &:hover
+      text-decoration: none
+      .label
+        text-decoration: underline
+    &.edit
+      color: $link_color
+    &.delete
+      color: $delete_color
+    .count
+      background: $light_background
+      padding-left: 0.2rem
+      padding-right: 0.2rem
+      min-width: 1rem
+      display: inline-block
+      text-align: center
+
+  .jssocials
+    float: right
+
+.feed-user-actions
+  float: right
+
+
+
+.activity-feed-item-description-wrap.noimage
+  .feed-actions
+    left: 0
+    width: 100%
+
+
+@media (max-width: 750px)
+  .feed-actions
+    position: static
+    .feed-item-action-buttons
+      min-width: 50%
+    .jssocials
+      float: left
+
+  .activity-feed-item-story, .activity-feed-item-user
+    .story-link
+      float: left
+      width: 100%
+      word-wrap: break-word
+
+
+
+/* Poster info
+ *-------------------------------------------------*/
+
+.poster-name-and-headline
+  height: 4.5rem
+  display: block
+  margin: 0
+  font-size: $font_size_small
+  line-height: 1.2
+  overflow-y: hidden
+  .action
+    font-weight: normal
+  .link
+    font-weight: bold
+  .name, .helper
+    font-size: $font_size_medium
+    font-weight: bold
+    height: 3rem
+    padding: 0
+    margin: 0
+    color: $light_text
+  .action
+    font-size: $font_size_medium_small
+    color: $light_text
+    font-weight: 300
+
+  .poster-name
+    font-size: $font_size_medium
+    color: $body_text_color
+
+.influencer-headline
+  height: 4rem
+  display: block
+  margin: 0
+  font-size: $font_size_small
+  line-height: 1.2
+  overflow-y: hidden
+  .name, .helper
+    font-size: $font_size_medium_small
+    height: 2rem
+    padding: 0
+    margin: 0
+    color: $very_light_text
+
+  .poster-name
+    font-size: 1.4rem
+    color: $body_text_color
+
+
+.poster-info
+  width: 70%
+  float: left
+
+/////////////////////////////////////////////////////////////////
+// Recommended Collections Feed Item. TODO: move elsewhere
+/////////////////////////////////////////////////////////////////
+
+.activity-feed-item-recommended-caption
+  a
+    color: $link_color
+
+.activity-feed-item-recommended-collections, .collections-browse
+  .collections-list
+    margin: 0
+    .button-primary-inverse .fa
+      color: $primary !important
+    li
+      width: 25%
+      text-align: center
+      padding: 0
+      margin: 0
+      box-sizing: border-box
+      height: 150px
+      margin-bottom: 1.5rem
+      .image-wrap
+        float: none
+        width: 90%
+        border: 1px solid #d1d1d1
+        img
+          min-height: 100%
+    i
+      color: $lightest_text
+
+    .button-next
+      text-align: center
+      &:after
+        content: " \00bb"
+
+@media (max-width: 650px)
+  .activity-feed-item-recommended-collections, .collections-browse
+    .collections-list li
+      width: 50%
+
+@media (max-width: 380px)
+  .activity-feed-item-recommended-collections, .collections-browse
+    .collections-list li
+      width: 100%
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,42 @@
+<p class="accordion lightbox-text">New User Invitations
+</p>
+<hr class="hr-header">
+<div class="form-view">
+  <table class="table">
+    <tr>
+      <td class="job-applicant-heading">
+        Email
+      </td>
+      <td class="job-applicant-heading">
+        Activated
+      </td>
+      <td class="job-applicant-heading">
+        Time
+      </td>
+    </tr>
+    <% if !@invitations.blank? %>
+        <% @invitations.each do |invitation| %>
+            <% if !invitation.blank? %>
+                <tr>
+                  <td class="job-applicant-td">
+                    <%= invitation[:email].downcase %>
+                  </td>
+                  <td class="job-applicant-td">
+                    <%= invitation[:activated] %>
+                  </td>
+                  <td class="job-applicant-td">
+                    <%= invitation[:time] %>
+                  </td>
+                </tr>
+            <% end %>
+        <% end %>
+    <% else %>
+        <tr>
+          <td class="info-text-large" style="text-align: center">
+            No invitations
+          </td>
+        </tr>
+    <% end %>
+  </table>
+
+</div>

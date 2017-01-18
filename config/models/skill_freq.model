@@ -1,0 +1,2551 @@
+java	939
+c	563
+c++	452
+javascript	417
+html	328
+php	324
+python	309
+css	241
+mysql	190
+xml	160
+jquery	149
+sql	144
+ajax	139
+matlab	119
+c#	118
+json	117
+android	112
+linux	100
+perl	84
+c/c++	68
+jsp	64
+html 5	63
+unix	62
+android sdk	47
+css 3	47
+git	41
+hadoop	41
+team building	39
+asp.net	38
+servlets	37
+eclipse	36
+socket programming	36
+mongodb	34
+leadership	33
+jdbc	32
+opengl	30
+junit	29
+objective-c	28
+oracle	28
+apache	27
+aws	27
+opencv	27
+java servlets	27
+facebook api	26
+gdb	26
+algorithms	25
+j2ee	25
+r	24
+ruby on rails	24
+verilog	24
+project ownership	24
+data structures	24
+tcp/ip	23
+node.js	23
+rdf	23
+oracle 11g	22
+svn	21
+shell scripting	20
+sparql	19
+sql server	19
+django	18
+rest	18
+microsoft excel	18
+js	17
+wireshark	17
+teamwork	17
+apache tomcat	17
+html/css	16
+java servlet	16
+.net	16
+mapreduce	16
+servlet	16
+microsoft office	16
+java swing	16
+maven	16
+postgresql	15
+project management	15
+db2	15
+social media	15
+marketing	15
+xquery	15
+java script	14
+yui	14
+multithreading	14
+web services	14
+angularjs	14
+pl/sql	14
+multi-threading	14
+dom	13
+public speaking	13
+tomcat	13
+visual studio	13
+autocad	13
+amazon web services	13
+objective c	12
+bootstrap	12
+hibernate	12
+mvc	12
+research	12
+communication	12
+cadence	12
+machine learning	12
+ruby	12
+twitter bootstrap	11
+udp	11
+wordpress	11
+d3.js	11
+teaching	11
+editing	11
+xcode	11
+kernel programming	11
+tcl	11
+weka	11
+scheme	11
+wcf	11
+prolog	11
+bash	11
+ubuntu 12.04	11
+apache solr	10
+vb.net	10
+openmp	10
+karma	10
+event planning	10
+cocos2d	10
+google app engine	10
+assembly	10
+python 2.7	10
+ios	10
+shell	10
+xslt	10
+libpcap	10
+c#.net	10
+struts	9
+sql developer	9
+wpf	9
+lisp	9
+pl-sql	9
+eclipse ide	9
+vb	9
+deterlab	9
+semantic web	9
+amazon aws	9
+drupal	9
+spring	9
+xsd	9
+github	9
+market research	9
+qemu	8
+sqlite	8
+unity 3d	8
+qt	8
+lamp	8
+selenium	8
+embedded systems	8
+neo4j	8
+hbase	8
+cadence virtuoso	8
+fril	8
+solr	8
+facebook sdk	8
+tika	8
+team management	8
+openflow	8
+rf	7
+xpath	7
+google refine	7
+sdn	7
+memcached	7
+jsf	7
+statistics	7
+google maps api	7
+agile	7
+customer service	7
+jenkins	7
+sockets	7
+network programming	7
+ns-2	7
+stl	7
+cuda	7
+pig	7
+scala	7
+mininet	7
+modelsim	7
+ms sql	7
+nutch	7
+amazon ec2	7
+natural language processing	7
+excel	7
+iperf	7
+core java	7
+testing	7
+spatial database	6
+xilinx ise	6
+unity	6
+twitter api	6
+vim	6
+data analysis	6
+search algorithms	6
+c# .net	6
+weenix	6
+protege	6
+java/j2ee	6
+vhdl	6
+business development	6
+oracle spatial	6
+apache nutch	6
+sales	6
+algorithm design	6
+firebug	6
+visual basic	6
+tcp	6
+restful api	6
+hive	6
+posix	6
+opnet	6
+soap	6
+robotics	6
+photoshop	6
+unity3d	6
+clearcase	6
+shell script	6
+coldfusion	5
+heroku	5
+ui design	5
+ns2	5
+numpy	5
+nltk	5
+organization	5
+scrum	5
+pthreads	5
+mpi	5
+vc++	5
+openrdf	5
+adobe photoshop	5
+codeigniter	5
+s3	5
+sybase	5
+information retrieval	5
+ubuntu 11.10	5
+apache tika	5
+subversion	5
+test driven development	5
+oracle database	5
+sql server 2008	5
+mysql database	5
+presentation skills	5
+mfc	5
+pspice	5
+oracle sql	5
+security	5
+oracle 10g	5
+icmp	5
+valgrind	5
+solidworks	5
+linux kernel	5
+ec2	5
+data mining	5
+assembly language	5
+computer networking	5
+spinnp (session layer protocol) over tcp	5
+solaris	5
+mockito	5
+operating systems	5
+spatial databases	5
+box2d	5
+product management	5
+team-building	5
+spring mvc	5
+swing	5
+circuit design.	5
+rest api	5
+yahoo pipes	5
+functional programming	5
+pox	5
+jira	5
+lt spice	4
+recursion	4
+nginx	4
+swings	4
+map reduce	4
+dreamweaver	4
+t-sql	4
+grails	4
+bookkeeping	4
+jquery mobile	4
+.net framework	4
+svm	4
+programming	4
+verilog hdl	4
+kernel development	4
+hspice	4
+c++]	4
+soldering	4
+latex	4
+rubyonrails	4
+windows	4
+owl	4
+visual c++	4
+jdbc and oracle spatial database	4
+regex	4
+unix shell scripting	4
+relational databases	4
+flash	4
+yui library	4
+c++/c	4
+xsl	4
+abap	4
+team work	4
+photography	4
+clustering	4
+perforce	4
+cucumber	4
+rds	4
+sharepoint	4
+software engineering	4
+cassandra	4
+networking	4
+nodejs	4
+asp	4
+prototyping	4
+visual studio 2008	4
+flask	4
+weblogic	4
+scrapy	4
+gwt	4
+putty	4
+nfs	4
+design patterns	4
+problem solving	4
+information integration	4
+ipsec	4
+groovy	4
+ms excel	4
+lucene	4
+agile software development	4
+raw sockets	4
+proofs	4
+bgp	4
+jstl	4
+ontology	4
+database	4
+jmeter	4
+ant	4
+http	4
+circuit analysis	4
+posix threads	4
+highcharts	3
+oracle11g	3
+junits	3
+nunit	3
+market and financial analysis	3
+a*	3
+fitnesse	3
+dynamic programming	3
+netfpga	3
+mithra (proprietary object manager)	3
+content management systems	3
+java servelets	3
+labview	3
+design	3
+magento	3
+sap	3
+ibm db2	3
+emulab	3
+maya	3
+rdbms	3
+phonegap	3
+cocoa	3
+distributed systems	3
+data structures and algorithms	3
+vfs	3
+netbeans	3
+tcpdump	3
+actionscript 3.0	3
+mips	3
+mentoring	3
+ospf	3
+arcgis	3
+ios development	3
+rip	3
+clearquest	3
+artificial intelligence	3
+nagios	3
+jakarta tomcat	3
+tcp/ip protocol	3
+curl	3
+ai	3
+user interface design	3
+localization	3
+dns	3
+confidence	3
+critical thinking	3
+xml schema	3
+coffeescript	3
+record linkage	3
+ms visio	3
+ms access	3
+gui	3
+arp	3
+teaching skills	3
+ssis	3
+vmware	3
+uml	3
+investigative journalism	3
+apache hadoop	3
+android adt	3
+engineering	3
+spring framework	3
+image processing	3
+spring-hibernate	3
+instrumentation	3
+zend	3
+ipv4	3
+unit testing	3
+express	3
+client communication	3
+graphic design	3
+wix	3
+illustrator	3
+signal processing	3
+redis	3
+ubuntu	3
+computer networks	3
+budgeting	3
+final cut pro x	3
+asp.net mvc	3
+qualitative research	3
+firewalls	3
+wamp	3
+windows services	3
+css and mysql	3
+centos	3
+greedy algorithms	3
+spice	3
+ssrs	3
+rest apis	3
+analog	3
+openssl	3
+crm	3
+lab equipment operation	3
+struts2	3
+logistic regression	3
+entrepreneurship	3
+threads	3
+play framework	3
+circuit analysis and diagnostics	3
+databases	3
+basic design	3
+full stack web development	3
+web development	3
+javafx	3
+naive bayes	3
+management	3
+ocaml	3
+cloud	3
+apache lucene	3
+legal document preparation	3
+fortran	3
+google maps	3
+alchemy api	3
+sqs	3
+java awt	3
+htk	3
+winscp	3
+oracle db	3
+jaxb	3
+event management	3
+processing	3
+windows azure	2
+bitbucket (git)	2
+arm	2
+os	2
+strategy	2
+operating system	2
+relational algebra	2
+ces edupack	2
+startups	2
+computer vision	2
+bootstrap3	2
+valuation	2
+scipy	2
+used eclipse	2
+mysql to develop a georgia tech medical records system simulation application.	2
+heuristics	2
+cuda c	2
+swift programming	2
+lda	2
+training	2
+particle filtering	2
+c sockets	2
+big o	2
+arduino	2
+hadoop mapreduce	2
+asp.net web api	2
+sml	2
+open vswitch	2
+visual studio 2010	2
+tortoise svn	2
+weenix kernel	2
+openvswitch	2
+cvs	2
+scalability	2
+opencl	2
+object-oriented programming	2
+microsoft word and excel	2
+usability testing	2
+effective communication	2
+semantic parsing	2
+erp	2
+cics	2
+restapi	2
+jcl	2
+divide and conqure	2
+ipython	2
+html & css	2
+spectrum analyzer	2
+tcp and udp sockets	2
+google api	2
+linux multi-threading.	2
+simulink	2
+scikit-learn	2
+visual studio 2012	2
+financial management	2
+ansoft hfss	2
+springs	2
+google map api	2
+powershell	2
+eer	2
+sales and distribution	2
+soa	2
+sap hana	2
+balsamiq	2
+opennlp	2
+debugging	2
+lib pcap	2
+microsoft business intelligence	2
+android 2.3	2
+fb api	2
+ajax.	2
+cocos 2d	2
+unix scripting	2
+crawljax	2
+bfs	2
+dfs	2
+data compression	2
+big data analytics	2
+oozie	2
+topic modeling	2
+data cleaning	2
+pojo	2
+flex	2
+macros	2
+sorting algorithms	2
+communication skills	2
+open refine	2
+mac os x	2
+sdlc cycle	2
+less	2
+nosql	2
+apache server	2
+google apps script	2
+junos	2
+code reviews	2
+tcp/ip protocol suite	2
+awk	2
+ixia	2
+graph algorithms	2
+ipv6	2
+google apps	2
+siebel	2
+qgis	2
+toad	2
+lex	2
+yacc	2
+soapui	2
+fabrication	2
+digital logic	2
+computer architecture	2
+microsoft sharepoint	2
+oltp	2
+advertising	2
+linked data	2
+jmp pro	2
+olap	2
+tcp/ip stack	2
+multi-threading concepts	2
+unix signals	2
+sdlc	2
+facebook apis	2
+sevrlets	2
+bash scripting	2
+er model	2
+algorithm analysis	2
+json-ld	2
+parallel programming	2
+product design	2
+openstack	2
+lua	2
+conflict resolution	2
+nlp	2
+axure	2
+threading	2
+ms sql server	2
+leadership skills	2
+lxml library	2
+software development	2
+php5	2
+scheduler	2
+sustainability	2
+make	2
+ncurses	2
+memcache	2
+decision tree	2
+dojo	2
+c#.	2
+dynamodb	2
+alpha-beta pruning	2
+silverlight	2
+shell scripting.	2
+gate	2
+flickr api	2
+regular expression	2
+visual c#	2
+ftp	2
+microsoft sql server	2
+wireless communication	2
+sass	2
+(c/c++)	2
+selenium web driver	2
+c++/linux	2
+creativity	2
+sql plus	2
+multicast	2
+tfs	2
+bash script	2
+fpga	2
+tdd	2
+group activities	2
+mpls	2
+pvcs	2
+canalyzer	2
+cobol	2
+sap r/3	2
+active directory	2
+extjs	2
+webservices	2
+sql server 2005	2
+oracle 11g r2	2
+minitab	2
+presentation	2
+powerpoint	2
+jboss	2
+scripting	2
+bgbenchmark	2
+api	2
+portfolio management	2
+unix/linux	2
+power world	2
+team leadership	2
+symfony	2
+education	2
+cloud computing	2
+mainframes	2
+mysql and php	2
+. net frameworks	2
+kml	2
+aws elastic beanstalk	2
+embedded sql	2
+prism	2
+opneflow1.0 and openvswitch	2
+isis	2
+pex and moles	2
+writing	2
+agile development	2
+splunk	2
+cocos2d-x	2
+svm light	2
+logic	2
+ontologies	2
+tile map	2
+gql	2
+rhino mocks	2
+routers	2
+algorithm designing	2
+map-reduce	2
+ado.net	2
+language model	2
+speech recognition	2
+regular expressions	2
+mac os x.	2
+consulting	2
+regularization	2
+facebook-android sdk	2
+xhtml	2
+pca	2
+klocwork	2
+etl	2
+vxworks	2
+perceptron	2
+managing large groups of people	2
+backbonejs	2
+sentiment analysis	2
+logisim	2
+sql (oracle)	2
+apache hive	2
+sass/scss	2
+elecae	2
+gcc	2
+extensive work in microsoft excel	2
+xml/dom	2
+web	2
+py	2
+calico	2
+mvc architecture	2
+full stack	2
+microsoft sql server 2012	2
+vb .net	2
+kernel	2
+tetramax	2
+cadence soc encounter	2
+synopsys primetime	2
+inca	2
+reporting structure in an organization	1
+virtual memory	1
+kernel debugging	1
+simplescalar	1
+cacti	1
+real estate estimator	1
+cadence conformal logic equivalence	1
+synopsys design compiler	1
+ncverilog	1
+modelsim  ncsim	1
+synopsys dc	1
+foreign data wrapper	1
+tomcat server	1
+swingui	1
+oracle 12g database	1
+arduino programing	1
+ubuntu 11.10 with qemu	1
+sdb	1
+mongo db	1
+ml	1
+pos tagger	1
+dependency parser	1
+ner/ pos tagger	1
+database design	1
+concurrency control	1
+algorithm	1
+design of algorithms	1
+mathematics	1
+circuit design	1
+knn-classifier	1
+virtualization	1
+least square and logistic regression	1
+ejb3.0	1
+hibernate 2.0	1
+jboss 7	1
+c2dm	1
+atmosphere	1
+pjscrape.js	1
+express.js	1
+bootstrap 3	1
+xen hypervisor development	1
+mongodb]	1
+[abap	1
+linux kernel development	1
+oracle 11g mysql	1
+ms sql server 2008	1
+wfst	1
+emr	1
+pyretic	1
+svm libraries	1
+open sesame	1
+spaqrql	1
+webharvy	1
+google maps api.	1
+natural language toolkit	1
+twitter api libraries	1
+google graphs	1
+php and mysql database	1
+pure	1
+yahoo api (yui)	1
+rtl-verilog	1
+triple store	1
+classified interrelated object model (ciom)	1
+sql (spatial)	1
+remod3	1
+oracle dbms	1
+byob (variation of scratch)	1
+kinect2scratch	1
+linear algebra	1
+calculus	1
+multisim	1
+network simulator-2	1
+synchronization	1
+processes	1
+concurrency	1
+hashing	1
+db transactions	1
+atomicity	1
+recovery	1
+logging	1
+j2me	1
+computer security	1
+owl-lite	1
+stanfordcorenlp	1
+megam tool	1
+fedora os	1
+visual studio.net 2010	1
+congestion control in computer networks	1
+application layer protocols	1
+routing protocols - computer networks	1
+platform: ubuntu 12.10	1
+servlets and web services	1
+openmesh	1
+cmake	1
+graphics design	1
+jvascript	1
+kiel c	1
+sonar	1
+vb script	1
+gnu c	1
+gps	1
+gnu make	1
+language models	1
+tomcat server 4.1	1
+apache ant	1
+amazon cloud service	1
+apache server 2.2	1
+matlab c	1
+matlab & simulink r2009 a	1
+psat toolbox of matlab	1
+web servers	1
+graph databases	1
+process improvement	1
+open nlp	1
+optimization	1
+https://github.com/shrikanthn/web-karma	1
+operations management	1
+audio	1
+rendering	1
+lean six sigma	1
+spaghetti diagram	1
+google map apis	1
+sqlite db	1
+autocad 2007	1
+catia v5	1
+single and multi echelon supply chain management	1
+multi-threaded	1
+project manager	1
+concurrent programming	1
+forecasting	1
+apache cassandra	1
+dhcp	1
+ms project 2013	1
+tcp/ip suite	1
+l2-l3 networking	1
+lan	1
+csma/cd	1
+csma/ca	1
+ms powerpoint	1
+6 sigma	1
+cisco cli router and switch configuration and management	1
+sdn & openflow	1
+spc	1
+high-speed networking	1
+cisco packet tracer	1
+jpcap	1
+freelancing	1
+robot design	1
+visual studio 13	1
+jogl	1
+metaio sdk	1
+android 4.4	1
+google nexus 4	1
+android ide	1
+wireshark java scripting	1
+routing protocols- ospf	1
+eigenvectors	1
+eigenvalues	1
+distributed ai	1
+tiledmap	1
+html + css	1
+ogre engine	1
+java ui toolkits	1
+jdbc api	1
+oracle_db_11gr2	1
+matrices	1
+php (lamp) and html/css.	1
+cloud companion	1
+hardware	1
+vector spaces	1
+lc3-assembly	1
+physx	1
+encrypting algorithms	1
+jsp servlets	1
+wamp server	1
+c/gdb	1
+vectors	1
+hmm	1
+neural networks	1
+electro-mechanical devices	1
+coldfire assembly language	1
+market analysis	1
+data coding and compression	1
+mysql and smarty	1
+vlsi technology	1
+radio communication	1
+analog and digital systems	1
+embedded c	1
+eucalyptus	1
+perl and ant installation.	1
+matlab. abaqus.	1
+capybara	1
+applets	1
+alpha beta search algorithm	1
+wam	1
+jape rules	1
+tf-idf	1
+ui-ux design	1
+laravel	1
+cocomo	1
+c#. kinect api	1
+c++ opengl	1
+jena	1
+cobertura	1
+oracle 10g.	1
+learning algorithms	1
+probabilistic inference	1
+lpsolve	1
+proposals	1
+grant writing	1
+signal handling	1
+mutexes	1
+ngo	1
+yahoo api	1
+parse.com api	1
+international	1
+modeling	1
+robot	1
+cooperation	1
+lib-pcap	1
+data-centers	1
+g++	1
+sustainable design	1
+jswing	1
+jframe	1
+designing algorithms	1
+jsim	1
+bsim	1
+java-pl/sql	1
+hadoop 1.0.3	1
+elastic mapreduce	1
+monte carlo simulation	1
+posix library	1
+ieee802.1q	1
+ieee802.1ad	1
+flowvisor	1
+apache and tomcat server	1
+oracle spatial databases	1
+my-sql	1
+aws-s3	1
+aws-rds	1
+central limit theorem	1
+logical inference	1
+ai game playing	1
+generative & deterministic models	1
+classifiers	1
+dialog systems	1
+android and node.js	1
+prime engine(game engine)	1
+problem solving skills	1
+programming in c++ and java	1
+performance optimization	1
+oracle 12g	1
+javahtml	1
+triggers	1
+procedures	1
+asymptotic analysis	1
+rational rose	1
+interpreters	1
+ns2 simulator	1
+oracle object-oriented db	1
+swt	1
+x code	1
+tiled and svn.	1
+simplescalar simulator & cacti	1
+php and frameworks like codeigniter	1
+slides.js	1
+karma and openrefine tools	1
+ec2 and emr	1
+ood	1
+awazon cloud services - s3	1
+multi-threaded programming	1
+process-thread architecture	1
+virtual memory implementation	1
+strong understanding of tcp/ip	1
+multi cast routing	1
+802.11	1
+linux os	1
+802.3/11	1
+flow analysis	1
+ip	1
+java/hadoop	1
+web security	1
+support vector machines	1
+wordnet	1
+networkx	1
+objective - c	1
+ios sdk	1
+xcode ide	1
+yahoo’s yui datatable	1
+yahoo’s weather api	1
+oauth and eclipse ide	1
+oracle 11g (along with spatial database)	1
+python / scheme	1
+sas enterprise miner	1
+mechanical / python	1
+bash shell scripting	1
+social network analysis	1
+entity extraction	1
+spatial objects	1
+zigbee	1
+rfid	1
+pcb soldering	1
+mips-gcc	1
+fpga kit (altera max)	1
+openrefine	1
+neo4j java apis	1
+artificial intelligence techniques	1
+document indexing and retrieval	1
+google earth	1
+start up development	1
+postgis	1
+user acquisition	1
+obexftp	1
+pig latin	1
+hcitools	1
+traversals	1
+yahoo’s yui library	1
+tcp & udp sockets	1
+oracle sunspots	1
+ms sql database	1
+twitter bootstrap library	1
+visual basic 6.0	1
+ms project	1
+java/android programming	1
+project proposals	1
+ui prototyping/design	1
+use cases	1
+uml diagrams	1
+kinect sdk - nuiapi	1
+pricing strategy	1
+strategic marketing	1
+financial forecasting	1
+financial ratios	1
+java programming	1
+graphs	1
+model/view/controller	1
+consistent hashing	1
+advanced os kernel concepts	1
+mutli-threading	1
+er diagrams	1
+search strategies	1
+object - oriented programming	1
+flwor expressions	1
+xmltype	1
+sdma	1
+linear programming	1
+ryu controller	1
+working with big data sets	1
+microprocessors	1
+html windows	1
+mac ms office	1
+introduction to computer science	1
+discrete mathematics	1
+processor design	1
+java · html · javascript · php · xml · json · java servlet · ajax · and	1
+web scraping	1
+piazza	1
+servlets and json	1
+python and tcl	1
+ns2 and tcl	1
+caching	1
+microsoft visual studio (c#)	1
+minimax algorithm	1
+alpha-beta pruning algorithm	1
+python boto library	1
+amazon aws (ec2	1
+omp	1
+gnu debugger	1
+ns3	1
+cgi	1
+motion vectors	1
+parallelization	1
+protégé	1
+audio signal processing	1
+sampling and quantization	1
+image color analysis	1
+ngui	1
+orientdb	1
+gate(tool)	1
+standard nlp tools	1
+aws services.	1
+youtube api	1
+shaderlab	1
+cg	1
+gdk/mirror api/rest api/json/java/sql	1
+inference algorithms for propositional logic	1
+tcp/udp socket programming	1
+regression analysis	1
+server management	1
+metrics	1
+microstation	1
+tcpflow	1
+porter-stemming algorithm and agnes clustering algorithm	1
+senna	1
+apache server.	1
+php/xml parsing	1
+oracle spatial java api	1
+eclipse.	1
+software architecture	1
+prototyper and website designer	1
+ansys fluent	1
+facebook android sdk	1
+life cycle planner	1
+tcp-ip protocol suit	1
+word	1
+epanet	1
+epaswmm	1
+algorithm design and analysis	1
+ciom	1
+belief states.	1
+java 3d	1
+csma	1
+ns 2	1
+audacity	1
+ti assembly	1
+dac	1
+adc	1
+snap!	1
+ptolemy ii	1
+java android sdk	1
+ogre	1
+microsoft kinect	1
+ubuntu linux	1
+tcp/ip congestion control	1
+quantitative research	1
+c++; artificial intelligence	1
+opengl; computer graphics	1
+c#; unity3d; shader	1
+tcp/udp	1
+power converter design	1
+routing & forwarding	1
+threads and processes	1
+verliog	1
+searching and sorting algorithms	1
+oscilloscopes	1
+pattern searching	1
+eagle pcb	1
+mathematics and bit algorithms	1
+hpsice	1
+asitic	1
+sse	1
+servelets	1
+xml parsing	1
+asynchronous data downloads	1
+rapid miner	1
+gnu prolog	1
+libsvm	1
+prtools	1
+front-end development	1
+nearest neighbor classification	1
+linear regression	1
+overfitting	1
+bayesian linear regression	1
+kernel methods	1
+boosting	1
+gmm	1
+em	1
+bayes nets	1
+markov networks	1
+sql programming	1
+algortihms	1
+storyboarding.	1
+summarization	1
+ecc	1
+cryptography	1
+java ee	1
+user research	1
+java  ee	1
+db2 database	1
+jasperreports	1
+assembly coding	1
+conducting interviews and surveys	1
+datalog	1
+streambase	1
+user experience design	1
+customer relations	1
+software defined network	1
+file management	1
+ipc	1
+jsoup	1
+htmlunit	1
+google geocode api	1
+frontend	1
+multithread programming	1
+language modeling	1
+pcr	1
+transformation of plasmids	1
+site-directed mutagenesis	1
+induction plasmids	1
+labeling dyes	1
+steady state fluorometer	1
+dna-rna interactions	1
+data indexing	1
+cryptopp library	1
+web service programming	1
+synchro	1
+windowsphone	1
+graphics	1
+restful web service	1
+amazon s3	1
+google places & location service api	1
+likelihood models	1
+neurosky mindwave mobile	1
+twitter rest api 1.1	1
+yelp api	1
+foursquare api	1
+google nosql data store	1
+amazon aws service-s3	1
+rds & sns	1
+fuse api	1
+prezi	1
+collaborative filtering	1
+customer loyalty	1
+marketing metrics	1
+ns-3	1
+kernel hacking	1
+c++ 11	1
+pcap	1
+spss	1
+storm	1
+text mining	1
+logic expression reduction	1
+gray coding	1
+karnaugh maps.	1
+html/css/javascript	1
+multimedia system design	1
+nachos	1
+hadoop and youtube api 2.0	1
+xp	1
+meteor	1
+emulator used: qemu	1
+cuda-c	1
+cross compilation	1
+andriod	1
+ubuntu12.0.4	1
+optimization thoery	1
+probability & statistics	1
+multicasting	1
+congestion control	1
+onion routing	1
+udp/ip	1
+kernel module development	1
+jms	1
+eco-audit	1
+arena simulation	1
+lams and mpi	1
+amazon emr	1
+quagga	1
+gnu radio	1
+following current research in computer architecture	1
+oracle spatial objects	1
+swings.	1
+java multithreading	1
+java web development	1
+ns-2 (c++ & tcl)	1
+ns-2 (tcl & c++)	1
+html css perl javascript perl	1
+oracledb	1
+spatial databses	1
+rvm	1
+memory/proxy servers	1
+superscaler simulator	1
+mipsel	1
+language : c	1
+routing protocols	1
+c multithread programming	1
+twilio rest api	1
+graph theory	1
+dijkstra	1
+searches	1
+oracle mysql java jdbc sql	1
+linked lists	1
+bst	1
+avl	1
+array list	1
+generics	1
+hash table	1
+hash map	1
+computer graphics	1
+teensy	1
+transistors	1
+logic gates	1
+motors	1
+ece	1
+ohms	1
+resistors	1
+h-bridges	1
+capacitors	1
+protoboard	1
+unipolar stepper motors	1
+bipolar stepper motors	1
+implementing various data structures and algorithms in c	1
+oop	1
+japanese	1
+parse	1
+inventor	1
+freehand drafting	1
+technology forecasting	1
+standards and platform analysis	1
+designing security mechanisms and hands-on experience working in the deter lab.	1
+parse.com	1
+git/github	1
+rstudio	1
+swift	1
+facebook java script api	1
+facebook share api	1
+c0 (subset of c)	1
+solid foundation in security systems concepts	1
+theoretical computer science	1
+fuse library and linux	1
+vb.net and sql server 2005	1
+systemverilog	1
+socket programming using c	1
+unix socket programming	1
+life cycle	1
+json and html	1
+sonnet	1
+tsuprem 4	1
+medici	1
+imperative programming	1
+system verilog	1
+machine shop experience	1
+esprit	1
+protégé tool version 4.0	1
+jena api	1
+windows xp/7	1
+cordova platform	1
+assembly code vhdl	1
+embedded c on lpcxpresso board	1
+embedded c on tiva board	1
+arduino code	1
+mapping	1
+kalman filter	1
+bayes filter	1
+particle filter	1
+android studio	1
+waterfall	1
+rup	1
+directx	1
+test coverage	1
+refactoring	1
+burlap	1
+abagail	1
+supervised learning	1
+unsupervised learning	1
+filtering	1
+randomized optimization	1
+reinforcement learning	1
+lambdas	1
+java 8	1
+java and oracle 11g	1
+spatial data types	1
+bash shell	1
+digital	1
+synopsys	1
+dve	1
+distributed computing	1
+amazon web services (ec2	1
+sns	1
+ebs	1
+phirehose api(for twitter streams)	1
+hadoop 2.6.0	1
+amazon web services (elastic map reduce)	1
+amazon web services (sns	1
+cognito	1
+google cloud messaging	1
+system programming	1
+amazon web services (aws)	1
+linux c	1
+multithreading and synchronization	1
+apache jackrabbit	1
+php and mobile app	1
+embedd c coding	1
+real-time system scheduling	1
+ehcache	1
+xmlschema	1
+application development	1
+maya 2012	1
+intel havok	1
+unreal development kit	1
+rails 3	1
+mongoid	1
+game networking	1
+dynamo db	1
+client side prediction	1
+toplink	1
+kinect programming	1
+sap xi	1
+mvc - code igniter	1
+3d webgl	1
+hci	1
+familiarity in version control & bug tracking systems	1
+oracle crm on demand	1
+obiee	1
+siebel analytics	1
+informatica powercenter	1
+ios application development	1
+struts(mvc framework)	1
+python(novice)	1
+websphere 8.5	1
+object c	1
+professional skills	1
+mssql database	1
+algorithmic skills.	1
+cobertura.	1
+email and sms gateway	1
+prolog.	1
+mongdb	1
+java persistence api	1
+java integration with siebel	1
+unix commands	1
+sql loader	1
+sql and plsql	1
+bg	1
+sql 2013	1
+iis server	1
+windows azure cloud	1
+xml/html	1
+language used java	1
+cloud computing technologies	1
+apache jax-rs	1
+database benchmarking	1
+mojito mvc framework	1
+information	1
+etl architecture	1
+data warehousing	1
+transparent caching	1
+pl sql	1
+newsql	1
+drupal 6.0	1
+java mailets	1
+assembly language programming	1
+amazon ec2 and ms azure	1
+clear technical fundamentals	1
+job ownership	1
+conveying knowledge effectively	1
+jni	1
+adb shell	1
+ms azure rds and storage service	1
+facebook & android sdk and amazon aws.	1
+tcp/udp/sip/rtp	1
+c/unix	1
+nas	1
+scsi	1
+html 4	1
+agile software process management	1
+java beans	1
+hibernate3	1
+l2 protocols	1
+relational database	1
+ex-series switches	1
+spirent test center	1
+database ontology	1
+database integration	1
+vlans	1
+ifgrps	1
+tiled	1
+nis	1
+cifs	1
+iscsi	1
+java with jsoup library	1
+cms	1
+iphone app	1
+apache modules	1
+cron scripts	1
+amazon cloud services	1
+cron	1
+com job	1
+casequest	1
+oracle 9i/10g	1
+html/css3	1
+xmlspy	1
+nosql key-value store- voldemort	1
+webhawk	1
+owned the multimedia subsystem development & validation part	1
+vivo ontology	1
+rdf and sparql	1
+rac	1
+asm.	1
+condition variables	1
+mutex	1
+w.c.f	1
+w.p.f	1
+m.v.v.m architecture	1
+handling high stake situations	1
+analytic	1
+ajax and xml	1
+sprites	1
+graph search algorithms.	1
+team collaboration	1
+string manipulation.	1
+buffer overflow concept.	1
+fisheye	1
+freebsd	1
+ms wpf	1
+mswcf	1
+oracle 11.2g	1
+cleartool	1
+crypto analysis mechanisms	1
+software testing	1
+jsonid	1
+kernel concepts.	1
+daqmx	1
+spatial database system	1
+mysql.	1
+mallet	1
+yql	1
+c++)	1
+windows device driver	1
+oracle atg commerce framework	1
+weblogic 8.1	1
+understanding of grid computing concepts	1
+familiarity with unix and linux systems	1
+clinical pharmacology	1
+(bsd sockets api	1
+subsampling	1
+rc	1
+soap ui	1
+test engine	1
+perlin noise	1
+emulab.	1
+winrunner tool	1
+perl automation	1
+database systems	1
+web frameworks	1
+autosys (scheduling mechanism)	1
+flex charts	1
+team building and leading skills	1
+art of interacting with global stakeholders	1
+basic skills in computer vision	1
+windows api	1
+np problem and approximation algorithm	1
+backtracking in c.	1
+assembly program	1
+ubuntu 12.0.4	1
+windows 7	1
+ibm rational functional tester	1
+sql/plsql	1
+oracle adf (jsf)	1
+crawling	1
+union find algorithm	1
+dijkstra’s algorithm	1
+bst & avl tree	1
+doubly-linked circular list	1
+hue	1
+iar workbench	1
+visual studio.	1
+open data	1
+walksat algorithm	1
+ibm mainframes	1
+tandem	1
+pl-resolution algorithms	1
+scobol	1
+enscribe	1
+mercurial	1
+code collaborator	1
+boolean satisfiability	1
+strace	1
+cmvc	1
+vc++ debugger	1
+oracle rdbms	1
+action script	1
+silktest	1
+apple script	1
+mobile web development	1
+ms-sql	1
+alpha beta pruning	1
+oracledb 10g	1
+module owner of multimedia application framework and voice recorder/player application	1
+codec	1
+multimedia applications development	1
+programming in c and c++	1
+ss7 signalling protocols	1
+server administration	1
+presentations	1
+software design and implementation	1
+socket programming in c	1
+ldap	1
+intro to kernel level programming	1
+web services using jaxrpc	1
+app inventor	1
+blitz basic	1
+gamemaker studio	1
+alice 3d	1
+web services (rest and soap)	1
+mysql clustrix	1
+codeigniter.	1
+vss	1
+spatial db	1
+mq	1
+javascript)	1
+ejs	1
+oracle certified java programmer (ocjp 6.0)	1
+gmail and facebook api's	1
+recruiting process	1
+java rest service	1
+etsi m2m specifications	1
+ietf coap	1
+lte diameter	1
+android app	1
+voip	1
+sip	1
+sdp	1
+rtp	1
+nodeb	1
+umts	1
+hspa+ code quality assurance tools - valgrind	1
+purify	1
+gcov	1
+mccabe	1
+klocworks	1
+splint	1
+apache myfaces	1
+chordiant developer manager	1
+ms sql server 2008 r2	1
+php (lamp)	1
+unity game engine	1
+pthread library	1
+android (maps)	1
+navigation basics(speech & turn)	1
+children	1
+json & facebook api.	1
+c++ & shell scripting.	1
+gifted	1
+adobe flex	1
+c & shell scripting.	1
+vb6	1
+cmu sphinx	1
+troubleshooting	1
+java swings	1
+xsd/xslt	1
+construct2	1
+3ds-max	1
+codeignitor	1
+jboss application server	1
+wily introscope	1
+mentoring and supervising	1
+guiding aerospace projects.	1
+netbeans ide	1
+asp.net mvc 3	1
+openni	1
+sql server.	1
+gre	1
+netsim	1
+sesame api	1
+stp	1
+hsrp	1
+ospf and bgp issues	1
+objective-c ios	1
+team managing	1
+java awt and jdbc connectivity	1
+ejb	1
+oracle app server	1
+device drivers	1
+kernel devlopment	1
+reporting	1
+opensesame api	1
+bids	1
+lms	1
+customer support	1
+aws cloud services	1
+stanford core nlp api	1
+wordnet api	1
+rpm library	1
+acme	1
+cisco ios xr	1
+virtual machines	1
+webapp2	1
+jinja2	1
+weka toolkit	1
+interacting with customers	1
+dcpl	1
+spring 2.0	1
+oracle 9i	1
+struts 2.0	1
+cisco technologies.	1
+sql server 2008.	1
+application development framework (adf)	1
+jdeveloper ide	1
+struts 1.0	1
+extjs javascript	1
+tumblr theming (duh)	1
+coffescript	1
+java with weka api	1
+novell	1
+kace agent	1
+windows scripts	1
+npc editor	1
+photoshop/gimp	1
+illustrator/inkscape	1
+svg	1
+technical group leader	1
+tumblr theming	1
+spreadsheets	1
+being tech support	1
+objc	1
+applescript	1
+mediawiki	1
+autocad 2d and 3d	1
+groovy script	1
+solid edge	1
+ibm universe	1
+facebook connect api’s	1
+windows 8 app	1
+windows phone 8 app	1
+ibm netcool suite	1
+ibm tivoli buisness service manager	1
+ibm db2 9.7 enterprise edition	1
+oracle 11g database	1
+toad for oracle	1
+cognos bi 8.0 reportnet	1
+ibm framework manager	1
+aix	1
+facebook api.	1
+eclipse ide.	1
+clearvision	1
+hp qualitycenter	1
+rails 3.2 platform	1
+google maps api v3	1
+{abap c	1
+office hours	1
+emacs	1
+nuspherephped	1
+wp8	1
+neurosky mindwave	1
+wearables	1
+uikit	1
+protocols	1
+cocosbuilder	1
+ospfv3	1
+lsi network processors	1
+awt.	1
+ccna	1
+ccip	1
+ccie written	1
+physx api	1
+sap abap	1
+cms(sitecore)	1
+ms sql reporting services	1
+problem-solving	1
+mobile os	1
+mobile hardware	1
+lan network	1
+etc	1
+supervisory experience	1
+instruction experience	1
+knowledge of nuclear power and safety	1
+security clearance (top secret)	1
+working with others	1
+shell scripts	1
+tcp model	1
+c# python	1
+ado	1
+zeromq	1
+xml parser	1
+sax and jaxb).	1
+tcsh shell scripting	1
+apache  ant	1
+harvest	1
+rcs	1
+sap portal	1
+mvc 3 & 4	1
+routing	1
+underscorejs	1
+common crawl	1
+xilinx	1
+jekyll	1
+windows development	1
+windows phone development	1
+tcp /ip protocols	1
+pinterest api	1
+ebay api	1
+amazon api	1
+functional testing (ft)	1
+regression testing (rt) and smoke testing	1
+relation db	1
+qc	1
+qtp	1
+stlc	1
+functional testing	1
+qa	1
+primefaces	1
+communication/thinking on the spot	1
+open source/beaglebone/3-d printing	1
+html5. css3	1
+acl	1
+security aspects in computing.	1
+c++/stl/ tcp-ip/udp	1
+ecommerce	1
+ui/ux design	1
+customer development	1
+app design	1
+analyze potential users	1
+ibm websphere integration designer	1
+sax parser	1
+content management system	1
+adobe cs6	1
+evaluating mobile applications and insights to a trend in mobile applications	1
+analyzing economic situation	1
+negotiating at a multilateral table	1
+analyzing military situation	1
+drafting strategy	1
+developed interpreting and translating skills	1
+gentran	1
+sap-edi	1
+gsap	1
+aws application	1
+c++(ns3)	1
+leadership qualities	1
+socket pragramming	1
+mst	1
+active directory services	1
+domain controllers	1
+sql server 2005/2008.	1
+rft	1
+startutl	1
+risa 3d	1
+enercal	1
+microsoft office suite	1
+crystal report	1
+posix threads apis	1
+business development and strategy	1
+file system	1
+independent work ethic	1
+java - using spring and hibernate framework.	1
+tcp congestion control	1
+tcp hacking/tuning	1
+sockets apis	1
+maven.	1
+ibm bpm	1
+icefaces	1
+android app development	1
+logistics	1
+quickbooks	1
+teradata	1
+autosys	1
+peopletools	1
+hp qtp	1
+fpga programming	1
+state machine design	1
+rexx	1
+mtm	1
+cpp	1
+sap trex	1
+tableau	1
+oracle 10g pl/sql	1
+player/stage	1
+unix shell script	1
+ca workload automation ae(auto sys edition)	1
+google voice api	1
+mumble client	1
+java pl/sql	1
+ant builld	1
+etc.	1
+websphere commerce (wcs)	1
+derby	1
+oracle and sybase database	1
+cache	1
+hackathon team: kevin	1
+khoa and jack	1
+skills: flask	1
+beautiful soup	1
+crowd sourcing	1
+gamification	1
+initiative	1
+particle physics	1
+python scripting	1
+scientific research	1
+tex preparation	1
+digitize vhs tapes	1
+microsoft business intelligence suite	1
+ibm datastage 8.1	1
+shell programming	1
+wireless networking	1
+network security	1
+basic cpu design	1
+pipelining	1
+quality management	1
+hp exstream	1
+cosmos	1
+vs2010	1
+coredata	1
+mapkit	1
+restkit	1
+storyboards	1
+physics (computer graphics)	1
+autocad 2010	1
+call routing analysis	1
+tcp trace analysis	1
+sap basis	1
+stanford corenlp	1
+sql server 2010	1
+threads and file system	1
+financial modeling	1
+m&a	1
+ipo	1
+restructuring	1
+debt and equity financing	1
+community organizing	1
+investing	1
+due diligence	1
+weenix os	1
+jprofiler	1
+ner/pos tagger	1
+elastic-search	1
+game maker	1
+networking protocols	1
+java/ j2ee	1
+kineticjs	1
+mumps	1
+salesforce	1
+iot	1
+bluetooth le	1
+apigee gateway	1
+apigee baas	1
+jpcap java library	1
+creo	1
+design variable analysis	1
+geometric modelling and tolerance	1
+standard drawing practices bs 108 ans asme	1
+clarity	1
+axis	1
+schematron	1
+vbscript	1
+greenhills real time operating system (rtos)	1
+monte carlo simulations	1
+channel models	1
+multiple access techniques	1
+antenna design	1
+fundraising	1
+final cut	1
+film and editing	1
+event organizing	1
+recruitment	1
+patience	1
+technical writing	1
+salesforce.com	1
+oracle weblogic	1
+japerules	1
+peoplesoft hrms	1
+xml publisher	1
+psquery	1
+sqr	1
+regular expression pattern matching	1
+pdf box api	1
+html dom parser	1
+ffmpeg	1
+rtsp	1
+apple http live streaming	1
+web services-soap/restful	1
+server side(back end)	1
+web development- html	1
+c. c++	1
+peoplesoft tools	1
+hcm etc	1
+sap ui5/open ui5	1
+winjs	1
+sap netweaver gateway	1
+agile methodology	1
+framework and api development	1
+customer engagement	1
+pcap apis	1
+trained in problem solving and operating systems	1
+high level programming	1
+object oriented concepts using java	1
+software engineering practices and iqs	1
+ip security and legal issues.  • completed stream training in introduction to mainframes	1
+enterprise mainframe production	1
+cobol and advanced cobol programming	1
+sencha touch 2.3	1
+sencha extjs4	1
+unix and shell scripting	1
+java scripting	1
+struts framework	1
+udp concepts	1
+gui design	1
+winmerge	1
+gvap studio (kettle)	1
+struts 2.0 framework	1
+icefaces 2.0	1
+ejb. tools --> clearcase	1
+authorize.net api	1
+pivots	1
+remark omr	1
+joomla content management system	1
+qa strategy	1
+webtest	1
+development and marketing	1
+spring batch	1
+spring integration	1
+guice	1
+pitching	1
+early startups	1
+prpc	1
+pega	1
+collaboration	1
+lte	1
+wcdma	1
+soildworks	1
+sunny cyclone-i programming	1
+jdbc connectivity	1
+handling large code bases	1
+quality	1
+procedural based engineering	1
+user experience	1
+sap security	1
+kernel functionality	1
+planning	1
+resource allocation	1
+tools like karma for source modelling	1
+multi-tasking	1
+learning multiple facets of a job at once and implementing them	1
+karma - integration tool	1
+decision-making	1
+allocation of profits	1
+other finances	1
+some html	1
+udfs	1
+visual studio 2013	1
+bat scripts	1
+windows sever 2008	1
+bugzilla	1
+reviewboard	1
+tutoring	1
+rdf model	1
+peer mentoring	1
+standard template library	1
+accrual accounting	1
+trimble trident analyst for spatial imaging	1
+sns and sqs web services	1
+hadoop/mapreduce	1
+independent research work	1
+data visualization	1
+team ownership	1
+materials management	1
+organisational skills	1
+communication and teamwork on events	1
+fund management	1
+communication and intra-committee project planning	1
+analysis of data	1
+plsql	1
+software design	1
+pattern recognition	1
+strategic planning	1
+management consulting	1
+business strategy	1
+d3	1
+business analysis	1
+biomedical	1
+metastorm	1
+servicestack	1
+expect	1
+javacv	1
+giraph	1
+sqoop	1
+rest services	1
+sap-ui5	1
+knockoutjs	1
+model building	1
+adobe day cq	1
+jcr	1
+accountability	1
+version control	1
+net	1
+microsoft sql	1
+string matching	1
+ai mashup	1
+first order logic (fol)	1
+google analytics	1
+t--	1
+gulp	1
+brunch	1
+adobe illustrator	1
+adobe indesign	1
+autocad civil 3d	1
+open-source teamwork	1
+test	1
+jersey	1
+apache spark	1
+apache flume	1
+mixed signal	1
+network analyzer	1
+signal generator	1
+altium designer	1
+esri arcgis maps	1
+ubuntu linux kernel	1
+linux kernel module	1
+xml-rpc	1
+computer aided design	1
+netlogger	1
+ireport	1
+unix shellscript	1
+productsy	1
+fiorano soa platform	1
+doctrine	1
+mvc pattern	1
+json agile software development	1
+team work and collaboration	1
+jython	1
+kryo	1
+interfacing c and python	1
+code management	1
+code testing	1
+social website apis	1
+symfony-propel	1
+joomla	1
+ceilometer	1
+apache ofbiz	1
+smarty template	1
+prestashop	1
+groovy.	1
+repgen (scripting language)	1
+pawn	1
+oral presentations	1
+memory	1
+prioritization	1
+customer scrvice	1
+hardware repair	1
+servers	1
+switches	1
+self-motivation	1
+inventory	1
+datacenters	1
+gnu plot	1
+mahout	1
+ui	1
+intrusion prevention systems	1
+velnerability management	1
+java, spring	1
+mongo	1
+backward chaining	1
+open source erdiko cms	1
+zend framework	1
+eclipse swt (rcp)	1
+eclipse birt	1
+dot net	1
+website development	1
+bluefin	1
+analysis of algorithms	1
+memcached.	1
+questasim	1
+vista	1
+windows server 2008 r2	1
+apache pig	1
+spark	1
+mahout.	1
+systems	1
+bobo-browse	1
+modus ponens	1
+software defined storage	1
+dediprog	1
+intel performance tools	1
+display architectures	1
+msm8974	1
+ex-series juniper switches	1
+postresql with postgis	1
+unification	1
+lightstreamer	1
+struts-framework	1
+min-max	1
+oauth 2.0	1
+knockout.js	1
+nant	1
+ios cocoa	1
+core data	1
+windows xp	1
+h.264 jm12.4	1
+spring mvc with mybatis integration	1
+ms powershell	1
+xaml	1
+couchbase	1
+microsoft dynamics crm	1
+intern team head	1
+embedded system	1
+struts ii	1
+java + xml	1
+hl7	1
+elink(oops based tool)	1
+scm(medical tool used for hospitals)	1
+maas360	1
+google postini	1
+nexpose	1
+dot net framework 3.5	1
+modelling	1
+owned the junit tests of sdk modules of the cep product	1
+kvm	1
+xen	1
+virsh	1
+android test environment	1
+problem formulation	1
+robotium	1
+objective php	1
+opentok api	1
+sql server 2005.	1
+android ndk	1
+team building skills	1
+agile technology	1
+vc++.net	1
+entity framework	1
+xamarin studio	1
+designing in xcode	1
+mac os	1
+c# and c++	1
+debugging and analytical skills	1
+work-flow management	1
+insight into data warehousing	1
+system verilog for verification	1
+spatial indexes	1
+analytics	1
+iptv	1
+gui automation tool(eggplant)	1
+d3js	1
+tdd (test-driven-development)	1
+eggplant	1
+spirent testcenter suite	1
+cxxtest	1
+boost and cplex libraries for fiat development	1
+c# .net 2008	1
+team explorer 2008	1
+ms sql server 2008 and nunit.	1
+worked on perl	1
+filers.	1
+shell/python/perl	1
+j-units	1
+test-rail	1
+hp quality center	1
+requirement analyzed	1
+system architecture	1
+pitching ideas	1
+adobe	1
+indesign	1
+apple aperture	1
+digital image processing	1
+iis 7.0	1
+phtml	1
+css 2	1
+oracle spatial features	1
+mysql server	1
+team leading	1
+working on multiple projects at same time	1
+amazon aws rds	1
+web2py	1
+microsoft visual c++	1
+windows powershell 3.0	1
+code igniter	1
+rspec	1
+java web	1
+ember	1
+zenoss	1
+zope2	1
+twisted	1
+c++ driver dxva video codec h.264 vp8	1
+c++; acme/clearcase; cscope	1
+c++; clearcase; cscope	1
+assembly code	1
+repository	1
+sphinx	1
+web applications	1
+thrift	1
+vmware vcenter	1
+apache abdera	1
+fuse	1
+eagle pcb design	1
+lab equipments	1
+idl	1
+crestron simpl+ and c++	1
+vtpro	1
+windows sever 2003	1
+sql server 2008r2	1
+project leadership	1
+speech codec	1
+css and mysql.	1
+sass/css	1
+coffeescript/js	1
+social media marketing	1
+twitter	1
+facebook	1
+microsoft dynamics great plains	1
+nortridge loan system	1
+accounting	1
+feature selection.	1
+property management	1
+investment proposals	1
+underwriting	1
+legal	1
+analysis	1
+capital raising	1
+openoffice sdk	1
+rails	1
+backbone	1
+elasticsearch	1
+awt graphics	1
+openstreetmap	1
+keil	1
+image processing toolkit (matlab)	1
+risk management	1
+construction	1
+insurance	1
+bit manupilation	1
+network	1
+javaee	1
+vmware player	1
+ciscoworks lms 4.0	1
+cisco	1
+unix command	1
+medical physics	1
+pro engineer	1
+ansys	1
+shock and vibration testing	1
+reliability testing	1
+structural analysis	1
+electronics packaging	1
+manufacturing engineering	1
+cytoscape app development	1
+user modeling	1
+information extraction	1
+actionscript	1
+rhel	1
+qt framework	1
+postgre sql	1
+circuitcam	1
+data compiling	1
+metasploit	1
+csh	1
+html/css/svg	1
+silverstripe cms	1
+ret screen	1
+mysql]	1
+gpu computing	1
+l2 and l3	1
+test & validataion	1
+gamemaker	1
+pivotal tracker	1
+radio access network	1
+gsm/cdma	1
+ethernet	1
+ip routing	1
+cli routing and switch configuration	1
+driver	1
+video	1
+detection	1
+oracle forms and reports	1
+application of theory	1
+innovation/design/research	1
+stanford parser	1
+tregex	1
+tester	1
+proposing and developing a project	1
+analyzing excel data	1
+identifying and analyzing needs of different people	1
+jersey jax-rs	1
+php+jquery	1
+lamp(linux+apache+mysql+php)	1
+c#.net 3.5 and oracle	1
+database documentation	1
+marketing strategy	1
+enfs	1
+golang	1
+ibm web sphere	1
+client interaction	1
+ms sql server 2008 and apache tomcat server	1
+network topology	1
+c#.net and sql server	1
+google doubleclick	1
+express.js and postgresql.	1
+microsoft visio	1
+geographic information systems	1
+remote sensing	1
+ms azure cloud	1
+xamarin	1
+chromeos	1
+ms office	1
+ruby programming	1
+string manipulation	1
+rmi	1
+lab skills	1
+research ethics	1
+packets	1
+testflight	1
+instruments	1
+asana	1
+project ownership. working in collaboration	1
+corporate branding	1
+tsdb database	1
+akamai apis	1
+configuring cisco switches	1
+sap client	1
+penetration testing	1
+application security	1
+mysql database.	1
+sas	1
+bentley microstation	1
+street saver pms	1
+microsoft access	1
+per	1
+tcl/tk	1
+akka	1
+zookeeper	1
+kafka	1
+glassfish	1
+puppet	1
+tcl scripting	1
+digital signal processing	1
+apache oodt	1
+antlr	1
+context-free grammar	1
+xilinx system generator	1
+channel emulators	1
+warp boards	1
+circuit maker	1
+mass communication	1
+information technology management	1
+interview skills	1
+seo optimization	1
+internet journalism	1
+public performance	1
+tcp ip	1
+java; xml; git; agile; linux; apache web server;	1
+win32	1
+microsoft kinect sdk	1
+no sql storage	1
+design for manufacturing	1
+design for cost	1
+simplis	1
+allegro	1
+nfc	1
+struct framework	1
+drupal cms	1
+tracing	1
+mobile backend as a service	1
+cocos2dx	1
+general security)	1
+iphone & ipad	1
+qa testing	1
+experience with web services	1
+perforce as the version control system	1
+scrum methodology	1
+jira as project tracking software	1
+confluence for team collaboration	1
+testng as the testing framework	1
+aws sqs	1
+ip tables	1
+aws ec2	1
+android application	1
+model-view-controller framework	1
+investments	1
+asset management	1
+asset allocation	1
+financial analysis	1
+non-profits	1
+working in teams	1
+raising community awareness	1
+zoho	1
+sql server integration services	1
+sql server reporting services	1
+mobile development	1
+sqlalchemy	1
+hiberante	1
+titan db	1
+rexster	1
+rest api/web service	1
+shellscript	1
+content extraction	1
+c/c++code generation	1
+geometric dimensioning and tolerancing	1
+canape	1
+mda	1
+postgre	1
+rest api web services	1
+svn tortoise	1
+apache tomcat.	1
+product ownership	1
+product development	1
+user interface	1
+myeclipse	1
+ssh2	1
+ftl	1
+startup	1
+elastic search	1
+kibana	1
+fluentd	1
+cakephp	1
+phpunit	1
+c# and cassandra database	1
+.netframework 4.5	1
+snmp	1
+wmi	1
+adb	1
+usb com	1
+nand flashing	1
+windows form development	1
+throughput measurement	1
+proxychains	1
+storage systems	1
+cnc machining	1
+cnc programming	1
+plc programming	1
+manufacturing techniques	1
+market- manufacturer interaction	1
+industrial design	1
+go programming	1
+docker	1
+linux containers	1
+ember.js	1
+web search engines	1
+facebook- javascript apis	1
+arm board	1
+netbeans ide and java.	1
+geo spatial queries	1
+jedis	1
+rabbitmq	1
+switching	1
+c++. c	1
+pro/e	1
+3d solid modeling	1
+gage r&r studies	1
+ms integration services	1
+ms reporting services	1
+postgressql	1
+integration & test	1
+software decision making	1
+self-managing	1
+server interaction	1
+and ux/ui design.	1
+adobe flash	1
+adobe dreamweaver	1
+adobe bridge	1
+kinect	1

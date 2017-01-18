@@ -1,0 +1,25 @@
+<% if message.blank? %>
+  <div class="profile-insight" style="text-align: center">
+    <span> Doh! Your message is missing.</span>
+  </div>
+<% else %>
+  <div class="message-sender">
+    <%= message[:sender_name] %>
+    <br/>
+    <%= message[:sender_desc] %>
+  </div>
+  <div class="message-subject">
+    <%= message[:subject] %>
+  </div>
+  <div class="message-timeago">
+    <%= message[:time_ago] %>
+  </div>
+  <div>
+    <hr class="hr-profile-item">
+  </div>
+  <div class="message-body">
+    <%= message[:body].html_safe %>
+  </div>
+  <hr class="hr-profile-item">
+  <button class="button button-green-large lightbox-button-center" type="button" id="reply_message"> Reply </button>
+<% end %>

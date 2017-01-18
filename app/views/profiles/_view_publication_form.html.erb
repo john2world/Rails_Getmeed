@@ -1,0 +1,13 @@
+<div id="show_publication_<%= encode_id(publication[:_id]).to_s %>_<%= @is_editable %>" class='profile-view-table'>
+  <%= render 'render_publication_data', :publication => publication, :is_edit => @is_editable %>
+</div>
+<% if @is_editable %>
+    <div id="edit_publication_<%= encode_id(publication[:_id]).to_s %>_<%= @is_editable %>" class='profile-view-table' style='display: none;'>
+      <%= render 'edit_publication_form', :publication => publication %>
+    </div>
+<% end %>
+<% unless @is_editable %>
+    <div>
+      <%= render 'profiles/profile_kudos', :data => publication %>
+    </div>
+<% end %>

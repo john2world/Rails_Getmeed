@@ -1,0 +1,26 @@
+<div class="activity-feed-action">
+  <div class="row" ng-repeat="action in actions.slice(0,1)">
+    <div class="status-form">
+      <poster-info-user user="action.user"></poster-info-user>
+      <h4 class="activity-feed-action-title ng-scope" ng-if="action.course.title">
+        <div ng-text-truncate="action.course.title" ng-tt-chars-threshold="350" style="display: inline;">{{action.course.title}}</div>"
+      </h4>
+      <br/>
+      <blockquote class="activity-feed-action-message" ng-if="action.message" >
+        {{action.message}}
+      </blockquote>
+      <form name="referencePublishForm" class="reference-submit-form" ng-submit="submitAction(action, referencePublishForm.$valid)"
+            novalidate="novalidate">
+            <textarea
+                    id="status-textarea"
+                    name="description"
+                    class="u-full-width"
+                    ng-model="referencePublishData.review_text"
+                    placeholder="Write a short review about {{action.user.name}}'s work for {{action.course.title}}..."
+                    required="required"></textarea>
+        <input type="submit" class="button button-secondary submission-cta" value="submit"/>
+        <button type="button" class="button button-primary-reverse submission-cta" ng-click="skipAction(action)">Skip</button>
+      </form>
+    </div>
+  </div>
+</div>

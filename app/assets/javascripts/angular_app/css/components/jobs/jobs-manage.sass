@@ -1,0 +1,18 @@
+=vertical-align($position: relative)
+  position: $position
+  top: 50%
+  -webkit-transform: translateY(-50%)
+  -ms-transform: translateY(-50%)
+  transform: translateY(-50%)
+
+#activity-feed
+  .post
+    margin-bottom: 20px
+  .button.post.center
+    text-align: center
+
+.feed-container
+  position: relative
+  height: 500px
+  .inner-container
+    +vertical-align()

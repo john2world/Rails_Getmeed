@@ -1,0 +1,9 @@
+<% if question.blank? %>
+    <div class="form-view" style="text-align: center;">
+      <%= text_field_tag :question_title, nil, :class => 'spanTbMiniDescription', :placeholder => 'Enter your question title (300 chars)', :maxlength => 200 %>
+      <%= text_area_tag :question_description, nil, :class => 'spanTbMiniDescription', :placeholder => 'Enter your description (1500 chars)', :maxlength => 1500 %>
+      <br/>
+      <%= check_box :is_coding, false %> <strong>Check if this is a coding question </strong>
+      <span class="info-text-center">(Answers are powered by github)</span>
+    </div>
+<% end -%>

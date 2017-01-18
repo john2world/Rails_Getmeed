@@ -1,0 +1,57 @@
+<p class="accordion lightbox-text">Please fill missing information..!
+</p>
+<hr class="hr-header">
+<div class="form-view">
+
+  <%= form_tag({:action => :incomplete_submit}, :class => 'login-form', :html => {:multipart => true}) do %>
+      <% if @user.primary_email.blank? %>
+          <div class="form-group">
+            <%= text_field_tag :primary_email, nil, :class => 'form-control', :type => 'email', :required => '', :value => params[:primary_email], :placeholder => 'Primary Email (*)' %>
+          </div>
+      <% end %>
+      <% if @user.first_name.blank? %>
+          <div class="form-group">
+            <%= text_field_tag :first_name, nil, :class => 'form-control', :required => '', :value => params[:first_name], :placeholder => 'First Name (*)' %>
+          </div>
+      <% end %>
+
+      <% if @user.last_name.blank? %>
+          <div class="form-group">
+            <%= text_field_tag :last_name, nil, :class => 'form-control', :required => '', :value => params[:last_name], :placeholder => 'Last Name (*)' %>
+          </div>
+      <% end %>
+      <% if @user.degree.blank? %>
+          <div class="form-group">
+            <%= select_tag :degree, options_for_select(@degrees.map { |d| [d, d] }), :style => 'width: 100%; height: 30px', :class => 'enteprise-selectize', :prompt => 'Degree (*) Ex: Master of Science' %>
+          </div>
+      <% end %>
+      <% if @user.phone_number.blank? %>
+          <div class="form-group">
+            <%= text_field_tag :phone_field, nil, :class => 'form-control', :required => '', :pattern => '^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$', :value => params[:phone_field], :placeholder => 'Phone number - 222-333-4444 (*)' %>
+          </div>
+      <% end %>
+      <% if @user.major.blank? %>
+          <div class="form-group">
+            <%= select_tag :major, options_for_select(@majors.map { |u| [u.major, u.id] }), :style => 'width: 100%; height: 30px', :class => 'enteprise-selectize', :prompt => 'Select Major (*)' %>
+          </div>
+      <% end %>
+      <% if @user.minor.blank? %>
+        <div class="form-group">
+          <%= select_tag :minor, options_for_select(@majors.map { |u| [u.major, u.id] }), :style => 'width: 100%; height: 30px', :class => 'enteprise-selectize', :prompt => 'Select Minor' %>
+        </div>
+      <% end %>
+      <% if @user.year.blank? %>
+          <div class="form-group">
+            <%= text_field_tag :year, nil, :class => 'form-control', :required => '', :pattern => '^\d{4}$', :value => params[:year], :placeholder => 'Graduation Year (*) Ex - 2015' %>
+          </div>
+      <% end %>
+      </div>
+
+      <div class="any-center">
+        <%= button_tag(type: 'submit', class: 'btn btn-primary btn-primary',  :data => { :disable_with => 'Please wait..'} ) do %>
+            Continue
+        <% end %>
+      </div>
+
+  <% end -%>
+</div>

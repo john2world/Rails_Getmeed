@@ -1,0 +1,12 @@
+<form novalidate>
+  <legend>Notes for <span type="student-name">{{::applicant.user.name}}</span></legend>
+
+  <fieldset>
+    <textarea ng-model="applicant.notes" placeholder='Add your notes ...' cols="45" rows="10"></textarea>
+  </fieldset>
+
+  <button ng-click="close(true)" class="medium-small button-secondary-inverse">
+    <span class="glyphicon glyphicon-ok-circle"></span>Save
+  </button>
+  <button ng-click="close(false)" class="medium-small button-primary-inverse">Cancel</button>
+</form>

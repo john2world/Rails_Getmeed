@@ -1,0 +1,32 @@
+<div class="profile-objective profile-section" ng-if="(profile.objective || (currentUser.handle == profile.handle))">
+  <div class="profile-objective-show" ng-show="!showEdit('objective')">
+    <h3>
+      Objective
+      <a class="open-profile-edit-objective edit-link"
+         ng-click="editObjective()"
+         ng-show="profile.is_viewer_profile">
+         <i class="fa fa-pencil-square-o"></i> Edit
+      </a>
+    </h3>
+    <p class="profile-objective"> {{ profile.objective | htmlToPlaintext }}</p>
+  </div>
+  <div
+    class="profile-edit-section"
+    id="profile-edit-objective"
+    ng-show="showEdit('objective')">
+    <form accept-charset="UTF-8" ng-submit="submitUpdateObjective()">
+      <h3 class="u-full-width">Objective</h3>
+      <fieldset class="row">
+        <textarea type="text" ng-model="profile.objective" class="u-full-width">
+        </textarea>
+      </fieldset>
+
+      <input class="button-primary" type="submit" value="Save" />
+      <input
+        type="button"
+        class="button close-modal"
+        value="Cancel"
+        ng-click="closeEditObjective(true)" />
+    </form>
+  </div>
+</div>

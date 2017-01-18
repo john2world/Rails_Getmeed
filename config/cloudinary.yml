@@ -1,0 +1,18 @@
+development:
+  cloud_name: resume
+  api_key: '339493885616674'
+  api_secret: bTjz7NcIX0TECf8VfhmsW90TIRU
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: resume
+  api_key: '339493885616674'
+  api_secret: bTjz7NcIX0TECf8VfhmsW90TIRU
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: resume
+  api_key: '339493885616674'
+  api_secret: bTjz7NcIX0TECf8VfhmsW90TIRU
+  enhance_image_tag: true
+  static_image_support: false

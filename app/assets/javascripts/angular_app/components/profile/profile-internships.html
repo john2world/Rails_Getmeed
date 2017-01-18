@@ -1,0 +1,17 @@
+<div class="profile-internships profile-section" ng-if="profile.internships || profile.is_viewer_profile">
+
+  <h3>
+    Internships
+    <a class="open-profile-add-education edit-link"
+       ng-click="fns.add()"
+       ng-show="profile.is_viewer_profile">
+       <i class="fa fa-plus-square"></i> Add
+    </a>
+  </h3>
+  <experience-entry
+    ng-repeat="item in profile.internships"
+    id="internship-{{ item._id }}"
+    class="internship-entry"
+  >
+  </experience-entry>
+</div>

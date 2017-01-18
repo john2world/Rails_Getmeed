@@ -1,0 +1,7 @@
+<% if data[:type].blank? %> 
+<% elsif data[:type].eql? 'userwork' %>  worked here
+<% elsif data[:type].eql? 'internship' %>  interned here
+<% elsif data[:type].eql? 'publication' %>  authored this
+<% elsif data[:type].eql? 'coursework' %> took this course
+<% elsif data[:type].eql? 'profile_picture' %> new look
+<% end %> 

@@ -1,0 +1,120 @@
+<hr class="hr-profile-header">
+<div>
+  <% if @reviewed_course_count > 0 %>
+    <div style="text-align: center; margin-top:25px">
+      <a type='button' class='btn btn-success btn-lg' href="<%= url_for(controller: :reviews, action: :course_insights) %>"> View Course Insights </a>
+    </div>
+    <hr style="width: 60%; margin-left: 20%;">
+    <p class="info-text-xlarge any-center">Add more courses to your profile?</p>
+    <div style="text-align:center">
+      <a type="button" class="btn btn-md btn-primary" href="<%= url_for(:controller => 'profiles', :action => 'view', :id => @user.handle, :edit => true) %>">Update Profile</a>
+    </div>
+    <hr style="width: 60%; margin-left: 20%;">
+  <% end %>
+  <p id="course_review_header" class="info-text-xlarge any-center"> </p>
+</div>
+
+  <div class="blog-list blog-category-list"id="course_review_<%= @course[:_id] %>">
+    <%= form_tag({:controller => 'reviews', :action => 'course_review_submit', :course_id => @course[:_id]},
+                 :html => {:multipart => true}, :remote => true, :class => 'course_review') do %>
+      <article class="post col-md-12 col-sm-12 col-xs-12 col-md-offset-0 col-sm-offset-0 col-xs-offset-0">
+      <div class="post-inner"  style="box-shadow: 0.5px 0.3px 3px #00a651" >
+        <div class="content feed-container" style="padding-left: 30px; overflow: auto;">
+          <div class="article-container">
+            <div class="post-title col-md-9 mol-sm-9 col-xs-9">
+              <%= @course[:title] %>
+            </div>
+            <div class="col-md-3 mol-sm-3 col-xs-3" style="text-align: right">
+              [<%= @course[:semester] %> - <%= @course[:year] %>]
+            </div>
+          </div>
+          <hr>
+          <div class="form-group col-md-4 col-sm-4 col-xs-4 ">
+            <%= text_field_tag :course_code, nil, :placeholder => 'Course Code', :class =>'from-control', :required => '', :style=>'height: 30px' %>
+          </div>
+          <div class="form-group col-md-8 col-sm-8 col-xs-8 ">
+            <%= text_field_tag :prof_name, nil, :placeholder => 'Professor Name', :class =>'from-control input-medium', :required => '', :style=>'height: 30px' %>
+          </div>
+          <div class="form-group col-md-12 col-sm-12 col-xs-12">
+            <%= number_field_tag :rating, 0, :class =>'rating from-control hide', :required => '', :min => "0", :max => "5", :step => "0.5", :"data-size" => "xs" %>
+          </div>
+          <div class="form-group col-md-12 col-sm-12 col-xs-12" style="padding-right: 0px">
+            <%= text_area :review, :text, :class => 'form-control dont-show-wysiwyg', :required => '', :placeholder => 'What do you think of this course?', :rows => 5 %>
+          </div>
+          <div class="form-group any-center">
+           <%= check_box("anonymous", "true", { }, true, false) %> Anonymous
+          </div>
+          <div class="any-center">
+            <%= button_tag(type: 'submit', :id => "btn_course_review_#{@course.id}" , class: 'btn btn-primary btn-primary') do %>
+              Submit
+            <% end %>
+          </div>
+          <div class="form-group"></div>
+        </div>
+      </div>
+    </article>
+  </div>
+<% end %>
+
+<script>
+  $(document).ready(function() {
+    $('.course_review').formValidation({
+      framework: 'bootstrap',
+      icon: {
+        valid: 'glyphicon glyphicon-ok',
+        invalid: 'glyphicon glyphicon-remove',
+        validating: 'glyphicon glyphicon-refresh'
+      },
+      fields: {
+        course_code: {
+          validators: {
+            notEmpty: {
+              message: 'Course Code is required'
+            },
+            stringLength: {
+              min: 3,
+              message: 'The course code must be more than 3 characters'
+            },
+            regexp: {
+              regexp: /^[a-zA-Z]*[0-9]+$/,
+              message: 'The course code must contain characters and numbers only'
+            }
+          }
+        },
+        prof_name: {
+          validators: {
+            notEmpty: {
+              message: 'Professor Name is required'
+            },
+            stringLength: {
+              min: 6,
+              message: 'The professor name must be more than 6 characters'
+            },
+            regexp: {
+              regexp: /^[a-zA-Z]+.*$/,
+              message: 'The professor name must contain characters'
+            }
+          }
+        },
+        "review[text]": {
+          validators: {
+            notEmpty: {
+              message: 'Review text is required'
+            },
+            stringLength: {
+              min: 10,
+              message: 'The review text name must be more than 6 characters'
+            },
+            regexp: {
+              regexp: /^[a-zA-Z]+.*$/,
+              message: 'The review text name must contain characters'
+            }
+          }
+        }
+      }
+    }).on('success.form.fv', function(e) {
+      // Prevent form submission
+      e.preventDefault();
+    });
+  });
+</script>

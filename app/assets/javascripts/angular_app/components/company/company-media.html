@@ -1,0 +1,10 @@
+<div class="unslider company-media" ng-if="company.photos.length + company.video_urls.length > 0">
+  <ul>
+    <li ng-repeat="video_url in company.video_urls">
+      <youtube-iframe youtube-url="video_url" height="100%"></youtube-iframe>
+    </li>
+    <li ng-repeat="photo in company.photos" on-finish-render="ngRepeatFinished">
+      <img ng-src="{{ photo.large_image_url }}" data-title="{{ photo.description }}"/>
+    </li>
+  </ul>
+</div>

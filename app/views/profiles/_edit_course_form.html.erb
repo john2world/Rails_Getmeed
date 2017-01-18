@@ -1,0 +1,63 @@
+<%= form_tag({:action => 'save_course'}, :id => 'form_' + encode_id(course[:_id]), :remote => true) do %>
+    <div class="form-inline">
+      <%= hidden_field_tag :hidden_id, encode_id(course[:_id]), :id => 'course_hidden' %>
+      <div class="form-group">
+        <% if course[:title].blank? %>
+            <%= text_field_tag :course_title, nil, :placeholder => 'Ex: Operating Systems', :class => 'form-control input-medium', :required => '' %>
+        <% else %>
+            <%= text_field_tag :course_title, nil, :value => course[:title], :placeholder => 'Ex: Operating Systems', :class => 'form-control input-medium', :required => '' %>
+        <% end %>
+      </div>
+      <div class="form-group" style="float: right;">
+        &nbsp;
+        <% if course[:semester].blank? %>
+            <%= select_tag :semester, options_for_select(%w(Fall Spring Summer Winter)), :class => 'form-control input-small' %>
+            &nbsp;
+            <%= select_year(Date.today, {:field_name => 'year', :start_year => 1900}, {:class => 'form-control input-mini'}) %>
+        <% else %>
+            <%= select_tag :semester, options_for_select(%w(Fall Spring Summer Winter), course[:semester]), :class => 'form-control input-small' %>
+            &nbsp;
+            <%= select_year(get_year(course[:year]), {:field_name => 'year', :start_year => 1900, :end_year => 2020}, {:class => 'form-control input-mini'}) %>
+        <% end %>
+      </div>
+    </div>
+    <div class="form-group">
+
+      <% if course[:description].blank? %>
+          <%= text_area :course_description, :text, :id => "profile-coursework-#{encode_id(course[:_id])}", :class => 'form-control', :placeholder => 'Try to describe what you have done in this course, projects worked on and skills learned in this course (485 characters). (*required)', :rows => 3, :cols => 80 %>
+
+      <% else %>
+          <%= text_area :course_description, :text, :id => "profile-coursework-#{encode_id(course[:_id])}", :class => 'form-control', :value => (course[:description].html_safe), :placeholder => 'Try to describe what you have done in this course, projects worked on and skills learned in this course (485 characters).(*required)', :rows => 3, :cols => 80 %>
+      <% end %>
+    </div>
+    <div class="form-group">
+      <% if course[:skills].blank? %>
+          <%= text_field_tag :course_skills, nil, :placeholder => 'Skills ex: Java, C++,  (comma separated) (*required)', :class => 'form-control' %>
+
+      <% else %>
+          <%= text_field_tag :course_skills, nil, :value => course[:skills].kind_of?(Array) ? course[:skills].join(',').html_safe : course[:skills].html_safe, :placeholder => 'Skills ex: Java, C++,  (comma separated) (*required)', :class => 'form-control' %>
+      <% end %>
+    </div>
+    <p class="label label-important" id="course_skills_alert_<%= encode_id(course.id) %>" style="display: none;">
+    </p>
+    <div class="form-group">
+      <% if course[:link].blank? %>
+          <%= text_field_tag :link, nil, :placeholder => 'Web link to your coursework (if you have any personal project page etc.)', :class => 'form-control' %>
+
+      <% else %>
+          <%= text_field_tag :link, nil, :value => course[:link].html_safe, :placeholder => 'link to your coursework (if you have any personal project page etc.)', :class => 'form-control' %>
+      <% end %>
+    </div>
+
+    <div class="form-group">
+      <%= button_tag(type: 'submit', :id => 'save_course_'+encode_id(course[:_id]), class: 'btn btn-sm btn-primary',
+                     :data => {disable_with: 'Saving...'}) do %>
+          <span class="glyphicon glyphicon-floppy-disk "></span> Save
+      <% end %>
+      <%= button_tag(type: 'submit', :id => 'delete_course_'+encode_id(course[:_id]), class: 'btn btn-sm btn-danger',
+                     :confirm => 'Are you sure to delete this course?', :name => 'delete',
+                     :data => {disable_with: 'Deleting...'}) do %>
+          <span class="glyphicon glyphicon-trash "></span> Delete
+      <% end %>
+    </div>
+<% end %>

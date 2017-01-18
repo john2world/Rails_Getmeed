@@ -1,0 +1,71 @@
+<div class="main-wrap collection">
+  <div class="main">
+    <div class="main-inner-wrap">
+      <div class="row">
+        <section ng-show="!loading" class="collection-header cf">
+          <div class="image-wrap">
+            <img width="200" ng-src="{{ ::collection.small_image_url }}" />
+          </div>
+          <p class="collection-title">
+            {{ ::collection.title }}
+          </p>
+
+          <p class="button-wrap" ng-if="collection.follower_count > 0">
+            <jssocials title-override="collection.title" url-override="collection.url"></jssocials>
+
+            <a
+              ng-click="collection.follow()"
+              ng-if="currentUser && !collection.is_viewer_following"
+              class="button button-red follow"><i class="fa fa-plus"></i> Join ({{ ::collection.follower_count }})</a>
+              <a
+                      ng-if="!currentUser"
+                      class="button button-red follow open-signup-modal"><i class="fa fa-plus"></i> Join ({{ ::collection.follower_count }})</a>
+            <a
+              ng-click="collection.unfollow()"
+              ng-if="collection.is_viewer_following"
+              class="button button-primary-inverse unfollow"><i class="fa fa-check-circle"></i> Joined</a>
+          </p>
+          <div class="collections-details">
+            <p>Created by <a ng-href="/{{ ::collection.creator.handle }}">{{ ::collection.creator.name }}</a></p>
+            <p>Submissions <strong>{{ ::collection.submission_count }}</strong></p>
+            <p>Members <strong>{{ ::collection.follower_count }}</strong></p>
+              <p>Visibility - <span ng-if="!collection.private">Public to everyone</span><span ng-if="collection.private"> Private To The University</span>
+              </p>
+          </div>
+
+          <div>
+            <p class="collection-description">
+              {{ ::collection.description }}
+            </p>
+          </div>
+        </section>
+      </div>
+        <status-box ng-if="currentUser && !loading" user="currentUser" tags="tags" all-collections="allCollections" collection-id="collection._id" show-attachments='true' feed-items="feedItems"
+                    placeholder-text="Post to {{ ::collection.title}}..."
+                    show-poster-info='true'
+                    class="status-form"></status-box>
+      <div class="row">
+        <section>
+            <site-nav class="side" user-collections="userCollections"></site-nav>
+          <div class="activity-feed-inner">
+            <loader ng-show="loading"></loader>
+            <collection-activity-feed
+              ng-show="!loading"
+              ng-if="collection"
+              feed-items="feedItems"
+              all-collections="allCollections"
+              tags="tags"
+              from-tag="false"
+              title-override="{{ ::collection.title }}">
+            </collection-activity-feed>
+             <recommended-collections ng-show="recommendedCollections"></recommended-collections>
+          </div>
+        </section>
+      </div>
+      <div class="row">
+          <site-nav class="bottom" user-collections="userCollections"></site-nav>
+      </div>
+    </div>
+  </div>
+  <signup-modal open="false"></signup-modal>
+</div>

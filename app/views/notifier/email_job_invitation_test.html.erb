@@ -1,0 +1,71 @@
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+<p>
+  <% if @user[:first_name].blank? %>
+      Hi,
+  <% else %>
+      Hi <%= @user[:first_name] %>,
+  <% end %>
+</p>
+
+<% unless @job.blank? %>
+    <p>
+      I am Joe Cussack, student advisor for <%= @school_handle %> @Meed. <%= @job.company %> just forwarded the
+      following job for students from your majors. Please see the details below and apply if it's something that interests you.
+    </p>
+
+    <p>
+      <%= @job.title %>,  <%= @job.company %> - <%= link_to @url_dry, @url %>
+    </p>
+
+    <p>
+      <br>
+      Joe,
+      <br>
+      Student Advisor,
+      <br>
+      Meed Inc, San Francisco
+      <br>
+
+    </p>
+<% end %>
+
+---------- Forwarded message ----------
+<br>
+From: <%= @job.company %> Jobs
+<br>
+Date: <%= Time.now.strftime('%d/%m/%Y %H:%M') %>
+<br>
+Subject: Job Ad - <%= @job.company %> is Hiring!
+<br>
+To:
+<br>
+<p>
+  Hi Joe,
+</p>
+<p>
+  Please forward the following description to <%= @school_handle %> students. We have an immediate opening for this and looking forward to hear from you!
+</p>
+<p>
+  <%= @job.description.html_safe %>
+</p>
+
+<p>
+  <%= @job.title %>,  <%= @job.company %> - <%= link_to @url_dry, @url %>
+</p>
+<p>
+  <br>
+</p>
+
+<p>
+  <br>
+</p>
+
+<p style="margin-top: 5%;">
+  <span style="font-size:8px; color: #888888;font-family: 'Open Sans', 'lucida grande', arial, verdana, 'lucida sans unicode', tahoma, sans-serif;line-height: 18px;">Don't wish to hear from us? :( <a href="<%= @unsubscribe_link %>" style="color:#00a651;">unsubscribe</a></span>
+</p>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<div class="profile-edit-section" ng-show="item.showEdit()">
+  <form
+    accept-charset="UTF-8"
+    name="profileEducationForm"
+    ng-submit="educationFns.submitSave(item, profileEducationForm.$valid)"
+    novalidate="novalidate"
+    >
+    <fieldset class="row">
+      <label class="columns six">
+        <span>School*</span>
+        <input
+          class="u-full-width"
+          ng-model="item.name"
+          required="required"
+          type="text"
+          />
+      </label>
+      <label class="columns three">
+        <span>Start*</span>
+        <select
+          name="start"
+          class="u-full-width"
+          ng-model="item.start_year"
+          ng-options="year for year in years | maxFilter:item.end_year"
+          required="required"
+          >
+        </select>
+      </label>
+      <label class="columns three">
+        <span>End*</span>
+        <select
+          name="end"
+          class="u-full-width"
+          ng-model="item.end_year"
+          ng-options="year for year in years | minFilter:item.start_year"
+          required="required"
+          >
+        </select>
+      </label>
+    </fieldset>
+
+    <fieldset class="row">
+      <label class="columns six">
+        <span>Degree*</span>
+        <select
+          name="degree"
+          class="u-full-width degree-select"
+          ng-options="degree for degree in profile.degrees"
+          ng-model="item.degree"
+          required="required"
+          >
+          <option value="" disabled selected>Select Degree</option>
+        </select>
+      </label>
+      <label class="columns six">
+        <span>Major*</span>
+        <select
+          name="major"
+          class="u-full-width major-select"
+          ng-model="item.major"
+          ng-options="m.major as m.major for m in profile.majors"
+          required="required"
+          >
+          <option value="" disabled selected>Select Major</option>
+        </select>
+      </label>
+
+    </fieldset>
+    <p
+      ng-show="item.submitted && profileEducationForm.$invalid"
+      class="error">
+      Please enter and select all required fields
+    </p>
+
+    <input class="button-primary" type="submit" value="Save" />
+    <input type="button" class="button" value="Cancel" ng-click="educationFns.closeEdit(item, true)"/>
+
+  </form>
+</div>

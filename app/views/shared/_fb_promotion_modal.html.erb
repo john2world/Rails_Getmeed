@@ -1,0 +1,89 @@
+<div class="modal fade" id="fbShareModal" tabindex="-1" role="dialog" aria-labelledby="ownerBoxLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" id="closePromotionDialog" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <p class="accordion lightbox-text">
+          <% if is_profile_incomplete %>
+              Incomplete Profile!
+          <% else %>
+              <% if cookies[:campaign_type].blank? %>
+                  Enter Spotify Promotion
+              <% elsif cookies[:campaign_type].eql? 'sbux' %>
+                  Enter Starbucks Promotion
+              <% elsif cookies[:campaign_type].eql? 'tmaster' %>
+                  Enter Ticketmaster Promotion
+              <% end %>
+          <% end %>
+        </p>
+        <hr class="hr-profile-header">
+      </div>
+      <div class="modal-body">
+        <% if cookies[:campaign_type].blank? %>
+            <img src="https://res.cloudinary.com/resume/image/upload/c_scale,w_500/v1438119749/Meed_Spotify_Black_manfhi.jpg" style="margin-left: 7%;">
+        <% elsif cookies[:campaign_type].eql? 'sbux' %>
+            <img src="https://res.cloudinary.com/resume/image/upload/c_scale,w_500/v1438884514/Starbucks_Meed_black_m34i8y.jpg" style="margin-left: 7%;">
+        <% elsif cookies[:campaign_type].eql? 'tmaster' %>
+            <img src="https://res.cloudinary.com/resume/image/upload/c_scale,w_500/v1438884352/Meed_Ticketmaster_black_vytcbt.jpg" style="margin-left: 7%;">
+        <% end %>
+        <br>
+        <hr class="hr-profile-header">
+        <br>
+        <% if is_profile_incomplete %>
+            <h3> Why should you complete your profile? </h3>
+
+            <ul style="  line-height: 28px;
+                    text-align: left;">
+              <li>
+                Employers review only completed profiles
+              </li>
+              <li>
+                Apply to jobs that are relevant to your major & skills
+              </li>
+              <li>
+                <% if cookies[:campaign_type].blank? %>
+                    A chance to WIN 6 Months of Spotify Premium!
+                <% elsif cookies[:campaign_type].eql? 'sbux' %>
+                    A chance to WIN $50 Starbucks Card!
+                <% elsif cookies[:campaign_type].eql? 'tmaster' %>
+                    A chance to WIN $50 Ticketmaster Card!
+                <% end %>
+              </li>
+            </ul>
+        <% else %>
+            <div style="line-height: 28px;
+                    text-align: left;"> Welcome to Meed <%= current_school_handle.upcase %> Network, you are now
+              eligible to enter promotion!
+            </div>
+        <% end %>
+      </div>
+      <div class="modal-footer any-center">
+        <% if is_profile_incomplete %>
+            <a class="btn btn-large btn-primary" href="/<%= current_user.handle %>?edit=true">
+              Complete Now!
+            </a>
+        <% else %>
+            <a class="btn btn-large btn-success" id="enterPromotionButton" data-dismiss="modal" aria-hidden="true">
+              Enter Promotion
+            </a>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+//    $('#enterPromotionButton').click(function () {
+//        // hide current modal and when it's hidden, open another:
+//        $('#fbShareModal').one('hidden.bs.modal', function (e) {
+//            $('#meedioriteModal').modal('show');
+//        }).modal('hide');
+//    });
+//
+//    $('#closePromotionDialog').click(function () {
+//        // hide current modal and when it's hidden, open another:
+//        $('#fbShareModal').one('hidden.bs.modal', function (e) {
+//            $('#meedioriteModal').modal('show');
+//        }).modal('hide');
+//    });
+</script>

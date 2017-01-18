@@ -1,0 +1,6 @@
+$("#feed_render").prepend("<%= escape_javascript (render 'feed/feed_item_render' , :data => @data) %>").fadeIn(200000);
+$("#feed_item_preview").fadeOut();
+$("#activity_box").val('');
+$("#activity_box_type").find("option:first").attr("selected", true);
+$("#activity_box_privacy").find("option:first").attr("selected", true);
+$("#activity_title_box").val('');

@@ -1,0 +1,41 @@
+<% if show_custom_email %>
+    <div class="any-center">
+      <br/>
+      <br/>
+
+      <div class="fb-like-box" data-href="https://www.facebook.com/resudotme" data-colorscheme="light" data-show-faces="true" data-header="true" data-stream="false" data-show-border="true"></div>
+    </div>
+    <div>
+    </div>
+    <div style="margin-top: 2%">
+    </div>
+    <span class="any-center size18">— OR —</span>
+<% end %>
+
+<div class="form-submit-small">
+  <img src="<%= get_school_logo_url(current_school_handle) %>" class="univ-logo">
+
+  <div>
+    <br/>
+    <br/>
+    <a href="/contacts/gmail">
+      <%= button_tag "#{current_school_handle.upcase} GMAIL", :id => '', :class => 'button btn-google-plus', :disable_with => 'Fetching contacts..' %>
+    </a>
+  </div>
+  <div>
+  </div>
+  <div>
+    <br/>
+    <br/>
+	<span class="info-text">
+	*Remember to select <strong><%= current_school_handle.upcase %> GMAIL ACCOUNT</strong>  </span>
+  </div>
+</div>
+<div class="row" style="margin-top: 5%;">
+
+  <% if show_custom_email %>
+      <a href="/home"><span class="any-center size14">Skip to import later » </span></a>
+  <% end %>
+</div>
+
+<hr class="hr-profile-item">

@@ -1,0 +1,15 @@
+<% if question.blank? %>
+    <div class="profile-insight" style="text-align: center">
+      <span> Doh! This question must have been deleted.</span>
+    </div>
+<% else %>
+    <div class="question-title">
+      <%= question.title.html_safe %>
+      <% unless question.description.blank? %>
+          <div class="question-description">
+            <%= question.description.html_safe %>
+          </div>
+      <% end %>
+    </div>
+<% end %>
+<hr class="hr-question-separator">

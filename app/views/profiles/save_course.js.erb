@@ -1,0 +1,26 @@
+<% if @skills_blank.blank? %>
+  <% if @delete == true%>
+    $("#edit_course_<%= encode_id(@id) %>_true").hide();
+  <% elsif @is_new %>
+  viewNewItem('course');
+  var course_div = $("#view_course_div");
+  course_div.html("<%= escape_javascript (render 'view_course_form' , :course => @user_course) %>");
+  course_div.attr('id', 'view_course_' + '<%= encode_id(@user_course[:_id]) %>');
+  $('#view_course_' + '<%= encode_id(@user_course[:_id]) %>').append("<div id='view_course_div'></div>");
+  <% else %>
+  renderViewItem('edit_course_<%= encode_id(@id) %>');
+  $("#show_course_<%= encode_id(@id) %>_true").html("<%= escape_javascript (render 'render_course_data' , :course => @user_course, :is_edit => @is_editable) %>");
+  <% end %>
+<% else %>
+  <% if @id.blank? %>
+  var alert = $("#course_skills_alert");
+  <% else %>
+  var alert = $("#course_skills_alert_<%= encode_id(@id) %>");
+  <% end %>
+    alert.show();
+    <% if @description_blank.blank? %>
+    alert.html('Please enter at least one skill!');
+    <% else %>
+    alert.html('Please enter description!');
+  <% end %>
+<% end %>

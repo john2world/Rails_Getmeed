@@ -1,0 +1,44 @@
+<% if is_edit %>
+    <div class="row" id="publications">
+      <div><span class="profile-item-type"> PUBLICATIONS</span><span class="info-text" style="font-weight: bold"> (add publications or honors - if any)</span>
+      </div>
+<% else %>
+    <% if !publications.blank? %>
+        <div class="row">
+          <div class="profile-item-type"> PUBLICATIONS</div>
+          <% publications.each_with_index do |publication, index| %>
+              <%= render 'view_publication_form', :publication => publication %>
+              <% if index != publications.length-1 %>
+                  <hr class="hr-profile-item">
+              <% end %>
+          <% end %>
+          <hr class="hr-profile-separator">
+        </div>
+    <% end %>
+<% end %>
+<% if is_edit %>
+    <% if !publications.blank? %>
+        <% publications.each_with_index do |publication, index| %>
+            <%= render 'view_publication_form', :publication => publication %>
+            <% if index != publications.length-1 %>
+                <hr class="hr-profile-item">
+            <% end %>
+        <% end %>
+        <hr class="hr-profile-separator">
+    <% end %>
+    <div id="view_publication_div">
+    </div>
+    <div id="edit_publication_div" style="display: none">
+      <div id="edit_publication_new" class='profile-view-table'>
+        <%= render 'new_publication_form' %>
+      </div>
+
+    </div>
+    <a id="add_new_publication" href="#new_publication_id">
+      <div class="any-center">
+        <strong>Add Publication</strong>
+      </div>
+    </a>
+    <hr class="hr-profile-separator">
+    </div>
+<% end %>

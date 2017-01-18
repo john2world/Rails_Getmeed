@@ -1,0 +1,61 @@
+<p class="accordion lightbox-text">Jobs Status for last <%= params[:days].to_i %> days
+</p>
+<hr class="hr-header">
+<div id="content">
+  <div id="my-tab-content" class="tab-content">
+    <table class="table">
+      <tr>
+        <td class="job-applicant-heading">
+          Job title
+        </td>
+        <td class="job-applicant-heading">
+          Company
+        </td>
+        <td class="job-applicant-heading">
+          View Count
+        </td>
+        <td class="job-applicant-heading">
+          Apply Count
+        </td>
+        <td class="job-applicant-heading">
+          Referral View Count
+        </td>
+        <td class="job-applicant-heading">
+          Referral Apply Count
+        </td>
+        <td class="job-applicant-heading" style="width: 150px;">
+          Job Share Link
+        </td>
+      </tr>
+      <% unless @jobs_metadata.blank? %>
+        <% @jobs_metadata.each do |job| %>
+          <% if !job.blank? %>
+            <tr>
+              <td class="job-applicant-td">
+                <a href="/job/<%= encode_id(job[:_id]) %>?referrer=<%= current_user.handle %>&referrer_id=<%= encode_id(job[:_id]) %>&referrer_type=job" class="job-applicant-name" target="_blank"> <%= job[:title].upcase %></a>
+              </td>
+              <td class="job-applicant-td">
+                <a href="/<%= job[:company_id] %>"><%= job[:company] %></a>
+              </td>
+              <td class="job-applicant-td">
+                <%= job[:view_count] %>
+              </td>
+              <td class="job-applicant-td">
+                <%= job[:application_count] %>
+              </td>
+              <td class="job-applicant-td">
+                <%= job[:user_view_count] %>
+              </td>
+              <td class="job-applicant-td">
+                <%= job[:user_job_count] %>
+              </td>
+              <td class="job-applicant-td">
+                <a onclick="alert('Copy the following url: <%=$security + $environment_host %>/job/<%= encode_id(job[:_id]) %>?referrer=<%= current_user.handle %>&referrer_id=<%= encode_id(job[:_id]) %>&referrer_type=job')">Job Share Url</a>
+              </td>
+            </tr>
+          <% end %>
+        <% end %>
+      <% end %>
+    </table>
+  </div>
+</div>

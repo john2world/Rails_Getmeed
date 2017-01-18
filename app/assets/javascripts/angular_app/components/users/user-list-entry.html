@@ -1,0 +1,59 @@
+<li class="user-list-entry css-fade">
+    <div class="avatar-wrap">
+        <div class="user-image-badge-{{ ::user.badge }}"></div>
+        <a ng-href="/{{ ::user.handle }}">
+            <img ng-src="{{ ::user.small_image_url}}"/>
+        </a>
+    </div>
+    <div class="poster-name-and-headline">
+        <p class="name">
+            <a ng-href="/{{ ::user.handle }}" class="poster-name">
+                <span ng-text-truncate="user.name" ng-tt-chars-threshold="12" ng-tt-no-toggling> {{ ::user.name }}  </span>
+            </a>
+        </p>
+        <p class="helper">
+            <span ng-text-truncate="user.major" ng-tt-words-threshold="3" ng-tt-no-toggling> {{ ::user.major }}  </span>
+        </p>
+    </div>
+    <hr>
+    <div class="influencer-headline">
+        <span class="helper" ng-text-truncate="user.headline" ng-tt-words-threshold="7" ng-tt-no-toggling>{{ ::user.headline }} </span>
+    </div>
+    <div class="button-wrap">
+        <div ng-if="user.lead">
+            <a
+                    ng-click="invite()"
+                    ng-if="!user.is_user_invited"
+                    class="button medium-small button-primary invite"><i class="fa fa-check-square-o"></i> Select </a>
+            <a
+                    ng-if="user.is_user_invited"
+                    class="button medium-small button-primary-inverse"><i class="fa fa-check-square"></i> Selected </a>
+        </div>
+        <div ng-if="!user.lead">
+            <div ng-if="!regFlow">
+                <a
+                        ng-click="follow()"
+                        ng-if="!user.is_viewer_following"
+                        class="button medium-small button-primary follow"><i class="fa fa-user-plus"></i> Follow <span
+                        ng-if="user.follower_count > 0">{{::user.follower_count }} </span></a>
+                <a
+                        href="/{{::user.handle}}"
+                        ng-if="user.is_viewer_following"
+                        class="button medium-small button-primary-inverse unfollow"><i class="fa fa-check-circle"></i>
+                    <span   >Following </span></a>
+            </div>
+            <div ng-if="regFlow">
+                <a
+                        ng-click="follow()"
+                        ng-if="!user.is_viewer_following"
+                        class="button medium-small button-primary follow"><i class="fa fa-user-plus"></i> Follow <span
+                        ng-if="user.follower_count > 0">{{::user.follower_count }} </span></a>
+                <a
+                        ng-click="unfollow()"
+                        ng-if="user.is_viewer_following"
+                        class="button medium-small button-primary-inverse unfollow"><i class="fa fa-check-circle"></i>
+                    Following</a>
+            </div>
+        </div>
+    </div>
+</li>

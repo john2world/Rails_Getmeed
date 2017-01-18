@@ -1,0 +1,39 @@
+<div class=" blog-list blog-category-list">
+  <%= render 'feed/feed_item_type', :data => data %>
+  <article class="post col-md-12 col-sm-12 col-xs-12 col-md-offset-0 col-sm-offset-0 col-xs-offset-0">
+    <div class="post-inner">
+      <div class="content feed-container">
+        <div class="date-label">
+          <a href="<%= data.url %>">
+            <img class="img-responsive image-small" src="https://www.filepicker.io/api/file/RD64CbJxQaCqQHhlch8T/convert?w=100"/>
+          </a>
+        </div>
+        <div class="article-container">
+          <div class="post-title"><a href="<%= data[:url] %>">
+            <%= data[:title] %>
+          </a></div>
+          <div class="meta">
+            <ul class="meta-list list-inline">
+              <li class="post-author">
+                Meed
+              </li>
+            </ul>
+          </div>
+        </div>
+        <%= render 'feed/render_feed_photo', :data => data %>
+        <% unless data[:description].blank? %> 
+            <div class="post-entry">
+              <p>
+                <%= Sanitize.clean(data[:description].strip.truncate(300, :omission => '..')) %>
+              </p>
+            </div>
+        <% end %>
+
+        <div id="feed-actions-<%= data[:_id] %>"> 
+          <%= render 'feed/feed_actions', :data => data, :position => '' %> 
+        </div>
+        <%= render 'feed/feed_privacy', :data => data %>
+      </div>
+    </div>
+  </article>
+</div>

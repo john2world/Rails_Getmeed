@@ -1,0 +1,19 @@
+<ul id="feedTabs" class="nav nav-pills nav-stacked" data-tabs="tabs">
+  <li class="active">
+    <a href="#all_feed" onclick="loadFeed('all');" data-toggle="pill"> <span class="fa fa-filter"></span> Everything</a>
+  </li>
+  <li>
+    <a href="#company_feed" onclick="loadFeed('company');" data-toggle="pill"> #CompanyFeed</a>
+  </li>
+  <li>
+    <a href="#students_feed" onclick="loadFeed('students');" data-toggle="pill"> #<%= current_school_handle.gsub(/\s+/, '').upcase %></a>
+  </li>
+</ul>
+<div id="feed-tab-content" class="tab-content col-md-10">
+  <div class="tab-pane fade in active" id="all_feed">
+  </div>
+  <div class="tab-pane fade in" id="company_feed">
+  </div>
+  <div class="tab-pane fade in" id="students_feed">
+  </div>
+</div>

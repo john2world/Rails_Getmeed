@@ -1,0 +1,16 @@
+<div class="related-content row">
+  <ul>
+    <li ng-repeat="item in related" class="columns four">
+      <p class="image-wrap">
+        <a ng-href="{{ ::item.path }}"><img ng-src="{{ ::item.large_image_url }}" /></a>
+      </p>
+      <h3>
+        <a ng-href="{{ ::item.path }}">{{ ::item.title }}</a>
+      </h3>
+
+
+    </li>
+  </ul>
+
+
+</div>

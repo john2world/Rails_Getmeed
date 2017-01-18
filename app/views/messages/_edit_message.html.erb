@@ -1,0 +1,66 @@
+<p class="accordion lightbox-text">
+  <%= message[:subject] %>
+</p>
+<hr class="hr-header">
+<% unless message.blank? %>
+    <span class="message-sender">
+      <span class="info-text" style="float: right">
+      <%= message[:time_ago] %>
+    </span>
+      <% if message[:company_logo].blank? %>
+              <img class="img-responsive image-small" src="http://res.cloudinary.com/resume/image/upload/c_scale,w_75/v1405632414/user_male4-128_q1iypj.png"/>
+          <% else %>
+              <img class="img-responsive image-small" src="<%= message[:company_logo] %>"/>
+          <% end %>
+      <% if !message[:sender][:company_id].blank? %>
+                <a href="/<%= message[:sender][:company_id] %>" target="_blank">
+                  <%= message[:company_name] %>
+                </a>
+                <% elsif !message[:sender][:handle].blank? %>
+
+                <a href="/<%= message[:sender][:handle] %>" target="_blank">
+                  <% if message[:sender][:first_name].blank? %>
+                      <%= message[:sender].id %>
+                  <% else %>
+                      <%= message[:sender].first_name %> <%= message[:sender].last_name %>
+                  <% end %>
+                </a>
+                <% else %>
+                   <% if message[:sender][:first_name].blank? %>
+                       <%= message[:sender].id %>
+                   <% else %>
+                       <%= message[:sender].first_name %> <%= message[:sender].last_name %>
+                   <% end %>
+                <% end %>
+        </span>
+    <p style="margin-top: 1%;">
+        <span class="info-text">
+          <% unless message[:sender].name.blank? %>
+            <%= message[:sender].name %>
+        <% end %>
+          <% unless message[:sender][:title].blank? %>
+              ,<strong> <%= message[:sender][:title] %> </strong>
+        <% end %>
+      </span>
+    </p>
+    <div style="text-align: center;">
+      <%= form_tag({:action => :reply_message}, :style => 'padding: 6px 50px 0px;', :html => {:multipart => true}) do %>
+          <%= hidden_field_tag :message_id, message[:hash], :id => 'form_message_id_hidden_id' %>
+          <%= hidden_field_tag :subject, message[:subject], :id => 'form_subject_hidden_id' %>
+
+          <hr class="hr-profile-item">
+          <div class="form-group">
+            <%= text_area_tag :description, get_reply_message_string(message[:body]), :class => 'form-control', :required => '',  :value => get_reply_message_string(message[:body]), :placeholder => 'Message Body (*Required)', :cols => 5, :rows => 100 %>
+          </div>
+          <% if !alert.blank? %>
+              <p class="label label-important">
+                <%= alert %>
+              </p>
+          <% end %>
+          <%= button_tag(type: 'submit', class: 'btn btn-sm btn-primary', :disable_with => 'Please wait..') do %>
+              <span class="glyphicon glyphicon-send "></span> Send
+          <% end %>
+          <%= link_to "<span class='glyphicon glyphicon-trash '></span> Cancel".html_safe, {controller: 'messages', action: 'messages'}, class: 'btn btn-sm btn-danger' %>
+      <% end -%>
+    </div>
+<% end -%>

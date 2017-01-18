@@ -1,0 +1,37 @@
+<% if !@blogs.blank? %>
+    <% @blogs.each do |blog| %>
+        <tr>
+          <td class="table-left">
+            <% if !blog[:image_url].blank? %>
+                <img src="<%= blog[:image_url] %>">
+            <% end %>
+          </td>
+          <td class="table-left">
+            <% if blog.is_external? %>
+                <a href="<%= blog[:url] %>" target="_blank">
+                  <span class="content-title">
+                     <%= blog[:title] %> —
+                  </span>
+                  <span class="job-position-title">
+                    <%= blog[:tag_line] %>
+                  </span>
+                </a>
+            <% else %>
+                <a href="<%= blog[:url] %>">
+                  <span class="content-title">
+                     <%= blog[:title] %> —
+                  </span>
+                  <span class="job-position-title">
+                    <%= blog[:tag_line] %>
+                  </span>
+                </a>
+            <% end %>
+
+            <br/>
+        <span class="info-text-light-medium">
+          <%= (blog[:description].html_safe) %>
+            </span>
+          </td>
+        </tr>
+    <% end %>
+<% end %>

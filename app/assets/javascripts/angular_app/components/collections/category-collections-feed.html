@@ -1,0 +1,17 @@
+<section id="category-collections-feed" class="category-collections-feed">
+  <div class="row horizontal-feed-title-wrap">
+    <p class="feed-title">Top groups in <strong>{{ ::category.title }}</strong></p>
+  </div>
+  <div class="horizontal-feed-inner">
+    <div class="horizontal-feed-scrollbar-hider">
+      <span class="scroll scroll-left"><i class="fa fa-arrow-left"></i></span>
+      <div class="horizontal-feed-outer-wrap">
+        <div class="horizontal-feed-inner-wrap">
+          <collections-list collections="collections" category="category" show-new="true"></collections-list>
+        </div>
+      </div>
+      <span class="scroll scroll-right"><i class="fa fa-arrow-right"></i></span>
+    </div>
+  </div>
+
+</section>

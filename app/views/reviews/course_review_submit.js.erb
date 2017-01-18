@@ -1,0 +1,17 @@
+var header = $("#course_review_header");
+header.text("<%= @message %>");
+<% if @message_color.blank? %>
+header.attr("style", "color:red");
+<% else %>
+header.attr("style", "color:green");
+<% end %>
+$("#btn_course_review_<%= @course_id %>").prop("disabled", false);
+$("#btn_course_review_<%= @course_id %>").attr("class", 'btn btn-primary btn-primary');
+if (<%= @result %>) {
+    $("#course_review_<%= @course_id %>").hide("slow");
+    location.reload();
+}
+window.location.replace("/insights/courses");
+
+
+

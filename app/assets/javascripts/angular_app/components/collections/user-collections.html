@@ -1,0 +1,75 @@
+<div class="user-collections">
+    <div class="main-wrap">
+        <div class="main-backdrop"></div>
+        <div class="row">
+            <section class="main">
+                <site-nav class="side" user-collections="userCollections"></site-nav>
+                <div class="loader-wrap" ng-show="loading">
+                    <loader></loader>
+                </div>
+                <div class="main-inner-wrap" ng-show="!loading">
+                    <h4 class="welcome-heading" ng-if="!submitCollection">Submissions</h4>
+                    <h4 class="welcome-heading" ng-if="submitCollection">Submit to {{ ::submitCollection.title }}</h4>
+                    <hr>
+                    <div id="tutorial-rules">
+                        <div class="description">
+                            <ul class="info">
+                                <li>
+                                    If it's a portfolio submission, it should be your own original work. (e.g. papers
+                                    you’ve written, independent or school projects, published articles, etc.)
+                                </li>
+                                <li>
+                                    Please <em>do not</em> upload your resume or cover letters to your portfolio. Your
+                                    "Basic Profile" section acts in place of your resume and is easier for recruiters to
+                                    review, assess, and search. Cover letters should be submitted directly to employers.
+                                </li>
+                                <li>
+                                    Take advantage of the community and ask questions or get their feedback on your work, share your thoughts by tagging relevant communities (collections).
+                                </li>
+                                <li>
+                                    Your activity builds your <em>reputation</em> and <em>visibility</em>.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="tutorial-submit-text">
+                        <div class="description">
+                            <h5>Nice!</h5>
+                            <p>
+                                <span class="details">You have successfully uploaded your submission, now what? Write a short description, ask a question, or give your thoughts on your submission. If it’s original content, like an essay, design, or project, add it your profile by checking the portfolio option below!</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div id="tutorial-ask-question">
+                        <div class="description">
+                            <h5>Questions:</h5>
+                            <p>
+                                <span class="details">Ask questions to the community and get response from students, recruiters and industry experts!</span>
+                            </p>
+                        </div>
+                    </div>
+                    <hr>
+                    <meedpost-form submitCollection="submitCollection"></meedpost-form>
+                    <hr>
+                    <div id="tutorial-text" ng-if="currentUser.badge != 'influencer'">
+                        <!--<div class="description" >-->
+                            <!--<h5>Portfolio Submissions:</h5>-->
+                            <!--<p>-->
+                                <!--<span class="details">Do you have a series of projects, essays, file or presentations that you would like to showcase? Submit them here and they will be added to the <a ng-href="/{{ ::currentUser.handle }}#portfolio">portfolio</a> section.</span>-->
+                            <!--</p>-->
+                        <!--</div>-->
+                        <!--<div class="description">-->
+                            <!--<h5>Collection Submissions:</h5>-->
+                            <!--<p>-->
+                                <!--<span class="details">Do you know a lot about a specific topic or field of study that you would like to share it with the community? Create a collection or contribute to existing collections, by submitting links, pictures or files. These submissions will be shown under <a ng-href="/{{ ::currentUser.handle }}#collections">collections</a> on your profile.</span>-->
+                            <!--</p>-->
+                        <!--</div>-->
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="row">
+            <site-nav class="bottom" user-collections="userCollections"></site-nav>
+        </div>
+    </div>
+</div>

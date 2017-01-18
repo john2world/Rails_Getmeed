@@ -1,0 +1,201 @@
+<%= render 'notifier/email_header' %>
+<div id=":130" class="ii gt m15117a349968475e adP adO"><div id=":13e" class="a3s" style="overflow: hidden;"><u></u>
+  <div style="margin:0;padding:0;background:#fff">
+    <table cellpadding="0" cellspacing="0" border="0" width="100%" style="background:#ddd">
+      <tbody>
+      <tr>
+        <td>
+          <%= render 'notifier/email_logo' %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <table align="center" cellpadding="0" cellspacing="0" border="0" width="670" style="background:#fff;border:0;border-left:1px solid #ccc;border-right:1px solid #ccc">
+            <tbody>
+            <tr>
+              <td> <a href="https://twitter.com/i/redirect?url=https%3A%2F%2Ftwitter.com%3Fcn%3DZmF2b3JpdGVfbWVudGlvbmVkX3VzZXI%253D%26refsrc%3Demail&amp;t=1&amp;cn=ZmF2b3JpdGVfbWVudGlvbmVkX3VzZXI%3D&amp;sig=975f7a1925f8ba07c84b9df077440e978f4c4c81&amp;iid=7c8e3c0127874f38a3cbb4a755b572c6&amp;uid=2307553615&amp;nid=137+21" style="border:none;color:#0084b4;text-decoration:none" target="_blank"><span></span></a>
+                <table cellpadding="0" cellspacing="0" border="0" width="670" style="background:#f2f2f2;table-layout:fixed">
+                  <tbody>
+                  <tr>
+                    <td style="width:19px;height:77px"> &nbsp; </td>
+                    <td width="9"> &nbsp; </td>
+                    <td width="10" height="77"> &nbsp; </td>
+                    <td width="458" height="77" style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;color:#333">
+                      <table border="0" cellpadding="0" cellspacing="0">
+                        <tbody>
+                        <tr>
+                          <td style="font-size:14px;font-weight:bold;color:#000"> <span dir="ltr"><%= @user.first_name %>,</span> </td>
+                        </tr>
+                        <tr>
+                          <td style="font-size:14px;color:#666">  <%= @commentor.first_name %> asked you a question! </td>
+                        </tr>
+                        </tbody>
+                      </table> </td>
+                    <td width="10" height="77"> &nbsp; </td>
+                    <td style="width:85px"></td>
+                  </tr>
+                  <tr>
+                    <td style="background:#fff;border-top:1px solid #ddd;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif">&nbsp;</td>
+                    <td style="background:#fff;border-top:1px solid #ddd;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif">&nbsp;</td>
+                    <td height="17" style="background:#fff;border-top:1px solid #ddd;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif"><img width="1" height="1" style="display:block;border:0" src="https://ci3.googleusercontent.com/proxy/zUq0-tdsEf5w5jFGfTi5v1_Adiv3yR-ufTKlWDVKxq43D9AeHvaHlAV7Irn4TZnwP6s9Ppdn8zvxwRVcO2Xlp3SZVpNipWjMCIG0hK4f07WfwFkWycOwJkqMEKF0ZsS8CeClFJkZwEkmkchC2szMsPnRcvRXwGAkOgrB_j66RjrhXqDn_8Wf5LQyafub8TsCnLBY28mspfkDGlDEMBQ7=s0-d-e1-ft#https://twitter.com/scribe/ibis?t=1&amp;cn=ZmF2b3JpdGVfbWVudGlvbmVkX3VzZXI%3D&amp;iid=7c8e3c0127874f38a3cbb4a755b572c6&amp;uid=2307553615&amp;nid=137+20" class="CToWUd"></td>
+                    <td height="17" colspan="4" style="background:#fff;border-top:1px solid #ddd;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif">&nbsp;</td>
+                  </tr>
+                  </tbody>
+                </table> </td>
+              <td rowspan="3"></td>
+            </tr>
+            <tr>
+              <td style="background:#fff">
+                <table width="670" border="0" cellpadding="0" cellspacing="0" style="background:#fff;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif">
+                  <tbody>
+                  <tr>
+                    <td>
+                      <table width="520" border="0" align="center" cellpadding="0" cellspacing="0" style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif">
+                        <tbody>
+                        <tr>
+                          <td>
+                            <table width="500" border="0" align="center" cellpadding="0" cellspacing="0" style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background-color:white;table-layout:fixed">
+                              <tbody>
+                              <tr valign="top">
+                                <td rowspan="2" width="48" style="width:48px"> <a href="https://getmeed.com/<%= @commentor.handle %>" style="border:none;color:#0084b4;text-decoration:none" target="_blank"> <img width="48" height="48" src="<%= @commentor.image_url %>" style="border:0;width:48px;min-height:48px;border-radius:4px" class="CToWUd"> </a> </td>
+                                <td rowspan="2" width="10"></td>
+                                <td height="24" valign="bottom" style="width:442px"> <a href="https://getmeed.com/<%= @commentor.handle %>" style="border:none;color:#0084b4;text-decoration:none" target="_blank"><span style="font-size:18px;font-weight:bold;color:#333"><%=@commentor.name %></span></a> </td>
+                              </tr>
+                              <tr valign="top">
+                                <td height="24" style="width:442px"> <span style="direction:ltr;font-size:14px;color:#999"><%= @commentor.headline %></span> </td>
+                              </tr>
+                              </tbody>
+                            </table>
+                            <table width="500" border="0" align="center" cellpadding="0" cellspacing="0" style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background-color:white;table-layout:fixed">
+                              <tbody>
+                              <tr>
+                                <td width="48px" style="font-size:1px"></td>
+                                <td width="10px" style="font-size:1px"></td>
+                                <td dir="ltr" style="word-wrap:break-word;color:#888;font-size:17px;font-family:Georgia,'Times New Roman',Times,serif;line-height:26px"> <%= @feed_item.caption.blank? ? @feed_item.title : @feed_item.caption.truncate(100) %></td>
+                              </tr>
+                              <tr>
+                                <td height="4" style="font-size:1px"></td>
+                              </tr>
+                              <tr>
+                                <td width="48px" style="font-size:1px"></td>
+                                <td width="10px" style="font-size:1px"></td>
+                              </tr>
+                              </tbody>
+                            </table>
+                            <table width="500" border="0" align="center" cellpadding="0" cellspacing="0">
+                              <tbody>
+                              <tr>
+                                <td width="500" height="18"></td>
+                              </tr>
+                              </tbody>
+                            </table>
+                            <table width="500" border="0" align="center" cellpadding="0" cellspacing="0" style="font-size:14px;font-weight:bold;table-layout:fixed">
+                              <tbody>
+                              <tr>
+                                <td style="width:10px"> </td>
+                              </tr>
+                              </tbody>
+                            </table>
+                            <table width="500" border="0" align="center" cellpadding="0" cellspacing="0">
+                              <tbody>
+                              <tr>
+                                <td width="500" height="12"></td>
+                              </tr>
+                              </tbody>
+                            </table>
+                            <hr style="min-height:1px;border:0px;margin:0px;background-color:#e8e8e8;width:520px">
+
+                            <table width="500" border="0" align="center" cellpadding="0" cellspacing="0">
+                              <tbody>
+                              <tr>
+                                <td width="500" height="12"></td>
+                              </tr>
+                              </tbody>
+                            </table>
+                            <table width="500" border="0" align="center" cellpadding="0" cellspacing="0">
+                              <tbody>
+                              <tr>
+                                <td width="500" height="12"></td>
+                              </tr>
+                              </tbody>
+                            </table>
+                            <hr style="min-height:1px;border:0px;margin:0px;background-color:#e8e8e8;width:520px">
+
+                            <table cellpadding="0" cellspacing="0" width="500" align="center">
+                              <tbody>
+                              <tr>
+                                <td height="12" colspan="2"></td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                                    <tbody>
+                                    <tr>
+                                      <td align="right">
+                                        <table cellpadding="0" cellspacing="0" border="0" style="background-image:url('https://ci6.googleusercontent.com/proxy/5T9ovdEeWHHpK_RCH-4qf_UQY-Ly4B07U3t_AhncOOU_6ym76TF1i-RGNYx5N4gRoPaVu83XSJo-ellwx7Egjlhx8vLDLg=s0-d-e1-ft#https://ea.twimg.com/email/t1/button_bg_long.png');background-color:#33a9e5;border-radius:5px;border:1px;height:28px;border:1px solid #28c;word-wrap:break-word;text-align:center">
+                                          <tbody>
+                                          <tr>
+                                            <td align="center" style="padding-left:10px;padding-right:10px">
+                                              <table cellpadding="0" cellspacing="0" border="0">
+                                                <tbody>
+                                                <tr>
+                                                  <td height="28" style="color:white;font-size:13px;font-weight:bold;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;text-align:center;padding-left:10px;padding-right:10px;padding-left:0px;padding-right:0px"> <a href="<%= @feed_item.url %>" style="border:none;color:#0084b4;text-decoration:none;color:white" target="_blank"> View Question </a> </td>
+                                                </tr>
+                                                </tbody>
+                                              </table> </td>
+                                          </tr>
+                                          </tbody>
+                                        </table> </td>
+                                      <td> </td>
+                                    </tr>
+                                    </tbody>
+                                  </table> </td>
+                              </tr>
+                              <tr>
+                                <td height="12" colspan="2"></td>
+                              </tr>
+                              </tbody>
+                            </table>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <table bgcolor="#eeeeee" border="0" cellpadding="0" cellspacing="0" width="670" style="background-color:#eee;background-image:url('https://ci6.googleusercontent.com/proxy/TKwb6TYeKHQNnI2wGRuep7TuysRHZXEKaG0cXKa0mPMl47tBroafUI6lTdTV-b3RDQpVxVQZ9bx8csJJ17xfi46NtMrJ=s0-d-e1-ft#https://ea.twimg.com/email/t1/shadow-bottom.jpg');background-position:top;background-repeat:repeat-x;border-top-color:#ddd;border-top-style:solid;border-top-width:1px">
+                              <tbody>
+                              <tr>
+                                <td colspan="4" height="16"></td>
+                              </tr>
+                              <tr>
+                                <td style="width:85px"></td>
+                                <td style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:12px;line-height:17px;color:#777">
+                                  <div>
+                                    You can
+                                    <a href="https://getmeed.com/settings" style="border:none;color:#0084b4;text-decoration:none" target="_blank">unsubscribe from these emails</a> by changing your settings
+                                  </div>
+                                  <div>
+                                    <a href="https://getmeed.com" style="border:none;color:#0084b4;text-decoration:none;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;text-decoration:none;font-size:11px;line-height:17px;color:#999999">Meed, Inc. 645 Harrison St.<span style="white-space:nowrap">San Francisco, CA 94107</span></a>
+                                  </div> </td>
+                                <td style="width:85px"></td>
+                              </tr>
+                              <tr>
+                                <td colspan="3" height="25"></td>
+                              </tr>
+                              </tbody>
+                            </table>
+                          </td>
+                        </tr>
+                        </tbody>
+                      </table> </td>
+                  </tr>
+                  </tbody>
+                </table> </td>
+            </tr>
+            </tbody>
+          </table> </td>
+      </tr>
+      </tbody>
+    </table>
+    <img width="1" height="1" src="https://ci4.googleusercontent.com/proxy/Krk5Z_MRUSF90LH5hPNyRdpPLdp8CDfxX2p3PIldYw2GkxBM2EU=s0-d-e1-ft#http://loadimage" style="border:0" class="CToWUd"><div class="yj6qo"></div><div class="adL">
+  </div></div><div class="adL">
+
+</div></div></div>

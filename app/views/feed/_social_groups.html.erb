@@ -1,0 +1,104 @@
+<div class="blog-list blog-category-list">
+  <article class="post col-md-12 col-sm-12 col-xs-12 col-md-offset-0 col-sm-offset-0 col-xs-offset-0">
+    <div class="post-inner">
+      <div class="content feed-container">
+        <h3 style="font-weight: 300">
+          Get the discussion started, post or share your article to get students like you involved!
+        </h3>
+        <hr class="hr-silent">
+        <div class="info-text-small">
+          <% if @school_channels.blank? %>
+              <div class="any-center info-text-medium">
+                Share with your specific university groups:
+                <div id="share_all_options">
+                </div>
+              </div>
+          <% else %>
+              <% unless @fb_school_channels.blank? %>
+                  <div class="info-text-xlarge">
+                    <i class="fa fa-facebook-official"></i> Facebook (University Groups
+                    )
+                  </div><div class="fb-send" data-href="<%= data.url %>"></div>
+                  <ul class="checkbox">
+                    <% @fb_school_channels.each do |fb_school| %>
+                        <li>
+                          <a href="<%= fb_school.link %>" onclick="trackSocialChannel('<%= fb_school.id %>'); return true;" target="_blank"> <%= fb_school.name %> </a>
+                        </li>
+                    <% end %>
+                  </ul>
+              <% end %>
+              <hr class="hr-silent">
+              <hr class="hr-silent">
+              <% unless @fb_general_channels.blank? %>
+                  <div class="info-text-xlarge">
+                    <i class="fa fa-facebook-official"></i> Facebook (Popular Public Groups)
+                  </div><div class="fb-send" data-href="<%= data.url %>"></div>
+                  <ul class="checkbox">
+                    <% @fb_general_channels.each do |fb_school| %>
+                        <li>
+                          <a href="<%= fb_school.link %>" target="_blank"> <%= fb_school.name %> </a>
+                        </li>
+                    <% end %>
+                  </ul>
+              <% end %>
+
+              </div>
+              <hr class="hr-silent">
+              <hr class="hr-silent">
+              <% unless @twitter_channels.blank? %>
+                  <div class="info-text-xlarge">
+                    <i class="fa fa-twitter-square"></i> Twitter (Mention Relevant Pages)
+                  </div>
+
+                  <ul class="checkbox">
+                    <% @twitter_channels.each do |fb_school| %>
+                        <li>
+                          <a href="<%= fb_school.link %>" target="_blank"> <%= fb_school.name %> </a>
+              <span id="share_twitter_<%= fb_school.id %>" style="font-size: 8px;">
+              </span>
+                        </li>
+                    <% end %>
+
+                  </ul>
+
+              <% end %>
+              <hr class="hr-silent">
+              <% unless @linkedin_groups.blank? %>
+                  <div class="info-text-xlarge">
+                    <i class="fa fa-linkedin-square"></i> LinkedIn Relevant Student Groups
+                  </div>
+
+                  <ul class="checkbox">
+                    <% @linkedin_groups.each do |fb_school| %>
+                        <li>
+                          <a href="<%= fb_school.link %>" target="_blank"> <%= fb_school.name %> </a>
+                        </li>
+                    <% end %>
+                  </ul>
+              <% end %>
+          <% end %>
+          </div>
+    </div>
+  </article>
+
+</div>
+
+<script>
+    <% @twitter_channels.each do |fb_school| %>
+    $("#share_twitter_<%= fb_school.id %>").jsSocials({
+        url: '<%= data.url %>',
+        text: escape_special_characters("Join the Discussion <%= data.caption.blank? ? (data.title) : (data.title)%>"),
+        showCount: "inside",
+        showLabel: false,
+        shares: ["twitter"]
+    });
+    <% end %>
+
+    $("#share_all_options").jsSocials({
+        url: '<%= data.url %>',
+        text: escape_special_characters("Join the Discussion <%= data.caption.blank? ? (data.title) : (data.title)%>"),
+        showCount: "inside",
+        showLabel: false,
+        shares: ["facebook", "twitter", "linkedin", "email"]
+    });
+</script>

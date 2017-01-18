@@ -1,0 +1,11 @@
+<% if @delete == true%>
+  $("#edit_education_<%= encode_id(@id) %>_true").hide();
+<% elsif @is_new %>
+  viewNewItem('education');
+  $("#view_education_div").html("<%= escape_javascript (render 'view_education_form' ,:is_edit => true, :education => @user_education) %>");
+  $("#view_education_div").attr('id', 'view_education_' + '<%= encode_id(@user_education[:_id]) %>');
+$('#view_education_' + '<%= encode_id(@user_education[:_id]) %>').append("<div id='view_education_div'></div>");
+<% else %>
+  renderViewItem('edit_education_<%= encode_id(@id) %>');
+  $("#show_education_<%= encode_id(@id) %>_true").html("<%= escape_javascript (render 'render_education_data' , :education => @user_education, :is_edit => @is_editable) %>");
+<% end %>

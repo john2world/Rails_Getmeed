@@ -1,0 +1,85 @@
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+  <title></title>
+</head>
+<body>
+<span style="margin-left: 47%;">
+	<img alt="" src="http://res.cloudinary.com/resume/image/upload/c_scale,w_40/v1381994748/logo-class-31dac461f0aba59d739458501811e85a_r3sszm.png" style="width: 43px; height: 45px;"/>
+	<br/>
+</span>
+<hr style="color:#999999">
+<p>
+  <span style="font-family: 'Open Sans', 'lucida grande', arial, verdana, 'lucida sans unicode', tahoma, sans-serif;">Howdy <%= @user.first_name %>
+    !
+  </span></p>
+
+<p><span style="font-family: 'Open Sans', 'lucida grande', arial, verdana, 'lucida sans unicode', tahoma, sans-serif;">
+  Top hiring companies for your major..</span>
+</p>
+
+<table class="table" style="border-spacing: 0;border-collapse: collapse!important;background-color: transparent;width: 100%;max-width: 100%;margin-bottom: 20px;">
+  <thead style="display: table-header-group;">
+    <tr style="page-break-inside: avoid;">
+    <th style="padding: 8px;text-align: center;line-height: 1.42857143;vertical-align: bottom;border-top: 1px solid #ddd;border-bottom: 2px solid #ddd;background-color: #fff!important;">Company</th>
+    <th style="padding: 8px;text-align: center;line-height: 1.42857143;vertical-align: bottom;border-top: 1px solid #ddd;border-bottom: 2px solid #ddd;background-color: #fff!important;">Hiring Percent (2006-2014)</th>
+    <th style="padding: 8px;text-align: center;line-height: 1.42857143;vertical-align: bottom;border-top: 1px solid #ddd;border-bottom: 2px solid #ddd;background-color: #fff!important;">Percent Increase (2012-2013)</th>
+  </tr>
+  </thead>
+  <tbody style="">
+    <% @company_trend_data.each do |company| %>
+      <tr style="page-break-inside: avoid;">
+        <td style="padding: 8px;text-align: center;line-height: 1.42857143;vertical-align: top;border-top: 1px solid #ddd;background-color: #fff!important;"><a href="http://resu.me/company/<%= company[:company_id]%>#insights"><%= company[:name] %></a></td>
+        <td style="padding: 8px;text-align: center;line-height: 1.42857143;vertical-align: top;border-top: 1px solid #ddd;background-color: #fff!important;"><%= company[:hiring_share] %></td>
+        <% if company[:trend] > 0 %>
+          <td style="padding: 8px;text-align: center;line-height: 1.42857143;vertical-align: top;border-top: 1px solid #ddd;background-color: #dff0d8!important;"><%= company[:trend] %></td>
+        <% else %>
+          <td style="padding: 8px;text-align: center;line-height: 1.42857143;vertical-align: top;border-top: 1px solid #ddd;background-color: #f2dede!important;"><%= company[:trend] %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br/>
+
+<% unless @latest_hiring_companies_data.blank? %>
+<p><span style="font-family: 'Open Sans', 'lucida grande', arial, verdana, 'lucida sans unicode', tahoma, sans-serif;">
+  Latest hiring companies..</span>
+</p>
+
+<table class="table" style="border-spacing: 0;border-collapse: collapse!important;background-color: transparent;width: 100%;max-width: 100%;margin-bottom: 20px;">
+  <thead style="display: table-header-group;">
+  <tr style="page-break-inside: avoid;">
+    <th style="padding: 8px;text-align: center;line-height: 1.42857143;vertical-align: bottom;border-top: 1px solid #ddd;border-bottom: 2px solid #ddd;background-color: #fff!important;">Company</th>
+    <th style="padding: 8px;text-align: center;line-height: 1.42857143;vertical-align: bottom;border-top: 1px solid #ddd;border-bottom: 2px solid #ddd;background-color: #fff!important;">Hiring Percent (2006-2014)</th>
+    <th style="padding: 8px;text-align: center;line-height: 1.42857143;vertical-align: bottom;border-top: 1px solid #ddd;border-bottom: 2px solid #ddd;background-color: #fff!important;">Percent Increase (2012-2013)</th>
+  </tr>
+  </thead>
+  <tbody style="">
+  <% @latest_hiring_companies_data.each do |company| %>
+    <tr style="page-break-inside: avoid;">
+      <td style="padding: 8px;text-align: center;line-height: 1.42857143;vertical-align: top;border-top: 1px solid #ddd;background-color: #fff!important;"><a href="http://resu.me/company/<%= company[:company_id]%>#insights"><%= company[:name] %></a></td>
+      <td style="padding: 8px;text-align: center;line-height: 1.42857143;vertical-align: top;border-top: 1px solid #ddd;background-color: #fff!important;"><%= company[:hiring_share] %></td>
+      <% if company[:trend] > 0 %>
+        <td style="padding: 8px;text-align: center;line-height: 1.42857143;vertical-align: top;border-top: 1px solid #ddd;background-color: #dff0d8!important;"><%= company[:trend] %></td>
+      <% else %>
+        <td style="padding: 8px;text-align: center;line-height: 1.42857143;vertical-align: top;border-top: 1px solid #ddd;background-color: #f2dede!important;"><%= company[:trend] %></td>
+      <% end %>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+<br/>
+<% end %>
+<p><span style="font-family: 'Open Sans', 'lucida grande', arial, verdana, 'lucida sans unicode', tahoma, sans-serif;">
+	We hope you can search and use this data, to select the right companies for you by your degree and skills you master at.
+</span>
+</p>
+<p>
+  <span style="font-family: 'Open Sans', 'lucida grande', arial, verdana, 'lucida sans unicode', tahoma, sans-serif;">- Resume Team </span>
+</p>
+
+<p style="margin-top: 10px;">
+  <span style="font-size:12px; color: #888888;font-family: 'Open Sans', 'lucida grande', arial, verdana, 'lucida sans unicode', tahoma, sans-serif;">Good, bad or ugly share it with us at <a href="mailto:contact@getmeed.com">contact@getmeed.com</a></span>
+</p>
+</body>
+</html>

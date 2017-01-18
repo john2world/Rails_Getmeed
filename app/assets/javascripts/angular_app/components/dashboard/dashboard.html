@@ -1,0 +1,111 @@
+<div class="dashboard" ng-if="!regFlow">
+    <landing ng-if="!loggedIn">
+    </landing>
+    <div ng-if="loggedIn">
+        <div class="main-wrap">
+            <div class="row">
+                <section id="activity-feed-wrap" class="main">
+                    <site-nav class="side" trending-tags="trendingTags" user-collections="userCollections"></site-nav>
+                    <tag-nav class="side"></tag-nav>
+                    <div class="feed-inner-wrap">
+                        <md-tabs md-selected="selectedTab" md-dynamic-height md-border-bottom>
+                            <md-tab></md-tab>
+
+                            <md-tab>
+                                <md-tab-label>
+                                    <strong><i class="fa fa-quote-left"></i></strong> Share Thoughts
+                                </md-tab-label>
+
+                                <md-tab-body>
+                                    <a ng-click="selectedTab = 0" class="close-button">
+                                        <i class="fa fa-times"></i>
+                                    </a>
+
+                                    <status-box ng-if="currentUser && userCollections.length > 0" user="currentUser"
+                                                tags="tags" all-collections="allCollections"
+                                                feed-items="feedItems" show-attachments='true' show-poster-info='true'
+                                                placeholder-text="{{::placeholderText}}"
+                                                class="status-form"></status-box>
+                                </md-tab-body>
+                            </md-tab>
+
+                            <md-tab ng-if="currentUser.badge != 'influencer'">
+                                <md-tab-label>
+                                    <strong><i class="fa fa-question"></i></strong> Ask A Question
+                                </md-tab-label>
+
+                                <md-tab-body>
+                                    <a ng-click="selectedTab = 0" class="close-button">
+                                        <i class="fa fa-times"></i>
+                                    </a>
+
+                                    <status-box ng-if="currentUser && userCollections.length > 0" user="currentUser"
+                                                tags="tags" all-collections="allCollections" default-tag-id="question"
+                                                feed-items="feedItems" show-attachments='true' show-poster-info='true'
+                                                placeholder-text="{{::placeholderTextForQuestion}}"
+                                                class="status-form"></status-box>
+                                </md-tab-body>
+                            </md-tab>
+
+                            <md-tab ng-if="currentUser.badge == 'influencer'">
+                                <md-tab-label>
+                                    <strong><i class="fa fa-users"></i></strong> Host an AMA
+                                </md-tab-label>
+
+                                <md-tab-body>
+                                    <a ng-click="selectedTab = 0" class="close-button">
+                                        <i class="fa fa-times"></i>
+                                    </a>
+
+                                    <status-box ng-if="currentUser && userCollections.length > 0" user="currentUser"
+                                                tags="tags" all-collections="allCollections"
+                                                default-tag-id="ask-me-anything"
+                                                feed-items="feedItems" show-attachments='true' show-poster-info='true'
+                                                placeholder-text="{{::placeholderTextForAMA}}"
+                                                class="status-form"></status-box>
+                                </md-tab-body>
+                            </md-tab>
+                            <md-tab md-on-select="openStoryEditor()" ng-if="currentUser.badge != 'influencer'">
+                                <md-tab-label>
+                                    <strong><i class="fa fa-newspaper-o"></i></strong> Publish Story
+                                </md-tab-label>
+                            </md-tab>
+                            <md-tab md-on-select="openPostAJob()" ng-if="currentUser.badge == 'influencer'">
+                                <md-tab-label>
+                                    <strong><i class="fa fa-briefcase"></i></strong> Post a Job
+                                </md-tab-label>
+                            </md-tab>
+
+                        </md-tabs>
+                        <div class="row jobs-nav-wrap">
+                            <nav id="jobs-nav">
+                                <ul>
+                                    <li ng-class="{ active: !schoolFilter }">
+                                        <a class="tab-select" ng-click="setSchool(null)">My Feed</a>
+                                    </li>
+                                    <li ng-if="currentUser"
+                                        ng-class="{ active: schoolFilter == currentUser.school_handle }">
+                                        <a class="tab-select" ng-if="currentUser.school_handle"
+                                           ng-click="setSchool(currentUser.school_handle)"> Top Posts From
+                                            {{::currentUser.school_handle}}</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+
+                        <div class="activity-feed-loader" ng-if="!hasFeedItems">
+                            <loader></loader>
+                        </div>
+
+                        <activity-feed ng-if="hasFeedItems" all-collections="allCollections" tags="tags"
+                                       has-feed-items="hasFeedItems"
+                                       feed-items="feedItems" school-filter="schoolFilter"></activity-feed>
+                    </div>
+                </section>
+            </div>
+            <div class="row">
+                <site-nav class="bottom" user-collections="userCollections"></site-nav>
+            </div>
+        </div>
+    </div>
+</div>

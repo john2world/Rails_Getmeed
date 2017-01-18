@@ -1,0 +1,98 @@
+<% unless data[:user].blank? %>
+    <div class="blog-list blog-category-list">
+      <% unless data[:type].eql? 'story' %>
+          <%= render 'feed/feed_item_type', :data => data %>
+      <% end %>
+      <article class="post col-md-12 col-sm-12 col-xs-12 col-md-offset-0 col-sm-offset-0 col-xs-offset-0">
+        <div class="post-inner">
+          <div class="content feed-container">
+            <div class="date-label">
+              <a href="/<%= data[:user].handle %>">
+                <% if !data[:user].blank? and data[:user].is_meediorite? %>
+                    <div class="user-image-badge">M</div>
+                <% end %>
+                <% if data[:user][:image_url].blank? %>
+                    <img class="img-responsive image-small" src="http://res.cloudinary.com/resume/image/upload/v1409877319/user_male4-128_q1iypj_lgzk5i.jpg">
+                <% else %>
+                    <img class="img-responsive image-small" src="<%= data[:user][:image_url] %>"/>
+                <% end %>
+              </a>
+            </div>
+            <div class="article-container">
+              <div id="link-<%= data.id %>" class="post-title">
+                <% if data.type.eql? 'story' %>
+                    <% if data[:caption].blank? or position.eql? 'story' %> 
+                        <%= link_to "#{data[:title]}", "#{(position.eql? 'story') ? data.external_url : data.url}", :'data-trackable' => data.subject_id , :target => "#{ (position.eql? 'story') ? '_blank' : ''}"%>
+                    <% else %>
+                        <%= link_to "#{data[:caption].truncate(50, :length => 17, :separator => ' ',:omission => '..')}", "#{ (position.eql? 'story') ? data.external_url : data.url}", :'data-trackable' => data.subject_id %>
+                    <% end %>
+                <% elsif !data[:title].blank? %>
+                    <%= link_to "#{data[:title]}", "#{data.external_url}", :target => '_blank', :'data-trackable' => data.subject_id %>
+                <% end %>
+              </div>
+              <div class="meta">
+                <ul class="meta-list list-inline">
+                  <li class="post-author">
+                    <a href="/<%= data[:user].handle %>"><%= data[:user].name %></a><%= render 'feed/feed_item_helper_text', :data => data %>
+                    <span class="info-text-small-medium"></span> 
+                    <% if data[:user].headline.blank? %>
+                        <i class="fa fa-user"></i> 
+                        Class of <%= data[:user].year %> 
+                    <% else %>
+                        — <%= data[:user].headline %> 
+                    <% end %>
+                  </li>
+                  <li class="post-author">
+                    <% if data.collections.blank? %>
+                        <% unless current_user.blank? %>
+                            <span class="glyphicon glyphicon-tag"></span> Tags:
+                            <%= (data[:privacy_text].blank?) ? "#{data[:school].name}" : "#{data[:privacy_text].html_safe}" %>
+                        <% end %>
+                    <% else %>
+                        <span class="glyphicon glyphicon-tag"> </span> Tags:
+                        <%= "#{data.collections.join(", ")}" %>
+                    <% end %>
+
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="post-entry">
+              <% if position.eql? 'story' and !data[:scrape_data].blank? and data[:scrape_data].type.eql? 'video' %>
+                  <%= render 'feed/render_feed_video', :data => data[:scrape_data] %>   
+              <% elsif position.eql? 'story' and (data[:type].eql? 'video' or data[:type].eql? 'cover_video') %>
+                  <%= render 'feed/render_feed_video', :data => data %>   
+              <% elsif data[:type].eql? 'profile_picture' %> 
+                  <img src="<%= data[:user][:image_url] %>">
+              <% elsif data[:type].eql? 'story' %>
+                  <%= render 'feed/render_feed_photo', :data => data %>
+                  <hr class="hr-silent">
+              <% end %>
+              <% if data.type.eql? 'story' and !position.eql? 'story' and !data[:title].blank? %>
+                  <div class="story-caption-text">
+                    <a href="<%= data.external_url %>" onclick="trackLinkClick('<%= data.subject_id %>'); return true;" target="_blank">
+                      <% if position.eql? 'story' %>
+                          Original Post —
+                      <% end %>
+                      <%= data[:title] %></a>
+                  </div>
+              <% end %>
+
+              <% if data[:caption].blank? %> 
+                  <p>
+                    <% unless data[:description].blank? %> 
+                        <%= Sanitize.clean(data[:description].strip.truncate(300, :omission => '..')) %>
+                    <% end %>
+                  </p>
+              <% end %>
+            </div>
+            <div class="user-feed-actions" id="feed-actions-<%= position.blank? ? '' : "#{position}-" %><%= data[:_id] %>"> 
+              <%= render 'feed/feed_actions', :data => data, :position => position %> 
+            </div>
+          </div>
+          <div id="<%= position.blank? ? '' : "#{position}_" %>comment_<%= data.id %>">
+          </div>
+        </div>
+      </article>
+    </div>
+<% end %>

@@ -1,0 +1,6 @@
+if (<%= @success %>) {
+  $("#forwardJobModal").modal('toggle');
+} else {
+  modal = $("#forwardJobModal");
+  modal.find("form").find(".modal-footer").find("button").find("span[name = 'send-text']").text("Try Again");
+}

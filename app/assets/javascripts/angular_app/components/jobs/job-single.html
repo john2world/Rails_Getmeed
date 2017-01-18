@@ -1,0 +1,69 @@
+<div class="main-inner-wrap">
+  <article class="row">
+    <section class="job-basics">
+      <p class="apply">
+        <a class="button button-primary open-job-apply-modal" ng-show="!job.applied && job.live">Apply</a>
+        <a
+          class="button follow-up-button open-job-follow-up-modal"
+          ng-show="job.applied && job.live"
+          data-job-company="{{ job.company }}"
+          data-job-hash="{{ job.hash }}"
+          >Follow Up</a>
+        <a class="button button-primary" ng-show="!job.live">Closed</a>
+      </p>
+            <span class="job-company-logo">
+        <a ng-href="/company/{{ job.company_id }}" ng-show="!job.type.startsWith('Mini Internship')">
+            <img ng-src="{{ job.company_logo }}" />
+        </a>
+        <img ng-src='{{getTextImagePlaceholder(generateCompensationText(job), 150, 150)}}' ng-show="job.type.startsWith('Mini Internship')" />
+      </span>
+      <h3 class="job-title" ng-if="!job.type.startsWith('Mini Internship')"> {{ job.title }} at
+        <a class="job-company-name" ng-href="/company/{{ job.company_id }}">{{ job.company }}</a>
+      </h3>
+
+      <h3 class="job-title" ng-if="job.type.startsWith('Mini Internship')"> {{ job.title }}
+      </h3>
+      <p class="job-metadata">
+        <i class="fa fa-map-marker"></i> {{ job.location }}
+        <span class="meta-spacer"></span>
+        <span class="job-type">{{ job.type | underscoresToSpaces }} </span>
+        <!-- <abbr class="timeago job-timestamp" title="{{ job.create_dttm }}">{{ job.create_dttm }}</abbr> -->
+      </p>
+      <p class="job-miniintern-metadata" ng-if="job.type.startsWith('Mini Internship')">
+        <i class="fa fa-calendar"></i>
+        <span class="job-timestamp">{{ job.start_date | formatDateString }}</span>
+         -
+        <span class="job-timestamp">{{ job.end_date | formatDateString }}</span>
+        <span class="meta-spacer" ng-if="job.hourly_hours"></span>
+        <i class="fa fa-hourglass-start" ng-if="job.hourly_hours"></i>
+        <span class="label" ng-if="job.type === 'Mini Internship (Hourly)' && job.hourly_hours"> {{ job.hourly_hours }} hrs</span>
+      </p>
+    </section>
+    <!-- <h2>{{ Job.slug }}</h2> -->
+    <!-- <p class="job-id"> {{ job.id }} </p> -->
+
+    <section class="job-company-overview-wrap" ng-if="job.companyOverview">
+      <h4>Company Overview</h4>
+      <p class="job-company-overview"> {{ job.companyOverview }} </p>
+    </section>
+
+    <section class="author-basics" ng-if="job.type.startsWith('Mini Internship') && job.company_id != 'meed_client'">
+      <h2 class="author-basics-title">Posted By:</h2>
+      <span class="job-company-logo">
+        <a ng-href="/company/{{ job.company_id }}">
+          <img ng-src="{{ job.company_logo }}" />
+        </a>
+      </span>
+      <h3 class="author-name"> {{ metadata.poster_first_name }} {{ metadata.poster_last_name }}</h3>
+      <p class="author-headline">
+        <span class="author-work"> {{ metadata.poster_title}} at {{ job.company }}</span>
+        <span class="author-bio"> {{ metadata.poster_short_bio}} </span>
+      </p>
+    </section>
+
+    <section class="job-description-wrap">
+      <h4>Job Description</h4>
+      <div class="job-description" ng-bind-html="job.description"> </div>
+    </section>
+  </article>
+</div>

@@ -1,0 +1,15 @@
+<div class="tag-nav">
+    <nav>
+        <ul ng-if="recommendedUsers">
+            <li class="heading">
+                <i class="fa fa-users"></i> FOLLOW PEOPLE
+            </li>
+
+            <li>
+                <users-list-follow users="recommendedUsers" current-user="currentUser">
+                </users-list-follow>
+            </li>
+
+        </ul>
+    </nav>
+</div>

@@ -1,0 +1,21 @@
+<% if @job[:meed_share] > 0 %>
+    <div class="share-button attention">
+      <% if current_user.blank? %>
+          <a href="/?reg=true&redirect_url=<%= request.original_url %>" class="btn btn-primary btn-warning" style="border: 1.5px #5cb85c;">
+            <span class="fa fa-usd" style="font-size: 16px;"></span>&nbsp;Share
+          </a>
+      <% else %>
+          <button class='btn btn-warning'><span class="glyphicon glyphicon-usd"></span> Share</button>
+      <% end %>
+    </div>
+<% else %>
+    <div class="share-button no-attention">
+      <% if current_user.blank? %>
+          <a href="/?reg=true&redirect_url=<%= request.original_url %>" class="btn btn-primary">
+            <span class="glyphicon glyphicon-share"></span> Share
+          </a>
+      <% else %>
+          <button class='btn btn-primary'><span class="glyphicon glyphicon-share"></span> Share</button>
+      <% end %>
+    </div>
+<% end %>

@@ -1,0 +1,122 @@
+<div class="modal" id="job-apply-modal" ng-class="{covernote: !job.question}">
+  <div class="step apply">
+    <h2>
+      {{ job.applyModalTitle() }}
+      <a
+              ng-show="!job.question && !showCoverNoteForm"
+              class="button button-secondary open-covernote-form medium-small"
+              >Add Note</a>
+      <a
+              ng-show="!job.question && showCoverNoteForm"
+              class="button button-secondary open-covernote-form medium-small"
+              >Remove Note</a>
+    </h2>
+      <hr>
+
+      <div ng-if="currentUser.is_profile_incomplete">
+      <p>You can't apply unless your profile is complete. {{currentUser.incomplete_reason}} !</p>
+      <p>
+        <a
+                ng-href="/{{currentUser.handle}}"
+                class="button button-primary update-profile">
+          Update here
+        </a>
+      </p>
+    </div>
+    <div ng-if="!currentUser.is_profile_incomplete">
+      <form accept-charset="UTF-8" ng-submit="submitApply(job._id)">
+        <div ng-show="job.question">
+          <input type="hidden" name="question_id", value="{{job.question.id}}" />
+          <div class="job-question">
+            <div class="job-question-title" ng-bind-html="job.question.title"></div>
+            <div
+                    class="job-question-description"
+                    ng-bind-html="job.question.description">
+            </div>
+          </div>
+          <div ng-show="job.question.is_coding">
+            <label for="apply-description">Description</label>
+            <textarea
+                    class="u-full-width dont-show-wysiwyg"
+                    id="code-apply-description"
+                    name="code-apply-description"
+                    ng-model="applyFormData.description.text"
+                    placeholder="Describe your answer in few words to support the code below."
+                    ></textarea>
+            <label for='lang_type'>Code Type</label>
+            <select
+                    class="u-full-width"
+                    id="lang_type"
+                    name="lang_type"
+                    ng-model="applyFormData.lang_type">
+              <option value="" disabled>Select Language Type (*)</option>
+              <option ng-repeat="code_type in job.question.code_types" ng-value="code_type.file_ext">
+                {{ code_type.display_id }}
+              </option>
+            </select>
+            <label for="apply-code">Code</label>
+            <textarea
+                    class="u-full-width dont-show-wysiwyg"
+                    id="apply-code"
+                    name="apply-code"
+                    ng-model="applyFormData.code_description.text"
+                    placeholder="Paste your code here (code is powered by github)"
+                    ></textarea>
+          </div>
+          <div ng-show="!job.question.is_coding">
+            <wysihtml5-toolbar
+                    wysihtml5-toolbar-id="wysihtml5-toolbar-1"
+                    wysihtml5-textarea-id="apply-description"
+                    ></wysihtml5-toolbar>
+            <textarea
+                    class="u-full-width"
+                    id="apply-description"
+                    name="apply-description"
+                    ng-model="applyFormData.description.text"
+                    placeholder="Describe your answer in few words (seen by hiring manager)."
+                    ></textarea>
+          </div>
+        </div>
+        <div ng-show="!job.question">
+          <div id="covernote-form" ng-show="showCoverNoteForm" >
+            <wysihtml5-toolbar
+                    wysihtml5-toolbar-id="wysihtml5-toolbar-2"
+                    wysihtml5-textarea-id="cover-description"
+                    ></wysihtml5-toolbar>
+            <textarea
+                    class="u-full-width"
+                    id="cover-description"
+                    name="cover-description"
+                    ng-model="applyFormData.cover_description.text"
+                    placeholder="Dear Hiring Manager…"
+                    ></textarea>
+          </div>
+        </div>
+        <input class="button-primary" type="submit" value="Submit" click-once />
+        <input type="button" class="button close-modal" value="Cancel" />
+      </form>
+    </div>
+  </div>
+  <div class="step confirmation">
+    <h1>
+      <span class="fa fa-check-square" style="color: #00a651; margin-right: 10px"> </span>
+       Received! Ask A Question To {{ job.company }}
+    </h1>
+      <hr>
+      <p class="description">
+          Ask a question by tagging {{ job.company }} in your post and we'll get someone from the company to answer it. This is a nice way to get attention!
+          <br>
+      </p>
+      <status-box ng-if="currentUser" user="currentUser" tags="tags" all-collections="allCollections"
+                  show-attachments='false'
+                  default-tag-id="question"
+                  show-poster-info='false'
+                  placeholder-text="Ex: I've heard great things about the culture Google. What's it like to really work there?"
+                  class="status-form"></status-box>
+
+      <p class="button-wrap">
+          <a href="/" target="_self">Skip</a>
+          </p>
+      <hr>
+  </div>
+</div>

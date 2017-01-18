@@ -1,0 +1,565 @@
+
+<!-- Bootstrap Core CSS -->
+<%= stylesheet_link_tag 'sb-admin/bootstrap.min.css', :media => 'all' %>
+
+<!-- MetisMenu CSS -->
+<%= stylesheet_link_tag 'sb-admin/metisMenu.min.css', :media => 'all' %>
+
+<!-- Timeline CSS -->
+<%= stylesheet_link_tag 'sb-admin/timeline.css', :media => 'all' %>
+
+<!-- Custom CSS -->
+<%= stylesheet_link_tag 'sb-admin/sb-admin-2.css', :media => 'all' %>
+
+<!-- Morris Charts CSS -->
+<%= stylesheet_link_tag 'sb-admin/morris.css', :media => 'all' %>
+
+<!-- Custom Fonts -->
+<%= stylesheet_link_tag 'sb-admin/font-awesome.min.css', :media => 'all' %>
+
+<%= stylesheet_link_tag 'sb-admin/dataTables.bootstrap.css', :media => 'all' %>
+<%= stylesheet_link_tag 'sb-admin/dataTables.responsive.css', :media => 'all' %>
+<%= stylesheet_link_tag 'sb-admin/jquery.dataTables.min.css', :media => 'all' %>
+
+<div id="wrapper" style="margin-left: 15px">
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+    <div class="navbar-default sidebar" role="navigation">
+      <div class="sidebar-nav navbar-collapse">
+        <ul class="nav nav-tabs nav-stacked" id="side-menu" data-tabs="tabs">
+          <li id="key_metrics_tab" class="active">
+            <a href="#key_metrics">
+              <i class="fa fa-dashboard fa-fw"></i> Key Metrics
+            </a>
+          </li>
+          <li id="growth_metrics_tab">
+            <a href="#growth_metrics">
+              <i class="fa fa-rocket fa-fw"></i> Growth Metrics
+            </a>
+          </li>
+          <li id="waitlist_metrics_tab">
+            <a href="#waitlist_metrics">
+              <i class="fa fa-rocket fa-fw"></i> Waitlist Metrics
+            </a>
+          </li>
+          <li id="engagement_metrics_tab">
+            <a href="#engagement_metrics">
+              <i class="fa fa-dashboard fa-fw"></i> Engagement Metrics
+            </a>
+          </li>
+        </ul>
+      </div>
+      <!-- /.sidebar-collapse -->
+    </div>
+    <!-- /.navbar-static-side -->
+  </nav>
+
+  <div id="all-tab-content" class="tab-content" style="margin-left: 250px;">
+    <div class="table tab-pane fade in active" id="key_metrics" style="margin-left: 0px;">
+      <div id="page-wrapper" style="margin: 0px;">
+        <div class="row">
+          <div class="col-lg-12">
+            <h1 class="page-header">Key Metrics</h1>
+          </div>
+          <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+        <div class="row">
+          <div class="col-lg-4 col-md-6">
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <div class="row">
+                  <div class="col-xs-3">
+                    <i class="fa fa-users fa-5x"></i>
+                  </div>
+                  <div class="col-xs-9 text-right">
+                    <div class="huge">
+                      <%= @key_metrics[:total_active_users] %>
+                    </div>
+                    <div>Users</div>
+                  </div>
+                </div>
+              </div>
+              <a href="#">
+                <div class="panel-footer">
+                  <span class="pull-left">View Details</span>
+                  <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                  <div class="clearfix"></div>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <div class="row">
+                  <div class="col-xs-3">
+                    <i class="fa fa-sign-in fa-5x"></i>
+                  </div>
+                  <div class="col-xs-9 text-right">
+                    <div class="huge"><%= @key_metrics[:week_active_users] %></div>
+                    <div>WAU</div>
+                  </div>
+                </div>
+              </div>
+              <a href="#">
+                <div class="panel-footer">
+                  <span class="pull-left">View Details</span>
+                  <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                  <div class="clearfix"></div>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <div class="row">
+                  <div class="col-xs-3">
+                    <i class="fa fa-list-alt fa-5x"></i>
+                  </div>
+                  <div class="col-xs-9 text-right">
+                    <div class="huge"><%= @key_metrics[:week_new_users] %></div>
+                    <div>WNU / Week</div>
+                  </div>
+                </div>
+              </div>
+              <a href="#">
+                <div class="panel-footer">
+                  <span class="pull-left">View Details</span>
+                  <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                  <div class="clearfix"></div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-4 col-md-6">
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <div class="row">
+                  <div class="col-xs-3">
+                    <i class="fa fa-file fa-5x"></i>
+                  </div>
+                  <div class="col-xs-9 text-right">
+                    <div class="huge">
+                      <%= @key_metrics[:active_jobs] %>
+                    </div>
+                    <div>Active Jobs</div>
+                  </div>
+                </div>
+              </div>
+              <a href="#">
+                <div class="panel-footer">
+                  <span class="pull-left">View Details</span>
+                  <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                  <div class="clearfix"></div>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <div class="row">
+                  <div class="col-xs-3">
+                    <i class="fa fa-file fa-5x"></i>
+                  </div>
+                  <div class="col-xs-9 text-right">
+                    <div class="huge">
+                      <%= @key_metrics[:profile_completness] %></div>
+                    <div>%</div>
+                  </div>
+                </div>
+              </div>
+              <a href="#">
+                <div class="panel-footer">
+                  <span class="pull-left">View Details</span>
+                  <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                  <div class="clearfix"></div>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <div class="row">
+                  <div class="col-xs-3">
+                    <i class="fa fa-institution fa-5x"></i>
+                  </div>
+                  <div class="col-xs-9 text-right">
+                    <div class="huge"><%= @key_metrics[:companies] %></div>
+                    <div>Companies</div>
+                  </div>
+                </div>
+              </div>
+              <a href="#">
+                <div class="panel-footer">
+                  <span class="pull-left">View Details</span>
+                  <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                  <div class="clearfix"></div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- /.row -->
+      </div>
+    </div>
+    <div class="table tab-pane fade in active" id="growth_metrics" style="margin-left: 0px;">
+      <div id="page-wrapper" style="margin: 0px;">
+        <div class="row">
+          <div class="row">
+            <div class="col-lg-12">
+              <h1 class="page-header">Growth Metrics</h1>
+            </div>
+            <!-- /.col-lg-12 -->
+          </div>
+          <div class="col-lg-12">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <i class="fa fa-bar-chart-o fa-fw"></i> Weekly Growth Trend
+              </div>
+              <!-- /.panel-heading -->
+              <div class="panel-body">
+                <div id="growth-weekly-trend"></div>
+              </div>
+              <!-- /.panel-body -->
+            </div>
+          </div>
+          <!-- /.col-lg-8 -->
+          <div class="col-lg-12">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <i class="fa fa-bar-chart-o fa-fw"></i> Daily Growth Trend
+              </div>
+              <!-- /.panel-heading -->
+              <div class="panel-body">
+                <div id="growth-daily-trend"></div>
+              </div>
+              <!-- /.panel-body -->
+            </div>
+          </div>
+          <!-- /.col-lg-12 -->
+          <div class="col-lg-12">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                Schools
+              </div>
+              <!-- /.panel-heading -->
+              <div class="panel-body">
+                <div class="dataTable_wrapper">
+                  <table class="table table-striped table-bordered table-hover" id="schoolTable" style="margin: 0px">
+                  </table>
+                </div>
+              </div>
+              <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+          </div>
+          <!-- /.col-lg-6 -->
+          <div class="col-lg-6">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                Year
+              </div>
+              <!-- /.panel-heading -->
+              <div class="panel-body">
+                <div id="year-donut-chart"></div>
+              </div>
+              <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="table tab-pane fade in active" id="waitlist_metrics" style="margin-left: 0px;">
+      <div id="page-wrapper" style="margin: 0px;">
+        <div class="row">
+          <div class="row">
+            <div class="col-lg-12">
+              <h1 class="page-header">Waitlist Growth Metrics</h1>
+            </div>
+            <!-- /.col-lg-12 -->
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <div class="row">
+                  <div class="col-xs-3">
+                    <i class="fa fa-users fa-5x"></i>
+                  </div>
+                  <div class="col-xs-9 text-right">
+                    <div class="huge">
+                      <%= @key_metrics[:total_waitlist_users] %>
+                    </div>
+                    <div>Waitlist Users</div>
+                  </div>
+                </div>
+              </div>
+              <a href="#">
+                <div class="panel-footer">
+                  <span class="pull-left">View Details</span>
+                  <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                  <div class="clearfix"></div>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <div class="row">
+                  <div class="col-xs-9 text-right">
+                    <div class="huge"><%= @key_metrics[:activated_waitlist_users] %></div>
+                    <div>Activated WLU</div>
+                  </div>
+                </div>
+              </div>
+              <a href="#">
+                <div class="panel-footer">
+                  <span class="pull-left">View Details</span>
+                  <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                  <div class="clearfix"></div>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <div class="row">
+                  <div class="col-xs-9 text-right">
+                    <div class="huge"><%= @key_metrics[:waitist_friend_signups] %></div>
+                    <div>Friend Signup</div>
+                  </div>
+                </div>
+              </div>
+              <a href="#">
+                <div class="panel-footer">
+                  <span class="pull-left">View Details</span>
+                  <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                  <div class="clearfix"></div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-4 col-md-6">
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <div class="row">
+                  <div class="col-xs-9 text-right">
+                    <div class="huge">
+                      <%= @key_metrics[:week_new_waitlist_user] %>
+                    </div>
+                    <div>This Week</div>
+                  </div>
+                </div>
+              </div>
+              <a href="#">
+                <div class="panel-footer">
+                  <span class="pull-left">View Details</span>
+                  <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                  <div class="clearfix"></div>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <div class="row">
+                  <div class="col-xs-9 text-right">
+                    <div class="huge"><%= @key_metrics[:day_new_waitlist_user] %></div>
+                    <div>Yesterday</div>
+                  </div>
+                </div>
+              </div>
+              <a href="#">
+                <div class="panel-footer">
+                  <span class="pull-left">View Details</span>
+                  <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                  <div class="clearfix"></div>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <div class="row">
+                  <div class="col-xs-9 text-right">
+                    <div class="huge"><%= @key_metrics[:current_waitlist_user] %></div>
+                    <div>Today</div>
+                  </div>
+                </div>
+              </div>
+              <a href="#">
+                <div class="panel-footer">
+                  <span class="pull-left">View Details</span>
+                  <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                  <div class="clearfix"></div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <i class="fa fa-bar-chart-o fa-fw"></i> Waitlist Growth Trend
+              </div>
+              <!-- /.panel-heading -->
+              <div class="panel-body">
+                <div id="waitlist-growth-trend"></div>
+              </div>
+              <!-- /.panel-body -->
+            </div>
+          </div>
+          <!-- /.col-lg-12 -->
+          <div class="col-lg-12">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                Schools
+              </div>
+              <!-- /.panel-heading -->
+              <div class="panel-body">
+                <div class="dataTable_wrapper">
+                  <table class="table table-striped table-bordered table-hover" id="waitlistSchoolTable" style="margin: 0px">
+                  </table>
+                </div>
+              </div>
+              <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="table tab-pane fade in active" id="engagement_metrics" style="margin-left: 0px;">
+      <div id="page-wrapper" style="margin: 0px;">
+        <div class="row">
+          <div class="row">
+            <div class="col-lg-12">
+              <h1 class="page-header">Engagement Metrics</h1>
+            </div>
+            <!-- /.col-lg-12 -->
+          </div>
+          <div class="col-lg-12">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <i class="fa fa-bar-chart-o fa-fw"></i> Engagement Chart
+              </div>
+              <!-- /.panel-heading -->
+              <div class="panel-body">
+                <div id="engagement-daily-stats"></div>
+              </div>
+              <!-- /.panel-body -->
+            </div>
+          </div>
+          <!-- /.col-lg-8 -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /#page-wrapper -->
+
+</div>
+<!-- /#wrapper -->
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<!-- Metis Menu Plugin JavaScript -->
+<%= javascript_include_tag 'sb-admin/metisMenu.min.js' %>
+
+<!-- Morris Charts JavaScript -->
+<%= javascript_include_tag 'sb-admin/raphael-min.js' %>
+<%= javascript_include_tag 'sb-admin/morris.min.js' %>
+
+<!-- Custom Theme JavaScript -->
+<%= javascript_include_tag 'sb-admin/sb-admin-2.js' %>
+
+<%= javascript_include_tag 'sb-admin/dataTables.bootstrap.min.js' %>
+<%= javascript_include_tag 'sb-admin/jquery.dataTables.min.js' %>
+
+<script>
+  Morris.Area({
+    element: 'engagement-daily-stats',
+    data: <%= raw(@key_metrics[:week_active_users_trend].to_json) %>,
+    xkey: 'period',
+    ykeys: ['WAU'],
+    labels: ['WAU'],
+    pointSize: 2,
+    hideHover: 'auto',
+    resize: true
+  });
+  Morris.Area({
+    element: 'growth-weekly-trend',
+    data: <%= raw(@key_metrics[:week_new_users_trend].to_json) %>,
+    xkey: 'period',
+    ykeys: ['WNU'],
+    labels: ['WNU'],
+    pointSize: 2,
+    hideHover: 'auto',
+    resize: true
+  });
+  Morris.Area({
+    element: 'growth-daily-trend',
+    data: <%= raw(@key_metrics[:daily_new_users_trend].to_json) %>,
+    xkey: 'period',
+    ykeys: ['DNU'],
+    labels: ['DNU'],
+    pointSize: 2,
+    hideHover: 'auto',
+    resize: true
+  });
+  Morris.Area({
+    element: 'waitlist-growth-trend',
+    data: <%= raw(@key_metrics[:week_waitlist_users_trend].to_json) %>,
+    xkey: 'period',
+    ykeys: ['WLNU'],
+    labels: ['WLNU'],
+    pointSize: 2,
+    hideHover: 'auto',
+    resize: true
+  });
+  $("#schoolTable").DataTable({
+    responsive: true,
+    data: <%= raw(@key_metrics[:school_counts].map{|v| [v[:label], v[:value]]}.to_json) %>,
+    columns: [
+      { title: "School" },
+      { title: "Count" }
+    ]
+  });
+  Morris.Donut({
+    element: 'year-donut-chart',
+    data: <%= raw(@key_metrics[:year_counts].to_json) %>,
+    resize: true
+  });
+  $("#waitlistSchoolTable").DataTable({
+    responsive: true,
+    data: <%= raw(@key_metrics[:waitlist_school_counts].map{|v| [v[:label], v[:value]]}.to_json) %>,
+    columns: [
+      { title: "School" },
+      { title: "Count" }
+    ]
+  });
+  Morris.Donut({
+    element: 'waitlist-schools-donut-chart',
+    data: <%= raw(@key_metrics[:waitlist_school_counts].to_json) %>,
+    resize: true
+  });
+</script>

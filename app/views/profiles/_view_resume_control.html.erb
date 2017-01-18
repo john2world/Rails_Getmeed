@@ -1,0 +1,71 @@
+<div class="row-view">
+  <div class="any-center">
+    <% if cookies[:referrer].eql? 'fb' %>
+        <% if is_profile_incomplete %>
+            <p class="accordion lightbox-text">
+              Fill Out Your Profile!
+            </p>
+            <hr class="hr-profile-separator">
+        <% end %>
+    <% else %>
+        <% unless params[:show_complete].blank? %>
+            <p class="accordion lightbox-text">
+              Please complete your profile first
+            </p>
+            <hr class="hr-profile-separator">
+        <% end %>
+    <% end %>
+    <% if @is_editable %>
+        <% if params[:reg].blank? %>
+            <a href="/<%= @user[:handle] %>" id="doneLink"> <strong>Show preview » </strong></a>
+        <% end %>
+    <% elsif @is_viewer_profile %>
+        <% if !params[:reg].blank? %>
+            <a href="/<%= @user[:handle] %>?reg=true&edit=true" id="doneLink">
+              <span class="glyphicon glyphicon-edit"></span><strong> Edit Profile</strong></a>
+        <% else %>
+            <a href="/<%= @user[:handle] %>?edit=true" id="doneLink">
+              <span class="glyphicon glyphicon-edit"></span><strong> Edit Profile</strong></a>
+        <% end %>
+    <% end %>
+  </div>
+  <%= render 'view_header' %>
+  <% if @profile_is_public %>
+      <%= render 'view_headline' %>
+      <%= render 'view_objective' %>
+      <%= render 'view_educations' %>
+      <%= render 'view_courses' %>
+      <%= render 'view_publications' %>
+      <%= render 'view_internships' %>
+      <%= render 'view_experiences' %>
+      <%= render 'view_answers' %>
+  <% end %>
+
+  <% if @is_viewer_profile %>
+      <div class="row">
+        <div class="any-center">
+          <a href="/home?reg=true" class="btn btn-success">
+            <span class="glyphicon glyphicon-ok-circle"></span> Looks Good » </a>
+        </div>
+      </div>
+      <hr>
+  <% end %>
+</div>
+<script>
+    var skills = <%= "[#{@skills_as}]".html_safe %>;
+    function populate_work_reference_invite(obj) {
+      var experience = $(obj).parents("div.profile-view-table");
+      var text = $(experience).find("div > span.profile-position-title").text() + ' @ ' + $(experience).find("div > span.profile-item-title").text()
+      var cols = $(experience).attr('id').split('_')
+      var id = cols[2]
+      var type = (cols[1] == 'experience' ? 'work' : 'internship')
+      var parent_id = $(experience).attr('id');
+
+      // changing the values for modal
+      $("#workReferenceInviteModal > div.modal-dialog > div.modal-content > div.modal-header > h4.work").text(text);
+      $("#workReferenceInviteModal > div.modal-dialog > div.modal-content > form > div.modal-body > div > input#form_message_id_work_id").val(id);
+      $("#workReferenceInviteModal > div.modal-dialog > div.modal-content > form > div.modal-body > div > input#form_message_id_work_type").val(type);
+      $("#workReferenceInviteModal > div.modal-dialog > div.modal-content > form > div.modal-body > div > input#form_message_id_parent_id").val(parent_id);
+    }
+</script>
+

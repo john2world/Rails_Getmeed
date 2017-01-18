@@ -1,0 +1,274 @@
+<div class="influencer-signup-form" id="influencer-signup-form">
+    <div class="logo-tagline-wrap">
+        <a href="/">
+            <img class="logo-full"src="https://res.cloudinary.com/resume/image/upload/c_scale,w_100/v1444337709/meed-logo-flat_kmj4rh.png">
+        </a>
+        <p class="tagline">Influencers are alumni, recruiters and industry experts.</p>
+    </div>
+    <div class="step signup-login">
+        <div class="signup-options">
+            <p class="buttons-wrap">
+                <a href="/auth/linkedin/" target="_self"class="social-signup linkedin-signup">
+                    <i class="fa fa-linkedin-square"></i>
+                    <span>Sign Up with Linkedin</span>
+                </a>
+                <a href="/auth/twitter/" target="_self" class="social-signup twitter-signup">
+                    <i class="fa fa-twitter-square"></i>
+                    <span>Sign Up with Twitter</span>
+                </a>
+                <a ng-click="authenticate('facebook')" class="social-signup facebook-signup">
+                    <i class="fa fa-facebook-square"></i>
+                    <span>Sign Up with Facebook</span>
+                </a>
+
+
+            </p>
+            <p class="small">
+                By signing up you indicate that you have read and agree to our
+                <a href="/legal/tos"> Terms of Service. </a>
+            </p>
+        </div>
+        <div class="login">
+            <h6>Login</h6>
+            <form
+                    accept-charset="UTF-8"
+                    novalidate="novalidate"
+                    name="loginForm"
+                    ng-submit="login(loginData, loginForm.$valid)"
+                    method="POST">
+                <input
+                        name="username"
+                        placeholder="Username or Email"
+                        required="required"
+                        ng-model="loginData.username"
+                        type="text" />
+                <input
+                        name="password"
+                        placeholder="********"
+                        required="required"
+                        ng-model="loginData.password"
+                        type="password" />
+                <p
+                        ng-show="serverError"
+                        class="error">
+                    {{serverErrorMessage}}
+                </p>
+                <p class="button-wrap">
+                    <!-- <input type="submit" class="button button-primary" type="submit" value="Sign In" /> -->
+                    <button type="submit" class="button button-primary" ng-show="!loading">
+                        <span>Sign In</span>
+                    </button>
+                    <button type="submit" class="button button-primary" disabled="disabled" ng-show="loading">
+                        <span>Please Wait...</span><i class="fa fa-refresh fa-spin"></i>
+                    </button>
+                </p>
+            </form>
+            <p class="forgot-password-wrap"><a href="/users/forgot" target="_self">Forgot Password?</a></p>
+            <p class="additional-links-wrap"><a href="https://talent.getmeed.com" target="_self">Post a Job</a> · <a href="/contact" target="_self">Contact Us</a> </p>
+        </div>
+    </div>
+
+    <div class="step create-account">
+        <p class="loader-wrap"><loader ng-show="loading"></loader></p>
+        <div class="loaded" ng-show="!loading">
+            <p class="avatar-wrap">
+                <img ng-src="{{ formData.image_url }}" />
+            </p>
+            <form
+                    class="create-account-form"
+                    name="createAccountForm"
+                    ng-submit="createAccount(formData, createAccountForm.$valid)"
+                    novalidate="novalidate">
+                <fieldset class="row">
+                    <input
+                            placeholder="First Name*"
+                            class="column one-half"
+                            id="first-name-field"
+                            ng-model="formData.first_name"
+                            required="required"
+                            ng-pattern="namePattern"
+                            name="firstName"
+                            type="text" />
+                    <input
+                            placeholder="Last Name*"
+                            class="column one-half"
+                            id="last-name-field"
+                            ng-model="formData.last_name"
+                            required="required"
+                            ng-pattern="namePattern"
+                            name="lastName"
+                            type="text" />
+                </fieldset>
+                <fieldset class="row">
+                    <input
+                            placeholder="Primary or Corporate Email*"
+                            class="column twelve"
+                            id="primary-email-field"
+                            ng-model="formData.primary_email"
+                            ng-pattern="generalEmailPattern"
+                            required="required"
+                            name="email"
+                            type="email"
+                            />
+                </fieldset>
+                <fieldset class="row">
+                    <input
+                            placeholder="Your headline (ex: Developer Evangelist, @Stanford alum, early @Facebook"
+                            class="column twelve"
+                            id="headline"
+                            ng-model="formData.headline"
+                            required="required"
+                            name="headline"
+                            type="text"
+                            />
+                </fieldset>
+                <fieldset class="row">
+                    <label class="u-full-width">
+                        <textarea
+                                type="text"
+                                name="short_bio"
+                                class="short-bio"
+                                ng-model="formData.bio"
+                                required="required"
+                                placeholder="Short Bio example: I currently work for Facebook on their product team. I was the lead engineer for the initial development of their messaging platform. I previously worked for several small startups in product development roles. Ask me any product design or front end development related questions you may have"
+                                />
+                    </label>
+                </fieldset>
+                <selectize config='undergraduateSchoolConfig' options='schoolsOptions' ng-model="formData.school_id"></selectize>
+                <selectize config='graduateSchoolConfig' options='schoolsOptions' ng-model="formData.other_school_ids"></selectize>
+
+                <tag-company
+                        companies="companies"
+                        only-one="true"
+                        model="formData.company_id"
+
+                ></tag-company>
+                <tag-company
+                        companies="companies"
+                        only-one="false"
+                        model="formData.company_ids"
+
+                        ></tag-company>
+                <fieldset class="row">
+                    <input
+                            class="u-full-width"
+                            name="password"
+                            ng-model="formData.password"
+                            placeholder="Choose Password*"
+                            required="required"
+                            type="password"
+                            ng-minlength="6"
+                            />
+                </fieldset>
+                <loader ng-show="companies_loading"></loader>
+
+                <fieldset class="row">
+                    <label class="u-full-width">
+                        <span>facebook.com/</span>
+                        <input
+                                type="text"
+                                name="facebook_handle"
+                                ng-model="formData.facebook_handle"
+                                placeholder="FB handle (optional)"
+                                />
+                    </label>
+                </fieldset>
+                <fieldset class="row">
+                    <label class="u-full-width">
+                        <span>twitter.com/</span>
+                        <input
+                                type="text"
+                                name="twitter_handle"
+                                ng-model="formData.twitter_handle"
+                                placeholder="Twitter handle (optional)"
+                                />
+                    </label>
+                </fieldset>
+                <div ng-messages="formData.submitted && createAccountForm.password.$error" role="alert" class="error">
+                    <div ng-message="required">Password Missing</div>
+                    <div ng-message="minlength">
+                        Password must atleast be 6 characters long.
+                    </div>
+                </div>
+                <div ng-messages="formData.submitted && createAccountForm.g.$error" role="alert" class="error">
+                    <div ng-message="required">Handle Missing</div>
+                </div>
+                <div ng-messages="formData.submitted && createAccountForm.firstName.$error" role="alert" class="error">
+                    <div ng-message="pattern">First Name must have only characters and spaces.</div>
+                </div>
+                <div ng-messages="formData.submitted && createAccountForm.lastName.$error" role="alert" class="error">
+                    <div ng-message="pattern">Last Name must have only characters and spaces.</div>
+                </div>
+                <div ng-messages="formData.submitted && createAccountForm.email.$error" role="alert" class="error">
+                    <div ng-message="pattern">Invalid Email.</div>
+                </div>
+                <div ng-messages="formData.submitted && createAccountForm.$error" role="alert" class="error">
+                    <div ng-message="required">Please enter valid data for all required (*) fields.</div>
+                </div>
+                <p
+                        ng-show="formData.submitted && serverError"
+                        class="error">
+                    {{ serverError }}
+                </p>
+
+                <p class="button-wrap">
+                    <input type="submit" class="button button-primary" value="Create Account">
+                </p>
+            </form>
+        </div>
+
+    </div>
+    <div class="step expertise">
+        <h5>Choose areas of expertise </h5>
+        <hr>
+        <form
+                class="create-account-form"
+                name="expertiseForm"
+                ng-submit="saveExpertise(formData, expertiseForm.$valid)"
+                novalidate="novalidate">
+        <fieldset class="checkboxes">
+            <p class="error" ng-show="formData.submitted && !someSelected()">Choose all that apply </p>
+            <h4>Engineering</h4>
+            <ul class="major-types">
+                <li ng-repeat="m in engineeringMajorTypes">
+                    <label>
+                        <input
+                                type="checkbox"
+                                checklist-value="m._id"
+                                checklist-model="formData.majorTypes"/>
+                        <span>{{ m.name }}</span>
+                    </label>
+                </li>
+            </ul>
+            <h4>Business</h4>
+            <ul class="major-types">
+                <li ng-repeat="m in businessMajorTypes">
+                    <label>
+                        <input
+                                type="checkbox"
+                                checklist-value="m._id"
+                                checklist-model="formData.majorTypes"/>
+                        <span>{{ m.name }}</span>
+                    </label>
+                </li>
+            </ul>
+            <h4>Other</h4>
+            <ul class="major-types">
+                <li ng-repeat="m in otherMajorTypes">
+                    <label>
+                        <input
+                                type="checkbox"
+                                checklist-value="m._id"
+                                checklist-model="formData.majorTypes"/>
+                        <span>{{ m.name }}</span>
+                    </label>
+                </li>
+            </ul>
+        </fieldset>
+            <p class="button-wrap">
+                <input type="submit" class="button button-primary" value="Continue">
+
+            </p>
+            </form>
+    </div>
+</div>

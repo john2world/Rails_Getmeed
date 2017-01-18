@@ -1,0 +1,25 @@
+$("#workReferenceInviteModal").modal('hide');
+// Adding the new invite to the list
+$($("#<%= @parent_id %> > ul")).before('' +
+        '<li class="list-group-item">' +
+        ' <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">' +
+        '   <%= @invite.reference_first_name %> <%= @invite.reference_last_name %>' +
+        ' </div>' +
+        ' <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">' +
+        '   <%= @invite.reference_email %>' +
+        ' </div>' +
+        ' <div class="col-lg-3 col-md-3 col-sm-2 col-xs-3">' +
+        '   <span class=\'label label-<%= get_label_from_reference_status(WorkReferenceInvitationStatus::INVITATION_SENT) %>\'>' +
+        '     <%= WorkReferenceInvitationStatus::INVITATION_SENT %>' +
+        '   </span>' +
+        ' </div>' +
+        ' <div style="clear:both"></div>' +
+        '</li>');
+// Clear the Modal form
+$("#workReferenceInviteModal > div.modal-dialog > div.modal-content > form > div.modal-body > div > input#form_message_id_work_id").val('');
+$("#workReferenceInviteModal > div.modal-dialog > div.modal-content > form > div.modal-body > div > input#form_message_id_work_type").val('');
+$("#workReferenceInviteModal > div.modal-dialog > div.modal-content > form > div.modal-body > div > input#form_message_id_index").val('');
+
+$("#workReferenceInviteModal > div.modal-dialog > div.modal-content > form > div.modal-body > div > div.form-group > label > input#first_name").val('');
+$("#workReferenceInviteModal > div.modal-dialog > div.modal-content > form > div.modal-body > div > div.form-group > label > input#last_name").val('');
+$("#workReferenceInviteModal > div.modal-dialog > div.modal-content > form > div.modal-body > div > div.form-group > label > input#email").val('');

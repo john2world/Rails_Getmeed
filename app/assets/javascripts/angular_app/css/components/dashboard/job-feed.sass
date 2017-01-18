@@ -1,0 +1,210 @@
+@import "./../core/buttons.sass"
+
+/* Jobs nav
+ *––––––––––––––––––––––––––––––––––––––––––––––––––*/
+
+.spacer
+  display: block
+  height: 50px
+
+.jobs-nav-wrap, .horizontal-feed-title-wrap
+  width: 100%
+  float: left
+  text-align: center
+
+/* Job Feed
+ *-------------------------------------------------*/
+
+section.section.jobs
+  padding: 0
+
+$jobs_feed_display_height: 200px
+
+#jobs-scrollbar-hider, .horizontal-feed-scrollbar-hider
+  float: left
+  width: 100%
+  overflow-y: hidden
+  overflow-x: hidden
+  height: $jobs_feed_display_height
+  margin-bottom: 1rem
+
+.jobs-feed-inner, .horizontal-feed-inner
+  .scroll
+    position: absolute
+    top: 0
+    height: 18rem
+    line-height: 18rem
+    width: 10%
+    max-width: 5rem
+    // background: $dark_overlay_background
+    color: $very_light_text
+    font-size: 5rem
+    z-index: 10
+
+    &.jobs-scroll-left, &.scroll-left
+      left: 0
+    &.jobs-scroll-right, &.scroll-right
+      right: 0
+
+
+.fixed-job-feed-wrap
+  position: fixed
+  bottom: 0
+  background: $body_background
+  width: 100%
+  .job-feed-item
+    width: 250px
+
+#jobs-outer-wrap, .horizontal-feed-outer-wrap
+  overflow-y: hidden
+  overflow-x: scroll
+  padding: 0
+  float: left
+  width: 100%
+  padding-bottom: 5px
+
+  #jobs-inner-wrap, .horizontal-feed-inner-wrap
+    padding: 0
+    max-height: 400px
+    overflow-y: hidden
+    overflow-x: hidden
+    // Very high width to enable scrolling
+    width: 20000px
+    min-width: 100%
+    float: left
+    padding-left: 40px
+    padding-right: 300px
+
+.job-feed-item
+  width: 31%
+  float: left
+  padding: 10px
+  border-radius: 5px
+  margin-right: 12px
+  text-align: left
+  background: $lightest_background
+  border: 1px solid $light_border
+  .company-logo-row
+    margin-bottom: 0px
+
+  .company-logo-wrap
+    text-align: center
+    float: left
+    border-radius: 3px
+    padding-right: 1rem
+    height: 60px
+    width: 50px
+    overflow: hidden
+    line-height: 45px
+    white-space: nowrap
+    position: relative
+    .vertical-align-helper
+      // http://stackoverflow.com/questions/7273338/how-to-vertically-align-an-image-inside-div#answer-7310398
+      display: inline-block
+      height: 100%
+      vertical-align: middle
+      width: 0
+
+  .company-logo
+    width: 50px
+    vertical-align: middle
+
+  .job-description
+    font-size: $font_size_regular
+    color: #888
+    line-height: 18px
+
+  .fa
+    color: $fa_icon_gray
+    margin-right: 5px
+  p
+    width: 100%
+    margin-bottom: 5px
+    &.job-description
+      height: 75px
+      overflow-y: hidden
+    &.button-wrap
+      margin: 0
+      padding: 0
+  span
+    width: 200px
+    font-size: $font_size_regular
+    line-height: $font_size_medium_small
+    position: relative
+    height: 50px
+    word-wrap: break-word
+    color: $darker_text
+    margin-bottom: 0
+    a
+      color: inherit
+      &.company-name
+        width: 250px
+        float: left
+        font-weight: 400
+        display: block
+        bottom: 0px
+        line-height: 1.2
+        color: $light_text
+        font-size: $font_size_regular
+        &:hover
+          color: $link_hover_color
+
+
+  .button
+    width: 58%
+  .button-primary
+    background: $primary
+
+#end-of-job-feed, .end-of-horizontal-feed
+  float: left
+
+#no-more-job-feed-items, .no-more-horizontal-feed-items
+  height: 16.5rem
+  text-align: center
+  h3
+    line-height: 16.5rem
+
+p.job-location
+  color: $very_light_text
+  font-size: $font_size_small
+  height: 1.9rem
+  overflow-y: hidden
+  width: 100%
+
+
+p.job-compensation
+  color: $very_light_text
+  border-color: $secondary
+  font-size: $font_size_medium_small!important
+  width: auto!important
+  text-transform: none!important
+  overflow-y: hidden
+  float: right
+
+p.job-metadata
+  color: $very_light_text
+  font-size: $font_size_small
+
+p.job-miniintern-metadata
+  @extend  p.job-metadata
+  clear: right
+  float: left
+  margin-left: 0
+
+p.job-location
+  height: 1.9rem
+  overflow-y: hidden
+
+/* Shared with Job Single View
+ *---------------------------------------------*/
+
+abbr.job-timestamp
+  border-bottom: 0
+  &::before
+    content: "\2022  Added "
+
+span.meta-spacer
+  &::before
+    content: "\2022  "
+
+

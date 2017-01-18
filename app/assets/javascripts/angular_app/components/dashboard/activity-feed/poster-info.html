@@ -1,0 +1,10 @@
+<div class="poster-info">
+  <poster-info-user
+    ng-if="::item.poster_type == 'user'"
+    feed-type="{{ ::item.type }}"
+    user="::item.user"
+    event="::item.event"
+    time="::item.create_time"
+    collection="item.collections[0]"
+    helper-text="{{ ::item.helper_text }}"></poster-info-user>
+</div>

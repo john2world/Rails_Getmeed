@@ -1,0 +1,10 @@
+var element = $("<%= "#follow_company_#{@company_id}" %>");
+var feed_element = $("<%= "#feed_follow_#{@company_id}" %>");
+feed_element.hide();
+var form = $("#form_follow_company");
+element.html('<span class="glyphicon glyphicon-retweet "></span> Unfollow');
+element.attr('class', 'btn btn-sm btn-default cursor buzz-out');
+element.attr('id', "<%= "unfollow_company_#{@company_id}" %>");
+form.attr('action', '/company/unfollow/<%=@company_id %>');
+form.attr('id', 'form_unfollow_company');
+

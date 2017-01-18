@@ -1,0 +1,61 @@
+<md-content layout-padding>
+  <h5 class="welcome-heading">Internship Experience</h5>
+  <div class="details">Share your intership experiance with other students! If you would like to share this with recruiters make sure to add it
+to your portfolio.</div>
+  <hr>
+
+  <form
+    accept-charset="UTF-8"
+    name="createCollectionForm"
+    ng-submit="submit(story, createCollectionForm.$valid)"
+    class="story-form"
+    novalidate="novalidate">
+
+    <div layout='column' layout-align='center center'>
+      <img
+        ng-src="{{ story.photo || default_image }}"
+        class="company-logo-new"
+      />
+
+      <input ng-model="story.photo" data-fp-openTo="IMAGE_SEARCH" data-fp-button-class="button button-primary-inverse medium-small filepicker-button" data-fp-button-text="Choose Photo" data-fp-apikey="{{::filepickerApiKey}}" type="filepicker"/>
+    </div>
+
+    <div layout='row' layout-xs='column' layout-align="space-between center">
+      <div flex=45 layout='column'>
+        <label for="title">Publication Title *</label>
+        <input ng-model="story.title" required type="text" name="title" />
+      </div>
+
+      <div flex=45 layout='column'>
+        <label for="position">Internship Position? *</label>
+        <input ng-model="story.position" required type="text" name="position" />
+      </div>
+    </div>
+
+    <div layout='row' layout-xs='column' layout-align="space-between center">
+      <div flex=45 layout='column'>
+        <label for="company">Company? *</label>
+        <tag-company-id only-one="true" required='true' initial-option="story.company" placeholder-override="Company name" model="story.company_id"></tag-company-id>
+      </div>
+
+      <div flex=45 layout='column'>
+        <label for="location">Location? *</label>
+        <input ng-model="story.location" googleplace required type="text" name="location" />
+      </div>
+    </div>
+
+    <div ng-repeat="answer in story.story_answers_attributes">
+      <fieldset>
+        <label>{{::answer.story_question.title}}{{answer.story_question.required ? ' *' : ''}}</label>
+        <textarea ng-model="answer.content" ng-required="answer.story_question.required" placeholder="{{answer.story_question.placeholder}}" type="text" rows=5 />
+      </fieldset>
+    </div>
+
+    <tag-collections collection-id="story.collection_id" collections="allCollections"></tag-collections>
+    <tags-select tag-id="story.tag_ids" tags="tags"></tags-select>
+
+    <div layout='column' layout-align='center center'>
+      <button class="button button-primary">Submit</button>
+    </div>
+  </form>
+</md-content>

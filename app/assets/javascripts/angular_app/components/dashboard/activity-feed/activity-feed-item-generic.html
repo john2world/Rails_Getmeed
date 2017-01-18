@@ -1,0 +1,25 @@
+<div class="row">
+  <activity-feed-item-caption item="feedItem"></activity-feed-item-caption>
+  <poster-info item="feedItem"></poster-info>
+  <!--  <abbr class="timeago activity-feed-item-timestamp" title="{{ ::feedItem.create_time }}">{{ ::feedItem.create_time }}</abbr> -->
+  <div class="activity-feed-item-description-wrap">
+    <div class="picture-wrap" ng-if="feedItem.small_image_url">
+      <a ng-href="{{ ::feedItem.path }}">
+        <img ng-src="{{ ::feedItem.small_image_url }}" />
+      </a>
+    </div>
+    <div class="story-link">
+      <a ng-href="{{ ::feedItem.path }}">
+        {{ ::feedItem.title }}
+      </a>
+    </div>
+    <div class="feed-actions">
+      <feed-item-action-buttons item="feedItem"></feed-item-action-buttons>
+      <jssocials item="feedItem"></jssocials>
+    </div>
+  </div>
+
+</div>
+
+
+

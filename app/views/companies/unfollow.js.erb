@@ -1,0 +1,7 @@
+var element = $("<%= "#unfollow_company_#{@company_id}" %>");
+var form = $("#form_unfollow_company");
+element.html('<span class="glyphicon glyphicon-retweet "></span> Follow Company');
+element.attr('class', 'btn btn-sm btn-info cursor buzz-out');
+element.attr('id', "<%= "follow_company_#{@company_id}" %>");
+form.attr('action', '/company/follow/<%=@company_id %>');
+form.attr('id', 'form_follow_company');

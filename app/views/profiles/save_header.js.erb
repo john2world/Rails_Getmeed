@@ -1,0 +1,6 @@
+<% if @delete == true%>
+$("#edit_single_header_true").hide();
+<% else %>
+renderViewItem('edit_single_header');
+$("#show_single_header_true").html("<%= escape_javascript (render 'render_header_data',  :is_edit => true, :is_viewer_profile => @is_viewer_profile, :user => @user, :school => @school) %>");
+<% end %>

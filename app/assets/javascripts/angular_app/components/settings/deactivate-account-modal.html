@@ -1,0 +1,33 @@
+<div class="modal" id="deactivate-account-modal">
+  <form
+    ng-submit="deactivateAccount()"
+    name="deactivateAccountForm">
+    <h4>Confirm Account Deactivation</h4>
+    <p>
+      Deactivating your account disables your profile, your job applications and
+      other content will no longer be visible to people.
+    </p>
+    <p>If you have any questions/concerns <a href="/contact">contact us</a></p>
+    <p>If you wish to proceed with deactivation, fill the short survey and Click
+    on Deactivate again.</p>
+    <h6>What was your reason for leaving Meed? </h6>
+      <label class="checkbox-label">
+        <input type="checkbox" value="true" ng-model="deactivateSurvey.job" name="job">
+        I got a job
+      </label>
+      <label class="checkbox-label">
+        <input type="checkbox" value="true" ng-model="deactivateSurvey.graduated" name="graduated">
+        I graduated
+      </label>
+      <label class="checkbox-label">
+        <input type="checkbox" value="true" ng-model="deactivateSurvey.testing" name="testing">
+        I was testing
+      </label>
+      <label>Other: <input type="text" ng-model="deactivateSurvey.other" name="other"></label>
+    </p>
+    <p class="button-wrap">
+      <input type="submit" class="button button-primary" value="Deactivate" ng-show="deactivateSurvey.job || deactivateSurvey.graduated || deactivateSurvey.testing || deactivateSurvey.other ">
+    </p>
+  </form>
+</div>
+

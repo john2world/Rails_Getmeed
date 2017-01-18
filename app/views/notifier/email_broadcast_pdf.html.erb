@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="span9">
+
+    <div class="form-view">
+      <p class="accordion" style="text-align: left;color: #333333; font-family: 'Open Sans','lucida grande','Segoe UI',arial,verdana,'lucida sans unicode',tahoma,sans-serif ;padding: 0% 5% 0%;font-size: 12px">
+        Hi,
+        <br/>
+        <br/>
+        We are introducing new features to share your Meed Profile with anyone and track yourself-
+        <br/>
+        <br/>
+        1. Share your profile link <%= link_to @profile_url, @profile_url%> with anyone (recommended for receiving insights)
+        <br/>
+        <br/>
+        2. Download PDF version of your Meed Profile at <%= link_to @download_url, @download_url%>. Always keep it upto date.
+        <br/>
+        <br/>
+        3. Doing the above, helps you in tracking resume views (<%= link_to 'insights', 'https://getmeed.com/insights'%>), when someone opens it.  You also receive email alerts when someone downloads it.
+        <br/>
+        <br/>
+        <br/>
+        To give us feedback, drop a line here- <%= link_to @contact_url, @contact_url%>
+        <br/>
+        <br/>
+        -Meed Team.
+      </p>
+    </div>
+  </div>
+</div>

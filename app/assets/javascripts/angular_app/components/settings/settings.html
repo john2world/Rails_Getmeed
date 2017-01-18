@@ -1,0 +1,86 @@
+<div class="main-wrap settings" >
+  <div class="main">
+      <site-nav class="side" user-collections="userCollections"></site-nav>
+    <div class="main-inner-wrap">
+      <h2>Account Settings</h4>
+      <p class="alert success">{{ message }}</p>
+      <form ng-submit="saveSettings()">
+        <fieldset>
+          <div class="info">
+            <h3 class="section-header">Profile</h3>
+            <p class="small">
+              Will enable profile search in search engines
+            </p>
+          </div>
+          <div class="inputs">
+            <label><input type="checkbox" name="public-profile" ng-model="settings.profile_public"> Public Profile</label>
+           </div>
+        </fieldset>
+        <fieldset>
+          <div class="info">
+            <h3 class="section-header">Email Notifications</h3>
+            <p class="small">
+              Frequency of Email Notifications
+            </p>
+          </div>
+          <div class="inputs">
+            <label>
+              <input
+                type="radio"
+                name="email-frequency"
+                ng-model="settings.email_frequency"
+                value="EVERY">
+              Every
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="email-frequency"
+                ng-model="settings.email_frequency"
+                value="DAILY">
+              Daily
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="email-frequency"
+                ng-model="settings.email_frequency"
+                value="WEEKLY">
+              Weekly
+            </label>
+          </div>
+        </fieldset>
+        <fieldset>
+          <div class="info">
+            <h3 class="section-header">Email Subscriptions</h3>
+            <p class="small">
+              Emails Subscriptions for Updates
+            </p>
+          </div>
+          <div class="inputs">
+            <label ng-repeat="(k, v) in settings.email_subscriptions">
+              <input type="checkbox" name="email-subscriptions-{{ k }}" ng-model="settings.email_subscriptions[k]"> {{ k | titlecase }}
+            </label>
+          </div>
+        </fieldset>
+        <p class="button-wrap">
+          <input type="submit" class="button button-primary" value="Save Settings" />
+        </p>
+        <fieldset>
+          <div class="info">
+            <h3 class="section-header">Danger Zone</h3>
+          </div>
+          <div class="inputs">
+            <a
+              class="open-deactivate-account-modal disabled"
+              ng-click="openDeactivateAccountModal()">
+              Deactivate account
+            </a>
+          </div>
+        </fieldset>
+      </form>
+      <deactivate-account-modal></deactivate-account-modal>
+    </div>
+  </div>
+</div>
+<site-nav class="bottom" user-collections="userCollections"></site-nav>

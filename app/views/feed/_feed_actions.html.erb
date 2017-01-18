@@ -1,0 +1,71 @@
+<% if current_user.blank? %>
+    <div class="float-div-public">
+      <a href="/?reg=true" class="btn btn-xs btn-default"><span class="fa fa-chevron-up" style="color:#999"></span>Upvote <%= "#{data[:kudos_count]}" %>
+      </a>
+    </div>
+    <% if data[:type].eql? UserFeedTypes::STORY.to_s %>
+        <a href="<%= data.url %>" class="btn btn-xs btn-default">
+          <span class="fa fa-comment" style="color:#999"></span><%= (!data[:comment_count].blank? and data[:comment_count]>0) ? "#{data[:comment_count]}" : 'Comments' %>
+        </a>
+        <% if !data.view_count.blank? and data.view_count > 0 %>
+          <a href="<%= data.url %>" class="btn btn-xs btn-default" style="color:#999">
+            <span class="fa fa-eye" style="color:#999"></span><%= data.view_count %></a>
+        <% end %>
+        <div id="share_<%= data.id %>" class="social-share">
+        </div>
+    <% end %>
+<% else %>
+
+    <%= form_tag({:controller => 'kudos', :action => 'give_kudos', :id => data[:_id]}, :html => {:multipart => true}, :style => 'margin:0px 0px 0px;display: inline-block;', :remote => true) do %>
+        <%= hidden_field_tag :position, position %>
+        <% if !data[:viewer_gave_kudos].blank? and data[:viewer_gave_kudos] %>
+            <%= button_tag(type: 'submit', :id => data[:_id], class: 'btn btn-xs btn-default ', :disabled => true) do %>
+                <span class="fa fa-chevron-up " style="color:#999"></span><%= (!data[:kudos_count].blank? and data[:kudos_count]>0) ? "#{data[:kudos_count]}" : 'Upvoted' %>
+            <% end %>
+        <% else %>
+            <%= button_tag(type: 'submit', :id => data[:_id], class: 'btn btn-xs btn-default ') do %>
+                <span class="fa fa-chevron-up " style="color:#999"></span><%= (!data[:kudos_count].blank? and data[:kudos_count]>0) ? "Upvote #{data[:kudos_count]}" : 'Upvote' %>
+            <% end %>
+        <% end %>
+    <% end %>
+
+    <% if data[:type].eql? UserFeedTypes::STORY.to_s %>
+        <a href="<%= data.url %>" class="btn btn-xs btn-default">
+          <span class="fa fa-comment" style="color:#999"></span><%= (!data[:comment_count].blank? and data[:comment_count]>0) ? "Comments #{data[:comment_count]} " : 'Comments' %>
+        </a>
+        <div id="share_<%= data.id %>" class="social-share">
+        </div>
+
+    <% end %>
+    <% if data[:type].eql? UserFeedTypes::USER_COURSE_REVIEW.to_s %>
+        <a href="<%= get_course_insights_url %>" class="btn btn-xs btn-default">
+          <span class="fa fa-leanpub" style="color:#999"></span>Review Courses</a>
+        <div id="share_<%= data.id %>" class="social-share">
+        </div>
+    <% end %>
+    <% if (data[:is_user_following_company].blank? or !data[:is_user_following_company]) and data[:poster_type].eql? 'company' %>
+        <%= form_tag({:controller => 'companies', :action => :follow, :id => data[:poster_id]}, :id => "feed_follow_#{data[:poster_id]}", :style => 'margin:0px 0px 0px;display: inline-block; ', :class => 'follow-company', :html => {:multipart => true}, :remote => true) do %>
+            <%= button_tag(type: 'submit', :id => data[:_id], class: 'btn btn-xs btn-default ', :disable_with => 'Following') do %>
+                <span class="glyphicon glyphicon-retweet"></span> Follow Company
+            <% end %>
+
+        <% end %>
+    <% end %>
+    <% if !data.view_count.blank? and data.view_count > 0 %>
+        <a href="<%= data.url %>" class="btn btn-xs btn-default" style="color:#999">
+          <span class="fa fa-eye" style="color:#999"></span><%= data.view_count %></a>
+    <% end %>
+    <% if data[:is_viewer_author] %>
+        <button id="delete_feed_item" data-id="<%= data.id %>" style="color:#da4f49; font-size: 10px" class="btn btn-link" onclick="feed_delete_confirm('<%= data.id %>')">Delete</button>
+    <% end %>
+
+<% end %>
+<script>
+    $("#share_<%= data.id %>").jsSocials({
+        url: '<%= data.url %>',
+        text: escape_special_characters("<%= data.caption.blank? ? (data.title) : (data.title)%>"),
+        showCount: "inside",
+        showLabel: false,
+        shares: ["facebook", "twitter", "linkedin", "email"]
+    });
+</script>

@@ -1,0 +1,27 @@
+<ul id="jobTabs" class="nav nav-pills nav-stacked" data-tabs="tabs">
+  <li class="active" onclick="loadJobs('')" ><a href="#all_jobs" data-toggle="pill">
+    <span class="fa fa-filter"></span> All Jobs</a></li>
+      <li><a href="#intern_jobs" onclick="loadJobs('intern')" data-toggle="pill"><span class="glyphicon glyphicon-briefcase"></span>
+        Internships</a></li>
+      <li>
+        <a href="#fulltime_jobs" onclick="loadJobs('fulltime')" data-toggle="pill"><span class="glyphicon glyphicon-briefcase"></span> Full time</a>
+      </li>
+      <li><a href="#applied_jobs" onclick="loadJobs('applied')" data-toggle="pill"><span class="glyphicon glyphicon-ok-sign"></span> My Jobs</a>
+      </li>
+</ul>
+<div id="job-tab-content" class="tab-content  col-md-10">
+  <div class="tab-pane fade in active" id="all_jobs">
+
+  </div>
+  <div class="tab-pane fade in" id="intern_jobs">
+
+  </div>
+  <div class="tab-pane fade in" id="fulltime_jobs">
+  </div>
+  <div class="tab-pane fade in" id="applied_jobs">
+    <div id="applied_jobs_loader"></div>
+  </div>
+</div>
+<script>
+  $(".consumer-selectize").selectize();
+</script>

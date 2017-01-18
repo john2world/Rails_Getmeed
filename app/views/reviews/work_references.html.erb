@@ -1,0 +1,65 @@
+<h2 class="any-center">
+  Work References.
+</h2>
+<hr class="hr-profile-header">
+
+<div>
+  <p class="info-text-large any-center">Add new Internship / Work Experience ?</p>
+  <div style="text-align:center">
+    <a type="button" class="btn btn-md btn-primary" href="<%= url_for(:controller => 'profiles', :action => 'view', :id => @user.handle, :edit => true) %>">Update Profile</a>
+  </div>
+  <hr style="width: 60%; margin-left: 20%;">
+</div>
+
+<div>
+  <p id="work_reference_header"></p>
+</div>
+
+<% @works.each_with_index do |work, index| %>
+  <div class="panel panel-default" id="work_reference_<%= encode_id(work.id) %>">
+    <!-- Default panel contents -->
+    <div class="panel-heading"><%= work.title %> @ <%= work.company %></div>
+    <div class="panel-body">
+      <p><%=h work.description %></p>
+    </div>
+
+    <%= hidden_field_tag :work_id, encode_id(work.id), :id => "form_new_hidden_id", :work_type => work[:type] %>
+    <%= hidden_field_tag :index, index, :id => 'hidden_index' %>
+
+    <!-- List group -->
+    <ul class="list-group">
+      <% work[:invites].each do |invite| %>
+        <li class="list-group-item">
+          <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5"><%= invite.name %></div>
+          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"><%= invite.reference_email %></div>
+          <div class="col-lg-3 col-md-3 col-sm-2 col-xs-3">
+            <span class="label label-<%= get_label_from_reference_status(invite.status)%>">
+              <%= invite.status.titleize %>
+            </span>
+          </div>
+          <div style="clear:both"></div>
+        </li>
+      <% end %>
+      <li class="list-group-item">
+        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#workReferenceInviteModal" data-backdrop="#whole_page" onclick="populate_work_reference_invite(this);">
+          Add Reference
+        </button>
+      </li>
+    </ul>
+  </div>
+<% end %>
+<script>
+  function populate_work_reference_invite(obj) {
+    var work = $(obj).parents("div.panel")
+    var text = $(work).children("div.panel-heading").text();
+    var id = $(work).children("#form_new_hidden_id").val();
+    var type = $(work).children("#form_new_hidden_id").attr('work_type');
+    var parent_id = $(work).attr('id');
+
+    // changing the values for modal
+    $("#workReferenceInviteModal > div.modal-dialog > div.modal-content > div.modal-header > h4.work").text(text);
+    $("#workReferenceInviteModal > div.modal-dialog > div.modal-content > form > div.modal-body > div > input#form_message_id_work_id").val(id);
+    $("#workReferenceInviteModal > div.modal-dialog > div.modal-content > form > div.modal-body > div > input#form_message_id_work_type").val(type);
+    $("#workReferenceInviteModal > div.modal-dialog > div.modal-content > form > div.modal-body > div > input#form_message_id_parent_id").val(parent_id);
+  }
+</script>

@@ -1,0 +1,2 @@
+# Logfile created on 2013-04-21 17:49:48 -0700 by logger.rb/31641
+Error in saving email_invitation!: undefined method `__bson_dump__' for #<User:0x007f996d8fb5e8>

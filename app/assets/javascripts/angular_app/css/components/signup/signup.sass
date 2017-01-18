@@ -1,0 +1,343 @@
+.signup-form, .influencer-signup-form
+  background: $lightest_background
+  width: 60rem
+  float: left
+  border-radius: 5px
+  h3, h4, h5
+    text-align: center
+  h6
+    text-transform: uppercase
+    font-weight: bold
+    color: $light_text
+    font-size: $font_size_medium_small
+    width: 100%
+    text-align: center
+  .step
+    display: none
+    .waitlist-heading
+      color: $primary
+    &.signup-login
+      display: block
+  .logo-tagline-wrap
+    text-align: center
+    padding-top: 1rem
+  .tagline
+    color: $light_text
+  img.logo-full
+    width: 8rem
+
+  .signup-options, .import-options
+    float: left
+    width: 50%
+    padding-left: 1.5rem
+    padding-right: 1.5rem
+    box-sizing: border-box
+    a.social-signup
+      width: 90%
+      min-width: 250px
+      display: block
+      border-radius: 5px
+      margin-bottom: 1rem
+      box-sizing: border-box
+      color: white
+      height: 4.8rem
+      padding: 0 2.5rem
+      &:hover
+        text-decoration: none
+
+    a.facebook-signup
+      background: $facebook_color
+    a.twitter-signup
+      background: $twitter_color
+    a.github-signup
+      background: $github_color
+    a.linkedin-signup
+      background: $linkedin_color
+    i
+      font-size: $font_size_x_large
+      display: inline-block
+      position: relative
+      top: 5px
+      width: 3rem
+    span
+      line-height: 3rem
+      font-size: $font_size_regular
+
+    .buttons-wrap, .email-signup-wrap
+      margin: 0
+    .email-signup-wrap a
+      font-size: $font_size_medium_large
+      color: $secondary
+
+  .import-options
+    float: inherit
+    width: 100%
+    text-align: center
+
+
+  .selectize-input input
+    font-size: $font_size_regular
+
+  .jssocials-share-link
+    font-size: inherit
+  .jssocials-shares
+    text-align: center
+
+  .fb-send
+    &.wrapper-button
+      border-collapse: collapse
+      color: rgb(255, 255, 255)
+      cursor: pointer
+      height: 40px
+      text-align: left
+      text-shadow: rgb(0, 94, 207) 0px -1px 0px
+      white-space: nowrap
+      width: 104px
+      background: rgba(0, 0, 0, 0) linear-gradient(rgb(0, 132, 255), rgb(0, 111, 255)) repeat scroll 0% (0% / auto) padding-box border-box
+      border: 0px none rgb(255, 255, 255)
+      border-radius: 5px 5px 5px 5px
+      font: normal normal bold normal 20px / 40px helvetica, arial, sans-serif
+      outline: rgb(255, 255, 255) none 0px
+
+    .img-button
+      border-collapse: collapse
+      color: rgb(255, 255, 255)
+      cursor: pointer
+      display: inline-block
+      height: 40px
+      text-align: left
+      text-shadow: rgb(0, 94, 207) 0px -1px 0px
+      white-space: nowrap
+      width: 35px
+      perspective-origin: 10.0174px 10px
+      transform-origin: 10.0174px 10px
+      border: 0px none rgb(255, 255, 255)
+      font: normal normal bold normal 30px / 30px helvetica, arial, sans-serif
+      outline: rgb(255, 255, 255) none 0px
+
+    .send-button
+      border-collapse: collapse
+      color: rgb(255, 255, 255)
+      cursor: pointer
+      height: 40px
+      min-height: 0px
+      text-shadow: rgb(53, 76, 140) 0px -1px 0px
+      white-space: nowrap
+      width: 35px
+      background: rgba(0, 0, 0, 0) none repeat scroll 0% (0% / auto) padding-box border-box
+      border: 0px none rgb(255, 255, 255)
+      font: normal normal bold normal 30px / 30px helvetica, arial, sans-serif
+      margin: -1px
+      outline: rgb(255, 255, 255) none 0px
+      padding: 0px
+
+    .send-img
+      border-collapse: collapse
+      color: rgb(255, 255, 255)
+      cursor: pointer
+      height: 25px
+      left: 0px
+      position: relative
+      text-align: center
+      text-shadow: rgb(53, 76, 140) 0px -1px 0px
+      top: 3px
+      vertical-align: top
+      white-space: nowrap
+      width: 25px
+      align-self: flex-start
+      border: 0px none rgb(255, 255, 255)
+      margin: 0px 10px
+      outline: rgb(255, 255, 255) none 0px
+
+    .send-text
+      border-collapse: collapse
+      color: rgb(255, 255, 255)
+      cursor: pointer
+      position: relative
+      text-align: left
+      text-shadow: rgb(0, 94, 207) 0px -1px 0px
+      vertical-align: top
+      white-space: nowrap
+      border: 0px none rgb(255, 255, 255)
+      font: normal normal bold normal 20px / 40px helvetica, arial, sans-serif
+      outline: rgb(255, 255, 255) none 0px
+      padding: 0px 0px 0px 0px
+
+.login
+  float: right
+  width: 50%
+  box-sizing: border-box
+  border-left: 1px solid $light_border
+  padding-left: 5%
+  padding-right: 5%
+
+  input[type=text], input[type=password]
+    width: 100%
+  .button-wrap
+    text-align: center
+    padding-bottom: 0
+    margin-bottom: 0
+  .forgot-password-wrap
+    text-align: center
+    margin: 0
+    padding: 0
+  .additional-links-wrap
+    font-size: $font_size_small
+    text-align: center
+    a
+      color: $light_text
+
+  p.error
+    margin-bottom: 1rem
+  button
+    span
+      float: left
+    i.fa
+      float: left
+      margin-left: 0.5rem
+      margin-top: 1.2rem
+
+
+.create-account
+  width: 30rem
+  margin-left: 50%
+  position: relative
+  left: -15rem
+  .short-bio
+    min-height: 20rem
+
+  fieldset
+    margin-bottom: 0
+  .avatar-wrap
+    width: 100%
+    text-align: center
+    padding: 0
+    margin: 0
+    margin-top: 1.5rem
+    margin-bottom: 0.5rem
+    img
+      float: none
+      width: 6rem
+      height: 6rem
+      border-radius: 50%
+      overflow: hidden
+
+  .chosen-container
+    margin-bottom: 1.5rem
+    width: 29.6rem
+
+  .row label
+    span
+      float: left
+      line-height: 38px
+      width: 106px
+    input
+      font-weight: normal
+      width: 19rem
+  .loader-wrap
+    text-align: center
+
+.email-signup
+  h6
+    text-align: center
+  fieldset
+    text-align: center
+    margin-bottom: 0
+  input[type=email]
+    width: 24rem
+  .error
+    text-align: center
+    margin-bottom: 1.5rem
+
+
+.waitlist, .verify-email
+  box-sizing: border-box
+  padding: 1.5rem
+
+.waitlist
+  p
+    &.description
+      color: $light_text
+      margin: 1rem 10rem
+    &.details
+      text-align: center
+      color: $light_text
+      margin-top: 1.5rem
+      margin-bottom: 20px
+  .jssocials-shares, .button-wrap
+    text-align: center
+
+  .button-wrap
+    float: left
+    width: 100%
+    padding-bottom: 2rem
+
+  .fb-like-wrap
+    display: inline-block
+    margin-right: 1rem
+  .twitter-follow-wrap
+    display: inline-block
+    position: relative
+    top: 7px
+
+
+.verify-email
+  p
+    &.description
+      color: $light_text
+      margin: 1rem 10rem
+    &.error
+      text-align: center
+  fieldset
+    text-align: center
+
+  input[type=text]
+    width: 14rem
+
+
+.zero-clipboard
+  position: relative
+
+  .btn-clipboard
+    top: 24px
+    border-top-right-radius: 0
+    position: absolute
+    right: 2px
+    z-index: 10
+    display: block
+    padding: 5px 8px
+    font-size: 12px
+    color: #767676
+    cursor: pointer
+    background-color: #fff
+    border: 1px solid #e1e1e8
+    border-radius: 0 4px 0 4px
+
+.highlight
+  margin: 0px
+  height: 100px
+  pre
+    margin: 0px
+    code
+      padding: 0px
+
+.referral-text
+  margin-bottom: 0px
+
+#signup-modal, #influencer-signup-modal
+  width: auto
+
+
+@media(max-width: 450px)
+  .signup-form
+    width: auto
+    .signup-options
+      width: 100%
+    .step.signup-login
+      width: 300px
+    .login
+      width: 100%
+
+
+
+

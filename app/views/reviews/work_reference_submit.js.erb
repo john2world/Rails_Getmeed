@@ -1,0 +1,13 @@
+if (<%= @result %>) {
+  // on success
+  // first clear the form
+  $("#review_text").hide();
+  $("#work_reference_form > div > button").hide();
+  $("#message").html("Thank you for your reference!" +
+    "<br/><br/>" +
+    "<p style='font-size: 15px'>" +
+     "Please checkout our enterprise site to know more about how to Meed can help <%= @company %> hire best talent from colleges!" +
+     "</p>" +
+    "<br/>" +
+    "<a class='btn btn-primary' href='http://enterprise.getmeed.com'>Meed Enterprise</a>");
+}

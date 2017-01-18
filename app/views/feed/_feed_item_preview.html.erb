@@ -1,0 +1,148 @@
+<div class="blog-list blog-category-list">
+  <article class="post col-md-12 col-sm-12 col-xs-12 col-md-offset-0 col-sm-offset-0 col-xs-offset-0">
+
+    <%= form_tag({:action => :publish_story, :controller => 'posts'}, :class => 'form-submit-large', :remote => true, :html => {:multipart => true}) do %>
+        <div class="post-inner">
+          <div class="content feed-container">
+            <div class="date-label">
+              <% if current_user.is_meediorite? %>
+                  <div class="user-image-badge">M</div>
+              <% end %>
+              <div class="user-image-badge">M</div>
+              <% if current_user[:image_url].blank? %>
+                  <img class="img-responsive image-small" src="http://res.cloudinary.com/resume/image/upload/v1409877319/user_male4-128_q1iypj_lgzk5i.jpg">
+              <% else %>
+                  <img class="img-responsive image-small" src="<%= current_user[:image_url] %>"/>
+              <% end %>
+            </div>
+            <div class="article-container">
+              <% unless data[:title].blank? %>
+                  <div class="post-title"><%= data[:title] %></div>
+              <% end %>
+              <div class="meta">
+                <ul class="meta-list list-inline">
+                  <li class="post-comments-link">
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="post-entry">
+              <%= hidden_field_tag :scrape_id, data.id %>
+
+              <% if data[:type].eql? 'video' or data[:type].eql? 'cover_video' %>  
+                  <%= render 'feed/render_feed_video', :data => data %>   
+              <% elsif data[:type].eql? 'profile_picture' %> 
+                  <img src="<%= current_user[:image_url] %>">
+              <% elsif data[:type].eql? 'article' %>  
+                  <% unless data[:large_image_url].blank? %>
+                      <img class="image-responsive" style="max-height: 200px" src='<%= data[:large_image_url] %>' data-title="<%= data[:title] %>"/>
+                  <% end %>
+              <% end %>
+              <p>
+                <% unless data[:caption].blank? %> 
+                    <%= Sanitize.clean(data[:caption].strip.truncate(100, :omission => '..')) %>
+                <% end %>
+              </p>
+            </div>
+
+          </div>
+        </div>
+        <hr class="hr-silent">
+        <div class="form-group">
+          <%= text_area_tag :caption, nil, :class => 'form-control', :required => '', :placeholder => 'Give a title to this post..' %>
+        </div>
+        <hr class="hr-silent">
+        <p class="job-create-heading" style="margin-left: 0%;">
+          Choose Collection: <span class="info-text-medium">(Tag relevant collections)</span>
+        </p>
+        <hr class="hr-silent">
+        <%= select_tag :topics, options_for_select(data[:topics].collect { |m| [m[:post_topic_name], m[:_id]] }), :multiple => true, :style => 'width: 100%; height: 30px', :class => 'enterprise-selectize', :prompt => 'Add Topics (* Required)' %>
+        <hr class="hr-silent">
+
+
+        <p class="job-create-heading">
+          Select Your Audience: <span class="info-text-medium">(Choose who should see this)</span>
+        </p>
+        <fieldset class="group">
+          <ul class="checkbox">
+            <li>
+              <input type="checkbox" id="selectAllMajors" value="selectAll"> Select Everyone
+            </li>
+          </ul>
+        </fieldset>
+        <div class="info-text-xlarge" style="margin-left: 0%;">
+          Engineering
+        </div>
+        <ul class="checkbox">
+          <% data[:engineering_major_types].each do |major_type_id, major_type| %>
+              <li>
+                <%= check_box_tag 'major_types[]', major_type.id, false, :class => 'major_checkbox' %>
+                <%= major_type.name %>
+              </li>
+          <% end %>
+        </ul>
+        <div class="info-text-xlarge" style="margin-left: 0%;">
+          Business
+        </div>
+        <ul class="checkbox">
+          <% data[:business_major_types].each do |major_type_id, major_type| %>
+              <li>
+                <%= check_box_tag 'major_types[]', major_type.id, false, :class => 'major_checkbox' %>
+                <%= major_type.name %>
+              </li>
+          <% end %>
+        </ul>
+        <div class="info-text-xlarge" style="margin-left: 0%;">
+          Others
+        </div>
+        <ul class="checkbox">
+          <% data[:other_major_types].each do |major_type_id, major_type| %>
+              <li>
+                <%= check_box_tag 'major_types[]', major_type.id, false, :class => 'major_checkbox' %>
+                <%= major_type.name %>
+              </li>
+          <% end %>
+        </ul>
+        <hr class="hr-silent">
+        <p class="job-create-heading">
+          Privacy Options
+        </p>
+        <fieldset class="group">
+          <ul class="checkbox">
+            <li>
+              <%= check_box_tag "public_post", true, false %> <%= "Limit this post to #{current_school_handle.upcase} students only?" %>
+            </li>
+          </ul>
+        </fieldset>
+        <fieldset class="group">
+          <ul class="checkbox">
+            <li>
+              <strong> <%= check_box_tag "add_to_profile", true, false %> <%= 'Add this to your Meed profile?' %></strong>
+            </li>
+          </ul>
+        </fieldset>
+
+        <hr class="hr-silent">
+        <p class="label label-important" id="errors_alert" style="display: none;">
+
+        <div style="margin-top: 2%;">
+          <%= button_tag(type: 'submit', class: 'btn btn-sm btn-primary', :data => {:disable_with => 'Submitting..'}) do %>
+              <span class="glyphicon glyphicon-share"></span> Submit it!
+          <% end %>
+        </div>
+    <% end %>
+  </article>
+</div>
+<script>
+    $('#selectAllMajors').click(function () {
+        if (this.checked) {
+            $('.major_checkbox').each(function () {
+                this.checked = true;
+            });
+        } else {
+            $('.major_checkbox').each(function () {
+                this.checked = false;
+            });
+        }
+    });
+</script>

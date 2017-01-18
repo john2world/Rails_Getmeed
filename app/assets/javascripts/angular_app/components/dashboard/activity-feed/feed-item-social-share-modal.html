@@ -1,0 +1,16 @@
+<div class="modal" id="feed-item-social-share-{{ ::item._id }}">
+    <h4>Share submission!</h4>
+    <hr>
+    <div ng-if="ownSubmission">
+        Use the buttons and unique URL below to share your Meed submission with your friends and peers. Upvotes and comments from other users add value to your professional identity, and may even get you featured on our home page!
+    </div>
+    <jssocials item="item"></jssocials>
+        <div class="zero-clipboard"><span class="btn-clipboard ref-url-copy" clipboard text="referral_url" on-copied="success()" on-error="fail(err)" >Copy</span></div>
+        <div class="highlight">
+        <pre>
+          <code class="language-html" data-lang="html" ng-model="referral_url">
+              {{ ::item.short_url }}
+          </code>
+        </pre>
+    </div>
+</div>

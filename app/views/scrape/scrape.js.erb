@@ -1,0 +1,38 @@
+<% unless @data.blank? %>
+$("#share_link_box").slideUp("slow", function () {
+    // Animation complete.
+});
+$("#feed_item_preview").html("<%= escape_javascript (render 'feed/feed_item_preview' , :data => @data) %>");
+$("#status").hide();
+var major_type_hash = {}
+<% @data[:engineering_major_types].each do |major_type_id, major_type| %>
+major_type_hash['<%= major_type_id %>'] = [<%= major_type.major_ids.map{|s| "'#{s}'"}.join(',').html_safe() %>];
+<% end %>
+
+<% @data[:business_major_types].each do |major_type_id, major_type| %>
+major_type_hash['<%= major_type_id %>'] = [<%= major_type.major_ids.map{|s| "'#{s}'"}.join(',').html_safe() %>];
+<% end %>
+
+<% @data[:other_major_types].each do |major_type_id, major_type| %>
+major_type_hash['<%= major_type_id %>'] = [<%= major_type.major_ids.map{|s| "'#{s}'"}.join(',').html_safe() %>];
+<% end %>
+$("#skills").selectize({
+    create: true,
+    plugins: ['remove_button'],
+    sortField: {
+        field: 'text'
+    },
+    minItems: 1,
+    maxItems: 3
+});
+
+$("#topics").selectize({
+    create: false,
+    plugins: ['remove_button'],
+    sortField: {
+        field: 'text'
+    },
+    minItems: 1,
+    maxItems: 2
+});
+<% end %>

@@ -1,0 +1,13 @@
+<div id="feed_render">
+  <% feed_items.each do |feed| %>
+      <% if feed[:poster_type].eql? 'company' %>
+          <% if feed[:company].blank? and !company.blank? %>
+              <%= render 'feed/feed_item_render', :data => feed, :company => company %>
+          <% elsif !feed[:company].blank? %>
+              <%= render 'feed/feed_item_render', :data => feed, :company => feed[:company] %>
+          <% end %>
+      <% elsif feed[:poster_type].eql? 'user' %>
+          <%= render 'feed/feed_item_render', :data => feed %>
+      <% end %>
+  <% end %>
+</div>
